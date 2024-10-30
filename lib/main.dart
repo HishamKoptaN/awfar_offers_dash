@@ -1,0 +1,102 @@
+// ignore_for_file: unused_import
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/app_observer.dart';
+import 'dart:async';
+import 'core/di/dependency_injection.dart';
+import 'core/routes/app_router.dart';
+import 'features/controll_panel/control_panel_view.dart';
+import 'features/main/presentation/bloc/main_bloc.dart';
+import 'features/main/presentation/bloc/main_state.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+void main() async {
+  await Injection.inject();
+  WidgetsFlutterBinding.ensureInitialized();
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+  };
+  Bloc.observer = AppBlocObserver();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if (prefs.getBool("fingerprints") == null) {
+    prefs.setBool("fingerprints", false);
+  }
+  if (prefs.getBool("notifications") == null) {
+    prefs.setBool("notifications", false);
+  }
+  runApp(
+    const MyApp(),
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => const MyApp(),
+    // ),
+  );
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool error = false;
+  @override
+  Widget build(context) {
+    double heiht = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return SafeArea(
+      child: ScreenUtilInit(
+        designSize: Size(
+          width,
+          heiht,
+        ),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          locale: const Locale('ar'),
+          supportedLocales: const [
+            Locale('en'),
+            Locale('ar'),
+          ],
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          title: 'Awfer offers',
+          color: Colors.white,
+          theme: ThemeData(
+            primaryColor: Colors.amber,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Theme.of(context).primaryColor,
+            ),
+            fontFamily: "Arial",
+            useMaterial3: true,
+          ),
+          builder: (context, widget) {
+            FlutterError.onError = (details) async {
+              FlutterError.presentError(
+                details,
+              );
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) {
+                  setState(
+                    () => error = true,
+                  );
+                },
+              );
+            };
+            if (widget != null) return widget;
+            throw StateError('widget is null');
+          },
+          routerConfig: router,
+        ),
+      ),
+    );
+  }
+}
