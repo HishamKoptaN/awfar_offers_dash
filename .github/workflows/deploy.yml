@@ -17,18 +17,20 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: awfar-offers.com
+        server: ftp.awfar-offers.com
         username: ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.ftp_password }}
-        remote-dir: /awfer_offers_dash  # تأكد من تحديد الدليل البعيد المناسب
+        password: ${{ secrets.HOSTINGER_PASSWORD }}  # تأكد من أن اسم المدخل صحيح
+        local-dir: lib/  # تأكد من أن هذا هو المسار الصحيح للملفات التي تريد رفعها
+        server-dir: /awfer_offers_dash  # تأكد من تحديد الدليل البعيد المناسب
 
     - name: 🔄 Create Test Directory
       run: |
         lftp -f "
-        open -u ${{ secrets.HOSTINGER_USERNAME }},${{ secrets.ftp_password }} ftp://ftp.awfar-offers.com
+        open -u ${{ secrets.HOSTINGER_USERNAME }},${{ secrets.HOSTINGER_PASSWORD }} ftp://ftp.awfar-offers.com
         mkdir -p /awfer_offers_dash/test_directory  # تغيير اسم المجلد حسب الحاجة
         bye
         "
+
 
 # on:
 #   push:
