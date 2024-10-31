@@ -1,37 +1,19 @@
 name: Deploy Flutter Web App
-
-on:
-  push:
-    branches:
-      - main  # تأكد من استبدال هذا باسم الفرع المناسب
-
+on: push
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-
+    
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ftp.awfar-offers.com
-        username: ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.HOSTINGER_PASSWORD }}  # تأكد من أن اسم المدخل صحيح
-        local-dir: lib/  # تأكد من أن هذا هو المسار الصحيح للملفات التي تريد رفعها
-        server-dir: /awfer_offers_dash  # تأكد من تحديد الدليل البعيد المناسب
-
-    - name: 🔄 Create Test Directory
-      run: |
-        lftp -f "
-        open -u ${{ secrets.HOSTINGER_USERNAME }},${{ secrets.HOSTINGER_PASSWORD }} ftp://ftp.awfar-offers.com
-        mkdir -p /awfer_offers_dash/test_directory  # تغيير اسم المجلد حسب الحاجة
-        bye
-        "
-
-
+        server: awfar-offers.com
+        username:  ${{ secrets.HOSTINGER_USERNAME }}
+        password: ${{ secrets.ftp_password }}
 # on:
 #   push:
 #     branches:
