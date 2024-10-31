@@ -3,12 +3,42 @@ name: Deploy Flutter Web App
 on:
   push:
     branches:
-      - main
+      - main  # تأكد من استبدال هذا باسم الفرع المناسب
 
 jobs:
-  build-and-deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: awfar-offers.com
+        username: ${{ secrets.HOSTINGER_USERNAME }}
+        password: ${{ secrets.ftp_password }}
+        remote-dir: /awfer_offers_dash  # تأكد من تحديد الدليل البعيد المناسب
+
+    - name: 🔄 Create Test Directory
+      run: |
+        lftp -f "
+        open -u ${{ secrets.HOSTINGER_USERNAME }},${{ secrets.ftp_password }} ftp://ftp.awfar-offers.com
+        mkdir -p /awfer_offers_dash/test_directory  # تغيير اسم المجلد حسب الحاجة
+        bye
+        "
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
     # - name: Check out code
     #   uses: actions/checkout@v2
 
@@ -37,18 +67,18 @@ jobs:
     # - name: Build web
     #   run: flutter build web
 
-    - name: Install lftp
-      run: sudo apt-get install -y lftp
+    # - name: Install lftp
+    #   run: sudo apt-get install -y lftp
 
-    - name: Upload to Hostinger
-      env:
-        HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
-        HOSTINGER_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD }}
-      run: |
-        lftp -f "
-        set ftp:ssl-verify off
-        set ftp:passive-mode on  
-        open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD 92.113.18.5
-        mkdir /awfer_offers_dash 
-        bye
-        "
+    # - name: Upload to Hostinger
+    #   env:
+    #     HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+    #     HOSTINGER_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD }}
+    #   run: |
+    #     lftp -f "
+    #     set ftp:ssl-verify off
+    #     set ftp:passive-mode on  
+    #     open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD https://awfar-offers.com/
+    #     mkdir /awfer_offers_dash 
+    #     bye
+    #     "
