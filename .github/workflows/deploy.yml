@@ -1,5 +1,10 @@
+
+on: 
+  push:
+    branches:
+      - main
+      
 name: Deploy Flutter Web App
-on: push
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -12,8 +17,9 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: awfar-offers.com
-        username:  ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.ftp_password }}
+        username:  u941582685
+        password:  Coder1632001@
+        server-dir: /public_html/test/
 # on:
 #   push:
 #     branches:
