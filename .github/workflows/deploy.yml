@@ -1,9 +1,7 @@
-
 on: 
   push:
     branches:
       - main
-      
 name: Deploy Flutter Web App
 jobs:
   web-deploy:
@@ -20,6 +18,8 @@ jobs:
         username:  u941582685
         password:  Coder1632001@
         server-dir: /public_html/test/
+        port: 21  
+        protocol: ftp 
 # on:
 #   push:
 #     branches:
