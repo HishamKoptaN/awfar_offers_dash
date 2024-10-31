@@ -8,30 +8,26 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.5.4'  # استبدل بالإصدار المناسب
-        channel: stable
-        architecture: x64
-        cache: false
-        pub-cache-path: default
-        dry-run: false
+    # - name: Set up Flutter
+    #   uses: subosito/flutter-action@v2
+    #   with:
+    #     flutter-version: '3.5.4'  # استبدل بالإصدار المناسب
+    #     channel: stable
+    #     architecture: x64
+    #     cache: false
+    #     pub-cache-path: default
+    #     dry-run: false
 
     - name: Install dependencies
       run: flutter pub get
-
     - name: Build web
       run: flutter build web
-
     - name: Install lftp
       run: sudo apt-get install -y lftp
-
     - name: Upload to Hostinger
       env:
         HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
