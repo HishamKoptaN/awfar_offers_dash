@@ -9,9 +9,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
+    # - name: Check out code
+    #   uses: actions/checkout@v2
     # - name: Set up Flutter
     #   uses: subosito/flutter-action@v2
     #   with:
@@ -22,8 +21,8 @@ jobs:
     #     pub-cache-path: default
     #     dry-run: false
 
-    - name: Install dependencies
-      run: flutter pub get
+    # - name: Install dependencies
+    #   run: flutter pub get
     - name: Build web
       run: flutter build web
     - name: Install lftp
