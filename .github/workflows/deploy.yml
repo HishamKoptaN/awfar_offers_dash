@@ -48,7 +48,7 @@ jobs:
         lftp -f "
         set ftp:ssl-verify off
         set ftp:passive-mode on  
-        open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD ftp://92.113.18.5
+        open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD 92.113.18.5
         mkdir /awfer_offers_dash 
         bye
         "
