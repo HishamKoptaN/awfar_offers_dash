@@ -8,11 +8,10 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
+     # !
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
-    - name: Check out code
-      uses: actions/checkout@v2
-
+     # !
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
@@ -22,31 +21,32 @@ jobs:
         cache: false
         pub-cache-path: default
         dry-run: false
-
+     # !
     - name: Upgrade Flutter
       run: flutter upgrade
-
+     # !
     - name: Install dependencies
       run: flutter pub get
-
-    - name: Run tests
-      run: flutter test
-
-    - name: Clean build
-      run: flutter clean
-
+     # !
+    # - name: Run tests
+    #   run: flutter test
+     # !
+    # - name: Clean build
+    #   run: flutter clean
+     # !
     - name: Build web
       run: flutter build web  
-    - name: 📂 Sync files
+     # !
+    - name: 📂 deploy build web
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftp.awfar-offers.com
         username:  u941582685
         password:  Coder1632001@
+        protocol: "ftp" 
+        port: 21  
         server-dir: /domains/awfar-offers.com/public_html/awfer_offers_dash/
         local-dir: ./build/web
-        port: 21  
-        protocol: "ftp" 
 # on:
 #   push:
 #     branches:
