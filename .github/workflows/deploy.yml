@@ -22,8 +22,8 @@ jobs:
         pub-cache-path: default
         dry-run: false
 
-    - name: Upgrade Flutter
-      run: flutter upgrade
+    # - name: Upgrade Flutter
+    #   run: flutter upgrade
 
     - name: Install dependencies
       run: flutter pub get
@@ -31,8 +31,8 @@ jobs:
     # - name: Run tests
     #   run: flutter test
 
-    - name: Clean build
-      run: flutter clean
+    # - name: Clean build
+    #   run: flutter clean
 
     - name: Build web
       run: flutter build web
@@ -46,7 +46,7 @@ jobs:
         HOSTINGER_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD }}
       run: |
         lftp -f "
-        open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD ftp://92.113.18.5
+        open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD ftp://ftp.awfar-offers.com/
         mirror -R --delete build/web /awfer_offers_dash
         bye
         " 
