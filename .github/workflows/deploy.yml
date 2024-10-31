@@ -9,24 +9,24 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+    # - name: Check out code
+    #   uses: actions/checkout@v2
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.0.0'  # استبدل بالإصدار المناسب
-        channel: stable
-        architecture: x64
-        cache: false
-        pub-cache-path: default
-        dry-run: false
+    # - name: Set up Flutter
+    #   uses: subosito/flutter-action@v2
+    #   with:
+    #     flutter-version: '3.0.0'  # استبدل بالإصدار المناسب
+    #     channel: stable
+    #     architecture: x64
+    #     cache: false
+    #     pub-cache-path: default
+    #     dry-run: false
 
-    - name: Upgrade Flutter
-      run: flutter upgrade
+    # - name: Upgrade Flutter
+    #   run: flutter upgrade
 
-    - name: Install dependencies
-      run: flutter pub get
+    # - name: Install dependencies
+    #   run: flutter pub get
 
     # - name: Run tests
     #   run: flutter test
@@ -34,8 +34,8 @@ jobs:
     # - name: Clean build
     #   run: flutter clean
 
-    - name: Build web
-      run: flutter build web
+    # - name: Build web
+    #   run: flutter build web
 
     - name: Install lftp
       run: sudo apt-get install -y lftp
@@ -48,6 +48,6 @@ jobs:
         lftp -f "
         set ftp:ssl-verify off
         open -u $HOSTINGER_USERNAME,$HOSTINGER_PASSWORD ftp://92.113.18.5
-        mirror -R --delete build/web /awfer_offers_dash
+        mkdir /awfer_offers_dash  # اسم المجلد الذي تريد إنشاؤه
         bye
-        " 
+        "
