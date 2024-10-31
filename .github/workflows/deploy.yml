@@ -18,7 +18,7 @@ jobs:
         username:  u941582685
         password:  Coder1632001@
         server-dir: /test/
-        local-dir: ./assets 
+        local-dir: ./assets/ 
 # on:
 #   push:
 #     branches:
