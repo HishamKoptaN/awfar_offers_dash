@@ -46,7 +46,7 @@ jobs:
         protocol: "ftp" 
         port: 21  
         server-dir: /domains/awfar-offers.com/public_html/awfer_offers_dash/
-        local-dir: ./build/web
+        local-dir: ./build/web/
 # on:
 #   push:
 #     branches:
