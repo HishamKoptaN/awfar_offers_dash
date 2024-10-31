@@ -17,7 +17,7 @@ jobs:
         server: ftp.awfar-offers.com
         username:  u941582685
         password:  Coder1632001@
-        server-dir: /public_html/test/
+        server-dir: /domains/awfar-offers.com/public_html/awfer_offers_dash/
         local-dir: ./assets/
         port: 21  
         protocol: "ftp" 
