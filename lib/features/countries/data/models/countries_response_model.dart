@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'countries_response_model.freezed.dart';
 part 'countries_response_model.g.dart';
 

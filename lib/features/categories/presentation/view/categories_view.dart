@@ -48,53 +48,56 @@ class CategoriesView extends StatelessWidget {
               return state.maybeWhen(
                 categoriesLoaded: (categories) {
                   return SingleChildScrollView(
-                    child: DataTable(
-                      columns: [
-                        DataColumn(
-                          label: CustomText(
-                            text: 'معرف الدوله',
-                            fontSize: 30.sp,
+                    child: Container(
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: [
+                          DataColumn(
+                            label: CustomText(
+                              text: 'معرف الدوله',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'الاسم',
-                            fontSize: 30.sp,
+                          DataColumn(
+                            label: CustomText(
+                              text: 'الاسم',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomTextButton(
-                            onPressed: () {
-                              customNavigation(
-                                context: context,
-                                path: '/AddCategoryView',
-                              );
-                            },
-                            text: 'أضافة فئة',
+                          DataColumn(
+                            label: CustomTextButton(
+                              onPressed: () {
+                                customNavigation(
+                                  context: context,
+                                  path: '/AddCategoryView',
+                                );
+                              },
+                              text: 'أضافة فئة',
+                            ),
                           ),
-                        ),
-                      ],
-                      rows: categories!.map(
-                        (category) {
-                          return DataRow(
-                            cells: [
-                              DataCell(
-                                Text(
-                                  category.id.toString(),
+                        ],
+                        rows: categories!.map(
+                          (category) {
+                            return DataRow(
+                              cells: [
+                                DataCell(
+                                  Text(
+                                    category.id.toString(),
+                                  ),
                                 ),
-                              ),
-                              DataCell(
-                                Text(
-                                  category.name.toString(),
+                                DataCell(
+                                  Text(
+                                    category.name.toString(),
+                                  ),
                                 ),
-                              ),
-                              const DataCell(
-                                SizedBox(),
-                              ),
-                            ],
-                          );
-                        },
-                      ).toList(),
+                                const DataCell(
+                                  SizedBox(),
+                                ),
+                              ],
+                            );
+                          },
+                        ).toList(),
+                      ),
                     ),
                   );
                 },

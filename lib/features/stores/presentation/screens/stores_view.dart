@@ -48,53 +48,56 @@ class StoresView extends StatelessWidget {
                 return state.maybeWhen(
                   storesLoaded: (stores) {
                     return SingleChildScrollView(
-                      child: DataTable(
-                        columns: [
-                          DataColumn(
-                            label: CustomText(
-                              text: 'معرف الدوله',
-                              fontSize: 30.sp,
+                      child: Container(
+                        width: double.infinity,
+                        child: DataTable(
+                          columns: [
+                            DataColumn(
+                              label: CustomText(
+                                text: 'معرف الدوله',
+                                fontSize: 30.sp,
+                              ),
                             ),
-                          ),
-                          DataColumn(
-                            label: CustomText(
-                              text: 'الاسم',
-                              fontSize: 30.sp,
+                            DataColumn(
+                              label: CustomText(
+                                text: 'الاسم',
+                                fontSize: 30.sp,
+                              ),
                             ),
-                          ),
-                          DataColumn(
-                            label: CustomTextButton(
-                              onPressed: () {
-                                customNavigation(
-                                  context: context,
-                                  path: '/AddStoreView',
-                                );
-                              },
-                              text: 'أضافة متجر',
+                            DataColumn(
+                              label: CustomTextButton(
+                                onPressed: () {
+                                  customNavigation(
+                                    context: context,
+                                    path: '/AddStoreView',
+                                  );
+                                },
+                                text: 'أضافة متجر',
+                              ),
                             ),
-                          ),
-                        ],
-                        rows: stores!.map(
-                          (store) {
-                            return DataRow(
-                              cells: [
-                                DataCell(
-                                  Text(
-                                    store.id.toString(),
+                          ],
+                          rows: stores!.map(
+                            (store) {
+                              return DataRow(
+                                cells: [
+                                  DataCell(
+                                    Text(
+                                      store.id.toString(),
+                                    ),
                                   ),
-                                ),
-                                DataCell(
-                                  Text(
-                                    store.name!,
+                                  DataCell(
+                                    Text(
+                                      store.name!,
+                                    ),
                                   ),
-                                ),
-                                const DataCell(
-                                  SizedBox(),
-                                ),
-                              ],
-                            );
-                          },
-                        ).toList(),
+                                  const DataCell(
+                                    SizedBox(),
+                                  ),
+                                ],
+                              );
+                            },
+                          ).toList(),
+                        ),
                       ),
                     );
                   },

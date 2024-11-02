@@ -21,8 +21,9 @@ class CountriesView extends StatefulWidget {
 
 class _CountriesViewState extends State<CountriesView> {
   bool loading = false;
+
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return MainLayout(
       showAppBar: false,
       route: 'الدول',
@@ -34,9 +35,7 @@ class _CountriesViewState extends State<CountriesView> {
               success: (countriesResponseModel) async {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text(
-                      "success",
-                    ),
+                    content: Text("success"),
                   ),
                 );
                 context.read<CountriesBloc>().emit(
@@ -49,16 +48,9 @@ class _CountriesViewState extends State<CountriesView> {
               failure: (error) async {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      error,
-                    ),
+                    content: Text(error),
                   ),
                 );
-                // context.read<CountriesBloc>().emit(
-                //        const CountriesState.countriesLoaded(
-                //         countriesResponseModel:  const CountriesResponseModel(),
-                //       ),
-                //     );
                 loading = false;
               },
             );
@@ -78,100 +70,86 @@ class _CountriesViewState extends State<CountriesView> {
                   state.maybeWhen(
                     countriesLoaded: (countriesResponseModel) {
                       return SingleChildScrollView(
-                        child: DataTable(
-                          columns: [
-                            DataColumn(
-                              label: CustomText(
-                                text: 'معرف الدوله',
-                                fontSize: 30.sp,
+                        child: Container(
+                          width: double.infinity,
+                          child: DataTable(
+                            columns: [
+                              DataColumn(
+                                label: CustomText(
+                                  text: 'معرف الدوله',
+                                  fontSize: 30.sp,
+                                ),
                               ),
-                            ),
-                            DataColumn(
-                              label: CustomText(
-                                text: 'الدوله',
-                                fontSize: 30.sp,
+                              DataColumn(
+                                label: CustomText(
+                                  text: 'الدوله',
+                                  fontSize: 30.sp,
+                                ),
                               ),
-                            ),
-                            DataColumn(
-                              label: CustomTextButton(
-                                onPressed: () {
-                                  customNavigation(
-                                    context: context,
-                                    path: '/AddCountryView',
-                                  );
-                                },
-                                text: 'أضافة دولة',
+                              DataColumn(
+                                label: CustomTextButton(
+                                  onPressed: () {
+                                    customNavigation(
+                                      context: context,
+                                      path: '/AddCountryView',
+                                    );
+                                  },
+                                  text: 'أضافة دولة',
+                                ),
                               ),
-                            ),
-                          ],
-                          rows: countriesResponseModel!.map(
-                            (country) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(
-                                    Text(
-                                      country.id.toString(),
+                            ],
+                            rows: countriesResponseModel!.map(
+                              (country) {
+                                return DataRow(
+                                  cells: [
+                                    DataCell(
+                                      Text(
+                                        country.id.toString(),
+                                      ),
                                     ),
-                                  ),
-                                  DataCell(
-                                    Center(
-                                      child: Container(
-                                        height: 40.h,
-                                        width: 350.w,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.5),
-                                              spreadRadius: 1,
-                                              blurRadius: 5,
-                                              offset: const Offset(0, 3),
-                                            ),
-                                          ],
-                                        ),
-                                        child: CountryCodePicker(
-                                          padding: const EdgeInsets.all(5),
-                                          flagWidth: 60.w,
-                                          textStyle: TextStyle(
-                                            fontSize: 20.sp,
+                                    DataCell(
+                                      Center(
+                                        child: Container(
+                                          height: 40.h,
+                                          width: double
+                                              .infinity, // استخدام double.infinity لجعل العرض يتناسب مع كامل العرض المتاح
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                spreadRadius: 1,
+                                                blurRadius: 5,
+                                                offset: const Offset(0, 3),
+                                              ),
+                                            ],
                                           ),
-                                          enabled: false,
-                                          onChanged: (c) => c.name,
-                                          initialSelection: country.code,
-                                          showCountryOnly: true,
-                                          showOnlyCountryWhenClosed: true,
+                                          child: CountryCodePicker(
+                                            padding: const EdgeInsets.all(5),
+                                            flagWidth: 60.w,
+                                            textStyle: TextStyle(
+                                              fontSize: 20.sp,
+                                            ),
+                                            enabled: false,
+                                            onChanged: (c) => c.name,
+                                            initialSelection: country.code,
+                                            showCountryOnly: true,
+                                            showOnlyCountryWhenClosed: true,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  const DataCell(
-                                    SizedBox(),
-                                  ),
-                                  // DataCell(
-                                  //   CustomTextButton(
-                                  //     onPressed: () {
-                                  //       loading = true;
-                                  //       setState(() {});
-                                  //       if (!context
-                                  //           .read<CountriesBloc>()
-                                  //           .isClosed) {
-                                  //         context.read<CountriesBloc>().add(
-                                  //               CountriesEvent.deleteCountries(
-                                  //                 id: country.id!,
-                                  //               ),
-                                  //             );
-                                  //       }
-                                  //     },
-                                  //     text: 'حذف',
-                                  //   ),
-                                  // ),
-                                ],
-                              );
-                            },
-                          ).toList(),
+                                    const DataCell(
+                                      SizedBox(),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ).toList(),
+                          ),
                         ),
                       );
                     },

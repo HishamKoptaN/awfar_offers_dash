@@ -49,73 +49,76 @@ class OffersView extends StatelessWidget {
               return state.maybeWhen(
                 offersLoaded: (offers) {
                   return SingleChildScrollView(
-                    child: DataTable(
-                      columns: [
-                        DataColumn(
-                          label: CustomText(
-                            text: 'معرف العرض',
-                            fontSize: 30.sp,
+                    child: Container(
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: [
+                          DataColumn(
+                            label: CustomText(
+                              text: 'معرف العرض',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'الاسم',
-                            fontSize: 30.sp,
+                          DataColumn(
+                            label: CustomText(
+                              text: 'الاسم',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'صورة',
-                            fontSize: 30.sp,
+                          DataColumn(
+                            label: CustomText(
+                              text: 'صورة',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomTextButton(
-                            text: 'أضافة عرض',
-                            onPressed: () {
-                              customNavigation(
-                                context: context,
-                                path: '/AddOfferView',
-                              );
-                            },
+                          DataColumn(
+                            label: CustomTextButton(
+                              text: 'أضافة عرض',
+                              onPressed: () {
+                                customNavigation(
+                                  context: context,
+                                  path: '/AddOfferView',
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
-                      rows: offers!.map(
-                        (offer) {
-                          return DataRow(
-                            cells: [
-                              DataCell(
-                                Text(
-                                  offer.id.toString(),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  offer.name,
-                                ),
-                              ),
-                              DataCell(
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16),
-                                  ),
-                                  child: Image.network(
-                                    offer.image,
-                                    height: 225.h,
-                                    width: 100.w,
-                                    fit: BoxFit.fill,
+                        ],
+                        rows: offers!.map(
+                          (offer) {
+                            return DataRow(
+                              cells: [
+                                DataCell(
+                                  Text(
+                                    offer.id.toString(),
                                   ),
                                 ),
-                              ),
-                              const DataCell(
-                                SizedBox(),
-                              ),
-                            ],
-                          );
-                        },
-                      ).toList(),
+                                DataCell(
+                                  Text(
+                                    offer.name,
+                                  ),
+                                ),
+                                DataCell(
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(16),
+                                      topRight: Radius.circular(16),
+                                    ),
+                                    child: Image.network(
+                                      offer.image,
+                                      height: 225.h,
+                                      width: 100.w,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                const DataCell(
+                                  SizedBox(),
+                                ),
+                              ],
+                            );
+                          },
+                        ).toList(),
+                      ),
                     ),
                   );
                 },

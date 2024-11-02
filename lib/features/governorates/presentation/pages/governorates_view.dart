@@ -6,7 +6,6 @@ import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/global/circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../countries/data/models/countries_response_model.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
 import '../bloc/governorates_event.dart';
@@ -25,7 +24,7 @@ class _GovernoratesViewState extends State<GovernoratesView> {
   @override
   Widget build(context) {
     return MainLayout(
-      showAppBar: true,
+      showAppBar: false,
       backArow: false,
       route: 'المحافظات',
       body: Align(
@@ -83,74 +82,71 @@ class _GovernoratesViewState extends State<GovernoratesView> {
                     );
                   }
                   return SingleChildScrollView(
-                    child: DataTable(
-                      columns: [
-                        DataColumn(
-                          label: CustomText(
-                            text: 'معرف المحافظة',
-                            fontSize: 30.sp,
+                    child: Container(
+                      width: double.infinity,
+                      child: DataTable(
+                        columns: [
+                          DataColumn(
+                            label: CustomText(
+                              text: 'معرف المحافظة',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'الاسم',
-                            fontSize: 30.sp,
+                          DataColumn(
+                            label: CustomText(
+                              text: 'الاسم',
+                              fontSize: 30.sp,
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'الاسم',
-                            fontSize: 30.sp,
+                          DataColumn(
+                            label: CustomTextButton(
+                              onPressed: () {
+                                customNavigation(
+                                  context: context,
+                                  path: '/AddGovernorateView',
+                                );
+                              },
+                              text: 'أضافة محافظة',
+                            ),
                           ),
-                        ),
-                        DataColumn(
-                          label: CustomTextButton(
-                            onPressed: () {
-                              customNavigation(
-                                context: context,
-                                path: '/AddGovernorateView',
-                              );
-                            },
-                            text: 'أضافة محافظة',
-                          ),
-                        ),
-                      ],
-                      rows: governorates.map(
-                        (governorate) {
-                          return DataRow(
-                            cells: [
-                              DataCell(
-                                Text(governorate.name!),
-                              ),
-                              DataCell(
-                                Text(
-                                  governorate.name ?? 'لا يوجد اسم',
+                        ],
+                        rows: governorates.map(
+                          (governorate) {
+                            return DataRow(
+                              cells: [
+                                DataCell(
+                                  Text(governorate.name!),
                                 ),
-                              ),
-                              const DataCell(
-                                SizedBox(),
-                              ),
-                              DataCell(
-                                CustomTextButton(
-                                  onPressed: () {
-                                    if (!context
-                                        .read<GovernoratesBloc>()
-                                        .isClosed) {
-                                      context.read<GovernoratesBloc>().add(
-                                            GovernoratesEvent
-                                                .deleteGovernorates(
-                                              id: governorate.id!,
-                                            ),
-                                          );
-                                    }
-                                  },
-                                  text: 'حذف',
+                                DataCell(
+                                  Text(
+                                    governorate.name ?? 'لا يوجد اسم',
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },
-                      ).toList(),
+                                const DataCell(
+                                  SizedBox(),
+                                ),
+                                // DataCell(
+                                //   CustomTextButton(
+                                //     onPressed: () {
+                                //       if (!context
+                                //           .read<GovernoratesBloc>()
+                                //           .isClosed) {
+                                //         context.read<GovernoratesBloc>().add(
+                                //               GovernoratesEvent
+                                //                   .deleteGovernorates(
+                                //                 id: governorate.id!,
+                                //               ),
+                                //             );
+                                //       }
+                                //     },
+                                //     text: 'حذف',
+                                //   ),
+                                // ),
+                              ],
+                            );
+                          },
+                        ).toList(),
+                      ),
                     ),
                   );
                 },

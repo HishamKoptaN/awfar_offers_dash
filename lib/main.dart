@@ -1,32 +1,24 @@
-// ignore_for_file: unused_import
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/app_observer.dart';
-import 'dart:async';
 import 'core/di/dependency_injection.dart';
 import 'core/routes/app_router.dart';
-import 'features/controll_panel/control_panel_view.dart';
-import 'features/main/presentation/bloc/main_bloc.dart';
-import 'features/main/presentation/bloc/main_state.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+  } catch (e) {
+    if (kDebugMode) {
+      print(e);
+    }
+  }
   await Injection.inject();
-  WidgetsFlutterBinding.ensureInitialized();
-  FlutterError.onError = (details) {
-    FlutterError.presentError(details);
-  };
   Bloc.observer = AppBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  if (prefs.getBool("fingerprints") == null) {
-    prefs.setBool("fingerprints", false);
-  }
-  if (prefs.getBool("notifications") == null) {
-    prefs.setBool("notifications", false);
-  }
   runApp(
     const MyApp(),
     // DevicePreview(
