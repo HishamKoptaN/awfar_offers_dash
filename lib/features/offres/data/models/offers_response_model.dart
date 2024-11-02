@@ -1,22 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'offers_response_model.freezed.dart';
 part 'offers_response_model.g.dart';
 
-@freezed
-class OffersResponseModel with _$OffersResponseModel {
-  const factory OffersResponseModel({
-    required List<Offer> offers,
-  }) = _OffersResponseModel;
-
-  factory OffersResponseModel.fromJson(List<dynamic> jsonList) {
-    return OffersResponseModel(
-      offers: jsonList.map((offerJson) => Offer.fromJson(offerJson)).toList(),
-    );
+class OffersResponseModel {
+  static final OffersResponseModel _instance = OffersResponseModel._();
+  factory OffersResponseModel() => _instance;
+  OffersResponseModel._();
+  List<Offer>? offers;
+  Future<void> loadOffers({
+    required List<Offer>? offers,
+  }) async {
+    _instance.offers = offers;
   }
-
-  List<Map<String, dynamic>> toJson() =>
-      offers.map((offer) => offer.toJson()).toList();
 }
 
 @freezed

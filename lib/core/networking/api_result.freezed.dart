@@ -102,7 +102,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
     Object? data = freezed,
   }) {
     return _then(_$SuccessImpl<T>(
-      freezed == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
@@ -113,7 +113,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$SuccessImpl<T> implements Success<T> {
-  const _$SuccessImpl(this.data);
+  const _$SuccessImpl({required this.data});
 
   @override
   final T data;
@@ -207,7 +207,7 @@ class _$SuccessImpl<T> implements Success<T> {
 }
 
 abstract class Success<T> implements ApiResult<T> {
-  const factory Success(final T data) = _$SuccessImpl<T>;
+  const factory Success({required final T data}) = _$SuccessImpl<T>;
 
   T get data;
 
@@ -243,7 +243,7 @@ class __$$FailureImplCopyWithImpl<T, $Res>
     Object? apiErrorModel = null,
   }) {
     return _then(_$FailureImpl<T>(
-      null == apiErrorModel
+      apiErrorModel: null == apiErrorModel
           ? _value.apiErrorModel
           : apiErrorModel // ignore: cast_nullable_to_non_nullable
               as ApiErrorModel,
@@ -254,7 +254,7 @@ class __$$FailureImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$FailureImpl<T> implements Failure<T> {
-  const _$FailureImpl(this.apiErrorModel);
+  const _$FailureImpl({required this.apiErrorModel});
 
   @override
   final ApiErrorModel apiErrorModel;
@@ -348,7 +348,8 @@ class _$FailureImpl<T> implements Failure<T> {
 }
 
 abstract class Failure<T> implements ApiResult<T> {
-  const factory Failure(final ApiErrorModel apiErrorModel) = _$FailureImpl<T>;
+  const factory Failure({required final ApiErrorModel apiErrorModel}) =
+      _$FailureImpl<T>;
 
   ApiErrorModel get apiErrorModel;
 

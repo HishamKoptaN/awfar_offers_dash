@@ -22,11 +22,14 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
       (event, emit) async {
         await event.when(
           getCountries: () async {
+            emit(
+              const CountriesState.loading(),
+            );
             final result = await getCountrieUseCase.getCountries();
             await result.when(
               success: (response) async {
                 await CountriesResponseModel().loadCountries(
-                  response!,
+                  countries: response!,
                 );
                 emit(
                   CountriesState.countriesLoaded(
@@ -44,6 +47,10 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
             );
           },
           addCountryEvent: (addCountryRequestModel) async {
+            emit(
+              const CountriesState.loading(),
+            );
+
             final result = await addCountryUseCase.addCountry(
               addCountryRequestModel: addCountryRequestModel,
             );
@@ -52,9 +59,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
                 response,
               ) async {
                 emit(
-                  CountriesState.success(
-                    countriesResponseModel: response,
-                  ),
+                  const CountriesState.success(),
                 );
               },
               failure: (
@@ -78,9 +83,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
                 response,
               ) async {
                 emit(
-                  CountriesState.success(
-                    countriesResponseModel: response,
-                  ),
+                  const CountriesState.success(),
                 );
               },
               failure: (

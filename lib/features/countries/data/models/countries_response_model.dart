@@ -7,7 +7,7 @@ class CountriesResponseModel {
   factory CountriesResponseModel() => _instance;
   CountriesResponseModel._();
   List<Country>? countries;
-  Future<void> loadCountries(List<Country>? countries) async {
+  Future<void> loadCountries({required List<Country>? countries}) async {
     _instance.countries = countries;
   }
 }

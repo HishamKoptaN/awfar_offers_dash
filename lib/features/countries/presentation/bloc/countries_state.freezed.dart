@@ -22,7 +22,7 @@ mixin _$CountriesState {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ mixin _$CountriesState {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ mixin _$CountriesState {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) =>
@@ -141,7 +141,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return initial();
@@ -153,7 +153,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return initial?.call();
@@ -165,7 +165,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -305,7 +305,7 @@ class _$CountriesLoadedImpl implements _CountriesLoaded {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return countriesLoaded(countriesResponseModel);
@@ -317,7 +317,7 @@ class _$CountriesLoadedImpl implements _CountriesLoaded {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return countriesLoaded?.call(countriesResponseModel);
@@ -329,7 +329,7 @@ class _$CountriesLoadedImpl implements _CountriesLoaded {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -439,7 +439,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return loading();
@@ -451,7 +451,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return loading?.call();
@@ -463,7 +463,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -523,8 +523,6 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Country>? countriesResponseModel});
 }
 
 /// @nodoc
@@ -537,62 +535,26 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of CountriesState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? countriesResponseModel = freezed,
-  }) {
-    return _then(_$SuccessImpl(
-      countriesResponseModel: freezed == countriesResponseModel
-          ? _value._countriesResponseModel
-          : countriesResponseModel // ignore: cast_nullable_to_non_nullable
-              as List<Country>?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<Country>? countriesResponseModel})
-      : _countriesResponseModel = countriesResponseModel;
-
-  final List<Country>? _countriesResponseModel;
-  @override
-  List<Country>? get countriesResponseModel {
-    final value = _countriesResponseModel;
-    if (value == null) return null;
-    if (_countriesResponseModel is EqualUnmodifiableListView)
-      return _countriesResponseModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  const _$SuccessImpl();
 
   @override
   String toString() {
-    return 'CountriesState.success(countriesResponseModel: $countriesResponseModel)';
+    return 'CountriesState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(
-                other._countriesResponseModel, _countriesResponseModel));
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_countriesResponseModel));
-
-  /// Create a copy of CountriesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -601,10 +563,10 @@ class _$SuccessImpl implements _Success {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return success(countriesResponseModel);
+    return success();
   }
 
   @override
@@ -613,10 +575,10 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return success?.call(countriesResponseModel);
+    return success?.call();
   }
 
   @override
@@ -625,12 +587,12 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(countriesResponseModel);
+      return success();
     }
     return orElse();
   }
@@ -677,16 +639,7 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements CountriesState {
-  const factory _Success(
-      {required final List<Country>? countriesResponseModel}) = _$SuccessImpl;
-
-  List<Country>? get countriesResponseModel;
-
-  /// Create a copy of CountriesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
@@ -761,7 +714,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function(List<Country>? countriesResponseModel)
         countriesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Country>? countriesResponseModel) success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return failure(error);
@@ -773,7 +726,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Country>? countriesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return failure?.call(error);
@@ -785,7 +738,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Country>? countriesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {

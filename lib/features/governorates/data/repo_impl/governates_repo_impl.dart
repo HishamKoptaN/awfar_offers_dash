@@ -16,12 +16,12 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
     try {
       final response = await governoratesApi.getGovernorates();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }
@@ -36,12 +36,12 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
         addGovernorateRequestModel: addGovernorateRequestModel,
       );
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }
@@ -56,12 +56,12 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
         id: id,
       );
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

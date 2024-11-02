@@ -9,8 +9,6 @@ class GovernoratesState with _$GovernoratesState {
     required List<Governorate>? governoratesResponseModel,
   }) = _GovernoratesLoaded;
   const factory GovernoratesState.loading() = _Loading;
-  const factory GovernoratesState.success({
-    required List<Governorate>? governoratesResponseModel,
-  }) = _Success;
+  const factory GovernoratesState.success() = _Success;
   const factory GovernoratesState.failure({required String error}) = _Failure;
 }

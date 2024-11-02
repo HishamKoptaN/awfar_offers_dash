@@ -21,7 +21,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
           final result = await categoriesUseCase.getCategories();
           await result.when(
             success: (categories) async {
-              await CategoriesResponseModel().loadCategories(categories);
+              await CategoriesResponseModel().loadCategories(
+                categories: categories,
+              );
               emit(
                 CategoriesState.categoriesLoaded(
                   categories: categories,

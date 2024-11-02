@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,10 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/circular_progress.dart';
+import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/global/gobal_widgets/snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../countries/data/models/countries_response_model.dart';
 import '../../../governorates/data/models/governorates_response_model.dart';
@@ -16,6 +19,8 @@ import '../../data/models/add_store_request_body_model.dart';
 import '../bloc/stores_bloc.dart';
 import '../bloc/stores_event.dart';
 import '../bloc/stores_state.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AddStoreView extends StatefulWidget {
   const AddStoreView({
@@ -27,12 +32,14 @@ class AddStoreView extends StatefulWidget {
 }
 
 class _AddStoreViewState extends State<AddStoreView> {
+  File file = File("");
   Country? selectedCountry;
   Governorate? selectedGovernorate;
   AddStoreRequestBodyModel addStoreRequestBodyModel =
       AddStoreRequestBodyModel();
   final countries = CountriesResponseModel().countries;
   final governorates = GovernoratesResponseModel().governorates;
+
   @override
   Widget build(context) {
     return MainLayout(
@@ -45,29 +52,26 @@ class _AddStoreViewState extends State<AddStoreView> {
       //   );
       // },
       body: BlocProvider(
-        create: (_) => getIt<StoresBloc>(),
+        create: (_) => StoresBloc(
+          getIt(),
+          getIt(),
+        ),
         child: BlocConsumer<StoresBloc, StoresState>(
           listener: (context, state) {
             state.whenOrNull(
-              success: (storesResponseModel) async {
+              success: () async {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      "نجاح",
-                    ),
+                  snackBar(
+                    status: true,
+                    message: 'نجاح',
                   ),
-                );
-                customNavigation(
-                  context: context,
-                  path: '/storesView',
                 );
               },
               failure: (error) async {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      error.error!,
-                    ),
+                  snackBar(
+                    status: false,
+                    message: error.error!,
                   ),
                 );
               },
@@ -75,9 +79,6 @@ class _AddStoreViewState extends State<AddStoreView> {
           },
           builder: (context, state) {
             return state.maybeWhen(
-              loading: () {
-                return const CustomCircularProgress();
-              },
               orElse: () {
                 return Center(
                   child: Column(
@@ -99,9 +100,6 @@ class _AddStoreViewState extends State<AddStoreView> {
                         onChanged: (value) {
                           addStoreRequestBodyModel.place = value!;
                         },
-                      ),
-                      Gap(
-                        10.h,
                       ),
                       Gap(
                         10.h,
@@ -175,6 +173,10 @@ class _AddStoreViewState extends State<AddStoreView> {
                               },
                             );
                           },
+                          dropdownColor: Colors.white,
+                          style: const TextStyle(
+                            color: Colors.black,
+                          ),
                           items: governorates!.map(
                             (governorate) {
                               return DropdownMenuItem<Governorate>(
@@ -191,16 +193,93 @@ class _AddStoreViewState extends State<AddStoreView> {
                           ).toList(),
                         ),
                       ),
-                      Gap(
-                        10.h,
+                      Gap(10.h),
+                      SizedBox(
+                        height: 200.h,
+                        width: 450.w,
+                        child: InkWell(
+                          onTap: () async {
+                            FilePickerResult? result =
+                                await FilePicker.platform.pickFiles();
+                            if (result != null) {
+                              File file = File(result.files.single.path!);
+                              await addStoreRequestBodyModel.setImageFile(
+                                file,
+                              );
+                              setState(
+                                () {
+                                  this.file = file;
+                                },
+                              );
+                            }
+                          },
+                          child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 100.h,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 1,
+                                ),
+                              ),
+                              child: file.path.isEmpty
+                                  ? const Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        FaIcon(
+                                          FontAwesomeIcons.cloudArrowUp,
+                                        ),
+                                        Text(
+                                          "أضف صورة المتجر",
+                                        ),
+                                        Gap(20),
+                                      ],
+                                    )
+                                  : Image.file(
+                                      file,
+                                    )),
+                        ),
                       ),
+                      Gap(10.h),
                       CustomTextButton(
-                        text: 'أضافة',
+                        widget: state.maybeWhen(
+                          loading: () {
+                            return CustomCircularProgress();
+                          },
+                          orElse: () {
+                            return CustomText(
+                              text: 'أضافة',
+                              fontSize: 30.sp,
+                              maxLines: 1,
+                              fontWeight: FontWeight.bold,
+                            );
+                          },
+                        ),
                         onPressed: () async {
+                          FormData formData = FormData.fromMap({
+                            'name': addStoreRequestBodyModel.name,
+                            'country_id': int.tryParse(
+                                  addStoreRequestBodyModel.countryId ?? '',
+                                ) ??
+                                0,
+                            'governorate_id': int.tryParse(
+                                  addStoreRequestBodyModel.governorateId ?? '',
+                                ) ??
+                                0,
+                            'place': addStoreRequestBodyModel.place,
+                            'image': await MultipartFile.fromFile(
+                              file.path,
+                              filename: file.path.split('/').last,
+                            ),
+                          });
                           context.read<StoresBloc>().add(
-                                const StoresEvent.addEvent(
-                                    // addStoreRequestModel: addStoreRequestModel,
-                                    ),
+                                StoresEvent.addEvent(
+                                  formData: formData,
+                                ),
                               );
                         },
                       ),

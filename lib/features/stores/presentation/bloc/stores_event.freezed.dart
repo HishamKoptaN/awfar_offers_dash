@@ -19,7 +19,7 @@ mixin _$StoresEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEvent,
-    required TResult Function() addEvent,
+    required TResult Function(FormData formData) addEvent,
     required TResult Function() deleteEvent,
     required TResult Function() updateEvent,
   }) =>
@@ -27,7 +27,7 @@ mixin _$StoresEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvent,
-    TResult? Function()? addEvent,
+    TResult? Function(FormData formData)? addEvent,
     TResult? Function()? deleteEvent,
     TResult? Function()? updateEvent,
   }) =>
@@ -35,7 +35,7 @@ mixin _$StoresEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvent,
-    TResult Function()? addEvent,
+    TResult Function(FormData formData)? addEvent,
     TResult Function()? deleteEvent,
     TResult Function()? updateEvent,
     required TResult orElse(),
@@ -131,7 +131,7 @@ class _$GetEventImpl implements _GetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEvent,
-    required TResult Function() addEvent,
+    required TResult Function(FormData formData) addEvent,
     required TResult Function() deleteEvent,
     required TResult Function() updateEvent,
   }) {
@@ -142,7 +142,7 @@ class _$GetEventImpl implements _GetEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvent,
-    TResult? Function()? addEvent,
+    TResult? Function(FormData formData)? addEvent,
     TResult? Function()? deleteEvent,
     TResult? Function()? updateEvent,
   }) {
@@ -153,7 +153,7 @@ class _$GetEventImpl implements _GetEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvent,
-    TResult Function()? addEvent,
+    TResult Function(FormData formData)? addEvent,
     TResult Function()? deleteEvent,
     TResult Function()? updateEvent,
     required TResult orElse(),
@@ -211,6 +211,8 @@ abstract class _$$AddEventImplCopyWith<$Res> {
   factory _$$AddEventImplCopyWith(
           _$AddEventImpl value, $Res Function(_$AddEventImpl) then) =
       __$$AddEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FormData formData});
 }
 
 /// @nodoc
@@ -223,60 +225,86 @@ class __$$AddEventImplCopyWithImpl<$Res>
 
   /// Create a copy of StoresEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formData = null,
+  }) {
+    return _then(_$AddEventImpl(
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as FormData,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddEventImpl implements _AddEvent {
-  const _$AddEventImpl();
+  const _$AddEventImpl({required this.formData});
+
+  @override
+  final FormData formData;
 
   @override
   String toString() {
-    return 'StoresEvent.addEvent()';
+    return 'StoresEvent.addEvent(formData: $formData)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddEventImpl &&
+            (identical(other.formData, formData) ||
+                other.formData == formData));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, formData);
+
+  /// Create a copy of StoresEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
+      __$$AddEventImplCopyWithImpl<_$AddEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEvent,
-    required TResult Function() addEvent,
+    required TResult Function(FormData formData) addEvent,
     required TResult Function() deleteEvent,
     required TResult Function() updateEvent,
   }) {
-    return addEvent();
+    return addEvent(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvent,
-    TResult? Function()? addEvent,
+    TResult? Function(FormData formData)? addEvent,
     TResult? Function()? deleteEvent,
     TResult? Function()? updateEvent,
   }) {
-    return addEvent?.call();
+    return addEvent?.call(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvent,
-    TResult Function()? addEvent,
+    TResult Function(FormData formData)? addEvent,
     TResult Function()? deleteEvent,
     TResult Function()? updateEvent,
     required TResult orElse(),
   }) {
     if (addEvent != null) {
-      return addEvent();
+      return addEvent(formData);
     }
     return orElse();
   }
@@ -320,7 +348,15 @@ class _$AddEventImpl implements _AddEvent {
 }
 
 abstract class _AddEvent implements StoresEvent {
-  const factory _AddEvent() = _$AddEventImpl;
+  const factory _AddEvent({required final FormData formData}) = _$AddEventImpl;
+
+  FormData get formData;
+
+  /// Create a copy of StoresEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddEventImplCopyWith<_$AddEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -365,7 +401,7 @@ class _$DeleteEventImpl implements _DeleteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEvent,
-    required TResult Function() addEvent,
+    required TResult Function(FormData formData) addEvent,
     required TResult Function() deleteEvent,
     required TResult Function() updateEvent,
   }) {
@@ -376,7 +412,7 @@ class _$DeleteEventImpl implements _DeleteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvent,
-    TResult? Function()? addEvent,
+    TResult? Function(FormData formData)? addEvent,
     TResult? Function()? deleteEvent,
     TResult? Function()? updateEvent,
   }) {
@@ -387,7 +423,7 @@ class _$DeleteEventImpl implements _DeleteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvent,
-    TResult Function()? addEvent,
+    TResult Function(FormData formData)? addEvent,
     TResult Function()? deleteEvent,
     TResult Function()? updateEvent,
     required TResult orElse(),
@@ -482,7 +518,7 @@ class _$UpdateEventImpl implements _UpdateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEvent,
-    required TResult Function() addEvent,
+    required TResult Function(FormData formData) addEvent,
     required TResult Function() deleteEvent,
     required TResult Function() updateEvent,
   }) {
@@ -493,7 +529,7 @@ class _$UpdateEventImpl implements _UpdateEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvent,
-    TResult? Function()? addEvent,
+    TResult? Function(FormData formData)? addEvent,
     TResult? Function()? deleteEvent,
     TResult? Function()? updateEvent,
   }) {
@@ -504,7 +540,7 @@ class _$UpdateEventImpl implements _UpdateEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvent,
-    TResult Function()? addEvent,
+    TResult Function(FormData formData)? addEvent,
     TResult Function()? deleteEvent,
     TResult Function()? updateEvent,
     required TResult orElse(),

@@ -22,8 +22,7 @@ mixin _$GovernoratesState {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,7 +32,7 @@ mixin _$GovernoratesState {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,7 +42,7 @@ mixin _$GovernoratesState {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) =>
@@ -144,8 +143,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return initial();
@@ -158,7 +156,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return initial?.call();
@@ -171,7 +169,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -311,8 +309,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return governoratesLoaded(governoratesResponseModel);
@@ -325,7 +322,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return governoratesLoaded?.call(governoratesResponseModel);
@@ -338,7 +335,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -448,8 +445,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return loading();
@@ -462,7 +458,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return loading?.call();
@@ -475,7 +471,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
@@ -535,8 +531,6 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Governorate>? governoratesResponseModel});
 }
 
 /// @nodoc
@@ -549,63 +543,26 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   /// Create a copy of GovernoratesState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? governoratesResponseModel = freezed,
-  }) {
-    return _then(_$SuccessImpl(
-      governoratesResponseModel: freezed == governoratesResponseModel
-          ? _value._governoratesResponseModel
-          : governoratesResponseModel // ignore: cast_nullable_to_non_nullable
-              as List<Governorate>?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(
-      {required final List<Governorate>? governoratesResponseModel})
-      : _governoratesResponseModel = governoratesResponseModel;
-
-  final List<Governorate>? _governoratesResponseModel;
-  @override
-  List<Governorate>? get governoratesResponseModel {
-    final value = _governoratesResponseModel;
-    if (value == null) return null;
-    if (_governoratesResponseModel is EqualUnmodifiableListView)
-      return _governoratesResponseModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  const _$SuccessImpl();
 
   @override
   String toString() {
-    return 'GovernoratesState.success(governoratesResponseModel: $governoratesResponseModel)';
+    return 'GovernoratesState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(
-                other._governoratesResponseModel, _governoratesResponseModel));
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_governoratesResponseModel));
-
-  /// Create a copy of GovernoratesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -614,11 +571,10 @@ class _$SuccessImpl implements _Success {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return success(governoratesResponseModel);
+    return success();
   }
 
   @override
@@ -628,10 +584,10 @@ class _$SuccessImpl implements _Success {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return success?.call(governoratesResponseModel);
+    return success?.call();
   }
 
   @override
@@ -641,12 +597,12 @@ class _$SuccessImpl implements _Success {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(governoratesResponseModel);
+      return success();
     }
     return orElse();
   }
@@ -693,17 +649,7 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements GovernoratesState {
-  const factory _Success(
-          {required final List<Governorate>? governoratesResponseModel}) =
-      _$SuccessImpl;
-
-  List<Governorate>? get governoratesResponseModel;
-
-  /// Create a copy of GovernoratesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
@@ -778,8 +724,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function(List<Governorate>? governoratesResponseModel)
         governoratesLoaded,
     required TResult Function() loading,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        success,
+    required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
     return failure(error);
@@ -792,7 +737,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult? Function()? loading,
-    TResult? Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
     return failure?.call(error);
@@ -805,7 +750,7 @@ class _$FailureImpl implements _Failure {
     TResult Function(List<Governorate>? governoratesResponseModel)?
         governoratesLoaded,
     TResult Function()? loading,
-    TResult Function(List<Governorate>? governoratesResponseModel)? success,
+    TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {

@@ -1,4 +1,4 @@
-import 'package:awfar_offers_dash/features/offres/data/models/add_offer_request_body_model.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
@@ -16,12 +16,12 @@ class OffersRepoImpl implements OffersRepo {
     try {
       final response = await offersApi.getOffers();
       return ApiResult.success(
-        response!,
+        data: response!,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }
@@ -29,19 +29,19 @@ class OffersRepoImpl implements OffersRepo {
 
   @override
   Future<ApiResult<List<Offer>?>> addOffer({
-    required AddOfferRequestBodyModel addOfferRequestBodyModel,
+    required FormData formData,
   }) async {
     try {
       final response = await offersApi.addOffer(
-        addOfferRequestBodyModel: addOfferRequestBodyModel,
+        formData: formData,
       );
       return ApiResult.success(
-        response!,
+        data: response!,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

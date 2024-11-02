@@ -4,25 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/circular_progress.dart';
+import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
-import '../bloc/governorates_event.dart';
 import '../bloc/governorates_state.dart';
 
-class GovernoratesView extends StatefulWidget {
+class GovernoratesView extends StatelessWidget {
   const GovernoratesView({super.key});
 
   @override
-  State<GovernoratesView> createState() => _GovernoratesViewState();
-}
-
-final governorates = GovernoratesResponseModel().governorates;
-
-class _GovernoratesViewState extends State<GovernoratesView> {
-  @override
   Widget build(context) {
+    final governorates = GovernoratesResponseModel().governorates ?? [];
+
     return MainLayout(
       showAppBar: false,
       backArow: false,
@@ -30,11 +24,15 @@ class _GovernoratesViewState extends State<GovernoratesView> {
       body: Align(
         alignment: Alignment.topCenter,
         child: BlocProvider(
-          create: (context) => getIt<GovernoratesBloc>(),
+          create: (context) => GovernoratesBloc(
+            getIt(),
+            getIt(),
+            getIt(),
+          ),
           child: BlocConsumer<GovernoratesBloc, GovernoratesState>(
             listener: (context, state) async {
               await state.whenOrNull(
-                success: (governoratesResponseModel) async {
+                success: () async {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text(
@@ -42,11 +40,6 @@ class _GovernoratesViewState extends State<GovernoratesView> {
                       ),
                     ),
                   );
-                  context.read<GovernoratesBloc>().emit(
-                        GovernoratesState.governoratesLoaded(
-                          governoratesResponseModel: governoratesResponseModel,
-                        ),
-                      );
                 },
                 failure: (error) async {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -65,24 +58,13 @@ class _GovernoratesViewState extends State<GovernoratesView> {
               );
             },
             builder: (context, state) {
-              state.whenOrNull(
-                initial: () {
-                  context.read<GovernoratesBloc>().add(
-                        const GovernoratesEvent.getGovernorate(),
-                      );
-                },
-              );
               return state.maybeWhen(
-                governoratesLoaded: (governorates) {
-                  if (governorates == null ||
-                      governorates == null ||
-                      governorates.isEmpty) {
-                    return const Center(
-                      child: Text('لا توجد محافظات متاحة.'),
-                    );
-                  }
+                loading: () {
+                  return CustomCircularProgress();
+                },
+                orElse: () {
                   return SingleChildScrollView(
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: DataTable(
                         columns: [
@@ -150,7 +132,6 @@ class _GovernoratesViewState extends State<GovernoratesView> {
                     ),
                   );
                 },
-                orElse: () => const CustomCircularProgress(),
               );
             },
           ),

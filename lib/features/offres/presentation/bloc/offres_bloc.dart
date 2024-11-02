@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/models/offers_response_model.dart';
 import '../../domain/use_cases/add_offer_use_case.dart';
 import '../../domain/use_cases/get_offres_use_case.dart';
 import 'offers_event.dart';
@@ -21,6 +22,11 @@ class OffersBloc extends Bloc<OffersEvent, OffersState> {
             final result = await getOffersUseCase.getOffers();
             await result.when(
               success: (offers) async {
+                var offersResponseModel = OffersResponseModel();
+
+                await offersResponseModel.loadOffers(
+                  offers: offers,
+                );
                 emit(
                   OffersState.offersLoaded(
                     offers: offers,
@@ -36,12 +42,12 @@ class OffersBloc extends Bloc<OffersEvent, OffersState> {
               },
             );
           },
-          addOfferEvent: (addOfferRequestBodyModel) async {
+          addOfferEvent: (formData) async {
             emit(
               const OffersState.loading(),
             );
             final result = await addOffersUseCase.addOffer(
-              addOfferRequestBodyModel: addOfferRequestBodyModel,
+              formData: formData,
             );
             await result.when(
               success: (

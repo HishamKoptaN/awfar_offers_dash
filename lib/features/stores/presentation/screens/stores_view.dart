@@ -4,24 +4,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/circular_progress.dart';
+import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../data/models/stores_response_model.dart';
 import '../bloc/stores_bloc.dart';
 import '../bloc/stores_event.dart';
 import '../bloc/stores_state.dart';
 
 class StoresView extends StatelessWidget {
-  const StoresView({super.key});
+  const StoresView({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    context,
+  ) {
+    final stores = StoresResponseModel().stores ?? [];
     return MainLayout(
-      showAppBar: true,
+      showAppBar: false,
       backArow: false,
-      route: 'المتاجر',
+      route: '',
       body: Center(
         child: BlocProvider(
-          create: (context) => getIt<StoresBloc>(),
+          create: (context) => StoresBloc(
+            getIt(),
+            getIt(),
+          ),
           child: BlocListener<StoresBloc, StoresState>(
             listener: (context, state) async {
               state.whenOrNull(
@@ -46,9 +55,9 @@ class StoresView extends StatelessWidget {
                   },
                 );
                 return state.maybeWhen(
-                  storesLoaded: (stores) {
+                  orElse: () {
                     return SingleChildScrollView(
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         child: DataTable(
                           columns: [
@@ -76,7 +85,7 @@ class StoresView extends StatelessWidget {
                               ),
                             ),
                           ],
-                          rows: stores!.map(
+                          rows: stores.map(
                             (store) {
                               return DataRow(
                                 cells: [
@@ -101,7 +110,7 @@ class StoresView extends StatelessWidget {
                       ),
                     );
                   },
-                  orElse: () => const CustomCircularProgress(),
+                  loading: () => CustomCircularProgress(),
                 );
               },
             ),

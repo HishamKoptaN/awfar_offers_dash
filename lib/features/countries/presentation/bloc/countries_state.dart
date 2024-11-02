@@ -9,9 +9,7 @@ class CountriesState with _$CountriesState {
     required List<Country>? countriesResponseModel,
   }) = _CountriesLoaded;
   const factory CountriesState.loading() = _Loading;
-  const factory CountriesState.success({
-    required List<Country>? countriesResponseModel,
-  }) = _Success;
+  const factory CountriesState.success() = _Success;
   const factory CountriesState.failure({
     required String error,
   }) = _Failure;

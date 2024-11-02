@@ -32,6 +32,7 @@ class BlocModule extends DIModule {
       ..registerLazySingleton<StoresBloc>(
         () => StoresBloc(
           getIt(),
+          getIt(),
         ),
       )
       ..registerLazySingleton<CategoriesBloc>(

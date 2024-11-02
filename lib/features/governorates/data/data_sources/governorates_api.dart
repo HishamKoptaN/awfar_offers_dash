@@ -18,7 +18,7 @@ abstract class GovernoratesApi {
     ApiConstants.governorates,
   )
   Future<List<Governorate>?> getGovernorates();
-  //! Get Governorates
+  //! Add Governorates
   @POST(ApiConstants.governorates)
   Future<List<Governorate>?> addGovernorate({
     @Body() required AddGovernorateRequestModel addGovernorateRequestModel,

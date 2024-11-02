@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/global/gobal_widgets/global_widgets.dart';
+import '../../core/utils/app_colors.dart';
 import '../categories/presentation/view/categories_view.dart';
 import '../countries/presentation/view/countries_view.dart';
 import '../governorates/presentation/pages/governorates_view.dart';
@@ -11,24 +12,20 @@ class ControlPanel extends StatefulWidget {
   const ControlPanel({
     super.key,
   });
-
   @override
   _ControlPanelState createState() => _ControlPanelState();
 }
 
 class _ControlPanelState extends State<ControlPanel> {
   int selectedIndex = 0;
-
   // قائمة الصفحات
   List<Widget> pages = [
-    const CountriesView(),
+    CountriesView(),
     const GovernoratesView(),
     const StoresView(),
     const CategoriesView(),
     const OffersView(),
   ];
-
-  // قائمة العناوين
   List<String> titles = [
     'الدول',
     'المحافظات',
@@ -36,15 +33,21 @@ class _ControlPanelState extends State<ControlPanel> {
     'الفئات',
     'العروض',
   ];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         title: CustomText(
           text: titles[selectedIndex],
           fontSize: 30.sp,
           fontWeight: FontWeight.bold,
+          color: AppColors.darkPrimaryColor,
         ),
         centerTitle: true,
       ),
@@ -56,11 +59,12 @@ class _ControlPanelState extends State<ControlPanel> {
             children: <Widget>[
               DrawerHeader(
                 decoration: const BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.primaryColor,
                 ),
                 child: CustomText(
                   text: 'قائمة التحكم',
                   fontSize: 35.sp,
+                  color: AppColors.white,
                 ),
               ),
               ListTile(
@@ -68,6 +72,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 title: CustomText(
                   text: 'الدول',
                   fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {
@@ -81,6 +86,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 title: CustomText(
                   text: 'المحافظات',
                   fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {
@@ -94,6 +100,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 title: CustomText(
                   text: 'متاجر',
                   fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {
@@ -107,6 +114,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 title: CustomText(
                   text: 'فئات',
                   fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {
@@ -120,6 +128,7 @@ class _ControlPanelState extends State<ControlPanel> {
                 title: CustomText(
                   text: 'عروض',
                   fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {

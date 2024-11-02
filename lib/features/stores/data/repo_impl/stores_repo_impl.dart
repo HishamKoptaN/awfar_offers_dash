@@ -1,3 +1,6 @@
+import 'package:awfar_offers_dash/features/stores/data/models/add_store_request_body_model.dart';
+import 'package:dio/dio.dart';
+
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/stores_repo.dart';
@@ -14,12 +17,32 @@ class StoresRepoImpl implements StoresRepo {
     try {
       final response = await storesApi.getStores();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<List<Store>?>> addStore({
+    required FormData formData,
+  }) async {
+    try {
+      final response = await storesApi.addStore(
+        formData: formData,
+      );
+      return ApiResult.success(
+        data: [],
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

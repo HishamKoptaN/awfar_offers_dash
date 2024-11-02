@@ -10,7 +10,9 @@ class StoresResponseModel {
   factory StoresResponseModel() => _instance;
   StoresResponseModel._();
   List<Store>? stores;
-  Future<void> loadstores(List<Store>? stores) async {
+  Future<void> loadstores({
+    required List<Store>? stores,
+  }) async {
     _instance.stores = stores;
   }
 }

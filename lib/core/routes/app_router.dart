@@ -4,7 +4,7 @@ import '../../features/categories/presentation/view/categories_view.dart';
 import '../../features/controll_panel/control_panel_view.dart';
 import '../../features/countries/presentation/view/add_country_view.dart';
 import '../../features/countries/presentation/view/countries_view.dart';
-import '../../features/governorates/presentation/pages/add_governorates_view.dart';
+import '../../features/governorates/presentation/pages/add_governorate_view.dart';
 import '../../features/governorates/presentation/pages/governorates_view.dart';
 import '../../features/offres/presentation/screens/add_offer_view.dart';
 import '../../features/offres/presentation/screens/offers_view.dart';
@@ -22,7 +22,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/CountriesView',
       builder: (context, state) {
-        return const CountriesView();
+        return CountriesView();
       },
     ),
     GoRoute(
@@ -59,7 +59,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/CategoriesView',
       builder: (context, state) {
-        return const CategoriesView();
+        return CategoriesView();
       },
     ),
     GoRoute(

@@ -8,9 +8,9 @@ class CategoriesResponseModel {
   factory CategoriesResponseModel() => _instance;
   CategoriesResponseModel._();
   List<Category>? categories;
-  Future<void> loadCategories(
-    List<Category>? categories,
-  ) async {
+  Future<void> loadCategories({
+    required List<Category>? categories,
+  }) async {
     _instance.categories = categories;
   }
 }

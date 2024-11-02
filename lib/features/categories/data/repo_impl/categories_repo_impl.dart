@@ -15,12 +15,12 @@ class CategoriesRepoImpl implements CategoriesRepo {
     try {
       final response = await categoriesApi.getCategories();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }
@@ -35,12 +35,12 @@ class CategoriesRepoImpl implements CategoriesRepo {
         addCategoryRequestBodyModel: addCategoryRequestBodyModel,
       );
       return ApiResult.success(
-        response!,
+        data: response!,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

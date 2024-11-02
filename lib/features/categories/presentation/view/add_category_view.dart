@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/global/circular_progress.dart';
+import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/global/gobal_widgets/snack_bar.dart';
 import '../../../countries/data/models/countries_response_model.dart';
 import '../../data/models/add_category_request_body_model.dart';
 import '../bloc/categories_bloc.dart';
@@ -45,60 +46,63 @@ class _AddCategoryViewState extends State<AddCategoryView> {
             state.whenOrNull(
               success: () async {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      "نجاح",
-                    ),
+                  snackBar(
+                    status: true,
+                    message: 'نجاح',
                   ),
                 );
               },
               failure: (error) async {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      error,
-                    ),
+                  snackBar(
+                    status: false,
+                    message: error,
                   ),
                 );
               },
             );
           },
           builder: (context, state) {
-            return state.maybeWhen(
-              loading: () {
-                return const CustomCircularProgress();
-              },
-              orElse: () {
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CustomTextFormField(
-                        hintText: 'اسم الفئة',
-                        textInputType: TextInputType.text,
-                        onChanged: (value) {
-                          addCategoryRequestBodyModel.name = value;
-                        },
-                      ),
-                      Gap(
-                        10.h,
-                      ),
-                      CustomTextButton(
-                        text: 'أضافة',
-                        onPressed: () async {
-                          context.read<CategoriesBloc>().add(
-                                CategoriesEvent.addCategoryEvent(
-                                  addCategoryRequestBodyModel:
-                                      addCategoryRequestBodyModel,
-                                ),
-                              );
-                        },
-                      ),
-                    ],
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomTextFormField(
+                    hintText: 'اسم الفئة',
+                    textInputType: TextInputType.text,
+                    onChanged: (value) {
+                      addCategoryRequestBodyModel.name = value;
+                    },
                   ),
-                );
-              },
+                  Gap(
+                    10.h,
+                  ),
+                  CustomTextButton(
+                    widget: state.maybeWhen(
+                      loading: () {
+                        return CustomCircularProgress();
+                      },
+                      orElse: () {
+                        return CustomText(
+                          text: 'أضافة',
+                          fontSize: 30.sp,
+                          maxLines: 1,
+                          fontWeight: FontWeight.bold,
+                        );
+                      },
+                    ),
+                    onPressed: () async {
+                      context.read<CategoriesBloc>().add(
+                            CategoriesEvent.addCategoryEvent(
+                              addCategoryRequestBodyModel:
+                                  addCategoryRequestBodyModel,
+                            ),
+                          );
+                    },
+                  ),
+                ],
+              ),
             );
           },
         ),

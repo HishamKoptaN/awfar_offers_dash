@@ -19,22 +19,19 @@ mixin _$OffersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOffersEvent,
-    required TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)
-        addOfferEvent,
+    required TResult Function(FormData formData) addOfferEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOffersEvent,
-    TResult? Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult? Function(FormData formData)? addOfferEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOffersEvent,
-    TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult Function(FormData formData)? addOfferEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,8 +119,7 @@ class _$GetOffersEventImpl implements _GetOffersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOffersEvent,
-    required TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)
-        addOfferEvent,
+    required TResult Function(FormData formData) addOfferEvent,
   }) {
     return getOffersEvent();
   }
@@ -132,8 +128,7 @@ class _$GetOffersEventImpl implements _GetOffersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOffersEvent,
-    TResult? Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult? Function(FormData formData)? addOfferEvent,
   }) {
     return getOffersEvent?.call();
   }
@@ -142,8 +137,7 @@ class _$GetOffersEventImpl implements _GetOffersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOffersEvent,
-    TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult Function(FormData formData)? addOfferEvent,
     required TResult orElse(),
   }) {
     if (getOffersEvent != null) {
@@ -194,7 +188,7 @@ abstract class _$$AddOfferEventImplCopyWith<$Res> {
           _$AddOfferEventImpl value, $Res Function(_$AddOfferEventImpl) then) =
       __$$AddOfferEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AddOfferRequestBodyModel addOfferRequestBodyModel});
+  $Res call({FormData formData});
 }
 
 /// @nodoc
@@ -210,13 +204,13 @@ class __$$AddOfferEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addOfferRequestBodyModel = null,
+    Object? formData = null,
   }) {
     return _then(_$AddOfferEventImpl(
-      addOfferRequestBodyModel: null == addOfferRequestBodyModel
-          ? _value.addOfferRequestBodyModel
-          : addOfferRequestBodyModel // ignore: cast_nullable_to_non_nullable
-              as AddOfferRequestBodyModel,
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as FormData,
     ));
   }
 }
@@ -224,14 +218,14 @@ class __$$AddOfferEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddOfferEventImpl implements _AddOfferEvent {
-  const _$AddOfferEventImpl({required this.addOfferRequestBodyModel});
+  const _$AddOfferEventImpl({required this.formData});
 
   @override
-  final AddOfferRequestBodyModel addOfferRequestBodyModel;
+  final FormData formData;
 
   @override
   String toString() {
-    return 'OffersEvent.addOfferEvent(addOfferRequestBodyModel: $addOfferRequestBodyModel)';
+    return 'OffersEvent.addOfferEvent(formData: $formData)';
   }
 
   @override
@@ -239,13 +233,12 @@ class _$AddOfferEventImpl implements _AddOfferEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddOfferEventImpl &&
-            (identical(
-                    other.addOfferRequestBodyModel, addOfferRequestBodyModel) ||
-                other.addOfferRequestBodyModel == addOfferRequestBodyModel));
+            (identical(other.formData, formData) ||
+                other.formData == formData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addOfferRequestBodyModel);
+  int get hashCode => Object.hash(runtimeType, formData);
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -259,32 +252,29 @@ class _$AddOfferEventImpl implements _AddOfferEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOffersEvent,
-    required TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)
-        addOfferEvent,
+    required TResult Function(FormData formData) addOfferEvent,
   }) {
-    return addOfferEvent(addOfferRequestBodyModel);
+    return addOfferEvent(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOffersEvent,
-    TResult? Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult? Function(FormData formData)? addOfferEvent,
   }) {
-    return addOfferEvent?.call(addOfferRequestBodyModel);
+    return addOfferEvent?.call(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOffersEvent,
-    TResult Function(AddOfferRequestBodyModel addOfferRequestBodyModel)?
-        addOfferEvent,
+    TResult Function(FormData formData)? addOfferEvent,
     required TResult orElse(),
   }) {
     if (addOfferEvent != null) {
-      return addOfferEvent(addOfferRequestBodyModel);
+      return addOfferEvent(formData);
     }
     return orElse();
   }
@@ -322,11 +312,10 @@ class _$AddOfferEventImpl implements _AddOfferEvent {
 }
 
 abstract class _AddOfferEvent implements OffersEvent {
-  const factory _AddOfferEvent(
-          {required final AddOfferRequestBodyModel addOfferRequestBodyModel}) =
+  const factory _AddOfferEvent({required final FormData formData}) =
       _$AddOfferEventImpl;
 
-  AddOfferRequestBodyModel get addOfferRequestBodyModel;
+  FormData get formData;
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.

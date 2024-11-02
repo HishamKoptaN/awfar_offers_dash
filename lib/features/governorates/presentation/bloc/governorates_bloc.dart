@@ -53,9 +53,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
             await result.when(
               success: (governoratesResponseModel) async {
                 emit(
-                  GovernoratesState.success(
-                    governoratesResponseModel: governoratesResponseModel,
-                  ),
+                  GovernoratesState.success(),
                 );
               },
               failure: (error) async {
@@ -78,9 +76,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
             await result.when(
               success: (response) async {
                 emit(
-                  GovernoratesState.success(
-                    governoratesResponseModel: response,
-                  ),
+                  const GovernoratesState.success(),
                 );
               },
               failure: (error) async {

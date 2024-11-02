@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+
 class AddOfferRequestBodyModel {
   // إنشاء instance ثابت لـ Singleton
   static final AddOfferRequestBodyModel _instance =
@@ -6,12 +10,19 @@ class AddOfferRequestBodyModel {
   factory AddOfferRequestBodyModel() {
     return _instance;
   }
-  // كونستركتور خاص
   AddOfferRequestBodyModel._();
   String? name;
   String? storeId;
   String? categoryId;
-  // دالة لتحميل البيانات من JSON
+  MultipartFile? image;
+
+  Future<void> setImageFile(File file) async {
+    image = await MultipartFile.fromFile(
+      file.path,
+      filename: file.path.split('/').last,
+    );
+  }
+
   factory AddOfferRequestBodyModel.fromJson(Map<String, dynamic> json) {
     _instance.name = json['name'];
     _instance.storeId = json['store_id'];

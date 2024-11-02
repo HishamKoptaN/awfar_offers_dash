@@ -11,10 +11,8 @@ class StoresState with _$StoresState {
     required List<Store>? stores,
   }) = _StoresLoaded;
   const factory StoresState.loading() = _Loading;
+  const factory StoresState.success() = _Success;
   const factory StoresState.failure({
     required ApiErrorModel apiErrorModel,
   }) = _Failure;
-  const factory StoresState.success({
-    required String message,
-  }) = _Success;
 }

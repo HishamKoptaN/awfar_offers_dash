@@ -6,7 +6,10 @@ import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
+import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../data/models/add_country_request_body_model.dart';
 import '../bloc/countries_bloc.dart';
 import '../bloc/countries_event.dart';
@@ -23,7 +26,7 @@ String? selectedCountryCode;
 
 class _AddCountryViewState extends State<AddCountryView> {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return MainLayout(
       showAppBar: true,
       route: 'أضافة دولة',
@@ -34,77 +37,115 @@ class _AddCountryViewState extends State<AddCountryView> {
         );
       },
       body: BlocProvider(
-        create: (_) => getIt<CountriesBloc>(),
+        create: (_) => CountriesBloc(
+          getIt(),
+          getIt(),
+          getIt(),
+        ),
         child: BlocConsumer<CountriesBloc, CountriesState>(
           listener: (context, state) {
-            state.whenOrNull();
+            state.whenOrNull(
+              success: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  snackBar(
+                    status: true,
+                    message: 'نجاح',
+                  ),
+                );
+              },
+              failure: (error) async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  snackBar(
+                    status: false,
+                    message: error,
+                  ),
+                );
+              },
+            );
           },
           builder: (context, state) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'اختر دولة',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey[800],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+            return Stack(
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'اختر دولة',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey[800],
                           ),
-                        ],
-                      ),
-                      child: CountryCodePicker(
-                        onChanged: (countryCode) {
-                          selectedCountryCode = countryCode.code;
-                        },
-                        initialSelection: 'EG',
-                        favorite: const ['EG'],
-                        showCountryOnly: true,
-                        showOnlyCountryWhenClosed: false,
-                        showFlag: true,
-                        alignLeft: false,
-                        showFlagMain: true,
-                        textStyle: const TextStyle(
-                          fontSize: 18,
                         ),
-                      ),
-                    ),
-                    Gap(
-                      10.h,
-                    ),
-                    CustomTextButton(
-                      text: 'أضافة',
-                      onPressed: () async {
-                        if (selectedCountryCode != null) {
-                          context.read<CountriesBloc>().add(
-                                CountriesEvent.addCountryEvent(
-                                  addCountryRequestModel:
-                                      AddCountryRequestModel(
-                                    code: selectedCountryCode!,
-                                  ),
-                                ),
+                        const SizedBox(height: 20),
+                        Container(
+                          width: 300.w,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: CountryCodePicker(
+                            onChanged: (countryCode) {
+                              selectedCountryCode = countryCode.code;
+                            },
+                            initialSelection: 'EG',
+                            favorite: const ['EG'],
+                            showCountryOnly: true,
+                            showOnlyCountryWhenClosed: false,
+                            showFlag: true,
+                            alignLeft: false,
+                            showFlagMain: true,
+                            textStyle: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Gap(
+                          10.h,
+                        ),
+                        CustomTextButton(
+                          widget: state.maybeWhen(
+                            loading: () {
+                              return CustomCircularProgress();
+                            },
+                            orElse: () {
+                              return CustomText(
+                                text: "اضافة",
+                                fontSize: 30.sp,
+                                maxLines: 1,
+                                fontWeight: FontWeight.bold,
                               );
-                        }
-                      },
+                            },
+                          ),
+                          onPressed: () async {
+                            if (selectedCountryCode != null) {
+                              context.read<CountriesBloc>().add(
+                                    CountriesEvent.addCountryEvent(
+                                      addCountryRequestModel:
+                                          AddCountryRequestModel(
+                                        code: selectedCountryCode!,
+                                      ),
+                                    ),
+                                  );
+                            }
+                          },
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             );
           },
         ),

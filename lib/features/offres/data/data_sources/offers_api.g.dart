@@ -24,7 +24,7 @@ class _OffersApi implements OffersApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Offer>> getOffers() async {
+  Future<List<Offer>?> getOffers() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -46,10 +46,10 @@ class _OffersApi implements OffersApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Offer> _value;
+    late List<Offer>? _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) => Offer.fromJson(i as Map<String, dynamic>))
+      _value = _result.data
+          ?.map((dynamic i) => Offer.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -59,13 +59,11 @@ class _OffersApi implements OffersApi {
   }
 
   @override
-  Future<List<Offer>?> addOffer(
-      {required AddOfferRequestBodyModel addOfferRequestBodyModel}) async {
+  Future<List<Offer>?> addOffer({required FormData formData}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(addOfferRequestBodyModel.toJson());
+    final _data = formData;
     final _options = _setStreamType<List<Offer>>(Options(
       method: 'POST',
       headers: _headers,

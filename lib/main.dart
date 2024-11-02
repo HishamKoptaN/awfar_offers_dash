@@ -7,6 +7,16 @@ import 'core/app_observer.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/routes/app_router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'features/categories/presentation/bloc/categories_bloc.dart';
+import 'features/categories/presentation/bloc/categories_event.dart';
+import 'features/countries/presentation/bloc/countries_bloc.dart';
+import 'features/countries/presentation/bloc/countries_event.dart';
+import 'features/governorates/presentation/bloc/governorates_bloc.dart';
+import 'features/governorates/presentation/bloc/governorates_event.dart';
+import 'features/offres/presentation/bloc/offers_event.dart';
+import 'features/offres/presentation/bloc/offres_bloc.dart';
+import 'features/stores/presentation/bloc/stores_bloc.dart';
+import 'features/stores/presentation/bloc/stores_event.dart';
 
 void main() async {
   try {
@@ -20,7 +30,40 @@ void main() async {
   Bloc.observer = AppBlocObserver();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(
-    const MyApp(),
+    MultiBlocProvider(providers: [
+      BlocProvider(
+        create: (context) => CountriesBloc(
+          getIt(),
+          getIt(),
+          getIt(),
+        ),
+      ),
+      BlocProvider(
+        create: (context) => GovernoratesBloc(
+          getIt(),
+          getIt(),
+          getIt(),
+        ),
+      ),
+      BlocProvider(
+        create: (context) => StoresBloc(
+          getIt(),
+          getIt(),
+        ),
+      ),
+      BlocProvider(
+        create: (context) => CategoriesBloc(
+          getIt(),
+          getIt(),
+        ),
+      ),
+      BlocProvider(
+        create: (context) => OffersBloc(
+          getIt(),
+          getIt(),
+        ),
+      ),
+    ], child: const MyApp()),
     // DevicePreview(
     //   enabled: !kReleaseMode,
     //   builder: (context) => const MyApp(),
@@ -36,6 +79,34 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool error = false;
+  @override
+  void initState() {
+    super.initState();
+    newMethod();
+  }
+
+  Future<Null> newMethod() async {
+    await Future.microtask(
+      () {
+        context.read<CountriesBloc>().add(
+              const CountriesEvent.getCountries(),
+            );
+        context.read<GovernoratesBloc>().add(
+              const GovernoratesEvent.getGovernorate(),
+            );
+        context.read<StoresBloc>().add(
+              const StoresEvent.getEvent(),
+            );
+        context.read<CategoriesBloc>().add(
+              const CategoriesEvent.getCategoriesEvent(),
+            );
+        context.read<OffersBloc>().add(
+              const OffersEvent.getOffersEvent(),
+            );
+      },
+    );
+  }
+
   @override
   Widget build(context) {
     double heiht = MediaQuery.of(context).size.height;

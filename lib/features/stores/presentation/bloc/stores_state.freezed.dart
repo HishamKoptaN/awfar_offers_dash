@@ -21,8 +21,8 @@ mixin _$StoresState {
     required TResult Function() initial,
     required TResult Function(List<Store>? stores) storesLoaded,
     required TResult Function() loading,
+    required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,8 +30,8 @@ mixin _$StoresState {
     TResult? Function()? initial,
     TResult? Function(List<Store>? stores)? storesLoaded,
     TResult? Function()? loading,
+    TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,8 +39,8 @@ mixin _$StoresState {
     TResult Function()? initial,
     TResult Function(List<Store>? stores)? storesLoaded,
     TResult Function()? loading,
+    TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,8 +49,8 @@ mixin _$StoresState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_StoresLoaded value) storesLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,8 +58,8 @@ mixin _$StoresState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_StoresLoaded value)? storesLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,8 +67,8 @@ mixin _$StoresState {
     TResult Function(_Initial value)? initial,
     TResult Function(_StoresLoaded value)? storesLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,8 +139,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function(List<Store>? stores) storesLoaded,
     required TResult Function() loading,
+    required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
   }) {
     return initial();
   }
@@ -151,8 +151,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(List<Store>? stores)? storesLoaded,
     TResult? Function()? loading,
+    TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
   }) {
     return initial?.call();
   }
@@ -163,8 +163,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(List<Store>? stores)? storesLoaded,
     TResult Function()? loading,
+    TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -179,8 +179,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_StoresLoaded value) storesLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
     return initial(this);
   }
@@ -191,8 +191,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_StoresLoaded value)? storesLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -203,8 +203,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_StoresLoaded value)? storesLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -298,8 +298,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     required TResult Function() initial,
     required TResult Function(List<Store>? stores) storesLoaded,
     required TResult Function() loading,
+    required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
   }) {
     return storesLoaded(stores);
   }
@@ -310,8 +310,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     TResult? Function()? initial,
     TResult? Function(List<Store>? stores)? storesLoaded,
     TResult? Function()? loading,
+    TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
   }) {
     return storesLoaded?.call(stores);
   }
@@ -322,8 +322,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     TResult Function()? initial,
     TResult Function(List<Store>? stores)? storesLoaded,
     TResult Function()? loading,
+    TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (storesLoaded != null) {
@@ -338,8 +338,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_StoresLoaded value) storesLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
     return storesLoaded(this);
   }
@@ -350,8 +350,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_StoresLoaded value)? storesLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) {
     return storesLoaded?.call(this);
   }
@@ -362,8 +362,8 @@ class _$StoresLoadedImpl implements _StoresLoaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_StoresLoaded value)? storesLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
     if (storesLoaded != null) {
@@ -430,8 +430,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function(List<Store>? stores) storesLoaded,
     required TResult Function() loading,
+    required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
   }) {
     return loading();
   }
@@ -442,8 +442,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function(List<Store>? stores)? storesLoaded,
     TResult? Function()? loading,
+    TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
   }) {
     return loading?.call();
   }
@@ -454,8 +454,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function(List<Store>? stores)? storesLoaded,
     TResult Function()? loading,
+    TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -470,8 +470,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_StoresLoaded value) storesLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
     return loading(this);
   }
@@ -482,8 +482,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_StoresLoaded value)? storesLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -494,8 +494,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_StoresLoaded value)? storesLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -507,6 +507,129 @@ class _$LoadingImpl implements _Loading {
 
 abstract class _Loading implements StoresState {
   const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$StoresStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StoresState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl();
+
+  @override
+  String toString() {
+    return 'StoresState.success()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<Store>? stores) storesLoaded,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
+  }) {
+    return success();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<Store>? stores)? storesLoaded,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Store>? stores)? storesLoaded,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_StoresLoaded value) storesLoaded,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_StoresLoaded value)? storesLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_StoresLoaded value)? storesLoaded,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Success implements StoresState {
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
@@ -581,8 +704,8 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function(List<Store>? stores) storesLoaded,
     required TResult Function() loading,
+    required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
   }) {
     return failure(apiErrorModel);
   }
@@ -593,8 +716,8 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function(List<Store>? stores)? storesLoaded,
     TResult? Function()? loading,
+    TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
   }) {
     return failure?.call(apiErrorModel);
   }
@@ -605,8 +728,8 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function(List<Store>? stores)? storesLoaded,
     TResult Function()? loading,
+    TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -621,8 +744,8 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_StoresLoaded value) storesLoaded,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
     return failure(this);
   }
@@ -633,8 +756,8 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_StoresLoaded value)? storesLoaded,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -645,8 +768,8 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Initial value)? initial,
     TResult Function(_StoresLoaded value)? storesLoaded,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -666,163 +789,5 @@ abstract class _Failure implements StoresState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$StoresStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StoresState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$SuccessImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.message});
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'StoresState.success(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of StoresState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<Store>? stores) storesLoaded,
-    required TResult Function() loading,
-    required TResult Function(ApiErrorModel apiErrorModel) failure,
-    required TResult Function(String message) success,
-  }) {
-    return success(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<Store>? stores)? storesLoaded,
-    TResult? Function()? loading,
-    TResult? Function(ApiErrorModel apiErrorModel)? failure,
-    TResult? Function(String message)? success,
-  }) {
-    return success?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Store>? stores)? storesLoaded,
-    TResult Function()? loading,
-    TResult Function(ApiErrorModel apiErrorModel)? failure,
-    TResult Function(String message)? success,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_StoresLoaded value) storesLoaded,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Failure value) failure,
-    required TResult Function(_Success value) success,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_StoresLoaded value)? storesLoaded,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Failure value)? failure,
-    TResult? Function(_Success value)? success,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_StoresLoaded value)? storesLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Failure value)? failure,
-    TResult Function(_Success value)? success,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements StoresState {
-  const factory _Success({required final String message}) = _$SuccessImpl;
-
-  String get message;
-
-  /// Create a copy of StoresState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

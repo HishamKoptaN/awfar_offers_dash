@@ -15,12 +15,12 @@ class MainRepoImpl implements MainRepo {
     try {
       final response = await mainApi.check();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }
