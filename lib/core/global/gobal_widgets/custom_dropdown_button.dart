@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/app_colors.dart';
-import 'gobal_widgets/global_widgets.dart';
+import '../../utils/app_colors.dart';
+import 'global_widgets.dart';
 
 class CustomDropdownContainer<T> extends StatelessWidget {
   CustomDropdownContainer({

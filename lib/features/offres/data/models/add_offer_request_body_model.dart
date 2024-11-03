@@ -26,12 +26,12 @@ class AddOfferRequestBodyModel {
   factory AddOfferRequestBodyModel.fromJson(Map<String, dynamic> json) {
     _instance.name = json['name'];
     _instance.storeId = json['store_id'];
-    _instance.subCategoryId = json['category_id'];
+    _instance.subCategoryId = json['sub_category_id'];
     return _instance;
   }
   Map<String, dynamic> toJson() => {
         'name': name,
         'store_id': storeId,
-        'category_id': subCategoryId,
+        'sub_category_id': subCategoryId,
       };
 }

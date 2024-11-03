@@ -28,8 +28,8 @@ mixin _$Offer {
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "store_id")
   int get storeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  int get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "sub_category_id")
+  int get subCategoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
@@ -60,7 +60,7 @@ abstract class $OfferCopyWith<$Res> {
       @JsonKey(name: "name") String name,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "store_id") int storeId,
-      @JsonKey(name: "category_id") int categoryId,
+      @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
       @JsonKey(name: "end_at") dynamic endAt,
@@ -87,7 +87,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
     Object? name = null,
     Object? status = null,
     Object? storeId = null,
-    Object? categoryId = null,
+    Object? subCategoryId = null,
     Object? description = null,
     Object? image = null,
     Object? endAt = freezed,
@@ -111,9 +111,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
+      subCategoryId: null == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
               as int,
       description: null == description
           ? _value.description
@@ -151,7 +151,7 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       @JsonKey(name: "name") String name,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "store_id") int storeId,
-      @JsonKey(name: "category_id") int categoryId,
+      @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
       @JsonKey(name: "end_at") dynamic endAt,
@@ -176,7 +176,7 @@ class __$$OfferImplCopyWithImpl<$Res>
     Object? name = null,
     Object? status = null,
     Object? storeId = null,
-    Object? categoryId = null,
+    Object? subCategoryId = null,
     Object? description = null,
     Object? image = null,
     Object? endAt = freezed,
@@ -200,9 +200,9 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
+      subCategoryId: null == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
               as int,
       description: null == description
           ? _value.description
@@ -236,7 +236,7 @@ class _$OfferImpl implements _Offer {
       @JsonKey(name: "name") required this.name,
       @JsonKey(name: "status") required this.status,
       @JsonKey(name: "store_id") required this.storeId,
-      @JsonKey(name: "category_id") required this.categoryId,
+      @JsonKey(name: "sub_category_id") required this.subCategoryId,
       @JsonKey(name: "description") required this.description,
       @JsonKey(name: "image") required this.image,
       @JsonKey(name: "end_at") this.endAt,
@@ -259,8 +259,8 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "store_id")
   final int storeId;
   @override
-  @JsonKey(name: "category_id")
-  final int categoryId;
+  @JsonKey(name: "sub_category_id")
+  final int subCategoryId;
   @override
   @JsonKey(name: "description")
   final String description;
@@ -279,7 +279,7 @@ class _$OfferImpl implements _Offer {
 
   @override
   String toString() {
-    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, categoryId: $categoryId, description: $description, image: $image, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, subCategoryId: $subCategoryId, description: $description, image: $image, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -291,8 +291,8 @@ class _$OfferImpl implements _Offer {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.storeId, storeId) || other.storeId == storeId) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
+            (identical(other.subCategoryId, subCategoryId) ||
+                other.subCategoryId == subCategoryId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
@@ -311,7 +311,7 @@ class _$OfferImpl implements _Offer {
       name,
       status,
       storeId,
-      categoryId,
+      subCategoryId,
       description,
       image,
       const DeepCollectionEquality().hash(endAt),
@@ -340,7 +340,7 @@ abstract class _Offer implements Offer {
           @JsonKey(name: "name") required final String name,
           @JsonKey(name: "status") required final String status,
           @JsonKey(name: "store_id") required final int storeId,
-          @JsonKey(name: "category_id") required final int categoryId,
+          @JsonKey(name: "sub_category_id") required final int subCategoryId,
           @JsonKey(name: "description") required final String description,
           @JsonKey(name: "image") required final String image,
           @JsonKey(name: "end_at") final dynamic endAt,
@@ -363,8 +363,8 @@ abstract class _Offer implements Offer {
   @JsonKey(name: "store_id")
   int get storeId;
   @override
-  @JsonKey(name: "category_id")
-  int get categoryId;
+  @JsonKey(name: "sub_category_id")
+  int get subCategoryId;
   @override
   @JsonKey(name: "description")
   String get description;

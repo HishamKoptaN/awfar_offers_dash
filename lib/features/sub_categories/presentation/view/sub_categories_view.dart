@@ -1,12 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/custom_button.dart';
-import '../../../../core/global/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_button.dart';
+import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
+import '../../../../core/global/gobal_widgets/custom_data_column.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/global/gobal_widgets/image_preview.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../data/models/sub_categories_response_model.dart';
 import '../bloc/sub_categories_bloc.dart';
@@ -54,18 +58,16 @@ class SubCategoriesView extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: DataTable(
+                      dataRowHeight: 125.h,
                       columns: [
-                        DataColumn(
-                          label: CustomText(
-                            text: 'معرف الدوله',
-                            fontSize: 30.sp,
-                          ),
+                        customDataColumn(
+                          label: 'معرف الدوله',
                         ),
-                        DataColumn(
-                          label: CustomText(
-                            text: 'الاسم',
-                            fontSize: 30.sp,
-                          ),
+                        customDataColumn(
+                          label: 'الاسم',
+                        ),
+                        customDataColumn(
+                          label: 'صورة الفئة الفرعية',
                         ),
                         DataColumn(
                           label: CustomTextButton(
@@ -96,14 +98,34 @@ class SubCategoriesView extends StatelessWidget {
                         (subCategory) {
                           return DataRow(
                             cells: [
-                              DataCell(
-                                Text(
-                                  subCategory.id.toString(),
-                                ),
+                              customDataCell(
+                                label: subCategory.id.toString(),
+                              ),
+                              customDataCell(
+                                label: subCategory.name.toString(),
                               ),
                               DataCell(
-                                Text(
-                                  subCategory.name.toString(),
+                                InkWell(
+                                  onTap: () async {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                          imageUrl: subCategory.image!,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: CachedNetworkImage(
+                                    height: 100.h,
+                                    width: 100.w,
+                                    fit: BoxFit.fill,
+                                    imageUrl: subCategory.image!,
+                                    placeholder: (context, url) =>
+                                        const CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
                                 ),
                               ),
                               const DataCell(

@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+
 class AddSubCategoryRequestBodyModel {
   // إنشاء instance ثابت لـ Singleton
   static final AddSubCategoryRequestBodyModel _instance =
@@ -10,6 +14,14 @@ class AddSubCategoryRequestBodyModel {
   AddSubCategoryRequestBodyModel._();
   String? name;
   int? categoryId;
+  MultipartFile? image;
+
+  Future<void> setImageFile(File file) async {
+    image = await MultipartFile.fromFile(
+      file.path,
+      filename: file.path.split('/').last,
+    );
+  }
 
   // دالة لتحميل البيانات من JSON
   factory AddSubCategoryRequestBodyModel.fromJson(

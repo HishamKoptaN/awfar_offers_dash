@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
+import '../../utils/app_colors.dart';
 
 class CustomCircularProgress extends StatelessWidget {
-   CustomCircularProgress({
+  CustomCircularProgress({
     super.key,
     this.color = AppColors.white,
   });

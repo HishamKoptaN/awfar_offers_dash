@@ -1,12 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/custom_button.dart';
-import '../../../../core/global/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_button.dart';
+import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
+import '../../../../core/global/gobal_widgets/custom_data_column.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/global/gobal_widgets/image_preview.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../data/models/offers_response_model.dart';
 import '../bloc/offers_event.dart';
@@ -77,24 +81,16 @@ class _OffersViewState extends State<OffersView> {
       child: SizedBox(
         width: double.infinity,
         child: DataTable(
+          dataRowHeight: 125.h,
           columns: [
-            DataColumn(
-              label: CustomText(
-                text: 'معرف العرض',
-                fontSize: 30.sp,
-              ),
+            customDataColumn(
+              label: 'معرف العرض',
             ),
-            DataColumn(
-              label: CustomText(
-                text: 'الاسم',
-                fontSize: 30.sp,
-              ),
+            customDataColumn(
+              label: 'الاسم',
             ),
-            DataColumn(
-              label: CustomText(
-                text: 'صورة',
-                fontSize: 30.sp,
-              ),
+            customDataColumn(
+              label: 'صورة العرض',
             ),
             DataColumn(
               label: CustomTextButton(
@@ -118,19 +114,33 @@ class _OffersViewState extends State<OffersView> {
             (offer) {
               return DataRow(
                 cells: [
-                  DataCell(Text(offer.id.toString())),
-                  DataCell(Text(offer.name)),
+                  customDataCell(
+                    label: offer.id.toString(),
+                  ),
+                  customDataCell(
+                    label: offer.name,
+                  ),
                   DataCell(
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16),
-                      ),
-                      child: Image.network(
-                        offer.image,
-                        height: 225.h,
+                    InkWell(
+                      onTap: () async {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ImageScreen(
+                              imageUrl: offer.image,
+                            ),
+                          ),
+                        );
+                      },
+                      child: CachedNetworkImage(
+                        height: 100.h,
                         width: 100.w,
+                        imageUrl: offer.image,
                         fit: BoxFit.fill,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),

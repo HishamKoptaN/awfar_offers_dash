@@ -24,6 +24,8 @@ mixin _$SubCategory {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: "category_id")
   int? get categoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
@@ -50,6 +52,7 @@ abstract class $SubCategoryCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
       @JsonKey(name: "category_id") int? categoryId,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt});
@@ -72,6 +75,7 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? categoryId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -84,6 +88,10 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
       categoryId: freezed == categoryId
           ? _value.categoryId
@@ -112,6 +120,7 @@ abstract class _$$CategoryImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
       @JsonKey(name: "category_id") int? categoryId,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt});
@@ -132,6 +141,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? categoryId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -144,6 +154,10 @@ class __$$CategoryImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
       categoryId: freezed == categoryId
           ? _value.categoryId
@@ -167,6 +181,7 @@ class _$CategoryImpl implements _Category {
   const _$CategoryImpl(
       {@JsonKey(name: "id") this.id = 0,
       @JsonKey(name: "name") this.name = "",
+      @JsonKey(name: "image") this.image = "",
       @JsonKey(name: "category_id") this.categoryId = 0,
       @JsonKey(name: "created_at") this.createdAt = "",
       @JsonKey(name: "updated_at") this.updatedAt = ""});
@@ -181,6 +196,9 @@ class _$CategoryImpl implements _Category {
   @JsonKey(name: "name")
   final String? name;
   @override
+  @JsonKey(name: "image")
+  final String? image;
+  @override
   @JsonKey(name: "category_id")
   final int? categoryId;
   @override
@@ -192,7 +210,7 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'SubCategory(id: $id, name: $name, categoryId: $categoryId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'SubCategory(id: $id, name: $name, image: $image, categoryId: $categoryId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -202,6 +220,7 @@ class _$CategoryImpl implements _Category {
             other is _$CategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
             (identical(other.createdAt, createdAt) ||
@@ -212,8 +231,8 @@ class _$CategoryImpl implements _Category {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, categoryId, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, image, categoryId, createdAt, updatedAt);
 
   /// Create a copy of SubCategory
   /// with the given fields replaced by the non-null parameter values.
@@ -235,6 +254,7 @@ abstract class _Category implements SubCategory {
   const factory _Category(
       {@JsonKey(name: "id") final int? id,
       @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "image") final String? image,
       @JsonKey(name: "category_id") final int? categoryId,
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt}) = _$CategoryImpl;
@@ -248,6 +268,9 @@ abstract class _Category implements SubCategory {
   @override
   @JsonKey(name: "name")
   String? get name;
+  @override
+  @JsonKey(name: "image")
+  String? get image;
   @override
   @JsonKey(name: "category_id")
   int? get categoryId;

@@ -49,6 +49,7 @@ dependencies:
   go_router: ^14.3.0
   flag: ^7.0.0
   country_code_picker: ^3.1.0
+  cached_network_image: ^3.4.1
 
 
 

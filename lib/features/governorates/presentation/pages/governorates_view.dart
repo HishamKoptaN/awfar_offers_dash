@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/custom_button.dart';
-import '../../../../core/global/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_button.dart';
+import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
+import '../../../../core/global/gobal_widgets/custom_data_column.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
@@ -69,17 +71,11 @@ class GovernoratesView extends StatelessWidget {
                       width: double.infinity,
                       child: DataTable(
                         columns: [
-                          DataColumn(
-                            label: CustomText(
-                              text: 'معرف المحافظة',
-                              fontSize: 30.sp,
-                            ),
+                          customDataColumn(
+                            label: 'معرف المحافظة',
                           ),
-                          DataColumn(
-                            label: CustomText(
-                              text: 'الاسم',
-                              fontSize: 30.sp,
-                            ),
+                          customDataColumn(
+                            label: 'الاسم',
                           ),
                           DataColumn(
                             label: CustomTextButton(
@@ -97,13 +93,11 @@ class GovernoratesView extends StatelessWidget {
                           (governorate) {
                             return DataRow(
                               cells: [
-                                DataCell(
-                                  Text(governorate.name!),
+                                customDataCell(
+                                  label: governorate.name!,
                                 ),
-                                DataCell(
-                                  Text(
-                                    governorate.name ?? 'لا يوجد اسم',
-                                  ),
+                                customDataCell(
+                                  label: governorate.name ?? 'لا يوجد اسم',
                                 ),
                                 const DataCell(
                                   SizedBox(),

@@ -21,7 +21,7 @@ class Offer with _$Offer {
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "status") required String status,
     @JsonKey(name: "store_id") required int storeId,
-    @JsonKey(name: "category_id") required int categoryId,
+    @JsonKey(name: "sub_category_id") required int subCategoryId,
     @JsonKey(name: "description") required String description,
     @JsonKey(name: "image") required String image,
     @JsonKey(name: "end_at") dynamic endAt,

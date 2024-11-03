@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'gobal_widgets/global_widgets.dart';
+import 'global_widgets.dart';
 
 class AppLayout extends StatefulWidget {
   AppLayout({

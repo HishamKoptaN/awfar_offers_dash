@@ -111,7 +111,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   final offers = OffersResponseModel().offers ?? [];
-
   @override
   void initState() {
     super.initState();
