@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_circular_progress.dart';
+import '../../../../core/global/custom_dropdown_button.dart';
 import '../../../../core/global/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../../../core/global/gobal_widgets/snack_bar.dart';
-import '../../../../core/utils/app_colors.dart';
 import '../../../categories/data/models/categories_response_model.dart';
 import '../../../countries/data/models/countries_response_model.dart';
 import '../../data/models/add_sub_category_request_body_model.dart';
@@ -74,7 +75,7 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomTextFormField(
-                    hintText: 'اسم الفئة',
+                    hintText: 'اسم الفئة الفرعية',
                     textInputType: TextInputType.text,
                     onChanged: (value) {
                       addSubCategoryRequestBodyModel.name = value;
@@ -83,44 +84,23 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                   Gap(
                     10.h,
                   ),
-                  Container(
+                  CustomDropdownContainer<Category>(
                     height: 75.h,
                     width: 450.w,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: DropdownButton<Category>(
-                      isExpanded: true,
-                      value: selectedCategory,
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            selectedCategory = value;
-                            addSubCategoryRequestBodyModel.categoryId =
-                                value!.id!;
-                          },
-                        );
-                      },
-                      dropdownColor: Colors.white,
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
-                      items: categories.map(
-                        (subcategory) {
-                          return DropdownMenuItem<Category>(
-                            value: subcategory,
-                            child: Center(
-                              child: CustomText(
-                                text: subcategory.name!,
-                                fontSize: 20.sp,
-                                color: Colors.black,
-                              ),
-                            ),
-                          );
+                    items: categories,
+                    selectedItem: selectedCategory,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          selectedCategory = value;
+                          addSubCategoryRequestBodyModel.categoryId =
+                              value!.id!;
                         },
-                      ).toList(),
-                    ),
+                      );
+                    },
+                    itemLabel: (item) => item.name!,
+                    fontSize: 20.sp,
+                    hint: 'أختر فئة الفرعية',
                   ),
                   Gap(
                     10.h,
@@ -134,6 +114,7 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                         return CustomText(
                           text: 'أضافة',
                           fontSize: 30.sp,
+                          color: Colors.white,
                           maxLines: 1,
                           fontWeight: FontWeight.bold,
                         );

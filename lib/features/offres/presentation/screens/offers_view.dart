@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
+import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../data/models/offers_response_model.dart';
 import '../bloc/offers_event.dart';
 import '../bloc/offres_bloc.dart';
@@ -56,12 +58,11 @@ class _OffersViewState extends State<OffersView> {
                     .add(const OffersEvent.getOffersEvent());
               });
               return state.maybeWhen(
-                loading: () =>
-                    CustomCircularProgress(), // عرض مؤشر التحميل أثناء جلب البيانات
-                offersLoaded: (offers) =>
-                    buildOffersTable(offers!), // عرض الجدول عند توفر البيانات
+                loading: () => CustomCircularProgress(),
+                offersLoaded: (offers) => buildOffersTable(offers!),
                 orElse: () => const Center(
-                    child: Text("No data available")), // في حال عدم وجود بيانات
+                  child: Text("No data available"),
+                ),
               );
             },
           ),
@@ -100,6 +101,7 @@ class _OffersViewState extends State<OffersView> {
                 widget: CustomText(
                   text: 'أضافة عرض',
                   fontSize: 30.sp,
+                  color: AppColors.white,
                   maxLines: 1,
                   fontWeight: FontWeight.bold,
                 ),

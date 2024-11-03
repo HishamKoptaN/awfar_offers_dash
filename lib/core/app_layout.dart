@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'global/gobal_widgets/global_widgets.dart';
 
 class MainLayout extends StatefulWidget {
   MainLayout({
@@ -29,9 +32,10 @@ class _AppLayoutState extends State<MainLayout> {
             ? AppBar(
                 backgroundColor: Colors.white,
                 elevation: 0,
-                title: Text(
-                  widget.route,
-                  style: const TextStyle(color: Colors.black),
+                title: CustomText(
+                  text: widget.route,
+                  color: Colors.black,
+                  fontSize: 30.sp,
                 ),
                 centerTitle: true,
               )

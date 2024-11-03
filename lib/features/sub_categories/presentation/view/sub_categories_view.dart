@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
+import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../data/models/sub_categories_response_model.dart';
 import '../bloc/sub_categories_bloc.dart';
 import '../bloc/sub_categories_state.dart';
@@ -75,6 +77,7 @@ class SubCategoriesView extends StatelessWidget {
                                 return CustomText(
                                   text: 'أضافة فئة فرعية',
                                   fontSize: 30.sp,
+                                  color: AppColors.white,
                                   maxLines: 1,
                                   fontWeight: FontWeight.bold,
                                 );

@@ -8,11 +8,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/custom_dropdown_button.dart';
 import '../../../../core/global/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../categories/data/models/categories_response_model.dart';
 import '../../../stores/data/models/stores_response_model.dart';
 import '../../../sub_categories/data/models/sub_categories_response_model.dart';
@@ -222,6 +224,7 @@ class _AddOfferViewState extends State<AddOfferView> {
                           text: 'أضافة',
                           fontSize: 30.sp,
                           maxLines: 1,
+                          color: AppColors.white,
                           fontWeight: FontWeight.bold,
                         );
                       },

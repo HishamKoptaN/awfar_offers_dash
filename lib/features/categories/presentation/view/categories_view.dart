@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
+import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../data/models/categories_response_model.dart';
@@ -67,19 +68,7 @@ class CategoriesView extends StatelessWidget {
                         ),
                         DataColumn(
                           label: CustomTextButton(
-                            widget: state.maybeWhen(
-                              loading: () {
-                                return CustomCircularProgress();
-                              },
-                              orElse: () {
-                                return CustomText(
-                                  text: 'أضافة فئة',
-                                  fontSize: 30.sp,
-                                  maxLines: 1,
-                                  fontWeight: FontWeight.bold,
-                                );
-                              },
-                            ),
+                            text: 'أضافة فئة',
                             onPressed: () {
                               customNavigation(
                                 context: context,
@@ -89,7 +78,7 @@ class CategoriesView extends StatelessWidget {
                           ),
                         ),
                       ],
-                      rows: categories!.map(
+                      rows: categories.map(
                         (category) {
                           return DataRow(
                             cells: [
