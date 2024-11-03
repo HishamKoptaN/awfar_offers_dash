@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +9,13 @@ import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/global/custom_circular_progress.dart';
+import '../../../../core/global/custom_dropdown_button.dart';
 import '../../../../core/global/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../../../core/global/gobal_widgets/snack_bar.dart';
-import '../../../../core/utils/app_colors.dart';
 import '../../../categories/data/models/categories_response_model.dart';
 import '../../../stores/data/models/stores_response_model.dart';
+import '../../../sub_categories/data/models/sub_categories_response_model.dart';
 import '../../data/models/add_offer_request_body_model.dart';
 import '../bloc/offers_event.dart';
 import '../bloc/offers_state.dart';
@@ -32,24 +32,21 @@ class AddOfferView extends StatefulWidget {
 
 class _AddOfferViewState extends State<AddOfferView> {
   Store? selectedStore;
-  File file = File("");
-
   Category? selectedCategory;
+  SubCategory? selectedSubCategory;
+
+  final stores = StoresResponseModel().stores ?? [];
+  final categories = CategoriesResponseModel().categories ?? [];
+  // final subCategories = SubCategoriesResponseModel().subCategories ?? [];
+  final subCategories = SubCategoriesResponseModel().subCategories ?? [];
   AddOfferRequestBodyModel addOfferRequestBodyModel =
       AddOfferRequestBodyModel();
-  final categories = CategoriesResponseModel().categories ?? [];
-  final stores = StoresResponseModel().stores ?? [];
+  File file = File("");
   @override
   Widget build(context) {
     return MainLayout(
       showAppBar: true,
       route: 'أضافة عرض',
-      // onPressed: () {
-      //   customNavigation(
-      //     context: context,
-      //     path: '/',
-      //   );
-      // },
       body: BlocProvider(
         create: (_) => OffersBloc(
           getIt(),
@@ -92,89 +89,71 @@ class _AddOfferViewState extends State<AddOfferView> {
                   Gap(
                     10.h,
                   ),
-                  Container(
+                  CustomDropdownContainer<Store>(
                     height: 75.h,
                     width: 450.w,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: DropdownButton<Store>(
-                        isExpanded: true,
-                        value: selectedStore,
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              selectedStore = value;
-                              addOfferRequestBodyModel.storeId =
-                                  value!.id!.toString();
-                            },
-                          );
+                    items: stores,
+                    selectedItem: selectedStore,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          selectedStore = value;
+                          addOfferRequestBodyModel.storeId =
+                              value!.id!.toString();
                         },
-                        dropdownColor: Colors.white,
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        items: stores.map(
-                          (store) {
-                            return DropdownMenuItem<Store>(
-                              value: store,
-                              child: Center(
-                                child: CustomText(
-                                  text: store.name!,
-                                  fontSize: 20.sp, color: Colors.black,
-                                  //         ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).toList(),
-                      ),
-                    ),
+                      );
+                    },
+                    itemLabel: (item) => item.name!,
+                    fontSize: 20.sp,
+                    hint: 'أختر المتجر صاحب العرض',
                   ),
                   Gap(
                     10.h,
                   ),
-                  Container(
+                  CustomDropdownContainer<Category>(
                     height: 75.h,
                     width: 450.w,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: DropdownButton<Category>(
-                      isExpanded: true,
-                      value: selectedCategory,
+                    items: categories,
+                    selectedItem: selectedCategory,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          selectedCategory = value;
+                          selectedSubCategory = null;
+                        },
+                      );
+                    },
+                    itemLabel: (item) => item.name!,
+                    fontSize: 20.sp,
+                    hint: 'أختر الفئة',
+                  ),
+                  Gap(
+                    10.h,
+                  ),
+                  if (selectedCategory != null)
+                    CustomDropdownContainer<SubCategory>(
+                      height: 75.h,
+                      width: 450.w,
+                      items: subCategories
+                          .where(
+                            (subcategory) =>
+                                subcategory.categoryId == selectedCategory?.id,
+                          )
+                          .toList(),
+                      selectedItem: selectedSubCategory,
                       onChanged: (value) {
                         setState(
                           () {
-                            selectedCategory = value;
-                            addOfferRequestBodyModel.categoryId =
-                                value!.id!.toString();
+                            selectedSubCategory = value;
+                            addOfferRequestBodyModel.subCategoryId =
+                                selectedCategory?.id?.toString();
                           },
                         );
                       },
-                      dropdownColor: Colors.white,
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
-                      items: categories.map(
-                        (category) {
-                          return DropdownMenuItem<Category>(
-                            value: category,
-                            child: Center(
-                              child: CustomText(
-                                text: category.name!,
-                                fontSize: 20.sp,
-                                color: Colors.black,
-                              ),
-                            ),
-                          );
-                        },
-                      ).toList(),
+                      itemLabel: (item) => item.name!,
+                      fontSize: 20.sp,
+                      hint: 'أختر فئة الفرعية',
                     ),
-                  ),
                   Gap(
                     10.h,
                   ),
@@ -259,7 +238,7 @@ class _AddOfferViewState extends State<AddOfferView> {
                                 addOfferRequestBodyModel.storeId ?? '',
                               ) ??
                               0,
-                          'category_id': addOfferRequestBodyModel.categoryId,
+                          'category_id': addOfferRequestBodyModel.subCategoryId,
                           'description': "description",
                         },
                       );

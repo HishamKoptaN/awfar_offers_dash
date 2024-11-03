@@ -4,46 +4,65 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_colors.dart';
 import 'gobal_widgets/global_widgets.dart';
 
-class CustomDropdownButton extends StatefulWidget {
-  CustomDropdownButton({
+class CustomDropdownContainer<T> extends StatelessWidget {
+  CustomDropdownContainer({
     super.key,
+    required this.height,
+    required this.width,
+    required this.hint,
     required this.items,
-    required this.selectedValue,
-    this.hintText = 'أختر',
-    this.labelText = 'الحاله',
+    required this.selectedItem,
     required this.onChanged,
-    this.widget,
+    required this.itemLabel,
+    this.fontSize = 20,
   });
-
-  final List<DropdownMenuItem<dynamic>>? items;
-  final ValueChanged<dynamic>? onChanged;
-  dynamic selectedValue;
-  final Widget? widget;
-  final String hintText;
-  final String labelText;
+  final double height;
+  final double width;
+  final String hint;
+  final List<T> items;
+  final T? selectedItem;
+  final ValueChanged<T?> onChanged;
+  final String Function(T) itemLabel;
+  final double fontSize;
   @override
-  State<CustomDropdownButton> createState() => _CustomDropdownButtonState();
-}
-
-class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
-      width: 450.w,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: DropdownButton<dynamic>(
+      child: DropdownButton<T>(
         isExpanded: true,
-        value: widget.selectedValue,
-        hint: CustomText(
-          text: widget.hintText,
-          fontSize: 20.sp,
+        value: selectedItem,
+        onChanged: onChanged,
+        dropdownColor: AppColors.primaryColor,
+        hint: Align(
+          alignment: Alignment.center,
+          child: Text(
+            hint,
+            style: const TextStyle(color: Colors.grey),
+          ),
         ),
-        onChanged: widget.onChanged,
-        items: widget.items,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: fontSize.sp,
+        ),
+        items: items.map(
+          (item) {
+            return DropdownMenuItem<T>(
+              value: item,
+              child: Center(
+                child: CustomText(
+                  text: itemLabel(item),
+                  fontSize: fontSize,
+                  color: Colors.white,
+                ),
+              ),
+            );
+          },
+        ).toList(),
       ),
     );
   }

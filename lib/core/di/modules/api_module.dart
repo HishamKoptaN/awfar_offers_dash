@@ -5,6 +5,7 @@ import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/main/data/datasources/main_api.dart';
 import '../../../features/offres/data/data_sources/offers_api.dart';
 import '../../../features/stores/data/data_sources/stores_api.dart';
+import '../../../features/sub_categories/data/data_sources/sub_categories_api.dart';
 import '../../networking/dio_factory.dart';
 import '../dependency_injection.dart';
 
@@ -38,6 +39,11 @@ class ApiModule extends DIModule {
       )
       ..registerLazySingleton<CategoriesApi>(
         () => CategoriesApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<SubCategoriesApi>(
+        () => SubCategoriesApi(
           getIt(),
         ),
       )

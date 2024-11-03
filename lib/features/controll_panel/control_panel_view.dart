@@ -7,6 +7,7 @@ import '../countries/presentation/view/countries_view.dart';
 import '../governorates/presentation/pages/governorates_view.dart';
 import '../offres/presentation/screens/offers_view.dart';
 import '../stores/presentation/screens/stores_view.dart';
+import '../sub_categories/presentation/view/sub_categories_view.dart';
 
 class ControlPanel extends StatefulWidget {
   const ControlPanel({
@@ -17,25 +18,29 @@ class ControlPanel extends StatefulWidget {
 }
 
 class _ControlPanelState extends State<ControlPanel> {
-  int selectedIndex = 0;
+  int? selectedIndex;
   // قائمة الصفحات
   List<Widget> pages = [
-    CountriesView(),
-    const GovernoratesView(),
-    const StoresView(),
-    const CategoriesView(),
     const OffersView(),
+    const SubCategoriesView(),
+    const CategoriesView(),
+    const StoresView(),
+    const GovernoratesView(),
+    const CountriesView(),
   ];
   List<String> titles = [
-    'الدول',
-    'المحافظات',
-    'المتاجر',
-    'الفئات',
     'العروض',
+    'الفئات الفرعية',
+    'الفئات',
+    'المتاجر',
+    'المحافظات',
+    'الدول',
   ];
   @override
   void initState() {
     super.initState();
+    selectedIndex = 0;
+    setState(() {});
   }
 
   @override
@@ -44,7 +49,7 @@ class _ControlPanelState extends State<ControlPanel> {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         title: CustomText(
-          text: titles[selectedIndex],
+          text: titles[selectedIndex ?? 0],
           fontSize: 30.sp,
           fontWeight: FontWeight.bold,
           color: AppColors.darkPrimaryColor,
@@ -68,9 +73,9 @@ class _ControlPanelState extends State<ControlPanel> {
                 ),
               ),
               ListTile(
-                leading: const Icon(Icons.public),
+                leading: const Icon(Icons.local_offer),
                 title: CustomText(
-                  text: 'الدول',
+                  text: 'عروض',
                   fontSize: 27.5.sp,
                   color: AppColors.darkPrimaryColor,
                 ),
@@ -82,29 +87,15 @@ class _ControlPanelState extends State<ControlPanel> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.location_city),
+                leading: const Icon(Icons.local_offer),
                 title: CustomText(
-                  text: 'المحافظات',
+                  text: 'الفئات الفرعية',
                   fontSize: 27.5.sp,
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
                   setState(() {
                     selectedIndex = 1; // تحديث الفهرس
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.shopping_cart_outlined),
-                title: CustomText(
-                  text: 'متاجر',
-                  fontSize: 27.5.sp,
-                  color: AppColors.darkPrimaryColor,
-                ),
-                onTap: () {
-                  setState(() {
-                    selectedIndex = 2; // تحديث الفهرس
                   });
                   Navigator.pop(context);
                 },
@@ -118,15 +109,29 @@ class _ControlPanelState extends State<ControlPanel> {
                 ),
                 onTap: () {
                   setState(() {
+                    selectedIndex = 2;
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.shopping_cart_outlined),
+                title: CustomText(
+                  text: 'متاجر',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(() {
                     selectedIndex = 3; // تحديث الفهرس
                   });
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.local_offer),
+                leading: const Icon(Icons.location_city),
                 title: CustomText(
-                  text: 'عروض',
+                  text: 'المحافظات',
                   fontSize: 27.5.sp,
                   color: AppColors.darkPrimaryColor,
                 ),
@@ -137,11 +142,25 @@ class _ControlPanelState extends State<ControlPanel> {
                   Navigator.pop(context);
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'الدول',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 5; // تحديث الفهرس
+                  });
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),
       ),
-      body: pages[selectedIndex], // عرض الصفحة المناسبة
+      body: pages[selectedIndex ?? 0], // عرض الصفحة المناسبة
     );
   }
 }

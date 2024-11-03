@@ -10,6 +10,8 @@ import '../../../features/offres/data/repo_impl/offres_repo_impl.dart';
 import '../../../features/offres/domain/repo/offres_repo.dart';
 import '../../../features/stores/data/repo_impl/stores_repo_impl.dart';
 import '../../../features/stores/domain/repo/stores_repo.dart';
+import '../../../features/sub_categories/data/repo_impl/sub_categories_repo_impl.dart';
+import '../../../features/sub_categories/domain/repo/sub_categories_repo.dart';
 import '../dependency_injection.dart';
 
 class RepositoryModule extends DIModule {
@@ -38,6 +40,11 @@ class RepositoryModule extends DIModule {
       )
       ..registerLazySingleton<CategoriesRepo>(
         () => CategoriesRepoImpl(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<SubCategoriesRepo>(
+        () => SubCategoriesRepoImpl(
           getIt(),
         ),
       )

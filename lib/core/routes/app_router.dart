@@ -10,6 +10,8 @@ import '../../features/offres/presentation/screens/add_offer_view.dart';
 import '../../features/offres/presentation/screens/offers_view.dart';
 import '../../features/stores/presentation/screens/add_store_view.dart';
 import '../../features/stores/presentation/screens/stores_view.dart';
+import '../../features/sub_categories/presentation/view/add_sub_category_view.dart';
+import '../../features/sub_categories/presentation/view/sub_categories_view.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -22,9 +24,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/CountriesView',
       builder: (context, state) {
-        return CountriesView();
+        return const CountriesView();
       },
     ),
+
     GoRoute(
       path: '/AddCountryView',
       builder: (context, state) {
@@ -59,13 +62,25 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/CategoriesView',
       builder: (context, state) {
-        return CategoriesView();
+        return const CategoriesView();
       },
     ),
     GoRoute(
       path: '/AddCategoryView',
       builder: (context, state) {
         return const AddCategoryView();
+      },
+    ),
+    GoRoute(
+      path: '/SubCategoriesView',
+      builder: (context, state) {
+        return const SubCategoriesView();
+      },
+    ),
+    GoRoute(
+      path: '/AddSubCategoryView',
+      builder: (context, state) {
+        return const AddSubCategoryView();
       },
     ),
     GoRoute(

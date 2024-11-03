@@ -4,6 +4,7 @@ import '../../../features/governorates/presentation/bloc/governorates_bloc.dart'
 import '../../../features/main/presentation/bloc/main_bloc.dart';
 import '../../../features/offres/presentation/bloc/offres_bloc.dart';
 import '../../../features/stores/presentation/bloc/stores_bloc.dart';
+import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../dependency_injection.dart';
 
 class BlocModule extends DIModule {
@@ -37,6 +38,12 @@ class BlocModule extends DIModule {
       )
       ..registerLazySingleton<CategoriesBloc>(
         () => CategoriesBloc(
+          getIt(),
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<SubCategoriesBloc>(
+        () => SubCategoriesBloc(
           getIt(),
           getIt(),
         ),

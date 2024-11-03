@@ -19,11 +19,13 @@ class OffersBloc extends Bloc<OffersEvent, OffersState> {
       (event, emit) async {
         await event.when(
           getOffersEvent: () async {
+            emit(
+              const OffersState.loading(),
+            );
             final result = await getOffersUseCase.getOffers();
             await result.when(
               success: (offers) async {
                 var offersResponseModel = OffersResponseModel();
-
                 await offersResponseModel.loadOffers(
                   offers: offers,
                 );

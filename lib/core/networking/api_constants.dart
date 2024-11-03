@@ -7,6 +7,7 @@ class ApiConstants {
   static const String governorates = "governorates";
   static const String stores = "stores";
   static const String categories = "categories";
+  static const String subCategories = "sub-categories";
   static const String offers = "offers";
 }
 

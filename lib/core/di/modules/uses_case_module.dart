@@ -11,6 +11,8 @@ import '../../../features/offres/domain/use_cases/add_offer_use_case.dart';
 import '../../../features/offres/domain/use_cases/get_offres_use_case.dart';
 import '../../../features/stores/domain/use_cases/add_store_use_case.dart';
 import '../../../features/stores/domain/use_cases/get_stores_use_case.dart';
+import '../../../features/sub_categories/domain/use_cases/add_sub_category_use_case.dart';
+import '../../../features/sub_categories/domain/use_cases/get_sub_categories_use_case.dart';
 import '../dependency_injection.dart';
 
 class UseCaseModule extends DIModule {
@@ -69,6 +71,16 @@ class UseCaseModule extends DIModule {
       )
       ..registerLazySingleton<AddCategoryUseCase>(
         () => AddCategoryUseCase(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<GetSubCategoriesUseCase>(
+        () => GetSubCategoriesUseCase(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<AddSubCategoryUseCase>(
+        () => AddSubCategoryUseCase(
           getIt(),
         ),
       )

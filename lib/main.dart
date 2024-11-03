@@ -13,10 +13,12 @@ import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/countries/presentation/bloc/countries_event.dart';
 import 'features/governorates/presentation/bloc/governorates_bloc.dart';
 import 'features/governorates/presentation/bloc/governorates_event.dart';
-import 'features/offres/presentation/bloc/offers_event.dart';
+import 'features/offres/data/models/offers_response_model.dart';
 import 'features/offres/presentation/bloc/offres_bloc.dart';
 import 'features/stores/presentation/bloc/stores_bloc.dart';
 import 'features/stores/presentation/bloc/stores_event.dart';
+import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
+import 'features/sub_categories/presentation/bloc/sub_categories_event.dart';
 
 void main() async {
   try {
@@ -63,6 +65,12 @@ void main() async {
           getIt(),
         ),
       ),
+      BlocProvider(
+        create: (context) => SubCategoriesBloc(
+          getIt(),
+          getIt(),
+        ),
+      ),
     ], child: const MyApp()),
     // DevicePreview(
     //   enabled: !kReleaseMode,
@@ -79,11 +87,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool error = false;
-  @override
-  void initState() {
-    super.initState();
-    newMethod();
-  }
 
   Future<Null> newMethod() async {
     await Future.microtask(
@@ -100,11 +103,19 @@ class _MyAppState extends State<MyApp> {
         context.read<CategoriesBloc>().add(
               const CategoriesEvent.getCategoriesEvent(),
             );
-        context.read<OffersBloc>().add(
-              const OffersEvent.getOffersEvent(),
+        context.read<SubCategoriesBloc>().add(
+              const SubCategoriesEvent.getSubCategoriesEvent(),
             );
       },
     );
+  }
+
+  final offers = OffersResponseModel().offers ?? [];
+
+  @override
+  void initState() {
+    super.initState();
+    newMethod();
   }
 
   @override
@@ -141,22 +152,6 @@ class _MyAppState extends State<MyApp> {
             fontFamily: "Arial",
             useMaterial3: true,
           ),
-          builder: (context, widget) {
-            FlutterError.onError = (details) async {
-              FlutterError.presentError(
-                details,
-              );
-              WidgetsBinding.instance.addPostFrameCallback(
-                (_) {
-                  setState(
-                    () => error = true,
-                  );
-                },
-              );
-            };
-            if (widget != null) return widget;
-            throw StateError('widget is null');
-          },
           routerConfig: router,
         ),
       ),
