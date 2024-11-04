@@ -75,121 +75,123 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
           },
           builder: (context, state) {
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomTextFormField(
-                    hintText: 'اسم الفئة الفرعية',
-                    textInputType: TextInputType.text,
-                    onChanged: (value) {
-                      addSubCategoryRequestBodyModel.name = value;
-                    },
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomDropdownContainer<Category>(
-                    height: 75.h,
-                    width: 450.w,
-                    items: categories,
-                    selectedItem: selectedCategory,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          selectedCategory = value;
-                          addSubCategoryRequestBodyModel.categoryId =
-                              value!.id!;
-                        },
-                      );
-                    },
-                    itemLabel: (item) => item.name!,
-                    fontSize: 20.sp,
-                    hint: 'أختر فئة الفرعية',
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  SizedBox(
-                    height: 200.h,
-                    width: 450.w,
-                    child: InkWell(
-                      onTap: () async {
-                        FilePickerResult? result =
-                            await FilePicker.platform.pickFiles();
-                        if (result != null) {
-                          File file = File(
-                            result.files.single.path!,
-                          );
-                          await addSubCategoryRequestBodyModel.setImageFile(
-                            file,
-                          );
-                          setState(
-                            () {
-                              this.file = file;
-                            },
-                          );
-                        }
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomTextFormField(
+                      hintText: 'اسم الفئة الفرعية',
+                      textInputType: TextInputType.text,
+                      onChanged: (value) {
+                        addSubCategoryRequestBodyModel.name = value;
                       },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 100.h,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        child: file.path.isEmpty
-                            ? const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.cloudArrowUp,
-                                  ),
-                                  Text(
-                                    "أضف صورة للعرض",
-                                  ),
-                                  Gap(20),
-                                ],
-                              )
-                            : Image.file(
-                                file,
-                              ),
-                      ),
                     ),
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomTextButton(
-                    widget: state.maybeWhen(
-                      loading: () {
-                        return CustomCircularProgress();
-                      },
-                      orElse: () {
-                        return CustomText(
-                          text: 'أضافة',
-                          fontSize: 30.sp,
-                          color: Colors.white,
-                          maxLines: 1,
-                          fontWeight: FontWeight.bold,
+                    Gap(
+                      10.h,
+                    ),
+                    CustomDropdownContainer<Category>(
+                      height: 75.h,
+                      width: 450.w,
+                      items: categories,
+                      selectedItem: selectedCategory,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            selectedCategory = value;
+                            addSubCategoryRequestBodyModel.categoryId =
+                                value!.id!;
+                          },
                         );
                       },
+                      itemLabel: (item) => item.name!,
+                      fontSize: 20.sp,
+                      hint: 'أختر فئة الفرعية',
                     ),
-                    onPressed: () async {
-                      context.read<SubCategoriesBloc>().add(
-                            SubCategoriesEvent.addSubCategoryEvent(
-                              addCategoryRequestBodyModel:
-                                  addSubCategoryRequestBodyModel,
+                    Gap(
+                      10.h,
+                    ),
+                    SizedBox(
+                      height: 200.h,
+                      width: 450.w,
+                      child: InkWell(
+                        onTap: () async {
+                          FilePickerResult? result =
+                              await FilePicker.platform.pickFiles();
+                          if (result != null) {
+                            File file = File(
+                              result.files.single.path!,
+                            );
+                            await addSubCategoryRequestBodyModel.setImageFile(
+                              file,
+                            );
+                            setState(
+                              () {
+                                this.file = file;
+                              },
+                            );
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 100.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1,
                             ),
+                          ),
+                          child: file.path.isEmpty
+                              ? const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.cloudArrowUp,
+                                    ),
+                                    Text(
+                                      "أضف صورة للعرض",
+                                    ),
+                                    Gap(20),
+                                  ],
+                                )
+                              : Image.file(
+                                  file,
+                                ),
+                        ),
+                      ),
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomTextButton(
+                      widget: state.maybeWhen(
+                        loading: () {
+                          return CustomCircularProgress();
+                        },
+                        orElse: () {
+                          return CustomText(
+                            text: 'أضافة',
+                            fontSize: 30.sp,
+                            color: Colors.white,
+                            maxLines: 1,
+                            fontWeight: FontWeight.bold,
                           );
-                    },
-                  ),
-                ],
+                        },
+                      ),
+                      onPressed: () async {
+                        context.read<SubCategoriesBloc>().add(
+                              SubCategoriesEvent.addSubCategoryEvent(
+                                addCategoryRequestBodyModel:
+                                    addSubCategoryRequestBodyModel,
+                              ),
+                            );
+                      },
+                    ),
+                  ],
+                ),
               ),
             );
           },

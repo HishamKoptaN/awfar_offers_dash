@@ -82,209 +82,212 @@ class _AddStoreViewState extends State<AddStoreView> {
             return state.maybeWhen(
               orElse: () {
                 return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomTextFormField(
-                        hintText: 'اسم العلامه التجارية',
-                        textInputType: TextInputType.text,
-                        onChanged: (value) {
-                          addStoreRequestBodyModel.name = value!;
-                        },
-                      ),
-                      Gap(
-                        10.h,
-                      ),
-                      CustomTextFormField(
-                        hintText: 'العنوان',
-                        textInputType: TextInputType.text,
-                        onChanged: (value) {
-                          addStoreRequestBodyModel.place = value!;
-                        },
-                      ),
-                      Gap(
-                        10.h,
-                      ),
-                      Container(
-                        height: 75.h,
-                        width: 450.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: DropdownButton<Country>(
-                          isExpanded: true,
-                          value: selectedCountry,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomTextFormField(
+                          hintText: 'اسم العلامه التجارية',
+                          textInputType: TextInputType.text,
                           onChanged: (value) {
-                            setState(
-                              () {
-                                selectedCountry = value;
-                                addStoreRequestBodyModel.countryId =
-                                    value!.id!.toString();
-                              },
-                            );
+                            addStoreRequestBodyModel.name = value!;
                           },
-                          items: countries!.map(
-                            (country) {
-                              return DropdownMenuItem<Country>(
-                                value: country,
-                                child: Center(
-                                  child: Flag.fromString(
-                                    country.code!,
-                                    height: 50.h,
-                                    width: 100.w,
-                                    fit: BoxFit.fill,
-                                    replacement: Flag.fromString(
+                        ),
+                        Gap(
+                          10.h,
+                        ),
+                        CustomTextFormField(
+                          hintText: 'العنوان',
+                          textInputType: TextInputType.text,
+                          onChanged: (value) {
+                            addStoreRequestBodyModel.place = value!;
+                          },
+                        ),
+                        Gap(
+                          10.h,
+                        ),
+                        Container(
+                          height: 75.h,
+                          width: 450.w,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: DropdownButton<Country>(
+                            isExpanded: true,
+                            value: selectedCountry,
+                            onChanged: (value) {
+                              setState(
+                                () {
+                                  selectedCountry = value;
+                                  addStoreRequestBodyModel.countryId =
+                                      value!.id!.toString();
+                                },
+                              );
+                            },
+                            items: countries!.map(
+                              (country) {
+                                return DropdownMenuItem<Country>(
+                                  value: country,
+                                  child: Center(
+                                    child: Flag.fromString(
                                       country.code!,
                                       height: 50.h,
                                       width: 100.w,
                                       fit: BoxFit.fill,
-                                      replacement: CustomText(
-                                        text: country.code ?? 'أختر الدوله',
-                                        fontSize: 20.sp,
-                                        color: Colors.black,
+                                      replacement: Flag.fromString(
+                                        country.code!,
+                                        height: 50.h,
+                                        width: 100.w,
+                                        fit: BoxFit.fill,
+                                        replacement: CustomText(
+                                          text: country.code ?? 'أختر الدوله',
+                                          fontSize: 20.sp,
+                                          color: Colors.black,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ),
-                      Gap(
-                        10.h,
-                      ),
-                      Container(
-                        height: 75.h,
-                        width: 450.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: DropdownButton<Governorate>(
-                          isExpanded: true,
-                          value: selectedGovernorate,
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                selectedGovernorate = value;
-                                addStoreRequestBodyModel.governorateId =
-                                    value!.id!.toString();
+                                );
                               },
-                            );
-                          },
-                          dropdownColor: Colors.white,
-                          style: const TextStyle(
-                            color: Colors.black,
+                            ).toList(),
                           ),
-                          items: governorates!.map(
-                            (governorate) {
-                              return DropdownMenuItem<Governorate>(
-                                value: governorate,
-                                child: Center(
-                                  child: CustomText(
-                                    text: governorate.name!,
-                                    fontSize: 20.sp,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              );
-                            },
-                          ).toList(),
                         ),
-                      ),
-                      Gap(10.h),
-                      SizedBox(
-                        height: 200.h,
-                        width: 450.w,
-                        child: InkWell(
-                          onTap: () async {
-                            FilePickerResult? result =
-                                await FilePicker.platform.pickFiles();
-                            if (result != null) {
-                              File file = File(result.files.single.path!);
-                              await addStoreRequestBodyModel.setImageFile(
-                                file,
-                              );
+                        Gap(
+                          10.h,
+                        ),
+                        Container(
+                          height: 75.h,
+                          width: 450.w,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: DropdownButton<Governorate>(
+                            isExpanded: true,
+                            value: selectedGovernorate,
+                            onChanged: (value) {
                               setState(
                                 () {
-                                  this.file = file;
+                                  selectedGovernorate = value;
+                                  addStoreRequestBodyModel.governorateId =
+                                      value!.id!.toString();
                                 },
                               );
-                            }
-                          },
-                          child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 100.h,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade100,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 1,
-                                ),
-                              ),
-                              child: file.path.isEmpty
-                                  ? const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        FaIcon(
-                                          FontAwesomeIcons.cloudArrowUp,
-                                        ),
-                                        Text(
-                                          "أضف صورة المتجر",
-                                        ),
-                                        Gap(20),
-                                      ],
-                                    )
-                                  : Image.file(
-                                      file,
-                                    )),
-                        ),
-                      ),
-                      Gap(10.h),
-                      CustomTextButton(
-                        widget: state.maybeWhen(
-                          loading: () {
-                            return CustomCircularProgress();
-                          },
-                          orElse: () {
-                            return CustomText(
-                              text: 'أضافة',
-                              fontSize: 30.sp,
-                              maxLines: 1,
-                              fontWeight: FontWeight.bold,
-                            );
-                          },
-                        ),
-                        onPressed: () async {
-                          FormData formData = FormData.fromMap({
-                            'name': addStoreRequestBodyModel.name,
-                            'country_id': int.tryParse(
-                                  addStoreRequestBodyModel.countryId ?? '',
-                                ) ??
-                                0,
-                            'governorate_id': int.tryParse(
-                                  addStoreRequestBodyModel.governorateId ?? '',
-                                ) ??
-                                0,
-                            'place': addStoreRequestBodyModel.place,
-                            'image': await MultipartFile.fromFile(
-                              file.path,
-                              filename: file.path.split('/').last,
+                            },
+                            dropdownColor: Colors.white,
+                            style: const TextStyle(
+                              color: Colors.black,
                             ),
-                          });
-                          context.read<StoresBloc>().add(
-                                StoresEvent.addEvent(
-                                  formData: formData,
+                            items: governorates!.map(
+                              (governorate) {
+                                return DropdownMenuItem<Governorate>(
+                                  value: governorate,
+                                  child: Center(
+                                    child: CustomText(
+                                      text: governorate.name!,
+                                      fontSize: 20.sp,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ),
+                        Gap(10.h),
+                        SizedBox(
+                          height: 200.h,
+                          width: 450.w,
+                          child: InkWell(
+                            onTap: () async {
+                              FilePickerResult? result =
+                                  await FilePicker.platform.pickFiles();
+                              if (result != null) {
+                                File file = File(result.files.single.path!);
+                                await addStoreRequestBodyModel.setImageFile(
+                                  file,
+                                );
+                                setState(
+                                  () {
+                                    this.file = file;
+                                  },
+                                );
+                              }
+                            },
+                            child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 100.h,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 1,
+                                  ),
                                 ),
+                                child: file.path.isEmpty
+                                    ? const Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          FaIcon(
+                                            FontAwesomeIcons.cloudArrowUp,
+                                          ),
+                                          Text(
+                                            "أضف صورة المتجر",
+                                          ),
+                                          Gap(20),
+                                        ],
+                                      )
+                                    : Image.file(
+                                        file,
+                                      )),
+                          ),
+                        ),
+                        Gap(10.h),
+                        CustomTextButton(
+                          widget: state.maybeWhen(
+                            loading: () {
+                              return CustomCircularProgress();
+                            },
+                            orElse: () {
+                              return CustomText(
+                                text: 'أضافة',
+                                fontSize: 30.sp,
+                                maxLines: 1,
+                                fontWeight: FontWeight.bold,
                               );
-                        },
-                      ),
-                    ],
+                            },
+                          ),
+                          onPressed: () async {
+                            FormData formData = FormData.fromMap({
+                              'name': addStoreRequestBodyModel.name,
+                              'country_id': int.tryParse(
+                                    addStoreRequestBodyModel.countryId ?? '',
+                                  ) ??
+                                  0,
+                              'governorate_id': int.tryParse(
+                                    addStoreRequestBodyModel.governorateId ??
+                                        '',
+                                  ) ??
+                                  0,
+                              'place': addStoreRequestBodyModel.place,
+                              'image': await MultipartFile.fromFile(
+                                file.path,
+                                filename: file.path.split('/').last,
+                              ),
+                            });
+                            context.read<StoresBloc>().add(
+                                  StoresEvent.addEvent(
+                                    formData: formData,
+                                  ),
+                                );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

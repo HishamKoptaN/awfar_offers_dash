@@ -77,182 +77,185 @@ class _AddOfferViewState extends State<AddOfferView> {
           },
           builder: (context, state) {
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomTextFormField(
-                    hintText: 'اسم العرض',
-                    textInputType: TextInputType.text,
-                    onChanged: (value) {
-                      addOfferRequestBodyModel.name = value;
-                    },
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomDropdownContainer<Store>(
-                    height: 75.h,
-                    width: 450.w,
-                    items: stores,
-                    selectedItem: selectedStore,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          selectedStore = value;
-                          addOfferRequestBodyModel.storeId =
-                              value!.id!.toString();
-                        },
-                      );
-                    },
-                    itemLabel: (item) => item.name!,
-                    fontSize: 20.sp,
-                    hint: 'أختر المتجر صاحب العرض',
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomDropdownContainer<Category>(
-                    height: 75.h,
-                    width: 450.w,
-                    items: categories,
-                    selectedItem: selectedCategory,
-                    onChanged: (value) {
-                      setState(
-                        () {
-                          selectedCategory = value;
-                          selectedSubCategory = null;
-                        },
-                      );
-                    },
-                    itemLabel: (item) => item.name!,
-                    fontSize: 20.sp,
-                    hint: 'أختر الفئة',
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  if (selectedCategory != null)
-                    CustomDropdownContainer<SubCategory>(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomTextFormField(
+                      hintText: 'اسم العرض',
+                      textInputType: TextInputType.text,
+                      onChanged: (value) {
+                        addOfferRequestBodyModel.name = value;
+                      },
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomDropdownContainer<Store>(
                       height: 75.h,
                       width: 450.w,
-                      items: subCategories
-                          .where(
-                            (subcategory) =>
-                                subcategory.categoryId == selectedCategory?.id,
-                          )
-                          .toList(),
-                      selectedItem: selectedSubCategory,
+                      items: stores,
+                      selectedItem: selectedStore,
                       onChanged: (value) {
                         setState(
                           () {
-                            selectedSubCategory = value;
-                            addOfferRequestBodyModel.subCategoryId =
-                                selectedCategory?.id?.toString();
+                            selectedStore = value;
+                            addOfferRequestBodyModel.storeId =
+                                value!.id!.toString();
                           },
                         );
                       },
                       itemLabel: (item) => item.name!,
                       fontSize: 20.sp,
-                      hint: 'أختر فئة الفرعية',
+                      hint: 'أختر المتجر صاحب العرض',
                     ),
-                  Gap(
-                    10.h,
-                  ),
-                  SizedBox(
-                    height: 200.h,
-                    width: 450.w,
-                    child: InkWell(
-                      onTap: () async {
-                        FilePickerResult? result =
-                            await FilePicker.platform.pickFiles();
-                        if (result != null) {
-                          File file = File(
-                            result.files.single.path!,
-                          );
-                          await addOfferRequestBodyModel.setImageFile(
-                            file,
-                          );
-                          setState(
-                            () {
-                              this.file = file;
-                            },
-                          );
-                        }
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 100.h,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                        ),
-                        child: file.path.isEmpty
-                            ? const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.cloudArrowUp,
-                                  ),
-                                  Text(
-                                    "أضف صورة للعرض",
-                                  ),
-                                  Gap(20),
-                                ],
-                              )
-                            : Image.file(
-                                file,
-                              ),
-                      ),
+                    Gap(
+                      10.h,
                     ),
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomTextButton(
-                    widget: state.maybeWhen(
-                      loading: () {
-                        return CustomCircularProgress();
-                      },
-                      orElse: () {
-                        return CustomText(
-                          text: 'أضافة',
-                          fontSize: 30.sp,
-                          maxLines: 1,
-                          color: AppColors.white,
-                          fontWeight: FontWeight.bold,
+                    CustomDropdownContainer<Category>(
+                      height: 75.h,
+                      width: 450.w,
+                      items: categories,
+                      selectedItem: selectedCategory,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            selectedCategory = value;
+                            selectedSubCategory = null;
+                          },
                         );
                       },
+                      itemLabel: (item) => item.name!,
+                      fontSize: 20.sp,
+                      hint: 'أختر الفئة',
                     ),
-                    onPressed: () async {
-                      FormData formData = FormData.fromMap(
-                        {
-                          'name': addOfferRequestBodyModel.name,
-                          'image': await MultipartFile.fromFile(
-                            file.path,
-                            filename: file.path.split('/').last,
-                          ),
-                          'store_id': int.tryParse(
-                                addOfferRequestBodyModel.storeId ?? '',
-                              ) ??
-                              0,
-                          'category_id': addOfferRequestBodyModel.subCategoryId,
-                          'description': "description",
-                        },
-                      );
-                      context.read<OffersBloc>().add(
-                            OffersEvent.addOfferEvent(
-                              formData: formData,
-                            ),
+                    Gap(
+                      10.h,
+                    ),
+                    if (selectedCategory != null)
+                      CustomDropdownContainer<SubCategory>(
+                        height: 75.h,
+                        width: 450.w,
+                        items: subCategories
+                            .where(
+                              (subcategory) =>
+                                  subcategory.categoryId ==
+                                  selectedCategory?.id,
+                            )
+                            .toList(),
+                        selectedItem: selectedSubCategory,
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              selectedSubCategory = value;
+                              addOfferRequestBodyModel.subCategoryId =
+                                  selectedCategory?.id?.toString();
+                            },
                           );
-                    },
-                  ),
-                ],
+                        },
+                        itemLabel: (item) => item.name!,
+                        fontSize: 20.sp,
+                        hint: 'أختر فئة الفرعية',
+                      ),
+                    Gap(
+                      10.h,
+                    ),
+                    SizedBox(
+                      height: 200.h,
+                      width: 450.w,
+                      child: InkWell(
+                        onTap: () async {
+                          FilePickerResult? result =
+                              await FilePicker.platform.pickFiles();
+                          if (result != null) {
+                            File file = File(
+                              result.files.single.path!,
+                            );
+                            await addOfferRequestBodyModel.setImageFile(
+                              file,
+                            );
+                            this.file = file;
+                            setState(
+                              () {},
+                            );
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 100.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1,
+                            ),
+                          ),
+                          child: file.path.isEmpty
+                              ? const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.cloudArrowUp,
+                                    ),
+                                    Text(
+                                      "أضف صورة للعرض",
+                                    ),
+                                    Gap(20),
+                                  ],
+                                )
+                              : Image.file(
+                                  file,
+                                ),
+                        ),
+                      ),
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomTextButton(
+                      widget: state.maybeWhen(
+                        loading: () {
+                          return CustomCircularProgress();
+                        },
+                        orElse: () {
+                          return CustomText(
+                            text: 'أضافة',
+                            fontSize: 30.sp,
+                            maxLines: 1,
+                            color: AppColors.white,
+                            fontWeight: FontWeight.bold,
+                          );
+                        },
+                      ),
+                      onPressed: () async {
+                        FormData formData = FormData.fromMap(
+                          {
+                            'name': addOfferRequestBodyModel.name,
+                            'image': await MultipartFile.fromFile(
+                              file.path,
+                              filename: file.path.split('/').last,
+                            ),
+                            'store_id': int.tryParse(
+                                  addOfferRequestBodyModel.storeId ?? '',
+                                ) ??
+                                0,
+                            'category_id':
+                                addOfferRequestBodyModel.subCategoryId,
+                            'description': "description",
+                          },
+                        );
+                        context.read<OffersBloc>().add(
+                              OffersEvent.addOfferEvent(
+                                formData: formData,
+                              ),
+                            );
+                      },
+                    ),
+                  ],
+                ),
               ),
             );
           },

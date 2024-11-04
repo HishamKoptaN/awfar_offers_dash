@@ -68,92 +68,94 @@ class _AddGovernorateViewState extends State<AddGovernorateView> {
           },
           builder: (context, state) {
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomTextFormField(
-                    hintText: 'اسم المحافظه',
-                    textInputType: TextInputType.text,
-                    onChanged: (value) {
-                      addGovernorateRequestModel.name = value;
-                    },
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  Container(
-                    height: 75.h,
-                    width: 450.w,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: DropdownButton<Country>(
-                      isExpanded: true,
-                      value: selectedCountry,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomTextFormField(
+                      hintText: 'اسم المحافظه',
+                      textInputType: TextInputType.text,
                       onChanged: (value) {
-                        setState(
-                          () {
-                            selectedCountry = value;
-                            addGovernorateRequestModel.countryId = value!.id!;
-                          },
-                        );
+                        addGovernorateRequestModel.name = value;
                       },
-                      items: countries!.map(
-                        (country) {
-                          return DropdownMenuItem<Country>(
-                            value: country,
-                            child: Center(
-                              child: Flag.fromString(
-                                country.code!,
-                                height: 50.h,
-                                width: 100.w,
-                                fit: BoxFit.fill,
-                                replacement: Flag.fromString(
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    Container(
+                      height: 75.h,
+                      width: 450.w,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: DropdownButton<Country>(
+                        isExpanded: true,
+                        value: selectedCountry,
+                        onChanged: (value) {
+                          setState(
+                            () {
+                              selectedCountry = value;
+                              addGovernorateRequestModel.countryId = value!.id!;
+                            },
+                          );
+                        },
+                        items: countries!.map(
+                          (country) {
+                            return DropdownMenuItem<Country>(
+                              value: country,
+                              child: Center(
+                                child: Flag.fromString(
                                   country.code!,
                                   height: 50.h,
                                   width: 100.w,
                                   fit: BoxFit.fill,
-                                  replacement: Text(
-                                    country.code ?? 'أختر الدوله',
+                                  replacement: Flag.fromString(
+                                    country.code!,
+                                    height: 50.h,
+                                    width: 100.w,
+                                    fit: BoxFit.fill,
+                                    replacement: Text(
+                                      country.code ?? 'أختر الدوله',
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomTextButton(
+                      widget: state.maybeWhen(
+                        loading: () {
+                          return CustomCircularProgress();
+                        },
+                        orElse: () {
+                          return CustomText(
+                            text: "اضافة",
+                            fontSize: 30.sp,
+                            color: AppColors.white,
+                            maxLines: 1,
+                            fontWeight: FontWeight.bold,
                           );
                         },
-                      ).toList(),
-                    ),
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomTextButton(
-                    widget: state.maybeWhen(
-                      loading: () {
-                        return CustomCircularProgress();
-                      },
-                      orElse: () {
-                        return CustomText(
-                          text: "اضافة",
-                          fontSize: 30.sp,
-                          color: AppColors.white,
-                          maxLines: 1,
-                          fontWeight: FontWeight.bold,
-                        );
+                      ),
+                      onPressed: () async {
+                        context.read<GovernoratesBloc>().add(
+                              GovernoratesEvent.addGovernorate(
+                                addGovernorateRequestModel:
+                                    addGovernorateRequestModel,
+                              ),
+                            );
                       },
                     ),
-                    onPressed: () async {
-                      context.read<GovernoratesBloc>().add(
-                            GovernoratesEvent.addGovernorate(
-                              addGovernorateRequestModel:
-                                  addGovernorateRequestModel,
-                            ),
-                          );
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },

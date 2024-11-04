@@ -65,45 +65,47 @@ class _AddCategoryViewState extends State<AddCategoryView> {
           },
           builder: (context, state) {
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomTextFormField(
-                    hintText: 'اسم الفئة',
-                    textInputType: TextInputType.text,
-                    onChanged: (value) {
-                      addCategoryRequestBodyModel.name = value;
-                    },
-                  ),
-                  Gap(
-                    10.h,
-                  ),
-                  CustomTextButton(
-                    widget: state.maybeWhen(
-                      loading: () {
-                        return CustomCircularProgress();
-                      },
-                      orElse: () {
-                        return CustomText(
-                          text: 'أضافة',
-                          fontSize: 30.sp,
-                          maxLines: 1,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        );
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomTextFormField(
+                      hintText: 'اسم الفئة',
+                      textInputType: TextInputType.text,
+                      onChanged: (value) {
+                        addCategoryRequestBodyModel.name = value;
                       },
                     ),
-                    onPressed: () async {
-                      context.read<CategoriesBloc>().add(
-                            CategoriesEvent.addCategoryEvent(
-                              addCategoryRequestBodyModel:
-                                  addCategoryRequestBodyModel,
-                            ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomTextButton(
+                      widget: state.maybeWhen(
+                        loading: () {
+                          return CustomCircularProgress();
+                        },
+                        orElse: () {
+                          return CustomText(
+                            text: 'أضافة',
+                            fontSize: 30.sp,
+                            maxLines: 1,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           );
-                    },
-                  ),
-                ],
+                        },
+                      ),
+                      onPressed: () async {
+                        context.read<CategoriesBloc>().add(
+                              CategoriesEvent.addCategoryEvent(
+                                addCategoryRequestBodyModel:
+                                    addCategoryRequestBodyModel,
+                              ),
+                            );
+                      },
+                    ),
+                  ],
+                ),
               ),
             );
           },
