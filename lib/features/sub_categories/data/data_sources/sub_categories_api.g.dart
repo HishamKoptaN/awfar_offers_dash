@@ -60,13 +60,11 @@ class _SubCategoriesApi implements SubCategoriesApi {
 
   @override
   Future<List<SubCategory>?> addSubSubCategory(
-      {required AddSubCategoryRequestBodyModel
-          addSubCategoryRequestBodyModel}) async {
+      {required FormData formData}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(addSubCategoryRequestBodyModel.toJson());
+    final _data = formData;
     final _options = _setStreamType<List<SubCategory>>(Options(
       method: 'POST',
       headers: _headers,

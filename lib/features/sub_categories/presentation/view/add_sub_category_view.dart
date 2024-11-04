@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,8 @@ class AddSubCategoryView extends StatefulWidget {
   State<AddSubCategoryView> createState() => _AddSubCategoryViewState();
 }
 
+Uint8List? imageBytes;
+
 Country? selectedCountry;
 AddSubCategoryRequestBodyModel addSubCategoryRequestBodyModel =
     AddSubCategoryRequestBodyModel();
@@ -37,7 +41,6 @@ AddSubCategoryRequestBodyModel addSubCategoryRequestBodyModel =
 class _AddSubCategoryViewState extends State<AddSubCategoryView> {
   Category? selectedCategory;
   final categories = CategoriesResponseModel().categories ?? [];
-  File file = File("");
 
   @override
   Widget build(context) {
@@ -74,8 +77,9 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
             );
           },
           builder: (context, state) {
-            return Center(
-              child: SingleChildScrollView(
+            return SingleChildScrollView(
+              child: Container(
+                width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,17 +123,10 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                           FilePickerResult? result =
                               await FilePicker.platform.pickFiles();
                           if (result != null) {
-                            File file = File(
-                              result.files.single.path!,
-                            );
-                            await addSubCategoryRequestBodyModel.setImageFile(
-                              file,
-                            );
-                            setState(
-                              () {
-                                this.file = file;
-                              },
-                            );
+                            final file = result.files.single;
+                            setState(() {
+                              imageBytes = file.bytes;
+                            });
                           }
                         },
                         child: Container(
@@ -144,7 +141,7 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                               width: 1,
                             ),
                           ),
-                          child: file.path.isEmpty
+                          child: imageBytes == null
                               ? const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -157,8 +154,8 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                                     Gap(20),
                                   ],
                                 )
-                              : Image.file(
-                                  file,
+                              : Image.memory(
+                                  imageBytes!,
                                 ),
                         ),
                       ),
@@ -182,12 +179,30 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                         },
                       ),
                       onPressed: () async {
-                        context.read<SubCategoriesBloc>().add(
-                              SubCategoriesEvent.addSubCategoryEvent(
-                                addCategoryRequestBodyModel:
-                                    addSubCategoryRequestBodyModel,
+                        if (imageBytes != null &&
+                            addSubCategoryRequestBodyModel.categoryId != null) {
+                          FormData formData = FormData.fromMap(
+                            {
+                              'name': addSubCategoryRequestBodyModel.name,
+                              'image': MultipartFile.fromBytes(
+                                imageBytes!,
+                                filename: 'sub_category.jpg',
                               ),
-                            );
+                              'category_id':
+                                  addSubCategoryRequestBodyModel.categoryId,
+                            },
+                          );
+
+                          // إرسال الطلب
+                          context.read<SubCategoriesBloc>().add(
+                                SubCategoriesEvent.addSubCategoryEvent(
+                                  formData: formData,
+                                ),
+                              );
+                        } else {
+                          // التعامل مع الحالة عندما تكون الصورة أو معرف الفئة الفرعية غير محدد
+                          print('Image or sub_category_id is null');
+                        }
                       },
                     ),
                   ],

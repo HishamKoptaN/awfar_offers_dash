@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../data/models/add_store_request_body_model.dart';
 part 'stores_event.freezed.dart';
 
 @freezed

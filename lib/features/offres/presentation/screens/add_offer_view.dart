@@ -4,7 +4,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
@@ -22,6 +21,7 @@ import '../../data/models/add_offer_request_body_model.dart';
 import '../bloc/offers_event.dart';
 import '../bloc/offers_state.dart';
 import '../bloc/offres_bloc.dart';
+import 'dart:typed_data';
 
 class AddOfferView extends StatefulWidget {
   const AddOfferView({
@@ -36,14 +36,13 @@ class _AddOfferViewState extends State<AddOfferView> {
   Store? selectedStore;
   Category? selectedCategory;
   SubCategory? selectedSubCategory;
-
+  Uint8List? imageBytes;
   final stores = StoresResponseModel().stores ?? [];
   final categories = CategoriesResponseModel().categories ?? [];
   // final subCategories = SubCategoriesResponseModel().subCategories ?? [];
   final subCategories = SubCategoriesResponseModel().subCategories ?? [];
   AddOfferRequestBodyModel addOfferRequestBodyModel =
       AddOfferRequestBodyModel();
-  File file = File("");
   @override
   Widget build(context) {
     return MainLayout(
@@ -76,8 +75,9 @@ class _AddOfferViewState extends State<AddOfferView> {
             );
           },
           builder: (context, state) {
-            return Center(
-              child: SingleChildScrollView(
+            return SingleChildScrollView(
+              child: SizedBox(
+                width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,28 +162,22 @@ class _AddOfferViewState extends State<AddOfferView> {
                       10.h,
                     ),
                     SizedBox(
-                      height: 200.h,
-                      width: 450.w,
+                      height: 200,
+                      width: 450,
                       child: InkWell(
                         onTap: () async {
                           FilePickerResult? result =
                               await FilePicker.platform.pickFiles();
                           if (result != null) {
-                            File file = File(
-                              result.files.single.path!,
-                            );
-                            await addOfferRequestBodyModel.setImageFile(
-                              file,
-                            );
-                            this.file = file;
-                            setState(
-                              () {},
-                            );
+                            final file = result.files.single;
+                            setState(() {
+                              imageBytes = file.bytes;
+                            });
                           }
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 100.h,
+                          height: 100,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -193,21 +187,17 @@ class _AddOfferViewState extends State<AddOfferView> {
                               width: 1,
                             ),
                           ),
-                          child: file.path.isEmpty
+                          child: imageBytes == null
                               ? const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    FaIcon(
-                                      FontAwesomeIcons.cloudArrowUp,
-                                    ),
-                                    Text(
-                                      "أضف صورة للعرض",
-                                    ),
-                                    Gap(20),
+                                    Icon(Icons.cloud_upload),
+                                    Text("أضف صورة للعرض"),
+                                    SizedBox(height: 20),
                                   ],
                                 )
-                              : Image.file(
-                                  file,
+                              : Image.memory(
+                                  imageBytes!,
                                 ),
                         ),
                       ),
@@ -231,28 +221,37 @@ class _AddOfferViewState extends State<AddOfferView> {
                         },
                       ),
                       onPressed: () async {
-                        FormData formData = FormData.fromMap(
-                          {
+                        if (imageBytes != null &&
+                            addOfferRequestBodyModel.subCategoryId != null) {
+                          FormData formData = FormData.fromMap({
                             'name': addOfferRequestBodyModel.name,
-                            'image': await MultipartFile.fromFile(
-                              file.path,
-                              filename: file.path.split('/').last,
+                            'image': MultipartFile.fromBytes(
+                              imageBytes!,
+                              filename: 'offer_image.jpg',
                             ),
                             'store_id': int.tryParse(
                                   addOfferRequestBodyModel.storeId ?? '',
                                 ) ??
                                 0,
-                            'category_id':
+                            'sub_category_id':
                                 addOfferRequestBodyModel.subCategoryId,
                             'description': "description",
-                          },
-                        );
-                        context.read<OffersBloc>().add(
-                              OffersEvent.addOfferEvent(
-                                formData: formData,
-                              ),
-                            );
+                          });
+
+                          // إرسال الطلب
+                          context.read<OffersBloc>().add(
+                                OffersEvent.addOfferEvent(
+                                  formData: formData,
+                                ),
+                              );
+                        } else {
+                          // التعامل مع الحالة عندما تكون الصورة أو معرف الفئة الفرعية غير محدد
+                          print('Image or sub_category_id is null');
+                        }
                       },
+                    ),
+                    Gap(
+                      10.h,
                     ),
                   ],
                 ),

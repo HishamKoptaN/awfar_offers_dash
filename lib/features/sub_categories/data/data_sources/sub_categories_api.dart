@@ -22,8 +22,7 @@ abstract class SubCategoriesApi {
     ApiConstants.subCategories,
   )
   Future<List<SubCategory>?> addSubSubCategory({
-    @Body()
-    required AddSubCategoryRequestBodyModel addSubCategoryRequestBodyModel,
+    @Body() required FormData formData,
   });
   //! DELETE Country
   @DELETE(

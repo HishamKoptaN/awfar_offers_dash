@@ -19,25 +19,19 @@ mixin _$SubCategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getSubCategoriesEvent,
-    required TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addSubCategoryEvent,
+    required TResult Function(FormData formData) addSubCategoryEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getSubCategoriesEvent,
-    TResult? Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult? Function(FormData formData)? addSubCategoryEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getSubCategoriesEvent,
-    TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult Function(FormData formData)? addSubCategoryEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,9 +119,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getSubCategoriesEvent,
-    required TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addSubCategoryEvent,
+    required TResult Function(FormData formData) addSubCategoryEvent,
   }) {
     return getSubCategoriesEvent();
   }
@@ -136,9 +128,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getSubCategoriesEvent,
-    TResult? Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult? Function(FormData formData)? addSubCategoryEvent,
   }) {
     return getSubCategoriesEvent?.call();
   }
@@ -147,9 +137,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getSubCategoriesEvent,
-    TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult Function(FormData formData)? addSubCategoryEvent,
     required TResult orElse(),
   }) {
     if (getSubCategoriesEvent != null) {
@@ -200,7 +188,7 @@ abstract class _$$AddCategoryEventImplCopyWith<$Res> {
           $Res Function(_$AddCategoryEventImpl) then) =
       __$$AddCategoryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AddSubCategoryRequestBodyModel addCategoryRequestBodyModel});
+  $Res call({FormData formData});
 }
 
 /// @nodoc
@@ -216,13 +204,13 @@ class __$$AddCategoryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addCategoryRequestBodyModel = null,
+    Object? formData = null,
   }) {
     return _then(_$AddCategoryEventImpl(
-      addCategoryRequestBodyModel: null == addCategoryRequestBodyModel
-          ? _value.addCategoryRequestBodyModel
-          : addCategoryRequestBodyModel // ignore: cast_nullable_to_non_nullable
-              as AddSubCategoryRequestBodyModel,
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as FormData,
     ));
   }
 }
@@ -230,14 +218,14 @@ class __$$AddCategoryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddCategoryEventImpl implements _AddCategoryEvent {
-  const _$AddCategoryEventImpl({required this.addCategoryRequestBodyModel});
+  const _$AddCategoryEventImpl({required this.formData});
 
   @override
-  final AddSubCategoryRequestBodyModel addCategoryRequestBodyModel;
+  final FormData formData;
 
   @override
   String toString() {
-    return 'SubCategoriesEvent.addSubCategoryEvent(addCategoryRequestBodyModel: $addCategoryRequestBodyModel)';
+    return 'SubCategoriesEvent.addSubCategoryEvent(formData: $formData)';
   }
 
   @override
@@ -245,14 +233,12 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddCategoryEventImpl &&
-            (identical(other.addCategoryRequestBodyModel,
-                    addCategoryRequestBodyModel) ||
-                other.addCategoryRequestBodyModel ==
-                    addCategoryRequestBodyModel));
+            (identical(other.formData, formData) ||
+                other.formData == formData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addCategoryRequestBodyModel);
+  int get hashCode => Object.hash(runtimeType, formData);
 
   /// Create a copy of SubCategoriesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -267,35 +253,29 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getSubCategoriesEvent,
-    required TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addSubCategoryEvent,
+    required TResult Function(FormData formData) addSubCategoryEvent,
   }) {
-    return addSubCategoryEvent(addCategoryRequestBodyModel);
+    return addSubCategoryEvent(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getSubCategoriesEvent,
-    TResult? Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult? Function(FormData formData)? addSubCategoryEvent,
   }) {
-    return addSubCategoryEvent?.call(addCategoryRequestBodyModel);
+    return addSubCategoryEvent?.call(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getSubCategoriesEvent,
-    TResult Function(
-            AddSubCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addSubCategoryEvent,
+    TResult Function(FormData formData)? addSubCategoryEvent,
     required TResult orElse(),
   }) {
     if (addSubCategoryEvent != null) {
-      return addSubCategoryEvent(addCategoryRequestBodyModel);
+      return addSubCategoryEvent(formData);
     }
     return orElse();
   }
@@ -333,11 +313,10 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
 }
 
 abstract class _AddCategoryEvent implements SubCategoriesEvent {
-  const factory _AddCategoryEvent(
-      {required final AddSubCategoryRequestBodyModel
-          addCategoryRequestBodyModel}) = _$AddCategoryEventImpl;
+  const factory _AddCategoryEvent({required final FormData formData}) =
+      _$AddCategoryEventImpl;
 
-  AddSubCategoryRequestBodyModel get addCategoryRequestBodyModel;
+  FormData get formData;
 
   /// Create a copy of SubCategoriesEvent
   /// with the given fields replaced by the non-null parameter values.

@@ -38,12 +38,12 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
               );
             },
           );
-        }, addSubCategoryEvent: (addSubCategoryRequestBodyModel) async {
+        }, addSubCategoryEvent: (formData) async {
           emit(
             const SubCategoriesState.loading(),
           );
           final result = await addSubCategoryUseCase.addSubCategory(
-            addCategoryRequestBodyModel: addSubCategoryRequestBodyModel,
+            formData: formData,
           );
           await result.when(
             success: (

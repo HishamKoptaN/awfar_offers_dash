@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +32,13 @@ class AddStoreView extends StatefulWidget {
 }
 
 class _AddStoreViewState extends State<AddStoreView> {
-  File file = File("");
   Country? selectedCountry;
   Governorate? selectedGovernorate;
   AddStoreRequestBodyModel addStoreRequestBodyModel =
       AddStoreRequestBodyModel();
   final countries = CountriesResponseModel().countries;
   final governorates = GovernoratesResponseModel().governorates;
+  Uint8List? imageBytes;
 
   @override
   Widget build(context) {
@@ -204,46 +203,42 @@ class _AddStoreViewState extends State<AddStoreView> {
                               FilePickerResult? result =
                                   await FilePicker.platform.pickFiles();
                               if (result != null) {
-                                File file = File(result.files.single.path!);
-                                await addStoreRequestBodyModel.setImageFile(
-                                  file,
-                                );
-                                setState(
-                                  () {
-                                    this.file = file;
-                                  },
-                                );
+                                final file = result.files.single;
+                                setState(() {
+                                  imageBytes = file.bytes;
+                                });
                               }
                             },
                             child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 100.h,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade100,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 1,
-                                  ),
+                              width: MediaQuery.of(context).size.width,
+                              height: 100.h,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 1,
                                 ),
-                                child: file.path.isEmpty
-                                    ? const Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          FaIcon(
-                                            FontAwesomeIcons.cloudArrowUp,
-                                          ),
-                                          Text(
-                                            "أضف صورة المتجر",
-                                          ),
-                                          Gap(20),
-                                        ],
-                                      )
-                                    : Image.file(
-                                        file,
-                                      )),
+                              ),
+                              child: imageBytes == null
+                                  ? const Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        FaIcon(
+                                          FontAwesomeIcons.cloudArrowUp,
+                                        ),
+                                        Text(
+                                          "أضف صورة المتجر",
+                                        ),
+                                        Gap(20),
+                                      ],
+                                    )
+                                  : Image.memory(
+                                      imageBytes!,
+                                    ),
+                            ),
                           ),
                         ),
                         Gap(10.h),
@@ -257,28 +252,31 @@ class _AddStoreViewState extends State<AddStoreView> {
                                 text: 'أضافة',
                                 fontSize: 30.sp,
                                 maxLines: 1,
+                                color: AppColors.white,
                                 fontWeight: FontWeight.bold,
                               );
                             },
                           ),
                           onPressed: () async {
-                            FormData formData = FormData.fromMap({
-                              'name': addStoreRequestBodyModel.name,
-                              'country_id': int.tryParse(
-                                    addStoreRequestBodyModel.countryId ?? '',
-                                  ) ??
-                                  0,
-                              'governorate_id': int.tryParse(
-                                    addStoreRequestBodyModel.governorateId ??
-                                        '',
-                                  ) ??
-                                  0,
-                              'place': addStoreRequestBodyModel.place,
-                              'image': await MultipartFile.fromFile(
-                                file.path,
-                                filename: file.path.split('/').last,
-                              ),
-                            });
+                            FormData formData = FormData.fromMap(
+                              {
+                                'name': addStoreRequestBodyModel.name,
+                                'country_id': int.tryParse(
+                                      addStoreRequestBodyModel.countryId ?? '',
+                                    ) ??
+                                    0,
+                                'governorate_id': int.tryParse(
+                                      addStoreRequestBodyModel.governorateId ??
+                                          '',
+                                    ) ??
+                                    0,
+                                'place': addStoreRequestBodyModel.place,
+                                'image': MultipartFile.fromBytes(
+                                  imageBytes!,
+                                  filename: 'offer_image.jpg',
+                                ),
+                              },
+                            );
                             context.read<StoresBloc>().add(
                                   StoresEvent.addEvent(
                                     formData: formData,

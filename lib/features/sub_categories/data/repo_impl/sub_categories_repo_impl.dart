@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/sub_categories_repo.dart';
@@ -28,11 +30,11 @@ class SubCategoriesRepoImpl implements SubCategoriesRepo {
 
   @override
   Future<ApiResult<List<SubCategory>?>> addSubCategory({
-    required AddSubCategoryRequestBodyModel addSubCategoryRequestBodyModel,
+    required FormData formData,
   }) async {
     try {
       final response = await subCategoriesApi.addSubSubCategory(
-        addSubCategoryRequestBodyModel: addSubCategoryRequestBodyModel,
+        formData: formData,
       );
       return ApiResult.success(
         data: response!,
