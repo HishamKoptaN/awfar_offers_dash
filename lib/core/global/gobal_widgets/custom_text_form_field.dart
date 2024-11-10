@@ -1,3 +1,4 @@
+import 'package:awfar_offers_dash/core/global/gobal_widgets/global_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,7 +8,9 @@ import '../../utils/app_text_styles.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.hintText,
+    this.hintText = "",
+    this.initialValue = "",
+    this.label = "",
     required this.textInputType,
     this.suffixIcon,
     this.onSaved,
@@ -23,7 +26,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final TextEditingController? controller;
   final ValueChanged<String?>? onChanged;
-
+  final String? initialValue;
+  final String label;
   @override
   Widget build(context) {
     return SizedBox(
@@ -32,10 +36,11 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         onChanged: onChanged,
-        style: const TextStyle(
-          color: Colors.white, // تغيير لون الخط هنا
-          fontSize: 16.0, // حجم الخط
-          fontWeight: FontWeight.normal, // وزن الخط
+        initialValue: initialValue,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 12.sp,
+          fontWeight: FontWeight.normal,
         ),
         obscureText: obscureText,
         onSaved: onSaved,
@@ -47,6 +52,11 @@ class CustomTextFormField extends StatelessWidget {
         },
         keyboardType: textInputType,
         decoration: InputDecoration(
+          label: CustomText(
+            text: label,
+            fontSize: 20.sp,
+            color: Colors.white70,
+          ),
           filled: true,
           fillColor: AppColors.primaryColor,
           suffixIcon: suffixIcon,

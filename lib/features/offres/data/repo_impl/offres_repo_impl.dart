@@ -12,7 +12,7 @@ class OffersRepoImpl implements OffersRepo {
     this.offersApi,
   );
   @override
-  Future<ApiResult<List<Offer>?>> getOffers() async {
+  Future<ApiResult<List<Offer>?>> get() async {
     try {
       final response = await offersApi.getOffers();
       return ApiResult.success(
@@ -28,7 +28,7 @@ class OffersRepoImpl implements OffersRepo {
   }
 
   @override
-  Future<ApiResult<List<Offer>?>> addOffer({
+  Future<ApiResult<Offer>> add({
     required FormData formData,
   }) async {
     try {
@@ -36,7 +36,69 @@ class OffersRepoImpl implements OffersRepo {
         formData: formData,
       );
       return ApiResult.success(
-        data: response!,
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<Offer>> edit({
+    required Offer offer,
+  }) async {
+    try {
+      await offersApi.edit(
+        offer: offer,
+      );
+      return ApiResult.success(
+        data: offer,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<Offer>> editImage({
+    required int id,
+    required FormData formData,
+  }) async {
+    try {
+      final offer = await offersApi.editImage(
+        id: id,
+        formData: formData,
+      );
+      return ApiResult.success(
+        data: offer,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> delete({
+    required int id,
+  }) async {
+    try {
+      await offersApi.delete(
+        id: id,
+      );
+      return const ApiResult.success(
+        data: null,
       );
     } catch (error) {
       return ApiResult.failure(

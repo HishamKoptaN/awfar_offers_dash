@@ -7,8 +7,37 @@ class CountriesResponseModel {
   factory CountriesResponseModel() => _instance;
   CountriesResponseModel._();
   List<Country>? countries;
-  Future<void> loadCountries({required List<Country>? countries}) async {
+  Future<void> load({
+    required List<Country>? countries,
+  }) async {
     _instance.countries = countries;
+  }
+
+  Future<void> add({
+    required Country country,
+  }) async {
+    _instance.countries!.add(
+      country,
+    );
+  }
+
+  Future<void> replace({
+    required Country country,
+  }) async {
+    final index = _instance.countries!.indexWhere((c) => c.id == country.id);
+    if (index != -1) {
+      _instance.countries![index] = country;
+    } else {
+      throw Exception('Country with id ${country.id} not found');
+    }
+  }
+
+  void delete({
+    required int id,
+  }) {
+    _instance.countries!.removeWhere(
+      (item) => item.id == id,
+    );
   }
 }
 

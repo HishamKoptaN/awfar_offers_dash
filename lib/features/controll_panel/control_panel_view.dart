@@ -8,6 +8,7 @@ import '../governorates/presentation/pages/governorates_view.dart';
 import '../offres/presentation/screens/offers_view.dart';
 import '../stores/presentation/screens/stores_view.dart';
 import '../sub_categories/presentation/view/sub_categories_view.dart';
+import '../coupons/presentation/view/coupons_view.dart';
 
 class ControlPanel extends StatefulWidget {
   const ControlPanel({
@@ -27,6 +28,7 @@ class _ControlPanelState extends State<ControlPanel> {
     const StoresView(),
     const GovernoratesView(),
     const CountriesView(),
+    const CouponsView(),
   ];
   List<String> titles = [
     'العروض',
@@ -35,11 +37,12 @@ class _ControlPanelState extends State<ControlPanel> {
     'المتاجر',
     'المحافظات',
     'الدول',
+    'الكوبونات',
   ];
   @override
   void initState() {
     super.initState();
-    selectedIndex = 0;
+    selectedIndex = 2;
     setState(() {});
   }
 
@@ -152,6 +155,20 @@ class _ControlPanelState extends State<ControlPanel> {
                 onTap: () {
                   setState(() {
                     selectedIndex = 5; // تحديث الفهرس
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'الكوبونات',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 6;
                   });
                   Navigator.pop(context);
                 },

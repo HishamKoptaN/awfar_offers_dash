@@ -60,7 +60,7 @@ class _AddGovernorateViewState extends State<AddGovernorateView> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   snackBar(
                     status: false,
-                    message: error,
+                    message: error.error!,
                   ),
                 );
               },
@@ -147,12 +147,15 @@ class _AddGovernorateViewState extends State<AddGovernorateView> {
                       ),
                       onPressed: () async {
                         context.read<GovernoratesBloc>().add(
-                              GovernoratesEvent.addGovernorate(
+                              GovernoratesEvent.add(
                                 addGovernorateRequestModel:
                                     addGovernorateRequestModel,
                               ),
                             );
                       },
+                    ),
+                    Gap(
+                      50.h,
                     ),
                   ],
                 ),

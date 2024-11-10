@@ -7,10 +7,10 @@ class DeleteCountryUseCase {
   DeleteCountryUseCase(
     this.countreisRepo,
   );
-  Future<ApiResult<List<Country>?>> deleteCountry({
+  Future<ApiResult<void>> delete({
     required int id,
   }) async {
-    return await countreisRepo.deleteCountry(
+    return await countreisRepo.delete(
       id: id,
     );
   }

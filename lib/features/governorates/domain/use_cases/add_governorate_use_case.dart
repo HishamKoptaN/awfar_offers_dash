@@ -8,10 +8,10 @@ class AddGovernorateUseCase {
   AddGovernorateUseCase(
     this.governoratesRepo,
   );
-  Future<ApiResult<List<Governorate>?>> addGovernorate({
+  Future<ApiResult<Governorate>> add({
     required AddGovernorateRequestModel addGovernorateRequestModel,
   }) async {
-    return await governoratesRepo.addGovernorate(
+    return await governoratesRepo.add(
       addGovernorateRequestModel: addGovernorateRequestModel,
     );
   }

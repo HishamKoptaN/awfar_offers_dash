@@ -18,54 +18,59 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CountriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCountries,
-    required TResult Function(AddCountryRequestModel addCountryRequestModel)
-        addCountryEvent,
-    required TResult Function() updateCountries,
-    required TResult Function(int id) deleteCountries,
+    required TResult Function() get,
+    required TResult Function(
+            AddCountryRequestBodyModel addCountryRequestBodyModel)
+        add,
+    required TResult Function(
+            EditCountryRequestBodyModel editCountryRequestBodyModel)
+        edit,
+    required TResult Function(int id) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCountries,
-    TResult? Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult? Function()? updateCountries,
-    TResult? Function(int id)? deleteCountries,
+    TResult? Function()? get,
+    TResult? Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult? Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCountries,
-    TResult Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult Function()? updateCountries,
-    TResult Function(int id)? deleteCountries,
+    TResult Function()? get,
+    TResult Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCountries value) getCountries,
-    required TResult Function(_AddCountryEvent value) addCountryEvent,
-    required TResult Function(_UpdateCountries value) updateCountries,
-    required TResult Function(_DeleteCountries value) deleteCountries,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCountries value)? getCountries,
-    TResult? Function(_AddCountryEvent value)? addCountryEvent,
-    TResult? Function(_UpdateCountries value)? updateCountries,
-    TResult? Function(_DeleteCountries value)? deleteCountries,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCountries value)? getCountries,
-    TResult Function(_AddCountryEvent value)? addCountryEvent,
-    TResult Function(_UpdateCountries value)? updateCountries,
-    TResult Function(_DeleteCountries value)? deleteCountries,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,18 +98,16 @@ class _$CountriesEventCopyWithImpl<$Res, $Val extends CountriesEvent>
 }
 
 /// @nodoc
-abstract class _$$GetCountriesImplCopyWith<$Res> {
-  factory _$$GetCountriesImplCopyWith(
-          _$GetCountriesImpl value, $Res Function(_$GetCountriesImpl) then) =
-      __$$GetCountriesImplCopyWithImpl<$Res>;
+abstract class _$$GetImplCopyWith<$Res> {
+  factory _$$GetImplCopyWith(_$GetImpl value, $Res Function(_$GetImpl) then) =
+      __$$GetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetCountriesImplCopyWithImpl<$Res>
-    extends _$CountriesEventCopyWithImpl<$Res, _$GetCountriesImpl>
-    implements _$$GetCountriesImplCopyWith<$Res> {
-  __$$GetCountriesImplCopyWithImpl(
-      _$GetCountriesImpl _value, $Res Function(_$GetCountriesImpl) _then)
+class __$$GetImplCopyWithImpl<$Res>
+    extends _$CountriesEventCopyWithImpl<$Res, _$GetImpl>
+    implements _$$GetImplCopyWith<$Res> {
+  __$$GetImplCopyWithImpl(_$GetImpl _value, $Res Function(_$GetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CountriesEvent
@@ -113,18 +116,18 @@ class __$$GetCountriesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetCountriesImpl implements _GetCountries {
-  const _$GetCountriesImpl();
+class _$GetImpl implements _Get {
+  const _$GetImpl();
 
   @override
   String toString() {
-    return 'CountriesEvent.getCountries()';
+    return 'CountriesEvent.get()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetCountriesImpl);
+        (other.runtimeType == runtimeType && other is _$GetImpl);
   }
 
   @override
@@ -133,39 +136,44 @@ class _$GetCountriesImpl implements _GetCountries {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCountries,
-    required TResult Function(AddCountryRequestModel addCountryRequestModel)
-        addCountryEvent,
-    required TResult Function() updateCountries,
-    required TResult Function(int id) deleteCountries,
+    required TResult Function() get,
+    required TResult Function(
+            AddCountryRequestBodyModel addCountryRequestBodyModel)
+        add,
+    required TResult Function(
+            EditCountryRequestBodyModel editCountryRequestBodyModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return getCountries();
+    return get();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCountries,
-    TResult? Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult? Function()? updateCountries,
-    TResult? Function(int id)? deleteCountries,
+    TResult? Function()? get,
+    TResult? Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult? Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return getCountries?.call();
+    return get?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCountries,
-    TResult Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult Function()? updateCountries,
-    TResult Function(int id)? deleteCountries,
+    TResult Function()? get,
+    TResult Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (getCountries != null) {
-      return getCountries();
+    if (get != null) {
+      return get();
     }
     return orElse();
   }
@@ -173,62 +181,58 @@ class _$GetCountriesImpl implements _GetCountries {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCountries value) getCountries,
-    required TResult Function(_AddCountryEvent value) addCountryEvent,
-    required TResult Function(_UpdateCountries value) updateCountries,
-    required TResult Function(_DeleteCountries value) deleteCountries,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return getCountries(this);
+    return get(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCountries value)? getCountries,
-    TResult? Function(_AddCountryEvent value)? addCountryEvent,
-    TResult? Function(_UpdateCountries value)? updateCountries,
-    TResult? Function(_DeleteCountries value)? deleteCountries,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return getCountries?.call(this);
+    return get?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCountries value)? getCountries,
-    TResult Function(_AddCountryEvent value)? addCountryEvent,
-    TResult Function(_UpdateCountries value)? updateCountries,
-    TResult Function(_DeleteCountries value)? deleteCountries,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (getCountries != null) {
-      return getCountries(this);
+    if (get != null) {
+      return get(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetCountries implements CountriesEvent {
-  const factory _GetCountries() = _$GetCountriesImpl;
+abstract class _Get implements CountriesEvent {
+  const factory _Get() = _$GetImpl;
 }
 
 /// @nodoc
-abstract class _$$AddCountryEventImplCopyWith<$Res> {
-  factory _$$AddCountryEventImplCopyWith(_$AddCountryEventImpl value,
-          $Res Function(_$AddCountryEventImpl) then) =
-      __$$AddCountryEventImplCopyWithImpl<$Res>;
+abstract class _$$AddImplCopyWith<$Res> {
+  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
+      __$$AddImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AddCountryRequestModel addCountryRequestModel});
-
-  $AddCountryRequestModelCopyWith<$Res> get addCountryRequestModel;
+  $Res call({AddCountryRequestBodyModel addCountryRequestBodyModel});
 }
 
 /// @nodoc
-class __$$AddCountryEventImplCopyWithImpl<$Res>
-    extends _$CountriesEventCopyWithImpl<$Res, _$AddCountryEventImpl>
-    implements _$$AddCountryEventImplCopyWith<$Res> {
-  __$$AddCountryEventImplCopyWithImpl(
-      _$AddCountryEventImpl _value, $Res Function(_$AddCountryEventImpl) _then)
+class __$$AddImplCopyWithImpl<$Res>
+    extends _$CountriesEventCopyWithImpl<$Res, _$AddImpl>
+    implements _$$AddImplCopyWith<$Res> {
+  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CountriesEvent
@@ -236,98 +240,93 @@ class __$$AddCountryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addCountryRequestModel = null,
+    Object? addCountryRequestBodyModel = null,
   }) {
-    return _then(_$AddCountryEventImpl(
-      addCountryRequestModel: null == addCountryRequestModel
-          ? _value.addCountryRequestModel
-          : addCountryRequestModel // ignore: cast_nullable_to_non_nullable
-              as AddCountryRequestModel,
+    return _then(_$AddImpl(
+      addCountryRequestBodyModel: null == addCountryRequestBodyModel
+          ? _value.addCountryRequestBodyModel
+          : addCountryRequestBodyModel // ignore: cast_nullable_to_non_nullable
+              as AddCountryRequestBodyModel,
     ));
-  }
-
-  /// Create a copy of CountriesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AddCountryRequestModelCopyWith<$Res> get addCountryRequestModel {
-    return $AddCountryRequestModelCopyWith<$Res>(_value.addCountryRequestModel,
-        (value) {
-      return _then(_value.copyWith(addCountryRequestModel: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$AddCountryEventImpl implements _AddCountryEvent {
-  const _$AddCountryEventImpl({required this.addCountryRequestModel});
+class _$AddImpl implements _Add {
+  const _$AddImpl({required this.addCountryRequestBodyModel});
 
   @override
-  final AddCountryRequestModel addCountryRequestModel;
+  final AddCountryRequestBodyModel addCountryRequestBodyModel;
 
   @override
   String toString() {
-    return 'CountriesEvent.addCountryEvent(addCountryRequestModel: $addCountryRequestModel)';
+    return 'CountriesEvent.add(addCountryRequestBodyModel: $addCountryRequestBodyModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddCountryEventImpl &&
-            (identical(other.addCountryRequestModel, addCountryRequestModel) ||
-                other.addCountryRequestModel == addCountryRequestModel));
+            other is _$AddImpl &&
+            (identical(other.addCountryRequestBodyModel,
+                    addCountryRequestBodyModel) ||
+                other.addCountryRequestBodyModel ==
+                    addCountryRequestBodyModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addCountryRequestModel);
+  int get hashCode => Object.hash(runtimeType, addCountryRequestBodyModel);
 
   /// Create a copy of CountriesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddCountryEventImplCopyWith<_$AddCountryEventImpl> get copyWith =>
-      __$$AddCountryEventImplCopyWithImpl<_$AddCountryEventImpl>(
-          this, _$identity);
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCountries,
-    required TResult Function(AddCountryRequestModel addCountryRequestModel)
-        addCountryEvent,
-    required TResult Function() updateCountries,
-    required TResult Function(int id) deleteCountries,
+    required TResult Function() get,
+    required TResult Function(
+            AddCountryRequestBodyModel addCountryRequestBodyModel)
+        add,
+    required TResult Function(
+            EditCountryRequestBodyModel editCountryRequestBodyModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return addCountryEvent(addCountryRequestModel);
+    return add(addCountryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCountries,
-    TResult? Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult? Function()? updateCountries,
-    TResult? Function(int id)? deleteCountries,
+    TResult? Function()? get,
+    TResult? Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult? Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return addCountryEvent?.call(addCountryRequestModel);
+    return add?.call(addCountryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCountries,
-    TResult Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult Function()? updateCountries,
-    TResult Function(int id)? deleteCountries,
+    TResult Function()? get,
+    TResult Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (addCountryEvent != null) {
-      return addCountryEvent(addCountryRequestModel);
+    if (add != null) {
+      return add(addCountryRequestBodyModel);
     }
     return orElse();
   }
@@ -335,129 +334,163 @@ class _$AddCountryEventImpl implements _AddCountryEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCountries value) getCountries,
-    required TResult Function(_AddCountryEvent value) addCountryEvent,
-    required TResult Function(_UpdateCountries value) updateCountries,
-    required TResult Function(_DeleteCountries value) deleteCountries,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return addCountryEvent(this);
+    return add(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCountries value)? getCountries,
-    TResult? Function(_AddCountryEvent value)? addCountryEvent,
-    TResult? Function(_UpdateCountries value)? updateCountries,
-    TResult? Function(_DeleteCountries value)? deleteCountries,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return addCountryEvent?.call(this);
+    return add?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCountries value)? getCountries,
-    TResult Function(_AddCountryEvent value)? addCountryEvent,
-    TResult Function(_UpdateCountries value)? updateCountries,
-    TResult Function(_DeleteCountries value)? deleteCountries,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (addCountryEvent != null) {
-      return addCountryEvent(this);
+    if (add != null) {
+      return add(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddCountryEvent implements CountriesEvent {
-  const factory _AddCountryEvent(
-          {required final AddCountryRequestModel addCountryRequestModel}) =
-      _$AddCountryEventImpl;
+abstract class _Add implements CountriesEvent {
+  const factory _Add(
+      {required final AddCountryRequestBodyModel
+          addCountryRequestBodyModel}) = _$AddImpl;
 
-  AddCountryRequestModel get addCountryRequestModel;
+  AddCountryRequestBodyModel get addCountryRequestBodyModel;
 
   /// Create a copy of CountriesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddCountryEventImplCopyWith<_$AddCountryEventImpl> get copyWith =>
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UpdateCountriesImplCopyWith<$Res> {
-  factory _$$UpdateCountriesImplCopyWith(_$UpdateCountriesImpl value,
-          $Res Function(_$UpdateCountriesImpl) then) =
-      __$$UpdateCountriesImplCopyWithImpl<$Res>;
+abstract class _$$EditImplCopyWith<$Res> {
+  factory _$$EditImplCopyWith(
+          _$EditImpl value, $Res Function(_$EditImpl) then) =
+      __$$EditImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EditCountryRequestBodyModel editCountryRequestBodyModel});
 }
 
 /// @nodoc
-class __$$UpdateCountriesImplCopyWithImpl<$Res>
-    extends _$CountriesEventCopyWithImpl<$Res, _$UpdateCountriesImpl>
-    implements _$$UpdateCountriesImplCopyWith<$Res> {
-  __$$UpdateCountriesImplCopyWithImpl(
-      _$UpdateCountriesImpl _value, $Res Function(_$UpdateCountriesImpl) _then)
+class __$$EditImplCopyWithImpl<$Res>
+    extends _$CountriesEventCopyWithImpl<$Res, _$EditImpl>
+    implements _$$EditImplCopyWith<$Res> {
+  __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CountriesEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? editCountryRequestBodyModel = null,
+  }) {
+    return _then(_$EditImpl(
+      editCountryRequestBodyModel: null == editCountryRequestBodyModel
+          ? _value.editCountryRequestBodyModel
+          : editCountryRequestBodyModel // ignore: cast_nullable_to_non_nullable
+              as EditCountryRequestBodyModel,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$UpdateCountriesImpl implements _UpdateCountries {
-  const _$UpdateCountriesImpl();
+class _$EditImpl implements _Edit {
+  const _$EditImpl({required this.editCountryRequestBodyModel});
+
+  @override
+  final EditCountryRequestBodyModel editCountryRequestBodyModel;
 
   @override
   String toString() {
-    return 'CountriesEvent.updateCountries()';
+    return 'CountriesEvent.edit(editCountryRequestBodyModel: $editCountryRequestBodyModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateCountriesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$EditImpl &&
+            (identical(other.editCountryRequestBodyModel,
+                    editCountryRequestBodyModel) ||
+                other.editCountryRequestBodyModel ==
+                    editCountryRequestBodyModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, editCountryRequestBodyModel);
+
+  /// Create a copy of CountriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      __$$EditImplCopyWithImpl<_$EditImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCountries,
-    required TResult Function(AddCountryRequestModel addCountryRequestModel)
-        addCountryEvent,
-    required TResult Function() updateCountries,
-    required TResult Function(int id) deleteCountries,
+    required TResult Function() get,
+    required TResult Function(
+            AddCountryRequestBodyModel addCountryRequestBodyModel)
+        add,
+    required TResult Function(
+            EditCountryRequestBodyModel editCountryRequestBodyModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return updateCountries();
+    return edit(editCountryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCountries,
-    TResult? Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult? Function()? updateCountries,
-    TResult? Function(int id)? deleteCountries,
+    TResult? Function()? get,
+    TResult? Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult? Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return updateCountries?.call();
+    return edit?.call(editCountryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCountries,
-    TResult Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult Function()? updateCountries,
-    TResult Function(int id)? deleteCountries,
+    TResult Function()? get,
+    TResult Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (updateCountries != null) {
-      return updateCountries();
+    if (edit != null) {
+      return edit(editCountryRequestBodyModel);
     }
     return orElse();
   }
@@ -465,60 +498,70 @@ class _$UpdateCountriesImpl implements _UpdateCountries {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCountries value) getCountries,
-    required TResult Function(_AddCountryEvent value) addCountryEvent,
-    required TResult Function(_UpdateCountries value) updateCountries,
-    required TResult Function(_DeleteCountries value) deleteCountries,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return updateCountries(this);
+    return edit(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCountries value)? getCountries,
-    TResult? Function(_AddCountryEvent value)? addCountryEvent,
-    TResult? Function(_UpdateCountries value)? updateCountries,
-    TResult? Function(_DeleteCountries value)? deleteCountries,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return updateCountries?.call(this);
+    return edit?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCountries value)? getCountries,
-    TResult Function(_AddCountryEvent value)? addCountryEvent,
-    TResult Function(_UpdateCountries value)? updateCountries,
-    TResult Function(_DeleteCountries value)? deleteCountries,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (updateCountries != null) {
-      return updateCountries(this);
+    if (edit != null) {
+      return edit(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateCountries implements CountriesEvent {
-  const factory _UpdateCountries() = _$UpdateCountriesImpl;
+abstract class _Edit implements CountriesEvent {
+  const factory _Edit(
+      {required final EditCountryRequestBodyModel
+          editCountryRequestBodyModel}) = _$EditImpl;
+
+  EditCountryRequestBodyModel get editCountryRequestBodyModel;
+
+  /// Create a copy of CountriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeleteCountriesImplCopyWith<$Res> {
-  factory _$$DeleteCountriesImplCopyWith(_$DeleteCountriesImpl value,
-          $Res Function(_$DeleteCountriesImpl) then) =
-      __$$DeleteCountriesImplCopyWithImpl<$Res>;
+abstract class _$$DeleteImplCopyWith<$Res> {
+  factory _$$DeleteImplCopyWith(
+          _$DeleteImpl value, $Res Function(_$DeleteImpl) then) =
+      __$$DeleteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$DeleteCountriesImplCopyWithImpl<$Res>
-    extends _$CountriesEventCopyWithImpl<$Res, _$DeleteCountriesImpl>
-    implements _$$DeleteCountriesImplCopyWith<$Res> {
-  __$$DeleteCountriesImplCopyWithImpl(
-      _$DeleteCountriesImpl _value, $Res Function(_$DeleteCountriesImpl) _then)
+class __$$DeleteImplCopyWithImpl<$Res>
+    extends _$CountriesEventCopyWithImpl<$Res, _$DeleteImpl>
+    implements _$$DeleteImplCopyWith<$Res> {
+  __$$DeleteImplCopyWithImpl(
+      _$DeleteImpl _value, $Res Function(_$DeleteImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CountriesEvent
@@ -528,7 +571,7 @@ class __$$DeleteCountriesImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$DeleteCountriesImpl(
+    return _then(_$DeleteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -539,22 +582,22 @@ class __$$DeleteCountriesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteCountriesImpl implements _DeleteCountries {
-  const _$DeleteCountriesImpl({required this.id});
+class _$DeleteImpl implements _Delete {
+  const _$DeleteImpl({required this.id});
 
   @override
   final int id;
 
   @override
   String toString() {
-    return 'CountriesEvent.deleteCountries(id: $id)';
+    return 'CountriesEvent.delete(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteCountriesImpl &&
+            other is _$DeleteImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -566,46 +609,50 @@ class _$DeleteCountriesImpl implements _DeleteCountries {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteCountriesImplCopyWith<_$DeleteCountriesImpl> get copyWith =>
-      __$$DeleteCountriesImplCopyWithImpl<_$DeleteCountriesImpl>(
-          this, _$identity);
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      __$$DeleteImplCopyWithImpl<_$DeleteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCountries,
-    required TResult Function(AddCountryRequestModel addCountryRequestModel)
-        addCountryEvent,
-    required TResult Function() updateCountries,
-    required TResult Function(int id) deleteCountries,
+    required TResult Function() get,
+    required TResult Function(
+            AddCountryRequestBodyModel addCountryRequestBodyModel)
+        add,
+    required TResult Function(
+            EditCountryRequestBodyModel editCountryRequestBodyModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return deleteCountries(id);
+    return delete(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCountries,
-    TResult? Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult? Function()? updateCountries,
-    TResult? Function(int id)? deleteCountries,
+    TResult? Function()? get,
+    TResult? Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult? Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return deleteCountries?.call(id);
+    return delete?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCountries,
-    TResult Function(AddCountryRequestModel addCountryRequestModel)?
-        addCountryEvent,
-    TResult Function()? updateCountries,
-    TResult Function(int id)? deleteCountries,
+    TResult Function()? get,
+    TResult Function(AddCountryRequestBodyModel addCountryRequestBodyModel)?
+        add,
+    TResult Function(EditCountryRequestBodyModel editCountryRequestBodyModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (deleteCountries != null) {
-      return deleteCountries(id);
+    if (delete != null) {
+      return delete(id);
     }
     return orElse();
   }
@@ -613,50 +660,49 @@ class _$DeleteCountriesImpl implements _DeleteCountries {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCountries value) getCountries,
-    required TResult Function(_AddCountryEvent value) addCountryEvent,
-    required TResult Function(_UpdateCountries value) updateCountries,
-    required TResult Function(_DeleteCountries value) deleteCountries,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return deleteCountries(this);
+    return delete(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCountries value)? getCountries,
-    TResult? Function(_AddCountryEvent value)? addCountryEvent,
-    TResult? Function(_UpdateCountries value)? updateCountries,
-    TResult? Function(_DeleteCountries value)? deleteCountries,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return deleteCountries?.call(this);
+    return delete?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCountries value)? getCountries,
-    TResult Function(_AddCountryEvent value)? addCountryEvent,
-    TResult Function(_UpdateCountries value)? updateCountries,
-    TResult Function(_DeleteCountries value)? deleteCountries,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (deleteCountries != null) {
-      return deleteCountries(this);
+    if (delete != null) {
+      return delete(this);
     }
     return orElse();
   }
 }
 
-abstract class _DeleteCountries implements CountriesEvent {
-  const factory _DeleteCountries({required final int id}) =
-      _$DeleteCountriesImpl;
+abstract class _Delete implements CountriesEvent {
+  const factory _Delete({required final int id}) = _$DeleteImpl;
 
   int get id;
 
   /// Create a copy of CountriesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteCountriesImplCopyWith<_$DeleteCountriesImpl> get copyWith =>
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

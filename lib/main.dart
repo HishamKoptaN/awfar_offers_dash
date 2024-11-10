@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'core/app_observer.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/routes/app_router.dart';
@@ -11,10 +10,12 @@ import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/countries/presentation/bloc/countries_event.dart';
+import 'features/coupons/presentation/bloc/coupons_event.dart';
 import 'features/governorates/presentation/bloc/governorates_bloc.dart';
 import 'features/governorates/presentation/bloc/governorates_event.dart';
-import 'features/offres/data/models/offers_response_model.dart';
-import 'features/offres/presentation/bloc/offres_bloc.dart';
+import 'features/coupons/presentation/bloc/coupons_bloc.dart';
+import 'features/offres/presentation/bloc/offers_event.dart';
+import 'features/offres/presentation/bloc/offers_bloc.dart';
 import 'features/stores/presentation/bloc/stores_bloc.dart';
 import 'features/stores/presentation/bloc/stores_event.dart';
 import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
@@ -30,11 +31,11 @@ void main() async {
   }
   await Injection.inject();
   Bloc.observer = AppBlocObserver();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(
     MultiBlocProvider(providers: [
       BlocProvider(
         create: (context) => CountriesBloc(
+          getIt(),
           getIt(),
           getIt(),
           getIt(),
@@ -45,10 +46,14 @@ void main() async {
           getIt(),
           getIt(),
           getIt(),
+          getIt(),
         ),
       ),
       BlocProvider(
         create: (context) => StoresBloc(
+          getIt(),
+          getIt(),
+          getIt(),
           getIt(),
           getIt(),
         ),
@@ -57,16 +62,32 @@ void main() async {
         create: (context) => CategoriesBloc(
           getIt(),
           getIt(),
+          getIt(),
+          getIt(),
         ),
       ),
       BlocProvider(
         create: (context) => OffersBloc(
           getIt(),
           getIt(),
+          getIt(),
+          getIt(),
+          getIt(),
         ),
       ),
       BlocProvider(
         create: (context) => SubCategoriesBloc(
+          getIt(),
+          getIt(),
+          getIt(),
+          getIt(),
+          getIt(),
+        ),
+      ),
+      BlocProvider(
+        create: (context) => CouponsBloc(
+          getIt(),
+          getIt(),
           getIt(),
           getIt(),
         ),
@@ -92,25 +113,30 @@ class _MyAppState extends State<MyApp> {
     await Future.microtask(
       () {
         context.read<CountriesBloc>().add(
-              const CountriesEvent.getCountries(),
+              const CountriesEvent.get(),
             );
         context.read<GovernoratesBloc>().add(
-              const GovernoratesEvent.getGovernorate(),
+              const GovernoratesEvent.get(),
             );
         context.read<StoresBloc>().add(
-              const StoresEvent.getEvent(),
+              const StoresEvent.get(),
             );
         context.read<CategoriesBloc>().add(
-              const CategoriesEvent.getCategoriesEvent(),
+              const CategoriesEvent.get(),
             );
         context.read<SubCategoriesBloc>().add(
-              const SubCategoriesEvent.getSubCategoriesEvent(),
+              const SubCategoriesEvent.get(),
+            );
+        context.read<OffersBloc>().add(
+              const OffersEvent.get(),
+            );
+        context.read<CouponsBloc>().add(
+              const CouponsEvent.get(),
             );
       },
     );
   }
 
-  final offers = OffersResponseModel().offers ?? [];
   @override
   void initState() {
     super.initState();

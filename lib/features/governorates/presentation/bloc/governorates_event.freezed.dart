@@ -18,55 +18,59 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GovernoratesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorate,
+    required TResult Function() get,
     required TResult Function(
             AddGovernorateRequestModel addGovernorateRequestModel)
-        addGovernorate,
-    required TResult Function() updateGovernorates,
-    required TResult Function(int id) deleteGovernorates,
+        add,
+    required TResult Function(
+            EditGovernorateRequestModel editGovernorateRequestModel)
+        edit,
+    required TResult Function(int id) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getGovernorate,
+    TResult? Function()? get,
     TResult? Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult? Function()? updateGovernorates,
-    TResult? Function(int id)? deleteGovernorates,
+        add,
+    TResult? Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getGovernorate,
+    TResult Function()? get,
     TResult Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult Function()? updateGovernorates,
-    TResult Function(int id)? deleteGovernorates,
+        add,
+    TResult Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGovernorates value) getGovernorate,
-    required TResult Function(_AddGovernorate value) addGovernorate,
-    required TResult Function(_UpdateGovernorate value) updateGovernorates,
-    required TResult Function(_DeleteGovernorate value) deleteGovernorates,
+    required TResult Function(_Get value) get,
+    required TResult Function(_AddGovernorate value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGovernorates value)? getGovernorate,
-    TResult? Function(_AddGovernorate value)? addGovernorate,
-    TResult? Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult? Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_AddGovernorate value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGovernorates value)? getGovernorate,
-    TResult Function(_AddGovernorate value)? addGovernorate,
-    TResult Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult Function(_Get value)? get,
+    TResult Function(_AddGovernorate value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,18 +98,16 @@ class _$GovernoratesEventCopyWithImpl<$Res, $Val extends GovernoratesEvent>
 }
 
 /// @nodoc
-abstract class _$$GetGovernoratesImplCopyWith<$Res> {
-  factory _$$GetGovernoratesImplCopyWith(_$GetGovernoratesImpl value,
-          $Res Function(_$GetGovernoratesImpl) then) =
-      __$$GetGovernoratesImplCopyWithImpl<$Res>;
+abstract class _$$GetImplCopyWith<$Res> {
+  factory _$$GetImplCopyWith(_$GetImpl value, $Res Function(_$GetImpl) then) =
+      __$$GetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetGovernoratesImplCopyWithImpl<$Res>
-    extends _$GovernoratesEventCopyWithImpl<$Res, _$GetGovernoratesImpl>
-    implements _$$GetGovernoratesImplCopyWith<$Res> {
-  __$$GetGovernoratesImplCopyWithImpl(
-      _$GetGovernoratesImpl _value, $Res Function(_$GetGovernoratesImpl) _then)
+class __$$GetImplCopyWithImpl<$Res>
+    extends _$GovernoratesEventCopyWithImpl<$Res, _$GetImpl>
+    implements _$$GetImplCopyWith<$Res> {
+  __$$GetImplCopyWithImpl(_$GetImpl _value, $Res Function(_$GetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GovernoratesEvent
@@ -114,18 +116,18 @@ class __$$GetGovernoratesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetGovernoratesImpl implements _GetGovernorates {
-  const _$GetGovernoratesImpl();
+class _$GetImpl implements _Get {
+  const _$GetImpl();
 
   @override
   String toString() {
-    return 'GovernoratesEvent.getGovernorate()';
+    return 'GovernoratesEvent.get()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetGovernoratesImpl);
+        (other.runtimeType == runtimeType && other is _$GetImpl);
   }
 
   @override
@@ -134,40 +136,44 @@ class _$GetGovernoratesImpl implements _GetGovernorates {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorate,
+    required TResult Function() get,
     required TResult Function(
             AddGovernorateRequestModel addGovernorateRequestModel)
-        addGovernorate,
-    required TResult Function() updateGovernorates,
-    required TResult Function(int id) deleteGovernorates,
+        add,
+    required TResult Function(
+            EditGovernorateRequestModel editGovernorateRequestModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return getGovernorate();
+    return get();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getGovernorate,
+    TResult? Function()? get,
     TResult? Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult? Function()? updateGovernorates,
-    TResult? Function(int id)? deleteGovernorates,
+        add,
+    TResult? Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return getGovernorate?.call();
+    return get?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getGovernorate,
+    TResult Function()? get,
     TResult Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult Function()? updateGovernorates,
-    TResult Function(int id)? deleteGovernorates,
+        add,
+    TResult Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (getGovernorate != null) {
-      return getGovernorate();
+    if (get != null) {
+      return get();
     }
     return orElse();
   }
@@ -175,43 +181,43 @@ class _$GetGovernoratesImpl implements _GetGovernorates {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGovernorates value) getGovernorate,
-    required TResult Function(_AddGovernorate value) addGovernorate,
-    required TResult Function(_UpdateGovernorate value) updateGovernorates,
-    required TResult Function(_DeleteGovernorate value) deleteGovernorates,
+    required TResult Function(_Get value) get,
+    required TResult Function(_AddGovernorate value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return getGovernorate(this);
+    return get(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGovernorates value)? getGovernorate,
-    TResult? Function(_AddGovernorate value)? addGovernorate,
-    TResult? Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult? Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_AddGovernorate value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return getGovernorate?.call(this);
+    return get?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGovernorates value)? getGovernorate,
-    TResult Function(_AddGovernorate value)? addGovernorate,
-    TResult Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult Function(_Get value)? get,
+    TResult Function(_AddGovernorate value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (getGovernorate != null) {
-      return getGovernorate(this);
+    if (get != null) {
+      return get(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetGovernorates implements GovernoratesEvent {
-  const factory _GetGovernorates() = _$GetGovernoratesImpl;
+abstract class _Get implements GovernoratesEvent {
+  const factory _Get() = _$GetImpl;
 }
 
 /// @nodoc
@@ -257,7 +263,7 @@ class _$AddGovernorateImpl implements _AddGovernorate {
 
   @override
   String toString() {
-    return 'GovernoratesEvent.addGovernorate(addGovernorateRequestModel: $addGovernorateRequestModel)';
+    return 'GovernoratesEvent.add(addGovernorateRequestModel: $addGovernorateRequestModel)';
   }
 
   @override
@@ -286,40 +292,44 @@ class _$AddGovernorateImpl implements _AddGovernorate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorate,
+    required TResult Function() get,
     required TResult Function(
             AddGovernorateRequestModel addGovernorateRequestModel)
-        addGovernorate,
-    required TResult Function() updateGovernorates,
-    required TResult Function(int id) deleteGovernorates,
+        add,
+    required TResult Function(
+            EditGovernorateRequestModel editGovernorateRequestModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return addGovernorate(addGovernorateRequestModel);
+    return add(addGovernorateRequestModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getGovernorate,
+    TResult? Function()? get,
     TResult? Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult? Function()? updateGovernorates,
-    TResult? Function(int id)? deleteGovernorates,
+        add,
+    TResult? Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return addGovernorate?.call(addGovernorateRequestModel);
+    return add?.call(addGovernorateRequestModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getGovernorate,
+    TResult Function()? get,
     TResult Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult Function()? updateGovernorates,
-    TResult Function(int id)? deleteGovernorates,
+        add,
+    TResult Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (addGovernorate != null) {
-      return addGovernorate(addGovernorateRequestModel);
+    if (add != null) {
+      return add(addGovernorateRequestModel);
     }
     return orElse();
   }
@@ -327,36 +337,36 @@ class _$AddGovernorateImpl implements _AddGovernorate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGovernorates value) getGovernorate,
-    required TResult Function(_AddGovernorate value) addGovernorate,
-    required TResult Function(_UpdateGovernorate value) updateGovernorates,
-    required TResult Function(_DeleteGovernorate value) deleteGovernorates,
+    required TResult Function(_Get value) get,
+    required TResult Function(_AddGovernorate value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return addGovernorate(this);
+    return add(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGovernorates value)? getGovernorate,
-    TResult? Function(_AddGovernorate value)? addGovernorate,
-    TResult? Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult? Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_AddGovernorate value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return addGovernorate?.call(this);
+    return add?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGovernorates value)? getGovernorate,
-    TResult Function(_AddGovernorate value)? addGovernorate,
-    TResult Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult Function(_Get value)? get,
+    TResult Function(_AddGovernorate value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (addGovernorate != null) {
-      return addGovernorate(this);
+    if (add != null) {
+      return add(this);
     }
     return orElse();
   }
@@ -377,80 +387,113 @@ abstract class _AddGovernorate implements GovernoratesEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdateGovernorateImplCopyWith<$Res> {
-  factory _$$UpdateGovernorateImplCopyWith(_$UpdateGovernorateImpl value,
-          $Res Function(_$UpdateGovernorateImpl) then) =
-      __$$UpdateGovernorateImplCopyWithImpl<$Res>;
+abstract class _$$EditImplCopyWith<$Res> {
+  factory _$$EditImplCopyWith(
+          _$EditImpl value, $Res Function(_$EditImpl) then) =
+      __$$EditImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EditGovernorateRequestModel editGovernorateRequestModel});
 }
 
 /// @nodoc
-class __$$UpdateGovernorateImplCopyWithImpl<$Res>
-    extends _$GovernoratesEventCopyWithImpl<$Res, _$UpdateGovernorateImpl>
-    implements _$$UpdateGovernorateImplCopyWith<$Res> {
-  __$$UpdateGovernorateImplCopyWithImpl(_$UpdateGovernorateImpl _value,
-      $Res Function(_$UpdateGovernorateImpl) _then)
+class __$$EditImplCopyWithImpl<$Res>
+    extends _$GovernoratesEventCopyWithImpl<$Res, _$EditImpl>
+    implements _$$EditImplCopyWith<$Res> {
+  __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GovernoratesEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? editGovernorateRequestModel = null,
+  }) {
+    return _then(_$EditImpl(
+      editGovernorateRequestModel: null == editGovernorateRequestModel
+          ? _value.editGovernorateRequestModel
+          : editGovernorateRequestModel // ignore: cast_nullable_to_non_nullable
+              as EditGovernorateRequestModel,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$UpdateGovernorateImpl implements _UpdateGovernorate {
-  const _$UpdateGovernorateImpl();
+class _$EditImpl implements _Edit {
+  const _$EditImpl({required this.editGovernorateRequestModel});
+
+  @override
+  final EditGovernorateRequestModel editGovernorateRequestModel;
 
   @override
   String toString() {
-    return 'GovernoratesEvent.updateGovernorates()';
+    return 'GovernoratesEvent.edit(editGovernorateRequestModel: $editGovernorateRequestModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateGovernorateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$EditImpl &&
+            (identical(other.editGovernorateRequestModel,
+                    editGovernorateRequestModel) ||
+                other.editGovernorateRequestModel ==
+                    editGovernorateRequestModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, editGovernorateRequestModel);
+
+  /// Create a copy of GovernoratesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      __$$EditImplCopyWithImpl<_$EditImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorate,
+    required TResult Function() get,
     required TResult Function(
             AddGovernorateRequestModel addGovernorateRequestModel)
-        addGovernorate,
-    required TResult Function() updateGovernorates,
-    required TResult Function(int id) deleteGovernorates,
+        add,
+    required TResult Function(
+            EditGovernorateRequestModel editGovernorateRequestModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return updateGovernorates();
+    return edit(editGovernorateRequestModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getGovernorate,
+    TResult? Function()? get,
     TResult? Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult? Function()? updateGovernorates,
-    TResult? Function(int id)? deleteGovernorates,
+        add,
+    TResult? Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return updateGovernorates?.call();
+    return edit?.call(editGovernorateRequestModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getGovernorate,
+    TResult Function()? get,
     TResult Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult Function()? updateGovernorates,
-    TResult Function(int id)? deleteGovernorates,
+        add,
+    TResult Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (updateGovernorates != null) {
-      return updateGovernorates();
+    if (edit != null) {
+      return edit(editGovernorateRequestModel);
     }
     return orElse();
   }
@@ -458,60 +501,70 @@ class _$UpdateGovernorateImpl implements _UpdateGovernorate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGovernorates value) getGovernorate,
-    required TResult Function(_AddGovernorate value) addGovernorate,
-    required TResult Function(_UpdateGovernorate value) updateGovernorates,
-    required TResult Function(_DeleteGovernorate value) deleteGovernorates,
+    required TResult Function(_Get value) get,
+    required TResult Function(_AddGovernorate value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return updateGovernorates(this);
+    return edit(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGovernorates value)? getGovernorate,
-    TResult? Function(_AddGovernorate value)? addGovernorate,
-    TResult? Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult? Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_AddGovernorate value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return updateGovernorates?.call(this);
+    return edit?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGovernorates value)? getGovernorate,
-    TResult Function(_AddGovernorate value)? addGovernorate,
-    TResult Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult Function(_Get value)? get,
+    TResult Function(_AddGovernorate value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (updateGovernorates != null) {
-      return updateGovernorates(this);
+    if (edit != null) {
+      return edit(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateGovernorate implements GovernoratesEvent {
-  const factory _UpdateGovernorate() = _$UpdateGovernorateImpl;
+abstract class _Edit implements GovernoratesEvent {
+  const factory _Edit(
+      {required final EditGovernorateRequestModel
+          editGovernorateRequestModel}) = _$EditImpl;
+
+  EditGovernorateRequestModel get editGovernorateRequestModel;
+
+  /// Create a copy of GovernoratesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeleteGovernorateImplCopyWith<$Res> {
-  factory _$$DeleteGovernorateImplCopyWith(_$DeleteGovernorateImpl value,
-          $Res Function(_$DeleteGovernorateImpl) then) =
-      __$$DeleteGovernorateImplCopyWithImpl<$Res>;
+abstract class _$$DeleteImplCopyWith<$Res> {
+  factory _$$DeleteImplCopyWith(
+          _$DeleteImpl value, $Res Function(_$DeleteImpl) then) =
+      __$$DeleteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$DeleteGovernorateImplCopyWithImpl<$Res>
-    extends _$GovernoratesEventCopyWithImpl<$Res, _$DeleteGovernorateImpl>
-    implements _$$DeleteGovernorateImplCopyWith<$Res> {
-  __$$DeleteGovernorateImplCopyWithImpl(_$DeleteGovernorateImpl _value,
-      $Res Function(_$DeleteGovernorateImpl) _then)
+class __$$DeleteImplCopyWithImpl<$Res>
+    extends _$GovernoratesEventCopyWithImpl<$Res, _$DeleteImpl>
+    implements _$$DeleteImplCopyWith<$Res> {
+  __$$DeleteImplCopyWithImpl(
+      _$DeleteImpl _value, $Res Function(_$DeleteImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GovernoratesEvent
@@ -521,7 +574,7 @@ class __$$DeleteGovernorateImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$DeleteGovernorateImpl(
+    return _then(_$DeleteImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -532,22 +585,22 @@ class __$$DeleteGovernorateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteGovernorateImpl implements _DeleteGovernorate {
-  const _$DeleteGovernorateImpl({required this.id});
+class _$DeleteImpl implements _Delete {
+  const _$DeleteImpl({required this.id});
 
   @override
   final int id;
 
   @override
   String toString() {
-    return 'GovernoratesEvent.deleteGovernorates(id: $id)';
+    return 'GovernoratesEvent.delete(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteGovernorateImpl &&
+            other is _$DeleteImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -559,47 +612,50 @@ class _$DeleteGovernorateImpl implements _DeleteGovernorate {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteGovernorateImplCopyWith<_$DeleteGovernorateImpl> get copyWith =>
-      __$$DeleteGovernorateImplCopyWithImpl<_$DeleteGovernorateImpl>(
-          this, _$identity);
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      __$$DeleteImplCopyWithImpl<_$DeleteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorate,
+    required TResult Function() get,
     required TResult Function(
             AddGovernorateRequestModel addGovernorateRequestModel)
-        addGovernorate,
-    required TResult Function() updateGovernorates,
-    required TResult Function(int id) deleteGovernorates,
+        add,
+    required TResult Function(
+            EditGovernorateRequestModel editGovernorateRequestModel)
+        edit,
+    required TResult Function(int id) delete,
   }) {
-    return deleteGovernorates(id);
+    return delete(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getGovernorate,
+    TResult? Function()? get,
     TResult? Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult? Function()? updateGovernorates,
-    TResult? Function(int id)? deleteGovernorates,
+        add,
+    TResult? Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult? Function(int id)? delete,
   }) {
-    return deleteGovernorates?.call(id);
+    return delete?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getGovernorate,
+    TResult Function()? get,
     TResult Function(AddGovernorateRequestModel addGovernorateRequestModel)?
-        addGovernorate,
-    TResult Function()? updateGovernorates,
-    TResult Function(int id)? deleteGovernorates,
+        add,
+    TResult Function(EditGovernorateRequestModel editGovernorateRequestModel)?
+        edit,
+    TResult Function(int id)? delete,
     required TResult orElse(),
   }) {
-    if (deleteGovernorates != null) {
-      return deleteGovernorates(id);
+    if (delete != null) {
+      return delete(id);
     }
     return orElse();
   }
@@ -607,50 +663,49 @@ class _$DeleteGovernorateImpl implements _DeleteGovernorate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetGovernorates value) getGovernorate,
-    required TResult Function(_AddGovernorate value) addGovernorate,
-    required TResult Function(_UpdateGovernorate value) updateGovernorates,
-    required TResult Function(_DeleteGovernorate value) deleteGovernorates,
+    required TResult Function(_Get value) get,
+    required TResult Function(_AddGovernorate value) add,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_Delete value) delete,
   }) {
-    return deleteGovernorates(this);
+    return delete(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetGovernorates value)? getGovernorate,
-    TResult? Function(_AddGovernorate value)? addGovernorate,
-    TResult? Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult? Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_AddGovernorate value)? add,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_Delete value)? delete,
   }) {
-    return deleteGovernorates?.call(this);
+    return delete?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetGovernorates value)? getGovernorate,
-    TResult Function(_AddGovernorate value)? addGovernorate,
-    TResult Function(_UpdateGovernorate value)? updateGovernorates,
-    TResult Function(_DeleteGovernorate value)? deleteGovernorates,
+    TResult Function(_Get value)? get,
+    TResult Function(_AddGovernorate value)? add,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
-    if (deleteGovernorates != null) {
-      return deleteGovernorates(this);
+    if (delete != null) {
+      return delete(this);
     }
     return orElse();
   }
 }
 
-abstract class _DeleteGovernorate implements GovernoratesEvent {
-  const factory _DeleteGovernorate({required final int id}) =
-      _$DeleteGovernorateImpl;
+abstract class _Delete implements GovernoratesEvent {
+  const factory _Delete({required final int id}) = _$DeleteImpl;
 
   int get id;
 
   /// Create a copy of GovernoratesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteGovernorateImplCopyWith<_$DeleteGovernorateImpl> get copyWith =>
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

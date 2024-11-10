@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
-
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/sub_categories_repo.dart';
 import '../data_sources/sub_categories_api.dart';
-import '../models/add_sub_category_request_body_model.dart';
 import '../models/sub_categories_response_model.dart';
 
 class SubCategoriesRepoImpl implements SubCategoriesRepo {
@@ -13,9 +11,9 @@ class SubCategoriesRepoImpl implements SubCategoriesRepo {
     this.subCategoriesApi,
   );
   @override
-  Future<ApiResult<List<SubCategory>?>> getSubCategories() async {
+  Future<ApiResult<List<SubCategory>>> get() async {
     try {
-      final response = await subCategoriesApi.getSubCategories();
+      final response = await subCategoriesApi.get();
       return ApiResult.success(
         data: response,
       );
@@ -29,15 +27,77 @@ class SubCategoriesRepoImpl implements SubCategoriesRepo {
   }
 
   @override
-  Future<ApiResult<List<SubCategory>?>> addSubCategory({
+  Future<ApiResult<SubCategory>> add({
     required FormData formData,
   }) async {
     try {
-      final response = await subCategoriesApi.addSubSubCategory(
+      final response = await subCategoriesApi.add(
         formData: formData,
       );
       return ApiResult.success(
-        data: response!,
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<SubCategory>> edit({
+    required SubCategory subCategory,
+  }) async {
+    try {
+      final response = await subCategoriesApi.edit(
+        subCategory: subCategory,
+      );
+      return ApiResult.success(
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<SubCategory>> editImage({
+    required int id,
+    required FormData formData,
+  }) async {
+    try {
+      final subCategory = await subCategoriesApi.editImage(
+        id: id,
+        formData: formData,
+      );
+      return ApiResult.success(
+        data: subCategory,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> delete({
+    required int id,
+  }) async {
+    try {
+      await subCategoriesApi.delete(
+        id: id,
+      );
+      return const ApiResult.success(
+        data: null,
       );
     } catch (error) {
       return ApiResult.failure(

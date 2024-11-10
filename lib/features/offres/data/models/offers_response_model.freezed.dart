@@ -35,7 +35,9 @@ mixin _$Offer {
   @JsonKey(name: "image")
   String get image => throw _privateConstructorUsedError;
   @JsonKey(name: "end_at")
-  dynamic get endAt => throw _privateConstructorUsedError;
+  String? get endAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -63,7 +65,8 @@ abstract class $OfferCopyWith<$Res> {
       @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "end_at") String? endAt,
+      @JsonKey(name: "days_remaining") int daysRemaining,
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "updated_at") String updatedAt});
 }
@@ -91,6 +94,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
     Object? description = null,
     Object? image = null,
     Object? endAt = freezed,
+    Object? daysRemaining = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -126,7 +130,11 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -154,7 +162,8 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "end_at") String? endAt,
+      @JsonKey(name: "days_remaining") int daysRemaining,
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "updated_at") String updatedAt});
 }
@@ -180,6 +189,7 @@ class __$$OfferImplCopyWithImpl<$Res>
     Object? description = null,
     Object? image = null,
     Object? endAt = freezed,
+    Object? daysRemaining = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -215,7 +225,11 @@ class __$$OfferImplCopyWithImpl<$Res>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -232,16 +246,17 @@ class __$$OfferImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OfferImpl implements _Offer {
   const _$OfferImpl(
-      {@JsonKey(name: "id") required this.id,
-      @JsonKey(name: "name") required this.name,
-      @JsonKey(name: "status") required this.status,
-      @JsonKey(name: "store_id") required this.storeId,
-      @JsonKey(name: "sub_category_id") required this.subCategoryId,
-      @JsonKey(name: "description") required this.description,
-      @JsonKey(name: "image") required this.image,
-      @JsonKey(name: "end_at") this.endAt,
-      @JsonKey(name: "created_at") required this.createdAt,
-      @JsonKey(name: "updated_at") required this.updatedAt});
+      {@JsonKey(name: "id") this.id = 0,
+      @JsonKey(name: "name") this.name = "",
+      @JsonKey(name: "status") this.status = "",
+      @JsonKey(name: "store_id") this.storeId = 0,
+      @JsonKey(name: "sub_category_id") this.subCategoryId = 0,
+      @JsonKey(name: "description") this.description = "",
+      @JsonKey(name: "image") this.image = "",
+      @JsonKey(name: "end_at") this.endAt = "",
+      @JsonKey(name: "days_remaining") this.daysRemaining = 0,
+      @JsonKey(name: "created_at") this.createdAt = "",
+      @JsonKey(name: "updated_at") this.updatedAt = ""});
 
   factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>
       _$$OfferImplFromJson(json);
@@ -269,7 +284,10 @@ class _$OfferImpl implements _Offer {
   final String image;
   @override
   @JsonKey(name: "end_at")
-  final dynamic endAt;
+  final String? endAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  final int daysRemaining;
   @override
   @JsonKey(name: "created_at")
   final String createdAt;
@@ -279,7 +297,7 @@ class _$OfferImpl implements _Offer {
 
   @override
   String toString() {
-    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, subCategoryId: $subCategoryId, description: $description, image: $image, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, subCategoryId: $subCategoryId, description: $description, image: $image, endAt: $endAt, daysRemaining: $daysRemaining, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -296,7 +314,9 @@ class _$OfferImpl implements _Offer {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other.endAt, endAt) &&
+            (identical(other.endAt, endAt) || other.endAt == endAt) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -314,7 +334,8 @@ class _$OfferImpl implements _Offer {
       subCategoryId,
       description,
       image,
-      const DeepCollectionEquality().hash(endAt),
+      endAt,
+      daysRemaining,
       createdAt,
       updatedAt);
 
@@ -336,17 +357,17 @@ class _$OfferImpl implements _Offer {
 
 abstract class _Offer implements Offer {
   const factory _Offer(
-          {@JsonKey(name: "id") required final int id,
-          @JsonKey(name: "name") required final String name,
-          @JsonKey(name: "status") required final String status,
-          @JsonKey(name: "store_id") required final int storeId,
-          @JsonKey(name: "sub_category_id") required final int subCategoryId,
-          @JsonKey(name: "description") required final String description,
-          @JsonKey(name: "image") required final String image,
-          @JsonKey(name: "end_at") final dynamic endAt,
-          @JsonKey(name: "created_at") required final String createdAt,
-          @JsonKey(name: "updated_at") required final String updatedAt}) =
-      _$OfferImpl;
+      {@JsonKey(name: "id") final int id,
+      @JsonKey(name: "name") final String name,
+      @JsonKey(name: "status") final String status,
+      @JsonKey(name: "store_id") final int storeId,
+      @JsonKey(name: "sub_category_id") final int subCategoryId,
+      @JsonKey(name: "description") final String description,
+      @JsonKey(name: "image") final String image,
+      @JsonKey(name: "end_at") final String? endAt,
+      @JsonKey(name: "days_remaining") final int daysRemaining,
+      @JsonKey(name: "created_at") final String createdAt,
+      @JsonKey(name: "updated_at") final String updatedAt}) = _$OfferImpl;
 
   factory _Offer.fromJson(Map<String, dynamic> json) = _$OfferImpl.fromJson;
 
@@ -373,7 +394,10 @@ abstract class _Offer implements Offer {
   String get image;
   @override
   @JsonKey(name: "end_at")
-  dynamic get endAt;
+  String? get endAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining;
   @override
   @JsonKey(name: "created_at")
   String get createdAt;

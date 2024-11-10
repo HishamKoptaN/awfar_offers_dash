@@ -5,7 +5,7 @@ import '../../utils/app_colors.dart';
 import 'global_widgets.dart';
 
 class CustomDropdownContainer<T> extends StatelessWidget {
-  CustomDropdownContainer({
+  const CustomDropdownContainer({
     super.key,
     required this.height,
     required this.width,
@@ -19,13 +19,14 @@ class CustomDropdownContainer<T> extends StatelessWidget {
   final double height;
   final double width;
   final String hint;
+
   final List<T> items;
   final T? selectedItem;
   final ValueChanged<T?> onChanged;
   final String Function(T) itemLabel;
   final double fontSize;
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Container(
       height: height,
       width: width,
@@ -42,7 +43,9 @@ class CustomDropdownContainer<T> extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             hint,
-            style: const TextStyle(color: Colors.grey),
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
           ),
         ),
         style: TextStyle(

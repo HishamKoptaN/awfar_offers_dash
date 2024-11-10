@@ -24,7 +24,7 @@ class _CategoriesApi implements CategoriesApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Category>?> getCategories() async {
+  Future<List<Category>?> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _CategoriesApi implements CategoriesApi {
   }
 
   @override
-  Future<List<Category>?> addCategory(
+  Future<Category> addCategory(
       {required AddCategoryRequestBodyModel
           addCategoryRequestBodyModel}) async {
     final _extra = <String, dynamic>{};
@@ -67,7 +67,7 @@ class _CategoriesApi implements CategoriesApi {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(addCategoryRequestBodyModel.toJson());
-    final _options = _setStreamType<List<Category>>(Options(
+    final _options = _setStreamType<Category>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -83,12 +83,10 @@ class _CategoriesApi implements CategoriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Category>? _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Category _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = Category.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -97,12 +95,45 @@ class _CategoriesApi implements CategoriesApi {
   }
 
   @override
-  Future<List<Category>?> deleteCategory({required int id}) async {
+  Future<Category> edit({required Category category}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = category;
+    final _options = _setStreamType<Category>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'categories',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Category _value;
+    try {
+      _value = Category.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> delete({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Category>>(Options(
+    final _options = _setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -118,17 +149,7 @@ class _CategoriesApi implements CategoriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Category>? _value;
-    try {
-      _value = _result.data
-          ?.map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

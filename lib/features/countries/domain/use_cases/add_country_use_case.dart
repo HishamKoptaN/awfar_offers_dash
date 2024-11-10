@@ -8,11 +8,11 @@ class AddCountryUseCase {
   AddCountryUseCase(
     this.countreisRepo,
   );
-  Future<ApiResult<List<Country>?>> addCountry({
-    required AddCountryRequestModel addCountryRequestModel,
+  Future<ApiResult<Country>> add({
+    required AddCountryRequestBodyModel addCountryRequestBodyModel,
   }) async {
-    return await countreisRepo.addCountry(
-      addCountryRequestModel: addCountryRequestModel,
+    return await countreisRepo.add(
+      addCountryRequestBodyModel: addCountryRequestBodyModel,
     );
   }
 }

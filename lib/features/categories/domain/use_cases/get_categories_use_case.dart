@@ -8,6 +8,6 @@ class GetCategoriesUseCase {
     this.categoriesRepo,
   );
   Future<ApiResult<List<Category>?>> getCategories() async {
-    return await categoriesRepo.getCategories();
+    return await categoriesRepo.get();
   }
 }

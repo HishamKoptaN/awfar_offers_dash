@@ -24,7 +24,7 @@ class _CountriesApi implements CountriesApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Country>?> getCountries() async {
+  Future<List<Country>?> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -59,13 +59,14 @@ class _CountriesApi implements CountriesApi {
   }
 
   @override
-  Future<List<Country>?> addCountry(
-      {required AddCountryRequestModel addCountryRequestModel}) async {
+  Future<Country> add(
+      {required AddCountryRequestBodyModel addCountryRequestBodyModel}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = addCountryRequestModel;
-    final _options = _setStreamType<List<Country>>(Options(
+    final _data = <String, dynamic>{};
+    _data.addAll(addCountryRequestBodyModel.toJson());
+    final _options = _setStreamType<Country>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -81,12 +82,10 @@ class _CountriesApi implements CountriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Country>? _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Country _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => Country.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = Country.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -95,12 +94,48 @@ class _CountriesApi implements CountriesApi {
   }
 
   @override
-  Future<List<Country>?> deleteCountry({required int id}) async {
+  Future<Country> edit(
+      {required EditCountryRequestBodyModel
+          editCountryRequestBodyModel}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(editCountryRequestBodyModel.toJson());
+    final _options = _setStreamType<Country>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'countries/{id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Country _value;
+    try {
+      _value = Country.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> delete({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Country>>(Options(
+    final _options = _setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -116,17 +151,7 @@ class _CountriesApi implements CountriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Country>? _value;
-    try {
-      _value = _result.data
-          ?.map((dynamic i) => Country.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

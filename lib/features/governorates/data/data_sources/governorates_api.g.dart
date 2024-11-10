@@ -24,7 +24,7 @@ class _GovernoratesApi implements GovernoratesApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Governorate>?> getGovernorates() async {
+  Future<List<Governorate>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -46,10 +46,10 @@ class _GovernoratesApi implements GovernoratesApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Governorate>? _value;
+    late List<Governorate> _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => Governorate.fromJson(i as Map<String, dynamic>))
+      _value = _result.data!
+          .map((dynamic i) => Governorate.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -59,14 +59,14 @@ class _GovernoratesApi implements GovernoratesApi {
   }
 
   @override
-  Future<List<Governorate>?> addGovernorate(
+  Future<Governorate> add(
       {required AddGovernorateRequestModel addGovernorateRequestModel}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(addGovernorateRequestModel.toJson());
-    final _options = _setStreamType<List<Governorate>>(Options(
+    final _options = _setStreamType<Governorate>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -82,12 +82,10 @@ class _GovernoratesApi implements GovernoratesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Governorate>? _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Governorate _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => Governorate.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = Governorate.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -96,12 +94,12 @@ class _GovernoratesApi implements GovernoratesApi {
   }
 
   @override
-  Future<List<Governorate>?> deleteGovernorate({required int id}) async {
+  Future<void> delete({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Governorate>>(Options(
+    final _options = _setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -117,12 +115,38 @@ class _GovernoratesApi implements GovernoratesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Governorate>? _value;
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<Governorate> edit(
+      {required EditGovernorateRequestModel
+          editGovernorateRequestModel}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(editGovernorateRequestModel.toJson());
+    final _options = _setStreamType<Governorate>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'governorates',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Governorate _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => Governorate.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = Governorate.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -16,7 +16,29 @@ abstract class OffersApi {
   @POST(
     ApiConstants.offers,
   )
-  Future<List<Offer>?> addOffer({
+  Future<Offer> addOffer({
     @Body() required FormData formData,
+  });
+
+  //! Edit offer
+  @PUT(
+    ApiConstants.offers,
+  )
+  Future<Offer> edit({
+    @Body() required Offer offer,
+  });
+  //! Edit Image
+  @PUT(
+    '${ApiConstants.offers}/{id}',
+  )
+  Future editImage({
+    required int id,
+    @Body() required FormData formData,
+  }); //! DELETE offer
+  @DELETE(
+    '${ApiConstants.offers}/{id}',
+  )
+  Future<void> delete({
+    @Path('id') required int id,
   });
 }

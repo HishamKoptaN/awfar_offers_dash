@@ -8,6 +8,6 @@ class GetOffersUseCase {
     this.offersRepo,
   );
   Future<ApiResult<List<Offer>?>> getOffers() async {
-    return await offersRepo.getOffers();
+    return await offersRepo.get();
   }
 }

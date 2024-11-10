@@ -7,7 +7,7 @@ class GetSubCategoriesUseCase {
   GetSubCategoriesUseCase(
     this.subCategoriesRepo,
   );
-  Future<ApiResult<List<SubCategory>?>> getSubCategories() async {
-    return await subCategoriesRepo.getSubCategories();
+  Future<ApiResult<List<SubCategory>?>> get() async {
+    return await subCategoriesRepo.get();
   }
 }

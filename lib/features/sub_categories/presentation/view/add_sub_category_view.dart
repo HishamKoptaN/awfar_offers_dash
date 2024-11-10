@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +68,7 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   snackBar(
                     status: false,
-                    message: error,
+                    message: error.error!,
                   ),
                 );
               },
@@ -192,18 +190,16 @@ class _AddSubCategoryViewState extends State<AddSubCategoryView> {
                                   addSubCategoryRequestBodyModel.categoryId,
                             },
                           );
-
-                          // إرسال الطلب
                           context.read<SubCategoriesBloc>().add(
-                                SubCategoriesEvent.addSubCategoryEvent(
+                                SubCategoriesEvent.add(
                                   formData: formData,
                                 ),
                               );
-                        } else {
-                          // التعامل مع الحالة عندما تكون الصورة أو معرف الفئة الفرعية غير محدد
-                          print('Image or sub_category_id is null');
-                        }
+                        } else {}
                       },
+                    ),
+                    Gap(
+                      50.h,
                     ),
                   ],
                 ),

@@ -3,14 +3,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 class AddSubCategoryRequestBodyModel {
-  // إنشاء instance ثابت لـ Singleton
   static final AddSubCategoryRequestBodyModel _instance =
       AddSubCategoryRequestBodyModel._();
-  // إنشاء دالة للوصول إلى instance
   factory AddSubCategoryRequestBodyModel() {
     return _instance;
   }
-  // كونستركتور خاص
   AddSubCategoryRequestBodyModel._();
   String? name;
   int? categoryId;
@@ -23,7 +20,6 @@ class AddSubCategoryRequestBodyModel {
     );
   }
 
-  // دالة لتحميل البيانات من JSON
   factory AddSubCategoryRequestBodyModel.fromJson(
     Map<String, dynamic> json,
   ) {

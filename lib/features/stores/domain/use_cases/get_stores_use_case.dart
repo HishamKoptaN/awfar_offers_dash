@@ -7,7 +7,7 @@ class GetStoresUseCase {
   GetStoresUseCase(
     this.storesRepo,
   );
-  Future<ApiResult<List<Store>?>> getStores() async {
-    return await storesRepo.getStores();
+  Future<ApiResult<List<Store>>> get() async {
+    return await storesRepo.get();
   }
 }

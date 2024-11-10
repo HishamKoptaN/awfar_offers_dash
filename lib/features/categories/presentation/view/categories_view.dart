@@ -8,9 +8,9 @@ import '../../../../core/global/gobal_widgets/custom_button.dart';
 import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
 import '../../../../core/global/gobal_widgets/custom_data_column.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../data/models/categories_response_model.dart';
 import '../bloc/categories_bloc.dart';
+import '../bloc/categories_event.dart';
 import '../bloc/categories_state.dart';
 
 class CategoriesView extends StatelessWidget {
@@ -30,16 +30,23 @@ class CategoriesView extends StatelessWidget {
         create: (context) => CategoriesBloc(
           getIt(),
           getIt(),
+          getIt(),
+          getIt(),
         ),
         child: BlocConsumer<CategoriesBloc, CategoriesState>(
           listener: (context, state) async {
             await state.whenOrNull(
-              failure: (error) async {
+              success: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("نجاح"),
+                  ),
+                );
+              },
+              failure: (apiErrorModel) async {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      error,
-                    ),
+                    content: Text(apiErrorModel.error!),
                   ),
                 );
               },
@@ -57,7 +64,13 @@ class CategoriesView extends StatelessWidget {
                     child: DataTable(
                       columns: [
                         customDataColumn(
-                          label: 'معرف الدوله',
+                          label: 'معرف الفئة',
+                        ),
+                        customDataColumn(
+                          label: 'الاسم',
+                        ),
+                        customDataColumn(
+                          label: 'الاسم',
                         ),
                         customDataColumn(
                           label: 'الاسم',
@@ -86,6 +99,40 @@ class CategoriesView extends StatelessWidget {
                               ),
                               const DataCell(
                                 SizedBox(),
+                              ),
+                              DataCell(
+                                Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: CustomTextButton(
+                                    onPressed: () {
+                                      customNavigation(
+                                        context: context,
+                                        path: '/EditCategoryView',
+                                        extra: category,
+                                      );
+                                    },
+                                    text: 'تعديل',
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: CustomTextButton(
+                                    widget: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                      size: 35.sp,
+                                    ),
+                                    onPressed: () {
+                                      context.read<CategoriesBloc>().add(
+                                            CategoriesEvent.delete(
+                                              id: category.id!,
+                                            ),
+                                          );
+                                    },
+                                  ),
+                                ),
                               ),
                             ],
                           );

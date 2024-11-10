@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SubCategory _$SubCategoryFromJson(Map<String, dynamic> json) {
-  return _Category.fromJson(json);
+  return _SubCategory.fromJson(json);
 }
 
 /// @nodoc
@@ -110,11 +110,11 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
 }
 
 /// @nodoc
-abstract class _$$CategoryImplCopyWith<$Res>
+abstract class _$$SubCategoryImplCopyWith<$Res>
     implements $SubCategoryCopyWith<$Res> {
-  factory _$$CategoryImplCopyWith(
-          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
-      __$$CategoryImplCopyWithImpl<$Res>;
+  factory _$$SubCategoryImplCopyWith(
+          _$SubCategoryImpl value, $Res Function(_$SubCategoryImpl) then) =
+      __$$SubCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,11 +127,11 @@ abstract class _$$CategoryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CategoryImplCopyWithImpl<$Res>
-    extends _$SubCategoryCopyWithImpl<$Res, _$CategoryImpl>
-    implements _$$CategoryImplCopyWith<$Res> {
-  __$$CategoryImplCopyWithImpl(
-      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+class __$$SubCategoryImplCopyWithImpl<$Res>
+    extends _$SubCategoryCopyWithImpl<$Res, _$SubCategoryImpl>
+    implements _$$SubCategoryImplCopyWith<$Res> {
+  __$$SubCategoryImplCopyWithImpl(
+      _$SubCategoryImpl _value, $Res Function(_$SubCategoryImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SubCategory
@@ -146,7 +146,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$CategoryImpl(
+    return _then(_$SubCategoryImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -177,8 +177,8 @@ class __$$CategoryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CategoryImpl implements _Category {
-  const _$CategoryImpl(
+class _$SubCategoryImpl implements _SubCategory {
+  const _$SubCategoryImpl(
       {@JsonKey(name: "id") this.id = 0,
       @JsonKey(name: "name") this.name = "",
       @JsonKey(name: "image") this.image = "",
@@ -186,8 +186,8 @@ class _$CategoryImpl implements _Category {
       @JsonKey(name: "created_at") this.createdAt = "",
       @JsonKey(name: "updated_at") this.updatedAt = ""});
 
-  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryImplFromJson(json);
+  factory _$SubCategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubCategoryImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -217,7 +217,7 @@ class _$CategoryImpl implements _Category {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryImpl &&
+            other is _$SubCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
@@ -239,28 +239,29 @@ class _$CategoryImpl implements _Category {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
-      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
+  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
+      __$$SubCategoryImplCopyWithImpl<_$SubCategoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(
+    return _$$SubCategoryImplToJson(
       this,
     );
   }
 }
 
-abstract class _Category implements SubCategory {
-  const factory _Category(
-      {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "name") final String? name,
-      @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "category_id") final int? categoryId,
-      @JsonKey(name: "created_at") final String? createdAt,
-      @JsonKey(name: "updated_at") final String? updatedAt}) = _$CategoryImpl;
+abstract class _SubCategory implements SubCategory {
+  const factory _SubCategory(
+          {@JsonKey(name: "id") final int? id,
+          @JsonKey(name: "name") final String? name,
+          @JsonKey(name: "image") final String? image,
+          @JsonKey(name: "category_id") final int? categoryId,
+          @JsonKey(name: "created_at") final String? createdAt,
+          @JsonKey(name: "updated_at") final String? updatedAt}) =
+      _$SubCategoryImpl;
 
-  factory _Category.fromJson(Map<String, dynamic> json) =
-      _$CategoryImpl.fromJson;
+  factory _SubCategory.fromJson(Map<String, dynamic> json) =
+      _$SubCategoryImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -285,6 +286,6 @@ abstract class _Category implements SubCategory {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

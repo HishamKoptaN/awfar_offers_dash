@@ -7,7 +7,7 @@ class GetGovernoratesUseCase {
   GetGovernoratesUseCase(
     this.governoratesRepo,
   );
-  Future<ApiResult<List<Governorate>?>> getGovernorates() async {
-    return await governoratesRepo.getGovernorates();
+  Future<ApiResult<List<Governorate>?>> get() async {
+    return await governoratesRepo.get();
   }
 }

@@ -18,43 +18,55 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCategoriesEvent,
+    required TResult Function() get,
     required TResult Function(
             AddCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addCategoryEvent,
+        add,
+    required TResult Function(int id) delete,
+    required TResult Function(Category category) edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCategoriesEvent,
+    TResult? Function()? get,
     TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Category category)? edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCategoriesEvent,
+    TResult Function()? get,
     TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult Function(int id)? delete,
+    TResult Function(Category category)? edit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) getCategoriesEvent,
-    required TResult Function(_AddCategoryEvent value) addCategoryEvent,
+    required TResult Function(_GetCategoriesEvent value) get,
+    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult? Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult? Function(_GetCategoriesEvent value)? get,
+    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult Function(_GetCategoriesEvent value)? get,
+    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,7 +119,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
 
   @override
   String toString() {
-    return 'CategoriesEvent.getCategoriesEvent()';
+    return 'CategoriesEvent.get()';
   }
 
   @override
@@ -122,34 +134,40 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCategoriesEvent,
+    required TResult Function() get,
     required TResult Function(
             AddCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addCategoryEvent,
+        add,
+    required TResult Function(int id) delete,
+    required TResult Function(Category category) edit,
   }) {
-    return getCategoriesEvent();
+    return get();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCategoriesEvent,
+    TResult? Function()? get,
     TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Category category)? edit,
   }) {
-    return getCategoriesEvent?.call();
+    return get?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCategoriesEvent,
+    TResult Function()? get,
     TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult Function(int id)? delete,
+    TResult Function(Category category)? edit,
     required TResult orElse(),
   }) {
-    if (getCategoriesEvent != null) {
-      return getCategoriesEvent();
+    if (get != null) {
+      return get();
     }
     return orElse();
   }
@@ -157,30 +175,36 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) getCategoriesEvent,
-    required TResult Function(_AddCategoryEvent value) addCategoryEvent,
+    required TResult Function(_GetCategoriesEvent value) get,
+    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
   }) {
-    return getCategoriesEvent(this);
+    return get(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult? Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult? Function(_GetCategoriesEvent value)? get,
+    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
   }) {
-    return getCategoriesEvent?.call(this);
+    return get?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult Function(_GetCategoriesEvent value)? get,
+    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
     required TResult orElse(),
   }) {
-    if (getCategoriesEvent != null) {
-      return getCategoriesEvent(this);
+    if (get != null) {
+      return get(this);
     }
     return orElse();
   }
@@ -233,7 +257,7 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
 
   @override
   String toString() {
-    return 'CategoriesEvent.addCategoryEvent(addCategoryRequestBodyModel: $addCategoryRequestBodyModel)';
+    return 'CategoriesEvent.add(addCategoryRequestBodyModel: $addCategoryRequestBodyModel)';
   }
 
   @override
@@ -262,34 +286,40 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getCategoriesEvent,
+    required TResult Function() get,
     required TResult Function(
             AddCategoryRequestBodyModel addCategoryRequestBodyModel)
-        addCategoryEvent,
+        add,
+    required TResult Function(int id) delete,
+    required TResult Function(Category category) edit,
   }) {
-    return addCategoryEvent(addCategoryRequestBodyModel);
+    return add(addCategoryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCategoriesEvent,
+    TResult? Function()? get,
     TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Category category)? edit,
   }) {
-    return addCategoryEvent?.call(addCategoryRequestBodyModel);
+    return add?.call(addCategoryRequestBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCategoriesEvent,
+    TResult Function()? get,
     TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        addCategoryEvent,
+        add,
+    TResult Function(int id)? delete,
+    TResult Function(Category category)? edit,
     required TResult orElse(),
   }) {
-    if (addCategoryEvent != null) {
-      return addCategoryEvent(addCategoryRequestBodyModel);
+    if (add != null) {
+      return add(addCategoryRequestBodyModel);
     }
     return orElse();
   }
@@ -297,30 +327,36 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) getCategoriesEvent,
-    required TResult Function(_AddCategoryEvent value) addCategoryEvent,
+    required TResult Function(_GetCategoriesEvent value) get,
+    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
   }) {
-    return addCategoryEvent(this);
+    return add(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult? Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult? Function(_GetCategoriesEvent value)? get,
+    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
   }) {
-    return addCategoryEvent?.call(this);
+    return add?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? getCategoriesEvent,
-    TResult Function(_AddCategoryEvent value)? addCategoryEvent,
+    TResult Function(_GetCategoriesEvent value)? get,
+    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
     required TResult orElse(),
   }) {
-    if (addCategoryEvent != null) {
-      return addCategoryEvent(this);
+    if (add != null) {
+      return add(this);
     }
     return orElse();
   }
@@ -337,5 +373,329 @@ abstract class _AddCategoryEvent implements CategoriesEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddCategoryEventImplCopyWith<_$AddCategoryEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteImplCopyWith<$Res> {
+  factory _$$DeleteImplCopyWith(
+          _$DeleteImpl value, $Res Function(_$DeleteImpl) then) =
+      __$$DeleteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$DeleteImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$DeleteImpl>
+    implements _$$DeleteImplCopyWith<$Res> {
+  __$$DeleteImplCopyWithImpl(
+      _$DeleteImpl _value, $Res Function(_$DeleteImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteImpl implements _Delete {
+  const _$DeleteImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'CategoriesEvent.delete(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      __$$DeleteImplCopyWithImpl<_$DeleteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function(
+            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+        add,
+    required TResult Function(int id) delete,
+    required TResult Function(Category category) edit,
+  }) {
+    return delete(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
+        add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Category category)? edit,
+  }) {
+    return delete?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
+        add,
+    TResult Function(int id)? delete,
+    TResult Function(Category category)? edit,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCategoriesEvent value) get,
+    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCategoriesEvent value)? get,
+    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategoriesEvent value)? get,
+    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Delete implements CategoriesEvent {
+  const factory _Delete({required final int id}) = _$DeleteImpl;
+
+  int get id;
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditImplCopyWith<$Res> {
+  factory _$$EditImplCopyWith(
+          _$EditImpl value, $Res Function(_$EditImpl) then) =
+      __$$EditImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Category category});
+
+  $CategoryCopyWith<$Res> get category;
+}
+
+/// @nodoc
+class __$$EditImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$EditImpl>
+    implements _$$EditImplCopyWith<$Res> {
+  __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$EditImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category,
+    ));
+  }
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryCopyWith<$Res> get category {
+    return $CategoryCopyWith<$Res>(_value.category, (value) {
+      return _then(_value.copyWith(category: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$EditImpl implements _Edit {
+  const _$EditImpl({required this.category});
+
+  @override
+  final Category category;
+
+  @override
+  String toString() {
+    return 'CategoriesEvent.edit(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      __$$EditImplCopyWithImpl<_$EditImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function(
+            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+        add,
+    required TResult Function(int id) delete,
+    required TResult Function(Category category) edit,
+  }) {
+    return edit(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
+        add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Category category)? edit,
+  }) {
+    return edit?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
+        add,
+    TResult Function(int id)? delete,
+    TResult Function(Category category)? edit,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCategoriesEvent value) get,
+    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+  }) {
+    return edit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCategoriesEvent value)? get,
+    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+  }) {
+    return edit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategoriesEvent value)? get,
+    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Edit implements CategoriesEvent {
+  const factory _Edit({required final Category category}) = _$EditImpl;
+
+  Category get category;
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

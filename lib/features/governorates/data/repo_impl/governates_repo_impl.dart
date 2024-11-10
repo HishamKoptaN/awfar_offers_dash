@@ -1,4 +1,5 @@
 import 'package:awfar_offers_dash/features/governorates/data/models/add_governorate_request_model.dart';
+import 'package:awfar_offers_dash/features/governorates/data/models/edit_governorate_request_model.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
@@ -12,9 +13,9 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
     this.governoratesApi,
   );
   @override
-  Future<ApiResult<List<Governorate>?>> getGovernorates() async {
+  Future<ApiResult<List<Governorate>>> get() async {
     try {
-      final response = await governoratesApi.getGovernorates();
+      final response = await governoratesApi.get();
       return ApiResult.success(
         data: response,
       );
@@ -28,11 +29,11 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
   }
 
   @override
-  Future<ApiResult<List<Governorate>?>> addGovernorate({
+  Future<ApiResult<Governorate>> add({
     required AddGovernorateRequestModel addGovernorateRequestModel,
   }) async {
     try {
-      final response = await governoratesApi.addGovernorate(
+      final response = await governoratesApi.add(
         addGovernorateRequestModel: addGovernorateRequestModel,
       );
       return ApiResult.success(
@@ -48,12 +49,32 @@ class GovernoratesRepoImpl implements GovernoratesRepo {
   }
 
   @override
-  Future<ApiResult<List<Governorate>?>> deleteGovernorate({
+  Future<ApiResult<void>> delete({
     required int id,
   }) async {
     try {
-      final response = await governoratesApi.deleteGovernorate(
+      await governoratesApi.delete(
         id: id,
+      );
+      return const ApiResult.success(
+        data: null,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<Governorate>> edit({
+    required EditGovernorateRequestModel editGovernorateRequestModel,
+  }) async {
+    try {
+      final response = await governoratesApi.edit(
+        editGovernorateRequestModel: editGovernorateRequestModel,
       );
       return ApiResult.success(
         data: response,

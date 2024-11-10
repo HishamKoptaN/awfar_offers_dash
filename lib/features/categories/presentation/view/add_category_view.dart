@@ -43,8 +43,8 @@ class _AddCategoryViewState extends State<AddCategoryView> {
       body: BlocProvider(
         create: (_) => getIt<CategoriesBloc>(),
         child: BlocConsumer<CategoriesBloc, CategoriesState>(
-          listener: (context, state) {
-            state.whenOrNull(
+          listener: (context, state) async {
+            await state.whenOrNull(
               success: () async {
                 ScaffoldMessenger.of(context).showSnackBar(
                   snackBar(
@@ -57,7 +57,7 @@ class _AddCategoryViewState extends State<AddCategoryView> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   snackBar(
                     status: false,
-                    message: error,
+                    message: error.error!,
                   ),
                 );
               },
@@ -97,12 +97,15 @@ class _AddCategoryViewState extends State<AddCategoryView> {
                       ),
                       onPressed: () async {
                         context.read<CategoriesBloc>().add(
-                              CategoriesEvent.addCategoryEvent(
+                              CategoriesEvent.add(
                                 addCategoryRequestBodyModel:
                                     addCategoryRequestBodyModel,
                               ),
                             );
                       },
+                    ),
+                    Gap(
+                      50.h,
                     ),
                   ],
                 ),

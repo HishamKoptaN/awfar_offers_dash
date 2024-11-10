@@ -17,7 +17,6 @@ class MainLayout extends StatefulWidget {
   final bool showAppBar;
   final bool backArow;
   void Function()? onPressed;
-
   @override
   State<MainLayout> createState() => _AppLayoutState();
 }

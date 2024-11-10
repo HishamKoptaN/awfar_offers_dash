@@ -8,10 +8,10 @@ class AddOfferUseCase {
   AddOfferUseCase(
     this.offersRepo,
   );
-  Future<ApiResult<List<Offer>?>> addOffer({
+  Future<ApiResult<Offer>> addOffer({
     required FormData formData,
   }) async {
-    return await offersRepo.addOffer(
+    return await offersRepo.add(
       formData: formData,
     );
   }

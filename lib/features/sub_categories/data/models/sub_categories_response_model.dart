@@ -8,10 +8,38 @@ class SubCategoriesResponseModel {
   factory SubCategoriesResponseModel() => _instance;
   SubCategoriesResponseModel._();
   List<SubCategory>? subCategories;
-  Future<void> loadCategories({
+  Future<void> load({
     required List<SubCategory>? subCategories,
   }) async {
     _instance.subCategories = subCategories;
+  }
+
+  Future<void> add({
+    required SubCategory subCategory,
+  }) async {
+    _instance.subCategories!.add(
+      subCategory,
+    );
+  }
+
+  Future<void> replace({
+    required SubCategory subCategory,
+  }) async {
+    final index =
+        _instance.subCategories!.indexWhere((s) => s.id == subCategory.id);
+    if (index != -1) {
+      _instance.subCategories![index] = subCategory;
+    } else {
+      throw Exception('${subCategory.id} not found');
+    }
+  }
+
+  void delete({
+    required int id,
+  }) {
+    _instance.subCategories!.removeWhere(
+      (item) => item.id == id,
+    );
   }
 }
 
@@ -24,7 +52,7 @@ class SubCategory with _$SubCategory {
     @JsonKey(name: "category_id") @Default(0) int? categoryId,
     @JsonKey(name: "created_at") @Default("") String? createdAt,
     @JsonKey(name: "updated_at") @Default("") String? updatedAt,
-  }) = _Category;
+  }) = _SubCategory;
   factory SubCategory.fromJson(Map<String, dynamic> json) =>
       _$SubCategoryFromJson(json);
 }

@@ -8,9 +8,9 @@ import '../../../../core/global/gobal_widgets/custom_button.dart';
 import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
 import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
 import '../../../../core/global/gobal_widgets/custom_data_column.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
+import '../bloc/governorates_event.dart';
 import '../bloc/governorates_state.dart';
 
 class GovernoratesView extends StatelessWidget {
@@ -31,6 +31,7 @@ class GovernoratesView extends StatelessWidget {
             getIt(),
             getIt(),
             getIt(),
+            getIt(),
           ),
           child: BlocConsumer<GovernoratesBloc, GovernoratesState>(
             listener: (context, state) async {
@@ -38,25 +39,16 @@ class GovernoratesView extends StatelessWidget {
                 success: () async {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text(
-                        "نجاح",
-                      ),
+                      content: Text("نجاح"),
                     ),
                   );
                 },
-                failure: (error) async {
+                failure: (apiErrorModel) async {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(
-                        error,
-                      ),
+                      content: Text(apiErrorModel.error!),
                     ),
                   );
-                  context.read<GovernoratesBloc>().emit(
-                        GovernoratesState.governoratesLoaded(
-                          governoratesResponseModel: governorates,
-                        ),
-                      );
                 },
               );
             },
@@ -76,6 +68,9 @@ class GovernoratesView extends StatelessWidget {
                           ),
                           customDataColumn(
                             label: 'الاسم',
+                          ),
+                          customDataColumn(
+                            label: '',
                           ),
                           DataColumn(
                             label: CustomTextButton(
@@ -99,26 +94,41 @@ class GovernoratesView extends StatelessWidget {
                                 customDataCell(
                                   label: governorate.name ?? 'لا يوجد اسم',
                                 ),
-                                const DataCell(
-                                  SizedBox(),
+                                DataCell(
+                                  Padding(
+                                    padding: const EdgeInsets.all(1.0),
+                                    child: CustomTextButton(
+                                      onPressed: () {
+                                        customNavigation(
+                                          context: context,
+                                          path: '/EditGovernorateView',
+                                          extra: governorate,
+                                        );
+                                      },
+                                      text: 'تعديل',
+                                    ),
+                                  ),
                                 ),
-                                // DataCell(
-                                //   CustomTextButton(
-                                //     onPressed: () {
-                                //       if (!context
-                                //           .read<GovernoratesBloc>()
-                                //           .isClosed) {
-                                //         context.read<GovernoratesBloc>().add(
-                                //               GovernoratesEvent
-                                //                   .deleteGovernorates(
-                                //                 id: governorate.id!,
-                                //               ),
-                                //             );
-                                //       }
-                                //     },
-                                //     text: 'حذف',
-                                //   ),
-                                // ),
+                                DataCell(
+                                  CustomTextButton(
+                                    widget: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                      size: 35.sp,
+                                    ),
+                                    onPressed: () {
+                                      if (!context
+                                          .read<GovernoratesBloc>()
+                                          .isClosed) {
+                                        context.read<GovernoratesBloc>().add(
+                                              GovernoratesEvent.delete(
+                                                id: governorate.id!,
+                                              ),
+                                            );
+                                      }
+                                    },
+                                  ),
+                                ),
                               ],
                             );
                           },

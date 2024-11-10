@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../core/errors/api_error_model.dart';
 import '../../data/models/governorates_response_model.dart';
 part 'governorates_state.freezed.dart';
 
@@ -10,5 +11,7 @@ class GovernoratesState with _$GovernoratesState {
   }) = _GovernoratesLoaded;
   const factory GovernoratesState.loading() = _Loading;
   const factory GovernoratesState.success() = _Success;
-  const factory GovernoratesState.failure({required String error}) = _Failure;
+  const factory GovernoratesState.failure({
+    required ApiErrorModel apiErrorModel,
+  }) = _Failure;
 }

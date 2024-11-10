@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
-import '../models/add_sub_category_request_body_model.dart';
 import '../models/sub_categories_response_model.dart';
 part 'sub_categories_api.g.dart';
 
@@ -16,19 +15,35 @@ abstract class SubCategoriesApi {
   @GET(
     ApiConstants.subCategories,
   )
-  Future<List<SubCategory>?> getSubCategories();
+  Future<List<SubCategory>> get();
   //! Add SubCategory
   @POST(
     ApiConstants.subCategories,
   )
-  Future<List<SubCategory>?> addSubSubCategory({
+  Future<SubCategory> add({
     @Body() required FormData formData,
   });
-  //! DELETE Country
+
+  //! Edit offer
+  @PUT(
+    ApiConstants.subCategories,
+  )
+  Future<SubCategory> edit({
+    @Body() required SubCategory subCategory,
+  });
+  //! Edit Image
+  @PUT(
+    '${ApiConstants.subCategories}/{id}',
+  )
+  Future<SubCategory> editImage({
+    required int id,
+    @Body() required FormData formData,
+  });
+  //! DELETE SubCategory
   @DELETE(
     '${ApiConstants.subCategories}/{id}',
   )
-  Future<List<SubCategory>?> deleteSubCategory({
+  Future<void> delete({
     @Path('id') required int id,
   });
 }

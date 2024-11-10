@@ -6,8 +6,8 @@ part of 'sub_categories_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
-    _$CategoryImpl(
+_$SubCategoryImpl _$$SubCategoryImplFromJson(Map<String, dynamic> json) =>
+    _$SubCategoryImpl(
       id: (json['id'] as num?)?.toInt() ?? 0,
       name: json['name'] as String? ?? "",
       image: json['image'] as String? ?? "",
@@ -16,7 +16,7 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String? ?? "",
     );
 
-Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
+Map<String, dynamic> _$$SubCategoryImplToJson(_$SubCategoryImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

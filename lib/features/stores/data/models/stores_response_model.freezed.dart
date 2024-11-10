@@ -21,21 +21,21 @@ Store _$StoreFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Store {
   @JsonKey(name: "id")
-  int? get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   @JsonKey(name: "country_id")
-  int? get countryId => throw _privateConstructorUsedError;
+  int get countryId => throw _privateConstructorUsedError;
   @JsonKey(name: "governorate_id")
-  int? get governorateId => throw _privateConstructorUsedError;
+  int get governorateId => throw _privateConstructorUsedError;
   @JsonKey(name: "place")
-  String? get place => throw _privateConstructorUsedError;
+  String get place => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
-  String? get createdAt => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Store to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,14 +52,14 @@ abstract class $StoreCopyWith<$Res> {
       _$StoreCopyWithImpl<$Res, Store>;
   @useResult
   $Res call(
-      {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "country_id") int? countryId,
-      @JsonKey(name: "governorate_id") int? governorateId,
-      @JsonKey(name: "place") String? place,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt});
+      {@JsonKey(name: "id") int id,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "country_id") int countryId,
+      @JsonKey(name: "governorate_id") int governorateId,
+      @JsonKey(name: "place") String place,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -77,48 +77,48 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image = freezed,
-    Object? countryId = freezed,
-    Object? governorateId = freezed,
-    Object? place = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image = null,
+    Object? countryId = null,
+    Object? governorateId = null,
+    Object? place = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
+              as int,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
+              as String,
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryId: freezed == countryId
+              as String,
+      countryId: null == countryId
           ? _value.countryId
           : countryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      governorateId: freezed == governorateId
+              as int,
+      governorateId: null == governorateId
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      place: freezed == place
+              as int,
+      place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: freezed == createdAt
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: freezed == updatedAt
+              as String,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -131,14 +131,14 @@ abstract class _$$StoreImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "country_id") int? countryId,
-      @JsonKey(name: "governorate_id") int? governorateId,
-      @JsonKey(name: "place") String? place,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt});
+      {@JsonKey(name: "id") int id,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "country_id") int countryId,
+      @JsonKey(name: "governorate_id") int governorateId,
+      @JsonKey(name: "place") String place,
+      @JsonKey(name: "created_at") String createdAt,
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -154,48 +154,48 @@ class __$$StoreImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image = freezed,
-    Object? countryId = freezed,
-    Object? governorateId = freezed,
-    Object? place = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? image = null,
+    Object? countryId = null,
+    Object? governorateId = null,
+    Object? place = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$StoreImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
+              as int,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
+              as String,
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryId: freezed == countryId
+              as String,
+      countryId: null == countryId
           ? _value.countryId
           : countryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      governorateId: freezed == governorateId
+              as int,
+      governorateId: null == governorateId
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      place: freezed == place
+              as int,
+      place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: freezed == createdAt
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: freezed == updatedAt
+              as String,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -204,42 +204,42 @@ class __$$StoreImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StoreImpl implements _Store {
   const _$StoreImpl(
-      {@JsonKey(name: "id") this.id,
-      @JsonKey(name: "name") this.name,
-      @JsonKey(name: "image") this.image,
-      @JsonKey(name: "country_id") this.countryId,
-      @JsonKey(name: "governorate_id") this.governorateId,
-      @JsonKey(name: "place") this.place,
-      @JsonKey(name: "created_at") this.createdAt,
-      @JsonKey(name: "updated_at") this.updatedAt});
+      {@JsonKey(name: "id") this.id = 0,
+      @JsonKey(name: "name") this.name = "",
+      @JsonKey(name: "image") this.image = "",
+      @JsonKey(name: "country_id") this.countryId = 0,
+      @JsonKey(name: "governorate_id") this.governorateId = 0,
+      @JsonKey(name: "place") this.place = "",
+      @JsonKey(name: "created_at") this.createdAt = "",
+      @JsonKey(name: "updated_at") this.updatedAt = ""});
 
   factory _$StoreImpl.fromJson(Map<String, dynamic> json) =>
       _$$StoreImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
-  final int? id;
+  final int id;
   @override
   @JsonKey(name: "name")
-  final String? name;
+  final String name;
   @override
   @JsonKey(name: "image")
-  final String? image;
+  final String image;
   @override
   @JsonKey(name: "country_id")
-  final int? countryId;
+  final int countryId;
   @override
   @JsonKey(name: "governorate_id")
-  final int? governorateId;
+  final int governorateId;
   @override
   @JsonKey(name: "place")
-  final String? place;
+  final String place;
   @override
   @JsonKey(name: "created_at")
-  final String? createdAt;
+  final String createdAt;
   @override
   @JsonKey(name: "updated_at")
-  final String? updatedAt;
+  final String updatedAt;
 
   @override
   String toString() {
@@ -288,41 +288,41 @@ class _$StoreImpl implements _Store {
 
 abstract class _Store implements Store {
   const factory _Store(
-      {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "name") final String? name,
-      @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "country_id") final int? countryId,
-      @JsonKey(name: "governorate_id") final int? governorateId,
-      @JsonKey(name: "place") final String? place,
-      @JsonKey(name: "created_at") final String? createdAt,
-      @JsonKey(name: "updated_at") final String? updatedAt}) = _$StoreImpl;
+      {@JsonKey(name: "id") final int id,
+      @JsonKey(name: "name") final String name,
+      @JsonKey(name: "image") final String image,
+      @JsonKey(name: "country_id") final int countryId,
+      @JsonKey(name: "governorate_id") final int governorateId,
+      @JsonKey(name: "place") final String place,
+      @JsonKey(name: "created_at") final String createdAt,
+      @JsonKey(name: "updated_at") final String updatedAt}) = _$StoreImpl;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$StoreImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
-  int? get id;
+  int get id;
   @override
   @JsonKey(name: "name")
-  String? get name;
+  String get name;
   @override
   @JsonKey(name: "image")
-  String? get image;
+  String get image;
   @override
   @JsonKey(name: "country_id")
-  int? get countryId;
+  int get countryId;
   @override
   @JsonKey(name: "governorate_id")
-  int? get governorateId;
+  int get governorateId;
   @override
   @JsonKey(name: "place")
-  String? get place;
+  String get place;
   @override
   @JsonKey(name: "created_at")
-  String? get createdAt;
+  String get createdAt;
   @override
   @JsonKey(name: "updated_at")
-  String? get updatedAt;
+  String get updatedAt;
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.

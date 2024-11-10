@@ -1,4 +1,5 @@
 import 'package:awfar_offers_dash/features/countries/data/models/add_country_request_body_model.dart';
+import 'package:awfar_offers_dash/features/countries/data/models/edit_country_request_body_model.dart';
 
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
@@ -12,9 +13,9 @@ class CountriesRepoImpl implements CountriesRepo {
     this.countriesApi,
   );
   @override
-  Future<ApiResult<List<Country>?>> getCountries() async {
+  Future<ApiResult<List<Country>?>> get() async {
     try {
-      final response = await countriesApi.getCountries();
+      final response = await countriesApi.get();
       return ApiResult.success(
         data: response,
       );
@@ -28,12 +29,12 @@ class CountriesRepoImpl implements CountriesRepo {
   }
 
   @override
-  Future<ApiResult<List<Country>?>> addCountry({
-    required AddCountryRequestModel addCountryRequestModel,
+  Future<ApiResult<Country>> add({
+    required AddCountryRequestBodyModel addCountryRequestBodyModel,
   }) async {
     try {
-      final response = await countriesApi.addCountry(
-        addCountryRequestModel: addCountryRequestModel,
+      final response = await countriesApi.add(
+        addCountryRequestBodyModel: addCountryRequestBodyModel,
       );
       return ApiResult.success(
         data: response,
@@ -48,15 +49,35 @@ class CountriesRepoImpl implements CountriesRepo {
   }
 
   @override
-  Future<ApiResult<List<Country>?>> deleteCountry({
+  Future<ApiResult<Country>> edit({
+    required EditCountryRequestBodyModel editCountryRequestBodyModel,
+  }) async {
+    try {
+      final response = await countriesApi.edit(
+        editCountryRequestBodyModel: editCountryRequestBodyModel,
+      );
+      return ApiResult.success(
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> delete({
     required int id,
   }) async {
     try {
-      final response = await countriesApi.deleteCountry(
+      await countriesApi.delete(
         id: id,
       );
-      return ApiResult.success(
-        data: response,
+      return const ApiResult.success(
+        data: null,
       );
     } catch (error) {
       return ApiResult.failure(

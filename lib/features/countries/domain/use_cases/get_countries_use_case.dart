@@ -2,12 +2,12 @@ import '../../../../core/networking/api_result.dart';
 import '../../data/models/countries_response_model.dart';
 import '../repo/countreis_repo.dart';
 
-class GetCountrieUseCase {
+class GetCountriesUseCase {
   final CountriesRepo countreisRepo;
-  GetCountrieUseCase(
+  GetCountriesUseCase(
     this.countreisRepo,
   );
-  Future<ApiResult<List<Country>?>> getCountries() async {
-    return await countreisRepo.getCountries();
+  Future<ApiResult<List<Country>?>> get() async {
+    return await countreisRepo.get();
   }
 }

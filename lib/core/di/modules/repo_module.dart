@@ -12,44 +12,59 @@ import '../../../features/stores/data/repo_impl/stores_repo_impl.dart';
 import '../../../features/stores/domain/repo/stores_repo.dart';
 import '../../../features/sub_categories/data/repo_impl/sub_categories_repo_impl.dart';
 import '../../../features/sub_categories/domain/repo/sub_categories_repo.dart';
+import '../../../features/coupons/data/repo_impl/coupons_repo_impl.dart';
+import '../../../features/coupons/domain/repo/coupons_repo.dart';
 import '../dependency_injection.dart';
 
 class RepositoryModule extends DIModule {
   @override
   Future<void> provides() async {
     getIt
+      //! Main
       ..registerLazySingleton<MainRepo>(
         () => MainRepoImpl(
           getIt(),
         ),
       )
+      //! Countries
       ..registerLazySingleton<CountriesRepo>(
         () => CountriesRepoImpl(
           getIt(),
         ),
       )
+      //! Governorates
       ..registerLazySingleton<GovernoratesRepo>(
         () => GovernoratesRepoImpl(
           getIt(),
         ),
       )
+      //! Stores
       ..registerLazySingleton<StoresRepo>(
         () => StoresRepoImpl(
           getIt(),
         ),
       )
+      //! Categories
       ..registerLazySingleton<CategoriesRepo>(
         () => CategoriesRepoImpl(
           getIt(),
         ),
       )
+      //! SubCategories
       ..registerLazySingleton<SubCategoriesRepo>(
         () => SubCategoriesRepoImpl(
           getIt(),
         ),
       )
+      //! Offers
       ..registerLazySingleton<OffersRepo>(
         () => OffersRepoImpl(
+          getIt(),
+        ),
+      )
+      //! Coupons
+      ..registerLazySingleton<CouponsRepo>(
+        () => CouponsRepoImpl(
           getIt(),
         ),
       );

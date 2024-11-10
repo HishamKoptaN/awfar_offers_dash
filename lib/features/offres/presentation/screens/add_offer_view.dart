@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +9,7 @@ import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/global/gobal_widgets/custom_button.dart';
 import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
+import '../../../../core/global/gobal_widgets/custom_date_widget.dart';
 import '../../../../core/global/gobal_widgets/custom_dropdown_button.dart';
 import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
 import '../../../../core/global/gobal_widgets/global_widgets.dart';
@@ -20,14 +21,13 @@ import '../../../sub_categories/data/models/sub_categories_response_model.dart';
 import '../../data/models/add_offer_request_body_model.dart';
 import '../bloc/offers_event.dart';
 import '../bloc/offers_state.dart';
-import '../bloc/offres_bloc.dart';
+import '../bloc/offers_bloc.dart';
 import 'dart:typed_data';
 
 class AddOfferView extends StatefulWidget {
   const AddOfferView({
     super.key,
   });
-
   @override
   State<AddOfferView> createState() => _AddOfferViewState();
 }
@@ -37,12 +37,12 @@ class _AddOfferViewState extends State<AddOfferView> {
   Category? selectedCategory;
   SubCategory? selectedSubCategory;
   Uint8List? imageBytes;
-  final stores = StoresResponseModel().stores ?? [];
-  final categories = CategoriesResponseModel().categories ?? [];
-  // final subCategories = SubCategoriesResponseModel().subCategories ?? [];
-  final subCategories = SubCategoriesResponseModel().subCategories ?? [];
-  AddOfferRequestBodyModel addOfferRequestBodyModel =
-      AddOfferRequestBodyModel();
+
+// دالة لتنسيق التاريخ بالشكل المطلوب
+  String formatDate(DateTime date) {
+    return "${date.day}/${date.month}/${date.year}";
+  }
+
   @override
   Widget build(context) {
     return MainLayout(
@@ -50,6 +50,9 @@ class _AddOfferViewState extends State<AddOfferView> {
       route: 'أضافة عرض',
       body: BlocProvider(
         create: (_) => OffersBloc(
+          getIt(),
+          getIt(),
+          getIt(),
           getIt(),
           getIt(),
         ),
@@ -75,18 +78,47 @@ class _AddOfferViewState extends State<AddOfferView> {
             );
           },
           builder: (context, state) {
-            return SingleChildScrollView(
-              child: SizedBox(
-                width: double.infinity,
+            return SizedBox.expand(
+              child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     CustomTextFormField(
-                      hintText: 'اسم العرض',
+                      label: 'اسم العرض',
                       textInputType: TextInputType.text,
                       onChanged: (value) {
-                        addOfferRequestBodyModel.name = value;
+                        AddOfferRequestBodyModel().name = value;
+                      },
+                    ),
+                    Gap(
+                      10.h,
+                    ),
+                    CustomDateWidget(
+                      widget: CustomText(
+                        text: AddOfferRequestBodyModel().endAt != null
+                            ? formatDate(AddOfferRequestBodyModel().endAt!)
+                                .toString()
+                            : "تاريخ انتهاء العرض",
+                        fontSize: 20.sp,
+                        color: AppColors.white,
+                        maxLines: 1,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onPressed: () async {
+                        final DateTime? picked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2101),
+                        );
+                        if (picked != null &&
+                            picked != AddOfferRequestBodyModel().endAt) {
+                          setState(() {
+                            AddOfferRequestBodyModel().endAt = picked;
+                          });
+                        }
                       },
                     ),
                     Gap(
@@ -95,18 +127,18 @@ class _AddOfferViewState extends State<AddOfferView> {
                     CustomDropdownContainer<Store>(
                       height: 75.h,
                       width: 450.w,
-                      items: stores,
+                      items: StoresResponseModel().stores!,
                       selectedItem: selectedStore,
                       onChanged: (value) {
                         setState(
                           () {
                             selectedStore = value;
-                            addOfferRequestBodyModel.storeId =
-                                value!.id!.toString();
+                            AddOfferRequestBodyModel().storeId =
+                                value!.id.toString();
                           },
                         );
                       },
-                      itemLabel: (item) => item.name!,
+                      itemLabel: (item) => item.name,
                       fontSize: 20.sp,
                       hint: 'أختر المتجر صاحب العرض',
                     ),
@@ -116,7 +148,7 @@ class _AddOfferViewState extends State<AddOfferView> {
                     CustomDropdownContainer<Category>(
                       height: 75.h,
                       width: 450.w,
-                      items: categories,
+                      items: CategoriesResponseModel().categories!,
                       selectedItem: selectedCategory,
                       onChanged: (value) {
                         setState(
@@ -137,7 +169,8 @@ class _AddOfferViewState extends State<AddOfferView> {
                       CustomDropdownContainer<SubCategory>(
                         height: 75.h,
                         width: 450.w,
-                        items: subCategories
+                        items: SubCategoriesResponseModel()
+                            .subCategories!
                             .where(
                               (subcategory) =>
                                   subcategory.categoryId ==
@@ -149,7 +182,7 @@ class _AddOfferViewState extends State<AddOfferView> {
                           setState(
                             () {
                               selectedSubCategory = value;
-                              addOfferRequestBodyModel.subCategoryId =
+                              AddOfferRequestBodyModel().subCategoryId =
                                   selectedCategory?.id?.toString();
                             },
                           );
@@ -222,36 +255,34 @@ class _AddOfferViewState extends State<AddOfferView> {
                       ),
                       onPressed: () async {
                         if (imageBytes != null &&
-                            addOfferRequestBodyModel.subCategoryId != null) {
+                            AddOfferRequestBodyModel().subCategoryId != null) {
                           FormData formData = FormData.fromMap({
-                            'name': addOfferRequestBodyModel.name,
+                            'name': AddOfferRequestBodyModel().name,
+                            'end_date': DateFormat('dd/MM/yyyy').format(
+                              AddOfferRequestBodyModel().endAt!,
+                            ),
                             'image': MultipartFile.fromBytes(
                               imageBytes!,
                               filename: 'offer_image.jpg',
                             ),
                             'store_id': int.tryParse(
-                                  addOfferRequestBodyModel.storeId ?? '',
+                                  AddOfferRequestBodyModel().storeId ?? '',
                                 ) ??
                                 0,
                             'sub_category_id':
-                                addOfferRequestBodyModel.subCategoryId,
+                                AddOfferRequestBodyModel().subCategoryId,
                             'description': "description",
                           });
-
-                          // إرسال الطلب
                           context.read<OffersBloc>().add(
-                                OffersEvent.addOfferEvent(
+                                OffersEvent.add(
                                   formData: formData,
                                 ),
                               );
-                        } else {
-                          // التعامل مع الحالة عندما تكون الصورة أو معرف الفئة الفرعية غير محدد
-                          print('Image or sub_category_id is null');
                         }
                       },
                     ),
                     Gap(
-                      10.h,
+                      50.h,
                     ),
                   ],
                 ),

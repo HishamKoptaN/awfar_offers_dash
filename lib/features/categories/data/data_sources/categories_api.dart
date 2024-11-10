@@ -13,18 +13,26 @@ abstract class CategoriesApi {
     Dio dio, {
     String baseUrl,
   }) = _CategoriesApi;
+  //! Get categories
   @GET(
     ApiConstants.categories,
   )
-  Future<List<Category>?> getCategories();
+  Future<List<Category>?> get();
   //! Add Category
   @POST(ApiConstants.categories)
-  Future<List<Category>?> addCategory({
+  Future<Category> addCategory({
     @Body() required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
   });
-  //! DELETE Country
+  //! Edit Category
+  @PUT(
+    ApiConstants.categories,
+  )
+  Future<Category> edit({
+    @Body() required Category category,
+  });
+  //! DELETE Category
   @DELETE('${ApiConstants.categories}/{id}')
-  Future<List<Category>?> deleteCategory({
+  Future<void> delete({
     @Path('id') required int id,
   });
 }

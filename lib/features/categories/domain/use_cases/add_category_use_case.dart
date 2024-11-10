@@ -8,10 +8,10 @@ class AddCategoryUseCase {
   AddCategoryUseCase(
     this.categoriesRepo,
   );
-  Future<ApiResult<List<Category>?>> addCategory({
+  Future<ApiResult<Category>> add({
     required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
   }) async {
-    return await categoriesRepo.addCategory(
+    return await categoriesRepo.add(
       addCategoryRequestBodyModel: addCategoryRequestBodyModel,
     );
   }

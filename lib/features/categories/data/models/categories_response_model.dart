@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'categories_response_model.freezed.dart';
 part 'categories_response_model.g.dart';
 
@@ -8,10 +7,37 @@ class CategoriesResponseModel {
   factory CategoriesResponseModel() => _instance;
   CategoriesResponseModel._();
   List<Category>? categories;
-  Future<void> loadCategories({
+  Future<void> load({
     required List<Category>? categories,
   }) async {
     _instance.categories = categories;
+  }
+
+  Future<void> add({
+    required Category category,
+  }) async {
+    _instance.categories!.add(
+      category,
+    );
+  }
+
+  Future<void> replace({
+    required Category offer,
+  }) async {
+    final index = _instance.categories!.indexWhere((c) => c.id == offer.id);
+    if (index != -1) {
+      _instance.categories![index] = offer;
+    } else {
+      throw Exception('${offer.id} not found');
+    }
+  }
+
+  void delete({
+    required int id,
+  }) {
+    _instance.categories!.removeWhere(
+      (item) => item.id == id,
+    );
   }
 }
 

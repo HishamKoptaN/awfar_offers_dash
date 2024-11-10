@@ -11,9 +11,9 @@ class CategoriesRepoImpl implements CategoriesRepo {
     this.categoriesApi,
   );
   @override
-  Future<ApiResult<List<Category>?>> getCategories() async {
+  Future<ApiResult<List<Category>?>> get() async {
     try {
-      final response = await categoriesApi.getCategories();
+      final response = await categoriesApi.get();
       return ApiResult.success(
         data: response,
       );
@@ -27,7 +27,7 @@ class CategoriesRepoImpl implements CategoriesRepo {
   }
 
   @override
-  Future<ApiResult<List<Category>?>> addCategory({
+  Future<ApiResult<Category>> add({
     required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
   }) async {
     try {
@@ -35,7 +35,47 @@ class CategoriesRepoImpl implements CategoriesRepo {
         addCategoryRequestBodyModel: addCategoryRequestBodyModel,
       );
       return ApiResult.success(
-        data: response!,
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> delete({
+    required int id,
+  }) async {
+    try {
+      await categoriesApi.delete(
+        id: id,
+      );
+      return const ApiResult.success(
+        data: null,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<void>> edit({
+    required Category category,
+  }) async {
+    try {
+      await categoriesApi.edit(
+        category: category,
+      );
+      return const ApiResult.success(
+        data: null,
       );
     } catch (error) {
       return ApiResult.failure(

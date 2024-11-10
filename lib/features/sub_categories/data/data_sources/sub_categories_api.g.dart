@@ -24,7 +24,7 @@ class _SubCategoriesApi implements SubCategoriesApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<SubCategory>?> getSubCategories() async {
+  Future<List<SubCategory>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -46,10 +46,10 @@ class _SubCategoriesApi implements SubCategoriesApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<SubCategory>? _value;
+    late List<SubCategory> _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => SubCategory.fromJson(i as Map<String, dynamic>))
+      _value = _result.data!
+          .map((dynamic i) => SubCategory.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -59,13 +59,12 @@ class _SubCategoriesApi implements SubCategoriesApi {
   }
 
   @override
-  Future<List<SubCategory>?> addSubSubCategory(
-      {required FormData formData}) async {
+  Future<SubCategory> add({required FormData formData}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = formData;
-    final _options = _setStreamType<List<SubCategory>>(Options(
+    final _options = _setStreamType<SubCategory>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -81,12 +80,10 @@ class _SubCategoriesApi implements SubCategoriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<SubCategory>? _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SubCategory _value;
     try {
-      _value = _result.data
-          ?.map((dynamic i) => SubCategory.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = SubCategory.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -95,12 +92,81 @@ class _SubCategoriesApi implements SubCategoriesApi {
   }
 
   @override
-  Future<List<SubCategory>?> deleteSubCategory({required int id}) async {
+  Future<SubCategory> edit({required SubCategory subCategory}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = subCategory;
+    final _options = _setStreamType<SubCategory>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'sub-categories',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SubCategory _value;
+    try {
+      _value = SubCategory.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SubCategory> editImage({
+    required int id,
+    required FormData formData,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = formData;
+    final _options = _setStreamType<SubCategory>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'sub-categories/{id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SubCategory _value;
+    try {
+      _value = SubCategory.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> delete({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<SubCategory>>(Options(
+    final _options = _setStreamType<void>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -116,17 +182,7 @@ class _SubCategoriesApi implements SubCategoriesApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<SubCategory>? _value;
-    try {
-      _value = _result.data
-          ?.map((dynamic i) => SubCategory.fromJson(i as Map<String, dynamic>))
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

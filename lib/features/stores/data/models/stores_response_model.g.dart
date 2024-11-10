@@ -7,14 +7,14 @@ part of 'stores_response_model.dart';
 // **************************************************************************
 
 _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      image: json['image'] as String?,
-      countryId: (json['country_id'] as num?)?.toInt(),
-      governorateId: (json['governorate_id'] as num?)?.toInt(),
-      place: json['place'] as String?,
-      createdAt: json['created_at'] as String?,
-      updatedAt: json['updated_at'] as String?,
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: json['name'] as String? ?? "",
+      image: json['image'] as String? ?? "",
+      countryId: (json['country_id'] as num?)?.toInt() ?? 0,
+      governorateId: (json['governorate_id'] as num?)?.toInt() ?? 0,
+      place: json['place'] as String? ?? "",
+      createdAt: json['created_at'] as String? ?? "",
+      updatedAt: json['updated_at'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>

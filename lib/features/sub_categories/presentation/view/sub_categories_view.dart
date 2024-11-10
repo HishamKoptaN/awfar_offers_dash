@@ -14,6 +14,7 @@ import '../../../../core/global/gobal_widgets/image_preview.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../data/models/sub_categories_response_model.dart';
 import '../bloc/sub_categories_bloc.dart';
+import '../bloc/sub_categories_event.dart';
 import '../bloc/sub_categories_state.dart';
 
 class SubCategoriesView extends StatelessWidget {
@@ -33,16 +34,24 @@ class SubCategoriesView extends StatelessWidget {
         create: (context) => SubCategoriesBloc(
           getIt(),
           getIt(),
+          getIt(),
+          getIt(),
+          getIt(),
         ),
         child: BlocConsumer<SubCategoriesBloc, SubCategoriesState>(
           listener: (context, state) async {
             await state.whenOrNull(
-              failure: (error) async {
+              success: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("نجاح"),
+                  ),
+                );
+              },
+              failure: (apiErrorModel) async {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      error,
-                    ),
+                    content: Text(apiErrorModel.error!),
                   ),
                 );
               },
@@ -68,6 +77,9 @@ class SubCategoriesView extends StatelessWidget {
                         ),
                         customDataColumn(
                           label: 'صورة الفئة الفرعية',
+                        ),
+                        customDataColumn(
+                          label: 'معرف الدوله',
                         ),
                         DataColumn(
                           label: CustomTextButton(
@@ -128,8 +140,39 @@ class SubCategoriesView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const DataCell(
-                                SizedBox(),
+                              DataCell(
+                                Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: CustomTextButton(
+                                    onPressed: () {
+                                      customNavigation(
+                                        context: context,
+                                        path: '/EditSubCategoryView',
+                                        extra: subCategory,
+                                      );
+                                    },
+                                    text: 'تعديل',
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                Padding(
+                                  padding: const EdgeInsets.all(1.0),
+                                  child: CustomTextButton(
+                                    widget: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                      size: 35.sp,
+                                    ),
+                                    onPressed: () {
+                                      context.read<SubCategoriesBloc>().add(
+                                            SubCategoriesEvent.delete(
+                                              id: subCategory.id!,
+                                            ),
+                                          );
+                                    },
+                                  ),
+                                ),
                               ),
                             ],
                           );

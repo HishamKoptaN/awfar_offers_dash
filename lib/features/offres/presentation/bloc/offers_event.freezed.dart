@@ -18,39 +18,57 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OffersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOffersEvent,
-    required TResult Function(FormData formData) addOfferEvent,
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOffersEvent,
-    TResult? Function(FormData formData)? addOfferEvent,
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOffersEvent,
-    TResult Function(FormData formData)? addOfferEvent,
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetOffersEvent value) getOffersEvent,
-    required TResult Function(_AddOfferEvent value) addOfferEvent,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetOffersEvent value)? getOffersEvent,
-    TResult? Function(_AddOfferEvent value)? addOfferEvent,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetOffersEvent value)? getOffersEvent,
-    TResult Function(_AddOfferEvent value)? addOfferEvent,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,18 +96,16 @@ class _$OffersEventCopyWithImpl<$Res, $Val extends OffersEvent>
 }
 
 /// @nodoc
-abstract class _$$GetOffersEventImplCopyWith<$Res> {
-  factory _$$GetOffersEventImplCopyWith(_$GetOffersEventImpl value,
-          $Res Function(_$GetOffersEventImpl) then) =
-      __$$GetOffersEventImplCopyWithImpl<$Res>;
+abstract class _$$GetImplCopyWith<$Res> {
+  factory _$$GetImplCopyWith(_$GetImpl value, $Res Function(_$GetImpl) then) =
+      __$$GetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetOffersEventImplCopyWithImpl<$Res>
-    extends _$OffersEventCopyWithImpl<$Res, _$GetOffersEventImpl>
-    implements _$$GetOffersEventImplCopyWith<$Res> {
-  __$$GetOffersEventImplCopyWithImpl(
-      _$GetOffersEventImpl _value, $Res Function(_$GetOffersEventImpl) _then)
+class __$$GetImplCopyWithImpl<$Res>
+    extends _$OffersEventCopyWithImpl<$Res, _$GetImpl>
+    implements _$$GetImplCopyWith<$Res> {
+  __$$GetImplCopyWithImpl(_$GetImpl _value, $Res Function(_$GetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of OffersEvent
@@ -98,18 +114,18 @@ class __$$GetOffersEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetOffersEventImpl implements _GetOffersEvent {
-  const _$GetOffersEventImpl();
+class _$GetImpl implements _Get {
+  const _$GetImpl();
 
   @override
   String toString() {
-    return 'OffersEvent.getOffersEvent()';
+    return 'OffersEvent.get()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOffersEventImpl);
+        (other.runtimeType == runtimeType && other is _$GetImpl);
   }
 
   @override
@@ -118,30 +134,39 @@ class _$GetOffersEventImpl implements _GetOffersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOffersEvent,
-    required TResult Function(FormData formData) addOfferEvent,
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
   }) {
-    return getOffersEvent();
+    return get();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOffersEvent,
-    TResult? Function(FormData formData)? addOfferEvent,
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
   }) {
-    return getOffersEvent?.call();
+    return get?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOffersEvent,
-    TResult Function(FormData formData)? addOfferEvent,
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
-    if (getOffersEvent != null) {
-      return getOffersEvent();
+    if (get != null) {
+      return get();
     }
     return orElse();
   }
@@ -149,54 +174,61 @@ class _$GetOffersEventImpl implements _GetOffersEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetOffersEvent value) getOffersEvent,
-    required TResult Function(_AddOfferEvent value) addOfferEvent,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
   }) {
-    return getOffersEvent(this);
+    return get(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetOffersEvent value)? getOffersEvent,
-    TResult? Function(_AddOfferEvent value)? addOfferEvent,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
   }) {
-    return getOffersEvent?.call(this);
+    return get?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetOffersEvent value)? getOffersEvent,
-    TResult Function(_AddOfferEvent value)? addOfferEvent,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
-    if (getOffersEvent != null) {
-      return getOffersEvent(this);
+    if (get != null) {
+      return get(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetOffersEvent implements OffersEvent {
-  const factory _GetOffersEvent() = _$GetOffersEventImpl;
+abstract class _Get implements OffersEvent {
+  const factory _Get() = _$GetImpl;
 }
 
 /// @nodoc
-abstract class _$$AddOfferEventImplCopyWith<$Res> {
-  factory _$$AddOfferEventImplCopyWith(
-          _$AddOfferEventImpl value, $Res Function(_$AddOfferEventImpl) then) =
-      __$$AddOfferEventImplCopyWithImpl<$Res>;
+abstract class _$$AddImplCopyWith<$Res> {
+  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
+      __$$AddImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FormData formData});
 }
 
 /// @nodoc
-class __$$AddOfferEventImplCopyWithImpl<$Res>
-    extends _$OffersEventCopyWithImpl<$Res, _$AddOfferEventImpl>
-    implements _$$AddOfferEventImplCopyWith<$Res> {
-  __$$AddOfferEventImplCopyWithImpl(
-      _$AddOfferEventImpl _value, $Res Function(_$AddOfferEventImpl) _then)
+class __$$AddImplCopyWithImpl<$Res>
+    extends _$OffersEventCopyWithImpl<$Res, _$AddImpl>
+    implements _$$AddImplCopyWith<$Res> {
+  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of OffersEvent
@@ -206,7 +238,7 @@ class __$$AddOfferEventImplCopyWithImpl<$Res>
   $Res call({
     Object? formData = null,
   }) {
-    return _then(_$AddOfferEventImpl(
+    return _then(_$AddImpl(
       formData: null == formData
           ? _value.formData
           : formData // ignore: cast_nullable_to_non_nullable
@@ -217,22 +249,22 @@ class __$$AddOfferEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddOfferEventImpl implements _AddOfferEvent {
-  const _$AddOfferEventImpl({required this.formData});
+class _$AddImpl implements _Add {
+  const _$AddImpl({required this.formData});
 
   @override
   final FormData formData;
 
   @override
   String toString() {
-    return 'OffersEvent.addOfferEvent(formData: $formData)';
+    return 'OffersEvent.add(formData: $formData)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddOfferEventImpl &&
+            other is _$AddImpl &&
             (identical(other.formData, formData) ||
                 other.formData == formData));
   }
@@ -245,36 +277,45 @@ class _$AddOfferEventImpl implements _AddOfferEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddOfferEventImplCopyWith<_$AddOfferEventImpl> get copyWith =>
-      __$$AddOfferEventImplCopyWithImpl<_$AddOfferEventImpl>(this, _$identity);
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOffersEvent,
-    required TResult Function(FormData formData) addOfferEvent,
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
   }) {
-    return addOfferEvent(formData);
+    return add(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOffersEvent,
-    TResult? Function(FormData formData)? addOfferEvent,
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
   }) {
-    return addOfferEvent?.call(formData);
+    return add?.call(formData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOffersEvent,
-    TResult Function(FormData formData)? addOfferEvent,
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
-    if (addOfferEvent != null) {
-      return addOfferEvent(formData);
+    if (add != null) {
+      return add(formData);
     }
     return orElse();
   }
@@ -282,44 +323,549 @@ class _$AddOfferEventImpl implements _AddOfferEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetOffersEvent value) getOffersEvent,
-    required TResult Function(_AddOfferEvent value) addOfferEvent,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
   }) {
-    return addOfferEvent(this);
+    return add(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetOffersEvent value)? getOffersEvent,
-    TResult? Function(_AddOfferEvent value)? addOfferEvent,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
   }) {
-    return addOfferEvent?.call(this);
+    return add?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetOffersEvent value)? getOffersEvent,
-    TResult Function(_AddOfferEvent value)? addOfferEvent,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
-    if (addOfferEvent != null) {
-      return addOfferEvent(this);
+    if (add != null) {
+      return add(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddOfferEvent implements OffersEvent {
-  const factory _AddOfferEvent({required final FormData formData}) =
-      _$AddOfferEventImpl;
+abstract class _Add implements OffersEvent {
+  const factory _Add({required final FormData formData}) = _$AddImpl;
 
   FormData get formData;
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddOfferEventImplCopyWith<_$AddOfferEventImpl> get copyWith =>
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteImplCopyWith<$Res> {
+  factory _$$DeleteImplCopyWith(
+          _$DeleteImpl value, $Res Function(_$DeleteImpl) then) =
+      __$$DeleteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$DeleteImplCopyWithImpl<$Res>
+    extends _$OffersEventCopyWithImpl<$Res, _$DeleteImpl>
+    implements _$$DeleteImplCopyWith<$Res> {
+  __$$DeleteImplCopyWithImpl(
+      _$DeleteImpl _value, $Res Function(_$DeleteImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteImpl implements _Delete {
+  const _$DeleteImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'OffersEvent.delete(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      __$$DeleteImplCopyWithImpl<_$DeleteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
+  }) {
+    return delete(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
+  }) {
+    return delete?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Delete implements OffersEvent {
+  const factory _Delete({required final int id}) = _$DeleteImpl;
+
+  int get id;
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditImplCopyWith<$Res> {
+  factory _$$EditImplCopyWith(
+          _$EditImpl value, $Res Function(_$EditImpl) then) =
+      __$$EditImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Offer offer});
+
+  $OfferCopyWith<$Res> get offer;
+}
+
+/// @nodoc
+class __$$EditImplCopyWithImpl<$Res>
+    extends _$OffersEventCopyWithImpl<$Res, _$EditImpl>
+    implements _$$EditImplCopyWith<$Res> {
+  __$$EditImplCopyWithImpl(_$EditImpl _value, $Res Function(_$EditImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? offer = null,
+  }) {
+    return _then(_$EditImpl(
+      offer: null == offer
+          ? _value.offer
+          : offer // ignore: cast_nullable_to_non_nullable
+              as Offer,
+    ));
+  }
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OfferCopyWith<$Res> get offer {
+    return $OfferCopyWith<$Res>(_value.offer, (value) {
+      return _then(_value.copyWith(offer: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$EditImpl implements _Edit {
+  const _$EditImpl({required this.offer});
+
+  @override
+  final Offer offer;
+
+  @override
+  String toString() {
+    return 'OffersEvent.edit(offer: $offer)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditImpl &&
+            (identical(other.offer, offer) || other.offer == offer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, offer);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      __$$EditImplCopyWithImpl<_$EditImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
+  }) {
+    return edit(offer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
+  }) {
+    return edit?.call(offer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(offer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
+  }) {
+    return edit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
+  }) {
+    return edit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
+    required TResult orElse(),
+  }) {
+    if (edit != null) {
+      return edit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Edit implements OffersEvent {
+  const factory _Edit({required final Offer offer}) = _$EditImpl;
+
+  Offer get offer;
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditImplCopyWith<_$EditImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditImageImplCopyWith<$Res> {
+  factory _$$EditImageImplCopyWith(
+          _$EditImageImpl value, $Res Function(_$EditImageImpl) then) =
+      __$$EditImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id, FormData formData});
+}
+
+/// @nodoc
+class __$$EditImageImplCopyWithImpl<$Res>
+    extends _$OffersEventCopyWithImpl<$Res, _$EditImageImpl>
+    implements _$$EditImageImplCopyWith<$Res> {
+  __$$EditImageImplCopyWithImpl(
+      _$EditImageImpl _value, $Res Function(_$EditImageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? formData = null,
+  }) {
+    return _then(_$EditImageImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as FormData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditImageImpl implements _EditImage {
+  const _$EditImageImpl({required this.id, required this.formData});
+
+  @override
+  final int id;
+  @override
+  final FormData formData;
+
+  @override
+  String toString() {
+    return 'OffersEvent.editImage(id: $id, formData: $formData)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditImageImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.formData, formData) ||
+                other.formData == formData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, formData);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditImageImplCopyWith<_$EditImageImpl> get copyWith =>
+      __$$EditImageImplCopyWithImpl<_$EditImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() get,
+    required TResult Function(FormData formData) add,
+    required TResult Function(int id) delete,
+    required TResult Function(Offer offer) edit,
+    required TResult Function(int id, FormData formData) editImage,
+  }) {
+    return editImage(id, formData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? get,
+    TResult? Function(FormData formData)? add,
+    TResult? Function(int id)? delete,
+    TResult? Function(Offer offer)? edit,
+    TResult? Function(int id, FormData formData)? editImage,
+  }) {
+    return editImage?.call(id, formData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? get,
+    TResult Function(FormData formData)? add,
+    TResult Function(int id)? delete,
+    TResult Function(Offer offer)? edit,
+    TResult Function(int id, FormData formData)? editImage,
+    required TResult orElse(),
+  }) {
+    if (editImage != null) {
+      return editImage(id, formData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Edit value) edit,
+    required TResult Function(_EditImage value) editImage,
+  }) {
+    return editImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_Edit value)? edit,
+    TResult? Function(_EditImage value)? editImage,
+  }) {
+    return editImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Edit value)? edit,
+    TResult Function(_EditImage value)? editImage,
+    required TResult orElse(),
+  }) {
+    if (editImage != null) {
+      return editImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditImage implements OffersEvent {
+  const factory _EditImage(
+      {required final int id,
+      required final FormData formData}) = _$EditImageImpl;
+
+  int get id;
+  FormData get formData;
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditImageImplCopyWith<_$EditImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

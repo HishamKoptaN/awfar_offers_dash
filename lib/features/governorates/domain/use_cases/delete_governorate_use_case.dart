@@ -1,5 +1,4 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/governorates_response_model.dart';
 import '../repo/governorates_repo.dart';
 
 class DeleteGovernorateUseCase {
@@ -7,10 +6,10 @@ class DeleteGovernorateUseCase {
   DeleteGovernorateUseCase(
     this.governoratesRepo,
   );
-  Future<ApiResult<List<Governorate>?>> deleteCountry({
+  Future<ApiResult<void>> delete({
     required int id,
   }) async {
-    return await governoratesRepo.deleteGovernorate(
+    return await governoratesRepo.delete(
       id: id,
     );
   }

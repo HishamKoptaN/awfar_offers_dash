@@ -16,7 +16,7 @@ class AddStoreRequestBodyModel {
   Future<void> setImageFile(File file) async {
     image = await MultipartFile.fromFile(
       file.path,
-      filename: file.path.split('/').last, // اسم الملف
+      filename: file.path.split('/').last,
     );
   }
 

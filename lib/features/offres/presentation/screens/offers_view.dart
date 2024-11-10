@@ -14,7 +14,7 @@ import '../../../../core/global/gobal_widgets/image_preview.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../data/models/offers_response_model.dart';
 import '../bloc/offers_event.dart';
-import '../bloc/offres_bloc.dart';
+import '../bloc/offers_bloc.dart';
 import '../bloc/offers_state.dart';
 
 class OffersView extends StatefulWidget {
@@ -28,7 +28,7 @@ class _OffersViewState extends State<OffersView> {
   @override
   void initState() {
     super.initState();
-    context.read<OffersBloc>().add(const OffersEvent.getOffersEvent());
+    context.read<OffersBloc>().add(const OffersEvent.get());
   }
 
   @override
@@ -37,46 +37,41 @@ class _OffersViewState extends State<OffersView> {
       showAppBar: false,
       backArow: false,
       route: 'العروض',
-      body: Center(
-        child: BlocProvider(
-          create: (context) => getIt<OffersBloc>(),
-          child: BlocConsumer<OffersBloc, OffersState>(
-            listener: (context, state) {
-              state.maybeWhen(
-                failure: (error) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        error.error!,
-                      ),
-                    ),
-                  );
-                },
-                orElse: () {},
-              );
-            },
-            builder: (context, state) {
-              state.mapOrNull(initial: (a) {
-                context
-                    .read<OffersBloc>()
-                    .add(const OffersEvent.getOffersEvent());
-              });
-              return state.maybeWhen(
-                loading: () => CustomCircularProgress(),
-                offersLoaded: (offers) => buildOffersTable(offers!),
-                orElse: () => const Center(
-                  child: Text("No data available"),
-                ),
-              );
-            },
-          ),
+      body: BlocProvider(
+        create: (context) => getIt<OffersBloc>(),
+        child: BlocConsumer<OffersBloc, OffersState>(
+          listener: (context, state) async {
+            await state.whenOrNull(
+              success: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("نجاح"),
+                  ),
+                );
+              },
+              failure: (apiErrorModel) async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(apiErrorModel.error!),
+                  ),
+                );
+              },
+            );
+          },
+          builder: (context, state) {
+            return state.maybeWhen(
+              loading: () => CustomCircularProgress(),
+              orElse: () => buildOffersTable(
+                offers: OffersResponseModel().offers!,
+              ),
+            );
+          },
         ),
       ),
     );
   }
 
-  // إنشاء جدول العروض بناءً على البيانات المحملة
-  Widget buildOffersTable(List<Offer> offers) {
+  Widget buildOffersTable({required List<Offer> offers}) {
     return SingleChildScrollView(
       child: SizedBox(
         width: double.infinity,
@@ -90,7 +85,13 @@ class _OffersViewState extends State<OffersView> {
               label: 'الاسم',
             ),
             customDataColumn(
+              label: 'ينتهي بعد',
+            ),
+            customDataColumn(
               label: 'صورة العرض',
+            ),
+            customDataColumn(
+              label: 'معرف العرض',
             ),
             DataColumn(
               label: CustomTextButton(
@@ -120,6 +121,9 @@ class _OffersViewState extends State<OffersView> {
                   customDataCell(
                     label: offer.name,
                   ),
+                  customDataCell(
+                    label: offer.daysRemaining.toString(),
+                  ),
                   DataCell(
                     InkWell(
                       onTap: () async {
@@ -144,7 +148,40 @@ class _OffersViewState extends State<OffersView> {
                       ),
                     ),
                   ),
-                  const DataCell(SizedBox()),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: CustomTextButton(
+                        onPressed: () {
+                          customNavigation(
+                            context: context,
+                            path: '/EditOfferView',
+                            extra: offer,
+                          );
+                        },
+                        text: 'تعديل',
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: CustomTextButton(
+                        widget: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                          size: 35.sp,
+                        ),
+                        onPressed: () {
+                          context.read<OffersBloc>().add(
+                                OffersEvent.delete(
+                                  id: offer.id,
+                                ),
+                              );
+                        },
+                      ),
+                    ),
+                  ),
                 ],
               );
             },

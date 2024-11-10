@@ -23,7 +23,7 @@ mixin _$GovernoratesState {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +33,7 @@ mixin _$GovernoratesState {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$GovernoratesState {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,7 +144,7 @@ class _$InitialImpl implements _Initial {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
     return initial();
   }
@@ -157,7 +157,7 @@ class _$InitialImpl implements _Initial {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
     return initial?.call();
   }
@@ -170,7 +170,7 @@ class _$InitialImpl implements _Initial {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -310,7 +310,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
     return governoratesLoaded(governoratesResponseModel);
   }
@@ -323,7 +323,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
     return governoratesLoaded?.call(governoratesResponseModel);
   }
@@ -336,7 +336,7 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
     if (governoratesLoaded != null) {
@@ -446,7 +446,7 @@ class _$LoadingImpl implements _Loading {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
     return loading();
   }
@@ -459,7 +459,7 @@ class _$LoadingImpl implements _Loading {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
     return loading?.call();
   }
@@ -472,7 +472,7 @@ class _$LoadingImpl implements _Loading {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -572,7 +572,7 @@ class _$SuccessImpl implements _Success {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
     return success();
   }
@@ -585,7 +585,7 @@ class _$SuccessImpl implements _Success {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
     return success?.call();
   }
@@ -598,7 +598,7 @@ class _$SuccessImpl implements _Success {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -658,7 +658,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({ApiErrorModel apiErrorModel});
 }
 
 /// @nodoc
@@ -674,13 +674,13 @@ class __$$FailureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? apiErrorModel = null,
   }) {
     return _then(_$FailureImpl(
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
+      apiErrorModel: null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
     ));
   }
 }
@@ -688,14 +688,14 @@ class __$$FailureImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.error});
+  const _$FailureImpl({required this.apiErrorModel});
 
   @override
-  final String error;
+  final ApiErrorModel apiErrorModel;
 
   @override
   String toString() {
-    return 'GovernoratesState.failure(error: $error)';
+    return 'GovernoratesState.failure(apiErrorModel: $apiErrorModel)';
   }
 
   @override
@@ -703,11 +703,12 @@ class _$FailureImpl implements _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureImpl &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
 
   /// Create a copy of GovernoratesState
   /// with the given fields replaced by the non-null parameter values.
@@ -725,9 +726,9 @@ class _$FailureImpl implements _Failure {
         governoratesLoaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String error) failure,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
-    return failure(error);
+    return failure(apiErrorModel);
   }
 
   @override
@@ -738,9 +739,9 @@ class _$FailureImpl implements _Failure {
         governoratesLoaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String error)? failure,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
-    return failure?.call(error);
+    return failure?.call(apiErrorModel);
   }
 
   @override
@@ -751,11 +752,11 @@ class _$FailureImpl implements _Failure {
         governoratesLoaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String error)? failure,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(error);
+      return failure(apiErrorModel);
     }
     return orElse();
   }
@@ -802,9 +803,10 @@ class _$FailureImpl implements _Failure {
 }
 
 abstract class _Failure implements GovernoratesState {
-  const factory _Failure({required final String error}) = _$FailureImpl;
+  const factory _Failure({required final ApiErrorModel apiErrorModel}) =
+      _$FailureImpl;
 
-  String get error;
+  ApiErrorModel get apiErrorModel;
 
   /// Create a copy of GovernoratesState
   /// with the given fields replaced by the non-null parameter values.
