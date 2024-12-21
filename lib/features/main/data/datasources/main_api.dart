@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
-import '../models/check_response_model.dart';
+import '../../../../core/models/user.dart';
 part 'main_api.g.dart';
 
 @RestApi(
-  baseUrl: ApiConstants.apiBaseUrl,
+  baseUrl: ApiConstants.apiAuthBaseUrl,
 )
 abstract class MainApi {
   factory MainApi(
@@ -15,5 +15,5 @@ abstract class MainApi {
   @POST(
     ApiConstants.check,
   )
-  Future<CheckResponseModel> check();
+  Future<User> check();
 }

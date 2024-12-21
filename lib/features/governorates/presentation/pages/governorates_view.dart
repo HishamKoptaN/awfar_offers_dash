@@ -4,10 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
-import '../../../../core/global/gobal_widgets/custom_data_column.dart';
+import '../../../../core/singletons/governoarates_singleton.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_data_cell.dart';
+import '../../../../core/widgets/custom_data_column.dart';
+import '../../../../core/widgets/generic_table_view.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
 import '../bloc/governorates_event.dart';
@@ -18,8 +20,6 @@ class GovernoratesView extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final governorates = GovernoratesResponseModel().governorates ?? [];
-
     return MainLayout(
       showAppBar: false,
       backArow: false,
@@ -58,83 +58,77 @@ class GovernoratesView extends StatelessWidget {
                   return CustomCircularProgress();
                 },
                 orElse: () {
-                  return SingleChildScrollView(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: DataTable(
-                        columns: [
-                          customDataColumn(
-                            label: 'معرف المحافظة',
+                  return GenericTableView(
+                    columns: [
+                      customDataColumn(
+                        label: 'معرف المدينة',
+                      ),
+                      customDataColumn(
+                        label: 'الاسم',
+                      ),
+                      customDataColumn(
+                        label: '',
+                      ),
+                      DataColumn(
+                        label: CustomTextButtonWidget(
+                          onPressed: () {
+                            customNavigation(
+                              context: context,
+                              path: '/AddGovernorateView',
+                            );
+                          },
+                          text: 'أضافة مدينة',
+                        ),
+                      ),
+                    ],
+                    items: GovernoratesSingleton.instance.governorates,
+                    buildRow: (governorate) {
+                      return DataRow(
+                        cells: [
+                          customDataCell(
+                            label: governorate.name!,
                           ),
-                          customDataColumn(
-                            label: 'الاسم',
+                          customDataCell(
+                            label: governorate.name ?? 'لا يوجد اسم',
                           ),
-                          customDataColumn(
-                            label: '',
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: CustomTextButtonWidget(
+                                onPressed: () {
+                                  customNavigation(
+                                    context: context,
+                                    path: '/EditGovernorateView',
+                                    extra: governorate,
+                                  );
+                                },
+                                text: 'تعديل',
+                              ),
+                            ),
                           ),
-                          DataColumn(
-                            label: CustomTextButton(
+                          DataCell(
+                            CustomTextButtonWidget(
+                              widget: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                                size: 35.sp,
+                              ),
                               onPressed: () {
-                                customNavigation(
-                                  context: context,
-                                  path: '/AddGovernorateView',
-                                );
+                                if (!context
+                                    .read<GovernoratesBloc>()
+                                    .isClosed) {
+                                  context.read<GovernoratesBloc>().add(
+                                        GovernoratesEvent.delete(
+                                          id: governorate.id!,
+                                        ),
+                                      );
+                                }
                               },
-                              text: 'أضافة محافظة',
                             ),
                           ),
                         ],
-                        rows: governorates.map(
-                          (governorate) {
-                            return DataRow(
-                              cells: [
-                                customDataCell(
-                                  label: governorate.name!,
-                                ),
-                                customDataCell(
-                                  label: governorate.name ?? 'لا يوجد اسم',
-                                ),
-                                DataCell(
-                                  Padding(
-                                    padding: const EdgeInsets.all(1.0),
-                                    child: CustomTextButton(
-                                      onPressed: () {
-                                        customNavigation(
-                                          context: context,
-                                          path: '/EditGovernorateView',
-                                          extra: governorate,
-                                        );
-                                      },
-                                      text: 'تعديل',
-                                    ),
-                                  ),
-                                ),
-                                DataCell(
-                                  CustomTextButton(
-                                    widget: Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                      size: 35.sp,
-                                    ),
-                                    onPressed: () {
-                                      if (!context
-                                          .read<GovernoratesBloc>()
-                                          .isClosed) {
-                                        context.read<GovernoratesBloc>().add(
-                                              GovernoratesEvent.delete(
-                                                id: governorate.id!,
-                                              ),
-                                            );
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ).toList(),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
               );

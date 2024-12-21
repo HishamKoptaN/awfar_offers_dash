@@ -19,8 +19,7 @@ mixin _$CategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+    required TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)
         add,
     required TResult Function(int id) delete,
     required TResult Function(Category category) edit,
@@ -29,8 +28,7 @@ mixin _$CategoriesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult? Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult? Function(int id)? delete,
     TResult? Function(Category category)? edit,
   }) =>
@@ -38,8 +36,7 @@ mixin _$CategoriesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult Function(int id)? delete,
     TResult Function(Category category)? edit,
     required TResult orElse(),
@@ -47,24 +44,24 @@ mixin _$CategoriesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) get,
-    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Edit value) edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? get,
-    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
     TResult? Function(_Delete value)? delete,
     TResult? Function(_Edit value)? edit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? get,
-    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Edit value)? edit,
     required TResult orElse(),
@@ -94,18 +91,16 @@ class _$CategoriesEventCopyWithImpl<$Res, $Val extends CategoriesEvent>
 }
 
 /// @nodoc
-abstract class _$$GetCategoriesEventImplCopyWith<$Res> {
-  factory _$$GetCategoriesEventImplCopyWith(_$GetCategoriesEventImpl value,
-          $Res Function(_$GetCategoriesEventImpl) then) =
-      __$$GetCategoriesEventImplCopyWithImpl<$Res>;
+abstract class _$$GetImplCopyWith<$Res> {
+  factory _$$GetImplCopyWith(_$GetImpl value, $Res Function(_$GetImpl) then) =
+      __$$GetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetCategoriesEventImplCopyWithImpl<$Res>
-    extends _$CategoriesEventCopyWithImpl<$Res, _$GetCategoriesEventImpl>
-    implements _$$GetCategoriesEventImplCopyWith<$Res> {
-  __$$GetCategoriesEventImplCopyWithImpl(_$GetCategoriesEventImpl _value,
-      $Res Function(_$GetCategoriesEventImpl) _then)
+class __$$GetImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$GetImpl>
+    implements _$$GetImplCopyWith<$Res> {
+  __$$GetImplCopyWithImpl(_$GetImpl _value, $Res Function(_$GetImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CategoriesEvent
@@ -114,8 +109,8 @@ class __$$GetCategoriesEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
-  const _$GetCategoriesEventImpl();
+class _$GetImpl implements _Get {
+  const _$GetImpl();
 
   @override
   String toString() {
@@ -125,7 +120,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetCategoriesEventImpl);
+        (other.runtimeType == runtimeType && other is _$GetImpl);
   }
 
   @override
@@ -135,8 +130,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+    required TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)
         add,
     required TResult Function(int id) delete,
     required TResult Function(Category category) edit,
@@ -148,8 +142,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult? Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult? Function(int id)? delete,
     TResult? Function(Category category)? edit,
   }) {
@@ -160,8 +153,7 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult Function(int id)? delete,
     TResult Function(Category category)? edit,
     required TResult orElse(),
@@ -175,8 +167,8 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) get,
-    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Edit value) edit,
   }) {
@@ -186,8 +178,8 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? get,
-    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
     TResult? Function(_Delete value)? delete,
     TResult? Function(_Edit value)? edit,
   }) {
@@ -197,8 +189,8 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? get,
-    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Edit value)? edit,
     required TResult orElse(),
@@ -210,25 +202,25 @@ class _$GetCategoriesEventImpl implements _GetCategoriesEvent {
   }
 }
 
-abstract class _GetCategoriesEvent implements CategoriesEvent {
-  const factory _GetCategoriesEvent() = _$GetCategoriesEventImpl;
+abstract class _Get implements CategoriesEvent {
+  const factory _Get() = _$GetImpl;
 }
 
 /// @nodoc
-abstract class _$$AddCategoryEventImplCopyWith<$Res> {
-  factory _$$AddCategoryEventImplCopyWith(_$AddCategoryEventImpl value,
-          $Res Function(_$AddCategoryEventImpl) then) =
-      __$$AddCategoryEventImplCopyWithImpl<$Res>;
+abstract class _$$AddImplCopyWith<$Res> {
+  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
+      __$$AddImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AddCategoryRequestBodyModel addCategoryRequestBodyModel});
+  $Res call({AddCategoryReqBodyModel addCategoryReqBodyModel});
+
+  $AddCategoryReqBodyModelCopyWith<$Res> get addCategoryReqBodyModel;
 }
 
 /// @nodoc
-class __$$AddCategoryEventImplCopyWithImpl<$Res>
-    extends _$CategoriesEventCopyWithImpl<$Res, _$AddCategoryEventImpl>
-    implements _$$AddCategoryEventImplCopyWith<$Res> {
-  __$$AddCategoryEventImplCopyWithImpl(_$AddCategoryEventImpl _value,
-      $Res Function(_$AddCategoryEventImpl) _then)
+class __$$AddImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$AddImpl>
+    implements _$$AddImplCopyWith<$Res> {
+  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CategoriesEvent
@@ -236,90 +228,96 @@ class __$$AddCategoryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addCategoryRequestBodyModel = null,
+    Object? addCategoryReqBodyModel = null,
   }) {
-    return _then(_$AddCategoryEventImpl(
-      addCategoryRequestBodyModel: null == addCategoryRequestBodyModel
-          ? _value.addCategoryRequestBodyModel
-          : addCategoryRequestBodyModel // ignore: cast_nullable_to_non_nullable
-              as AddCategoryRequestBodyModel,
+    return _then(_$AddImpl(
+      addCategoryReqBodyModel: null == addCategoryReqBodyModel
+          ? _value.addCategoryReqBodyModel
+          : addCategoryReqBodyModel // ignore: cast_nullable_to_non_nullable
+              as AddCategoryReqBodyModel,
     ));
+  }
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddCategoryReqBodyModelCopyWith<$Res> get addCategoryReqBodyModel {
+    return $AddCategoryReqBodyModelCopyWith<$Res>(
+        _value.addCategoryReqBodyModel, (value) {
+      return _then(_value.copyWith(addCategoryReqBodyModel: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$AddCategoryEventImpl implements _AddCategoryEvent {
-  const _$AddCategoryEventImpl({required this.addCategoryRequestBodyModel});
+class _$AddImpl implements _Add {
+  const _$AddImpl({required this.addCategoryReqBodyModel});
 
   @override
-  final AddCategoryRequestBodyModel addCategoryRequestBodyModel;
+  final AddCategoryReqBodyModel addCategoryReqBodyModel;
 
   @override
   String toString() {
-    return 'CategoriesEvent.add(addCategoryRequestBodyModel: $addCategoryRequestBodyModel)';
+    return 'CategoriesEvent.add(addCategoryReqBodyModel: $addCategoryReqBodyModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddCategoryEventImpl &&
-            (identical(other.addCategoryRequestBodyModel,
-                    addCategoryRequestBodyModel) ||
-                other.addCategoryRequestBodyModel ==
-                    addCategoryRequestBodyModel));
+            other is _$AddImpl &&
+            (identical(
+                    other.addCategoryReqBodyModel, addCategoryReqBodyModel) ||
+                other.addCategoryReqBodyModel == addCategoryReqBodyModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addCategoryRequestBodyModel);
+  int get hashCode => Object.hash(runtimeType, addCategoryReqBodyModel);
 
   /// Create a copy of CategoriesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddCategoryEventImplCopyWith<_$AddCategoryEventImpl> get copyWith =>
-      __$$AddCategoryEventImplCopyWithImpl<_$AddCategoryEventImpl>(
-          this, _$identity);
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+    required TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)
         add,
     required TResult Function(int id) delete,
     required TResult Function(Category category) edit,
   }) {
-    return add(addCategoryRequestBodyModel);
+    return add(addCategoryReqBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult? Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult? Function(int id)? delete,
     TResult? Function(Category category)? edit,
   }) {
-    return add?.call(addCategoryRequestBodyModel);
+    return add?.call(addCategoryReqBodyModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult Function(int id)? delete,
     TResult Function(Category category)? edit,
     required TResult orElse(),
   }) {
     if (add != null) {
-      return add(addCategoryRequestBodyModel);
+      return add(addCategoryReqBodyModel);
     }
     return orElse();
   }
@@ -327,8 +325,8 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) get,
-    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Edit value) edit,
   }) {
@@ -338,8 +336,8 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? get,
-    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
     TResult? Function(_Delete value)? delete,
     TResult? Function(_Edit value)? edit,
   }) {
@@ -349,8 +347,8 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? get,
-    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Edit value)? edit,
     required TResult orElse(),
@@ -362,17 +360,17 @@ class _$AddCategoryEventImpl implements _AddCategoryEvent {
   }
 }
 
-abstract class _AddCategoryEvent implements CategoriesEvent {
-  const factory _AddCategoryEvent(
-      {required final AddCategoryRequestBodyModel
-          addCategoryRequestBodyModel}) = _$AddCategoryEventImpl;
+abstract class _Add implements CategoriesEvent {
+  const factory _Add(
+          {required final AddCategoryReqBodyModel addCategoryReqBodyModel}) =
+      _$AddImpl;
 
-  AddCategoryRequestBodyModel get addCategoryRequestBodyModel;
+  AddCategoryReqBodyModel get addCategoryReqBodyModel;
 
   /// Create a copy of CategoriesEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddCategoryEventImplCopyWith<_$AddCategoryEventImpl> get copyWith =>
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -445,8 +443,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+    required TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)
         add,
     required TResult Function(int id) delete,
     required TResult Function(Category category) edit,
@@ -458,8 +455,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult? Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult? Function(int id)? delete,
     TResult? Function(Category category)? edit,
   }) {
@@ -470,8 +466,7 @@ class _$DeleteImpl implements _Delete {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult Function(int id)? delete,
     TResult Function(Category category)? edit,
     required TResult orElse(),
@@ -485,8 +480,8 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) get,
-    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Edit value) edit,
   }) {
@@ -496,8 +491,8 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? get,
-    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
     TResult? Function(_Delete value)? delete,
     TResult? Function(_Edit value)? edit,
   }) {
@@ -507,8 +502,8 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? get,
-    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Edit value)? edit,
     required TResult orElse(),
@@ -613,8 +608,7 @@ class _$EditImpl implements _Edit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            AddCategoryRequestBodyModel addCategoryRequestBodyModel)
+    required TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)
         add,
     required TResult Function(int id) delete,
     required TResult Function(Category category) edit,
@@ -626,8 +620,7 @@ class _$EditImpl implements _Edit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult? Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult? Function(int id)? delete,
     TResult? Function(Category category)? edit,
   }) {
@@ -638,8 +631,7 @@ class _$EditImpl implements _Edit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(AddCategoryRequestBodyModel addCategoryRequestBodyModel)?
-        add,
+    TResult Function(AddCategoryReqBodyModel addCategoryReqBodyModel)? add,
     TResult Function(int id)? delete,
     TResult Function(Category category)? edit,
     required TResult orElse(),
@@ -653,8 +645,8 @@ class _$EditImpl implements _Edit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCategoriesEvent value) get,
-    required TResult Function(_AddCategoryEvent value) add,
+    required TResult Function(_Get value) get,
+    required TResult Function(_Add value) add,
     required TResult Function(_Delete value) delete,
     required TResult Function(_Edit value) edit,
   }) {
@@ -664,8 +656,8 @@ class _$EditImpl implements _Edit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCategoriesEvent value)? get,
-    TResult? Function(_AddCategoryEvent value)? add,
+    TResult? Function(_Get value)? get,
+    TResult? Function(_Add value)? add,
     TResult? Function(_Delete value)? delete,
     TResult? Function(_Edit value)? edit,
   }) {
@@ -675,8 +667,8 @@ class _$EditImpl implements _Edit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCategoriesEvent value)? get,
-    TResult Function(_AddCategoryEvent value)? add,
+    TResult Function(_Get value)? get,
+    TResult Function(_Add value)? add,
     TResult Function(_Delete value)? delete,
     TResult Function(_Edit value)? edit,
     required TResult orElse(),

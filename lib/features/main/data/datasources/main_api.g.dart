@@ -14,7 +14,7 @@ class _MainApi implements MainApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.awfar-offers.com/dash/';
+    baseUrl ??= 'https://api.awfar-offers.com/auth/';
   }
 
   final Dio _dio;
@@ -24,12 +24,12 @@ class _MainApi implements MainApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<CheckResponseModel> check() async {
+  Future<User> check() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CheckResponseModel>(Options(
+    final _options = _setStreamType<User>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -46,9 +46,9 @@ class _MainApi implements MainApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CheckResponseModel _value;
+    late User _value;
     try {
-      _value = CheckResponseModel.fromJson(_result.data!);
+      _value = User.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

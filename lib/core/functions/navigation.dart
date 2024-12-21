@@ -16,5 +16,3 @@ void customNavigation({
     extra: extra, // تمرير extra إلى GoRouter
   );
 }
-
-// استدعاء customNavigation وتمرير coupon

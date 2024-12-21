@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data/models/add_category_request_body_model.dart';
-import '../../data/models/categories_response_model.dart';
+import '../../data/models/add_category_req_body_model.dart';
+import '../../data/models/category.dart';
 part 'categories_event.freezed.dart';
 
 @freezed
 class CategoriesEvent with _$CategoriesEvent {
-  const factory CategoriesEvent.get() = _GetCategoriesEvent;
+  const factory CategoriesEvent.get() = _Get;
   const factory CategoriesEvent.add({
-    required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
-  }) = _AddCategoryEvent;
+    required AddCategoryReqBodyModel addCategoryReqBodyModel,
+  }) = _Add;
   const factory CategoriesEvent.delete({
     required int id,
   }) = _Delete;

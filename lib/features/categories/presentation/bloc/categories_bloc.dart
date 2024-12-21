@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/categories_response_model.dart';
+import '../../../../core/singletons/categories_singletone.dart';
 import '../../domain/use_cases/add_category_use_case.dart';
 import '../../domain/use_cases/delete_category_use_case.dart';
 import '../../domain/use_cases/edit_category_use_case.dart';
@@ -8,10 +8,10 @@ import 'categories_event.dart';
 import 'categories_state.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
-  final GetCategoriesUseCase categoriesUseCase;
-  final AddCategoryUseCase addCategoryUseCase;
-  final EditCategoryUseCase editUseCase;
-  final DeleteCategoryUseCase deleteUseCase;
+  GetCategoriesUseCase categoriesUseCase;
+  AddCategoryUseCase addCategoryUseCase;
+  EditCategoryUseCase editUseCase;
+  DeleteCategoryUseCase deleteUseCase;
   CategoriesBloc(
     this.categoriesUseCase,
     this.addCategoryUseCase,
@@ -27,13 +27,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             final result = await categoriesUseCase.getCategories();
             await result.when(
               success: (categories) async {
-                await CategoriesResponseModel().load(
-                  categories: categories,
-                );
+                CategoriesSingleton.instance.categories = categories;
                 emit(
-                  CategoriesState.categoriesLoaded(
-                    categories: categories,
-                  ),
+                  const CategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -41,24 +37,32 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   CategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
             );
           },
-          add: (addCategoryRequestBodyModel) async {
+          add: (addCategoryReqBodyModel) async {
             emit(
               const CategoriesState.loading(),
             );
             final result = await addCategoryUseCase.add(
-              addCategoryRequestBodyModel: addCategoryRequestBodyModel,
+              addCategoryReqBodyModel: addCategoryReqBodyModel,
             );
             await result.when(
               success: (
-                governoratesResponseModel,
+                category,
               ) async {
-                //  CategoriesResponseModel().add(category: )
+                CategoriesSingleton.instance.add(
+                  category: category,
+                );
                 emit(
                   const CategoriesState.success(),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -66,6 +70,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   CategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
             );
@@ -79,10 +86,17 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             );
             await result.when(
               success: (
-                offer,
+                category,
               ) async {
+                CategoriesSingleton.instance.replace(
+                  category: category,
+                );
+
                 emit(
                   const CategoriesState.success(),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
               failure: (
@@ -92,6 +106,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   CategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
             );
@@ -107,11 +124,14 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             );
             await result.when(
               success: (_) async {
-                CategoriesResponseModel().categories!.removeWhere(
-                      (offer) => offer.id == id,
-                    );
+                CategoriesSingleton.instance.categories!.removeWhere(
+                  (offer) => offer.id == id,
+                );
                 emit(
                   const CategoriesState.success(),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -119,6 +139,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   CategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const CategoriesState.loaded(),
                 );
               },
             );

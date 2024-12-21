@@ -1,53 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/global/gobal_widgets/global_widgets.dart';
+import '../../core/functions/navigation.dart';
+import '../../core/helpers/shared_pref_helper.dart';
+import '../../core/widgets/global_widgets.dart';
 import '../../core/utils/app_colors.dart';
+import '../auth/login/present/view/login_view.dart';
 import '../categories/presentation/view/categories_view.dart';
 import '../countries/presentation/view/countries_view.dart';
+import '../external_notifications/present/view/external_notifications_view.dart';
 import '../governorates/presentation/pages/governorates_view.dart';
-import '../offres/presentation/screens/offers_view.dart';
-import '../stores/presentation/screens/stores_view.dart';
-import '../sub_categories/presentation/view/sub_categories_view.dart';
+import '../notifications/present/view/notifications_view.dart';
+import '../roles/present/view/roles_view.dart';
+import '../stores/present/view/stores_view.dart';
 import '../coupons/presentation/view/coupons_view.dart';
+import '../users/present/view/users_view.dart';
 
-class ControlPanel extends StatefulWidget {
-  const ControlPanel({
+class ControlPanelView extends StatefulWidget {
+  const ControlPanelView({
     super.key,
   });
   @override
-  _ControlPanelState createState() => _ControlPanelState();
+  _ControlPanelViewState createState() => _ControlPanelViewState();
 }
 
-class _ControlPanelState extends State<ControlPanel> {
+class _ControlPanelViewState extends State<ControlPanelView> {
   int? selectedIndex;
-  // قائمة الصفحات
   List<Widget> pages = [
-    const OffersView(),
-    const SubCategoriesView(),
     const CategoriesView(),
     const StoresView(),
     const GovernoratesView(),
     const CountriesView(),
     const CouponsView(),
+    const NotificationsView(),
+    const ExternalNotificationsView(),
+    const UsersView(),
+    const RolesView(),
   ];
   List<String> titles = [
-    'العروض',
-    'الفئات الفرعية',
     'الفئات',
     'المتاجر',
-    'المحافظات',
+    'المدن',
     'الدول',
     'الكوبونات',
+    'الاشعارات',
+    'الاشعارات الخارجية',
+    'المستخدمين',
+    'الصلاحيات',
   ];
   @override
   void initState() {
     super.initState();
-    selectedIndex = 2;
+    selectedIndex = 0;
     setState(() {});
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    context,
+  ) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
@@ -78,42 +88,16 @@ class _ControlPanelState extends State<ControlPanel> {
               ListTile(
                 leading: const Icon(Icons.local_offer),
                 title: CustomText(
-                  text: 'عروض',
-                  fontSize: 27.5.sp,
-                  color: AppColors.darkPrimaryColor,
-                ),
-                onTap: () {
-                  setState(() {
-                    selectedIndex = 0; // تحديث الفهرس
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.local_offer),
-                title: CustomText(
-                  text: 'الفئات الفرعية',
-                  fontSize: 27.5.sp,
-                  color: AppColors.darkPrimaryColor,
-                ),
-                onTap: () {
-                  setState(() {
-                    selectedIndex = 1; // تحديث الفهرس
-                  });
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.local_offer),
-                title: CustomText(
                   text: 'فئات',
                   fontSize: 27.5.sp,
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 2;
-                  });
+                  setState(
+                    () {
+                      selectedIndex = 0;
+                    },
+                  );
                   Navigator.pop(context);
                 },
               ),
@@ -125,24 +109,32 @@ class _ControlPanelState extends State<ControlPanel> {
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 3; // تحديث الفهرس
-                  });
-                  Navigator.pop(context);
+                  setState(
+                    () {
+                      selectedIndex = 1;
+                    },
+                  );
+                  Navigator.pop(
+                    context,
+                  );
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.location_city),
                 title: CustomText(
-                  text: 'المحافظات',
+                  text: 'المدن',
                   fontSize: 27.5.sp,
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 4; // تحديث الفهرس
-                  });
-                  Navigator.pop(context);
+                  setState(
+                    () {
+                      selectedIndex = 2;
+                    },
+                  );
+                  Navigator.pop(
+                    context,
+                  );
                 },
               ),
               ListTile(
@@ -153,9 +145,11 @@ class _ControlPanelState extends State<ControlPanel> {
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 5; // تحديث الفهرس
-                  });
+                  setState(
+                    () {
+                      selectedIndex = 3;
+                    },
+                  );
                   Navigator.pop(context);
                 },
               ),
@@ -167,17 +161,170 @@ class _ControlPanelState extends State<ControlPanel> {
                   color: AppColors.darkPrimaryColor,
                 ),
                 onTap: () {
-                  setState(() {
-                    selectedIndex = 6;
-                  });
+                  setState(
+                    () {
+                      selectedIndex = 4;
+                    },
+                  );
                   Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'الاشعارات',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(
+                    () {
+                      selectedIndex = 5;
+                    },
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'الاشعارات الخارجية',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(
+                    () {
+                      selectedIndex = 6;
+                    },
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'المستخدمين',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(
+                    () {
+                      selectedIndex = 7;
+                    },
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: CustomText(
+                  text: 'الصلاحيات',
+                  fontSize: 27.5.sp,
+                  color: AppColors.darkPrimaryColor,
+                ),
+                onTap: () {
+                  setState(
+                    () {
+                      selectedIndex = 8;
+                    },
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  size: 25.sp,
+                ),
+                title: CustomText(
+                  text: 'تسجل خروج',
+                  fontSize: 27.5.sp,
+                  color: AppColors.black,
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Center(
+                        child: SizedBox(
+                          height: 300.h,
+                          child: AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            title: Center(
+                              child: CustomText(
+                                text: "تسجيل خروج",
+                                color: Colors.blue,
+                                fontSize: 17.5.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            content: Column(
+                              mainAxisSize:
+                                  MainAxisSize.min, // يجعل الحجم يطابق المحتوى
+                              children: [
+                                CustomText(
+                                  text: "هل انت متأكد",
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20),
+                                const Divider(thickness: 1),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      child: TextButton(
+                                        onPressed: () async {
+                                          customNavigation(
+                                            context: context,
+                                            path: '/LoginView',
+                                          );
+                                        },
+                                        child: CustomText(
+                                          text: "تسجيل خروج",
+                                          color: Colors.blue,
+                                          fontSize: 15.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 40,
+                                      width: 1,
+                                      color: Colors.grey,
+                                    ),
+                                    Expanded(
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: CustomText(
+                                          text: "أغلاق",
+                                          fontSize: 15.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             ],
           ),
         ),
       ),
-      body: pages[selectedIndex ?? 0], // عرض الصفحة المناسبة
+      body: pages[selectedIndex!],
     );
   }
 }

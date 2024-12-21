@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
-import '../../../../core/global/gobal_widgets/custom_data_column.dart';
-import '../../../../core/global/gobal_widgets/generic_table_view.dart';
-import '../../data/models/coupons_response_model.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_data_cell.dart';
+import '../../../../core/widgets/custom_data_column.dart';
+import '../../../../core/widgets/generic_table_view.dart';
+import '../../../../core/singletons/coupons_singleton.dart';
 import '../bloc/coupons_bloc.dart';
 import '../bloc/coupons_event.dart';
 import '../bloc/coupons_state.dart';
@@ -57,7 +57,6 @@ class _CouponsViewState extends State<CouponsView> {
             },
             orElse: () {
               return GenericTableView(
-                routeName: "الكوبونات",
                 columns: [
                   customDataColumn(
                     label: 'معرف الكوبون',
@@ -75,7 +74,7 @@ class _CouponsViewState extends State<CouponsView> {
                     label: '',
                   ),
                   DataColumn(
-                    label: CustomTextButton(
+                    label: CustomTextButtonWidget(
                       onPressed: () {
                         customNavigation(
                           context: context,
@@ -86,7 +85,7 @@ class _CouponsViewState extends State<CouponsView> {
                     ),
                   ),
                 ],
-                items: CouponsResponseModel().coupons!,
+                items: CouponsSingleton.instance.coupons,
                 buildRow: (coupon) => DataRow(
                   cells: [
                     customDataCell(
@@ -104,7 +103,7 @@ class _CouponsViewState extends State<CouponsView> {
                     DataCell(
                       Padding(
                         padding: const EdgeInsets.all(1.0),
-                        child: CustomTextButton(
+                        child: CustomTextButtonWidget(
                           onPressed: () {
                             customNavigation(
                               context: context,
@@ -119,7 +118,7 @@ class _CouponsViewState extends State<CouponsView> {
                     DataCell(
                       Padding(
                         padding: const EdgeInsets.all(1.0),
-                        child: CustomTextButton(
+                        child: CustomTextButtonWidget(
                           widget: Icon(
                             Icons.delete,
                             color: Colors.red,

@@ -1,14 +1,14 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/add_category_request_body_model.dart';
-import '../../data/models/categories_response_model.dart';
+import '../../data/models/add_category_req_body_model.dart';
+import '../../data/models/category.dart';
 
 abstract class CategoriesRepo {
   Future<ApiResult<List<Category>?>> get();
   Future<ApiResult<Category>> add({
-    required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
+    required AddCategoryReqBodyModel addCategoryReqBodyModel,
   });
 
-  Future<ApiResult<void>> edit({
+  Future<ApiResult<Category>> edit({
     required Category category,
   });
   Future<ApiResult<void>> delete({

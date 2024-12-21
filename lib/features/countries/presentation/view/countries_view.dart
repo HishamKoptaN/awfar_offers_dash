@@ -5,12 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_data_cell.dart';
-import '../../../../core/global/gobal_widgets/custom_data_column.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
-import '../../data/models/countries_response_model.dart';
+import '../../../../core/singletons/countries_singleton.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_data_cell.dart';
+import '../../../../core/widgets/custom_data_column.dart';
+import '../../../../core/widgets/generic_table_view.dart';
+import '../../../../core/widgets/snack_bar.dart';
 import '../bloc/countries_event.dart';
 import '../bloc/countries_state.dart';
 
@@ -52,115 +53,113 @@ class _CountriesViewState extends State<CountriesView> {
         },
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () {
-              return CustomCircularProgress();
-            },
-            orElse: () {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: DataTable(
-                    columns: [
-                      customDataColumn(
-                        label: 'معرف الدوله',
+            loaded: () {
+              return GenericTableView(
+                dataRowHeight: 75.h,
+                columns: [
+                  customDataColumn(
+                    label: 'معرف الدوله',
+                  ),
+                  customDataColumn(
+                    label: 'الدوله',
+                  ),
+                  customDataColumn(
+                    label: '',
+                  ),
+                  DataColumn(
+                    label: CustomTextButtonWidget(
+                      text: "أضافة دولة",
+                      onPressed: () {
+                        customNavigation(
+                          context: context,
+                          path: '/AddCountryView',
+                        );
+                      },
+                    ),
+                  ),
+                ],
+                items: CountriesSingleton.instance.countries,
+                buildRow: (country) {
+                  return DataRow(
+                    cells: [
+                      customDataCell(
+                        label: country.id.toString(),
                       ),
-                      customDataColumn(
-                        label: 'الدوله',
+                      DataCell(
+                        Center(
+                          child: Container(
+                            height: 70.h,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: CountryCodePicker(
+                              padding: const EdgeInsets.all(5),
+                              flagWidth: 60.w,
+                              textStyle: TextStyle(
+                                fontSize: 20.sp,
+                              ),
+                              enabled: false,
+                              onChanged: (c) => c.name,
+                              initialSelection: country.code,
+                              showCountryOnly: true,
+                              showOnlyCountryWhenClosed: true,
+                            ),
+                          ),
+                        ),
                       ),
-                      customDataColumn(
-                        label: '',
+                      DataCell(
+                        Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: CustomTextButtonWidget(
+                            onPressed: () {
+                              customNavigation(
+                                context: context,
+                                path: '/EditCountryView',
+                                extra: country,
+                              );
+                            },
+                            text: 'تعديل',
+                          ),
+                        ),
                       ),
-                      DataColumn(
-                        label: CustomTextButton(
-                          text: "أضافة دولة",
+                      DataCell(
+                        CustomTextButtonWidget(
+                          widget: Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                            size: 35.sp,
+                          ),
                           onPressed: () {
-                            customNavigation(
-                              context: context,
-                              path: '/AddCountryView',
-                            );
+                            if (!context.read<CountriesBloc>().isClosed) {
+                              context.read<CountriesBloc>().add(
+                                    CountriesEvent.delete(
+                                      id: country.id!,
+                                    ),
+                                  );
+                            }
                           },
                         ),
                       ),
                     ],
-                    rows: CountriesResponseModel().countries!.map(
-                      (country) {
-                        return DataRow(
-                          cells: [
-                            customDataCell(
-                              label: country.id.toString(),
-                            ),
-                            DataCell(
-                              Center(
-                                child: Container(
-                                  height: 40.h,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 1,
-                                        blurRadius: 5,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: CountryCodePicker(
-                                    padding: const EdgeInsets.all(5),
-                                    flagWidth: 60.w,
-                                    textStyle: TextStyle(
-                                      fontSize: 20.sp,
-                                    ),
-                                    enabled: false,
-                                    onChanged: (c) => c.name,
-                                    initialSelection: country.code,
-                                    showCountryOnly: true,
-                                    showOnlyCountryWhenClosed: true,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            DataCell(
-                              Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: CustomTextButton(
-                                  onPressed: () {
-                                    customNavigation(
-                                      context: context,
-                                      path: '/EditCountryView',
-                                      extra: country,
-                                    );
-                                  },
-                                  text: 'تعديل',
-                                ),
-                              ),
-                            ),
-                            DataCell(
-                              CustomTextButton(
-                                widget: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                  size: 35.sp,
-                                ),
-                                onPressed: () {
-                                  if (!context.read<CountriesBloc>().isClosed) {
-                                    context.read<CountriesBloc>().add(
-                                          CountriesEvent.delete(
-                                            id: country.id!,
-                                          ),
-                                        );
-                                  }
-                                },
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ).toList(),
-                  ),
-                ),
+                  );
+                },
               );
+            },
+            loading: () {
+              return CustomCircularProgress();
+            },
+            orElse: () {
+              return CustomCircularProgress();
             },
           );
         },

@@ -1,18 +1,18 @@
-import 'package:awfar_offers_dash/core/functions/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_dropdown_button.dart';
-import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_dropdown_button.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../../core/widgets/snack_bar.dart';
+import '../../../../core/singletons/stores_singleton.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../stores/data/models/stores_response_model.dart';
-import '../../data/models/coupons_response_model.dart';
+import '../../../stores/data/models/store.dart';
+import '../../data/models/coupon.dart';
 import '../../data/models/update_coupon_request_model.dart';
 import '../bloc/coupons_bloc.dart';
 import '../bloc/coupons_event.dart';
@@ -106,7 +106,7 @@ class _EditCouponViewState extends State<EditCouponView> {
                   CustomDropdownContainer<Store>(
                     height: 75.h,
                     width: 450.w,
-                    items: StoresResponseModel().stores!,
+                    items: StoresSingleton.instance.stores,
                     selectedItem: selectedStore,
                     onChanged: (value) {
                       setState(
@@ -116,14 +116,14 @@ class _EditCouponViewState extends State<EditCouponView> {
                         },
                       );
                     },
-                    itemLabel: (item) => item.name,
+                    itemLabel: (item) => item.name ?? '',
                     fontSize: 20.sp,
                     hint: 'أختر المتجر صاحب الكوبون',
                   ),
                   Gap(
                     10.h,
                   ),
-                  CustomTextButton(
+                  CustomTextButtonWidget(
                     widget: state.maybeWhen(
                       loading: () {
                         return CustomCircularProgress();
@@ -141,10 +141,10 @@ class _EditCouponViewState extends State<EditCouponView> {
                     onPressed: () async {
                       final coupon = Coupon(
                         id: widget.coupon.id,
-                        code: EditCouponRequestModel().code,
-                        description: EditCouponRequestModel().description,
-                        url: EditCouponRequestModel().url,
-                        storeId: EditCouponRequestModel().storeId,
+                        code: EditCouponRequestModel().code!,
+                        description: EditCouponRequestModel().description!,
+                        url: EditCouponRequestModel().url!,
+                        storeId: EditCouponRequestModel().storeId!,
                       );
                       context.read<CouponsBloc>().add(
                             CouponsEvent.edit(

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/networking/api_constants.dart';
-import '../models/stores_response_model.dart';
+import '../models/store.dart';
 part 'stores_api.g.dart';
 
 @RestApi(
@@ -21,7 +21,16 @@ abstract class StoresApi {
   @POST(
     ApiConstants.stores,
   )
-  Future add({
+  Future<Store> add({
+    @Body() required FormData formData,
+  });
+  //! Edit store
+
+  @POST(
+    "${ApiConstants.stores}/{id}",
+  )
+  Future<Store> edit({
+    @Path("id") required int id,
     @Body() required FormData formData,
   });
   //! DELETE store
@@ -30,20 +39,5 @@ abstract class StoresApi {
   )
   Future delete({
     @Path('id') required int id,
-  });
-  //! Update store
-  @PUT(
-    ApiConstants.stores,
-  )
-  Future edit({
-    @Body() required Store store,
-  });
-  //! Edit store
-  @PUT(
-    '${ApiConstants.stores}/{id}',
-  )
-  Future editImage({
-    required int id,
-    @Body() required FormData formData,
   });
 }

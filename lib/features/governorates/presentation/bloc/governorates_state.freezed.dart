@@ -19,8 +19,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
@@ -29,8 +28,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
@@ -39,8 +37,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
@@ -50,7 +47,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -59,7 +56,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -68,7 +65,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -140,8 +137,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
@@ -153,8 +149,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
@@ -166,8 +161,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
@@ -183,7 +177,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -195,7 +189,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -207,7 +201,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -225,122 +219,79 @@ abstract class _Initial implements GovernoratesState {
 }
 
 /// @nodoc
-abstract class _$$GovernoratesLoadedImplCopyWith<$Res> {
-  factory _$$GovernoratesLoadedImplCopyWith(_$GovernoratesLoadedImpl value,
-          $Res Function(_$GovernoratesLoadedImpl) then) =
-      __$$GovernoratesLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Governorate>? governoratesResponseModel});
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GovernoratesLoadedImplCopyWithImpl<$Res>
-    extends _$GovernoratesStateCopyWithImpl<$Res, _$GovernoratesLoadedImpl>
-    implements _$$GovernoratesLoadedImplCopyWith<$Res> {
-  __$$GovernoratesLoadedImplCopyWithImpl(_$GovernoratesLoadedImpl _value,
-      $Res Function(_$GovernoratesLoadedImpl) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$GovernoratesStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GovernoratesState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? governoratesResponseModel = freezed,
-  }) {
-    return _then(_$GovernoratesLoadedImpl(
-      governoratesResponseModel: freezed == governoratesResponseModel
-          ? _value._governoratesResponseModel
-          : governoratesResponseModel // ignore: cast_nullable_to_non_nullable
-              as List<Governorate>?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
-  const _$GovernoratesLoadedImpl(
-      {required final List<Governorate>? governoratesResponseModel})
-      : _governoratesResponseModel = governoratesResponseModel;
-
-  final List<Governorate>? _governoratesResponseModel;
-  @override
-  List<Governorate>? get governoratesResponseModel {
-    final value = _governoratesResponseModel;
-    if (value == null) return null;
-    if (_governoratesResponseModel is EqualUnmodifiableListView)
-      return _governoratesResponseModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
 
   @override
   String toString() {
-    return 'GovernoratesState.governoratesLoaded(governoratesResponseModel: $governoratesResponseModel)';
+    return 'GovernoratesState.loaded()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GovernoratesLoadedImpl &&
-            const DeepCollectionEquality().equals(
-                other._governoratesResponseModel, _governoratesResponseModel));
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_governoratesResponseModel));
-
-  /// Create a copy of GovernoratesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GovernoratesLoadedImplCopyWith<_$GovernoratesLoadedImpl> get copyWith =>
-      __$$GovernoratesLoadedImplCopyWithImpl<_$GovernoratesLoadedImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) {
-    return governoratesLoaded(governoratesResponseModel);
+    return loaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
   }) {
-    return governoratesLoaded?.call(governoratesResponseModel);
+    return loaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
     required TResult orElse(),
   }) {
-    if (governoratesLoaded != null) {
-      return governoratesLoaded(governoratesResponseModel);
+    if (loaded != null) {
+      return loaded();
     }
     return orElse();
   }
@@ -349,55 +300,45 @@ class _$GovernoratesLoadedImpl implements _GovernoratesLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
-    return governoratesLoaded(this);
+    return loaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
-    return governoratesLoaded?.call(this);
+    return loaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (governoratesLoaded != null) {
-      return governoratesLoaded(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _GovernoratesLoaded implements GovernoratesState {
-  const factory _GovernoratesLoaded(
-          {required final List<Governorate>? governoratesResponseModel}) =
-      _$GovernoratesLoadedImpl;
-
-  List<Governorate>? get governoratesResponseModel;
-
-  /// Create a copy of GovernoratesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GovernoratesLoadedImplCopyWith<_$GovernoratesLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Loaded implements GovernoratesState {
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
@@ -442,8 +383,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
@@ -455,8 +395,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
@@ -468,8 +407,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
@@ -485,7 +423,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -497,7 +435,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -509,7 +447,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -568,8 +506,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
@@ -581,8 +518,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
@@ -594,8 +530,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
@@ -611,7 +546,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -623,7 +558,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -635,7 +570,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -722,8 +657,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Governorate>? governoratesResponseModel)
-        governoratesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
@@ -735,8 +669,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
@@ -748,8 +681,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate>? governoratesResponseModel)?
-        governoratesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
@@ -765,7 +697,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GovernoratesLoaded value) governoratesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -777,7 +709,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -789,7 +721,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GovernoratesLoaded value)? governoratesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,

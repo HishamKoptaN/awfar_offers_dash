@@ -5,7 +5,7 @@ import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/countreis_repo.dart';
 import '../data_sources/countries_api.dart';
-import '../models/countries_response_model.dart';
+import '../models/countries_res_model.dart';
 
 class CountriesRepoImpl implements CountriesRepo {
   final CountriesApi countriesApi;

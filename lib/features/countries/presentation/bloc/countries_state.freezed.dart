@@ -19,8 +19,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -29,7 +28,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -38,7 +37,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -48,7 +47,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -57,7 +56,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -66,7 +65,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -138,8 +137,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -151,7 +149,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -163,7 +161,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -179,7 +177,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -191,7 +189,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -203,7 +201,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -221,120 +219,79 @@ abstract class _Initial implements CountriesState {
 }
 
 /// @nodoc
-abstract class _$$CountriesLoadedImplCopyWith<$Res> {
-  factory _$$CountriesLoadedImplCopyWith(_$CountriesLoadedImpl value,
-          $Res Function(_$CountriesLoadedImpl) then) =
-      __$$CountriesLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Country>? countriesResponseModel});
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CountriesLoadedImplCopyWithImpl<$Res>
-    extends _$CountriesStateCopyWithImpl<$Res, _$CountriesLoadedImpl>
-    implements _$$CountriesLoadedImplCopyWith<$Res> {
-  __$$CountriesLoadedImplCopyWithImpl(
-      _$CountriesLoadedImpl _value, $Res Function(_$CountriesLoadedImpl) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$CountriesStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CountriesState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? countriesResponseModel = freezed,
-  }) {
-    return _then(_$CountriesLoadedImpl(
-      countriesResponseModel: freezed == countriesResponseModel
-          ? _value._countriesResponseModel
-          : countriesResponseModel // ignore: cast_nullable_to_non_nullable
-              as List<Country>?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CountriesLoadedImpl implements _CountriesLoaded {
-  const _$CountriesLoadedImpl(
-      {required final List<Country>? countriesResponseModel})
-      : _countriesResponseModel = countriesResponseModel;
-
-  final List<Country>? _countriesResponseModel;
-  @override
-  List<Country>? get countriesResponseModel {
-    final value = _countriesResponseModel;
-    if (value == null) return null;
-    if (_countriesResponseModel is EqualUnmodifiableListView)
-      return _countriesResponseModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
 
   @override
   String toString() {
-    return 'CountriesState.countriesLoaded(countriesResponseModel: $countriesResponseModel)';
+    return 'CountriesState.loaded()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CountriesLoadedImpl &&
-            const DeepCollectionEquality().equals(
-                other._countriesResponseModel, _countriesResponseModel));
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_countriesResponseModel));
-
-  /// Create a copy of CountriesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CountriesLoadedImplCopyWith<_$CountriesLoadedImpl> get copyWith =>
-      __$$CountriesLoadedImplCopyWithImpl<_$CountriesLoadedImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return countriesLoaded(countriesResponseModel);
+    return loaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return countriesLoaded?.call(countriesResponseModel);
+    return loaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
-    if (countriesLoaded != null) {
-      return countriesLoaded(countriesResponseModel);
+    if (loaded != null) {
+      return loaded();
     }
     return orElse();
   }
@@ -343,55 +300,45 @@ class _$CountriesLoadedImpl implements _CountriesLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
-    return countriesLoaded(this);
+    return loaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
-    return countriesLoaded?.call(this);
+    return loaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (countriesLoaded != null) {
-      return countriesLoaded(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _CountriesLoaded implements CountriesState {
-  const factory _CountriesLoaded(
-          {required final List<Country>? countriesResponseModel}) =
-      _$CountriesLoadedImpl;
-
-  List<Country>? get countriesResponseModel;
-
-  /// Create a copy of CountriesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CountriesLoadedImplCopyWith<_$CountriesLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Loaded implements CountriesState {
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
@@ -436,8 +383,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -449,7 +395,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -461,7 +407,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -477,7 +423,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -489,7 +435,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -501,7 +447,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -560,8 +506,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -573,7 +518,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -585,7 +530,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -601,7 +546,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -613,7 +558,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -625,7 +570,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -711,8 +656,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country>? countriesResponseModel)
-        countriesLoaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -724,7 +668,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -736,7 +680,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country>? countriesResponseModel)? countriesLoaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -752,7 +696,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CountriesLoaded value) countriesLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -764,7 +708,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CountriesLoaded value)? countriesLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -776,7 +720,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CountriesLoaded value)? countriesLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,

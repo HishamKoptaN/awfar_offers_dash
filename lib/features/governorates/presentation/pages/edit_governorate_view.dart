@@ -5,13 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/singletons/countries_singleton.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../../core/widgets/snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../countries/data/models/countries_response_model.dart';
+import '../../../countries/data/models/countries_res_model.dart';
 import '../../data/models/edit_governorate_request_model.dart';
 import '../../data/models/governorates_response_model.dart';
 import '../bloc/governorates_bloc.dart';
@@ -39,17 +40,17 @@ class _EditGovernorateViewState extends State<EditGovernorateView> {
     EditGovernorateRequestModel().id = widget.governorate.id;
     EditGovernorateRequestModel().name = widget.governorate.name;
     EditGovernorateRequestModel().countryId = widget.governorate.countryId;
-    selectedCountry = CountriesResponseModel().countries!.firstWhere(
-          (country) => country.id == widget.governorate.countryId,
-          orElse: () => CountriesResponseModel().countries!.first,
-        );
+    selectedCountry = CountriesSingleton.instance.countries.firstWhere(
+      (country) => country.id == widget.governorate.countryId,
+      orElse: () => CountriesSingleton.instance.countries.first,
+    );
   }
 
   @override
   Widget build(context) {
     return MainLayout(
       showAppBar: true,
-      route: 'تعديل بيانات المحافظة',
+      route: 'تعديل بيانات المدينة',
       // onPressed: () {
       //   customNavigation(
       //     context: context,
@@ -87,7 +88,7 @@ class _EditGovernorateViewState extends State<EditGovernorateView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomTextFormField(
-                      label: 'اسم المحافظه',
+                      label: 'اسم المدينة',
                       initialValue: widget.governorate.name,
                       textInputType: TextInputType.text,
                       onChanged: (value) {
@@ -116,7 +117,7 @@ class _EditGovernorateViewState extends State<EditGovernorateView> {
                             },
                           );
                         },
-                        items: CountriesResponseModel().countries!.map(
+                        items: CountriesSingleton.instance.countries.map(
                           (country) {
                             return DropdownMenuItem<Country>(
                               value: country,
@@ -145,7 +146,7 @@ class _EditGovernorateViewState extends State<EditGovernorateView> {
                     Gap(
                       10.h,
                     ),
-                    CustomTextButton(
+                    CustomTextButtonWidget(
                       widget: state.maybeWhen(
                         loading: () {
                           return CustomCircularProgress();

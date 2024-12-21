@@ -1,0 +1,49 @@
+import 'package:http/http.dart' as http;
+import 'package:googleapis_auth/auth_io.dart' as auth;
+
+class NotificationsHelper {
+  Future<String?> getAccessToken() async {
+    final serviceAccountJson = {
+      "type": "service_account",
+      "project_id": "com-awfaroffers-app-dev",
+      "private_key_id": "90073c01144802cda6e30d120b0b00a5e80ab5ce",
+      "private_key":
+          "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCeSbN3+ssXyOpb\nNBWNcFNVqqGGCf1ns0a7wid8X30ILqdQIQr8p8b5OpP7tHdmfdC67kbwtKviUAFm\nOqabfnpgy6jR+ZG1ziM5help0BlC0Dbzwlol7bTbPHjpmKLg7JqxyV94WFwf9tL8\nTGnMrz2BV8O5MFtGQwQWRcmHUAUEbYhZ0PXeZptM68b80x7zvRh6oBWMsoeAX1aG\n+XHdn+wBxXlVwfzyMfh4AysaXN9NpyXF9+Zinw2Oe7mEKr3HD/JsS088IibrOjHw\nRdxbjWBDN66nBJW05vuf0VvkpmaRA7Ksfevxeun2fw4y4/xo7s7vhv3R+cxDa0mW\nepSC85UzAgMBAAECgf8endSnN7Q8Ht8h6k1rYcJX6gEkJKJwTiG92V/5FAT7Pp3B\nW0DMIVOP2MiJY/nDdeODN6adSBPxjndoop6c2Dg9KK4BlAtlthUAV8afh3F5kiS3\nm+ncSujZP5RM7aYeI059scDpkFifEuAF7woP+qiNbi6xiCCbWPsJNaxtHgSvKQUO\nEmMXp8/iAD8ui+XZRJSxe7vK8s3VsIg0ZpH2LkkBIQRBxLQrdsIMpVaViqeV+AYJ\nRd2eDxxvAKGlXxQui8FX1mKkjk+TaWXs6LpQ1pMes7AV3Q28yyXVIDqe3Q/Griim\njNXGgCKBsYnZ9Zy3RY/fR+LlAj9WCxo51Fb4ekkCgYEAyjSkThyenfhBc2rV94vk\nWZTsM5pvTeD7ke/JQ4MLFZI0VwqAAFvaURM5SlNd8U9uKke7OWR39SQyVrwXU1/S\nw7a1xoWErVIHkDkh1FO2Iyg1F/anHh8n1/3tNi+6cEj570v9TReKLGKnhnW9GBs2\nVzQeF9kj2VLlDzqlzYw58ukCgYEAyGYCspxC5RQMz5Xe+xjtglpqdoDPMMfJzKnm\nPJmF/M5MzVTgrKkpSxybH8N6ImRm3r9rnr5IS9LyKqru58kej3KkJLP+TecZX5rO\nEEMbMcvBK7yix1x9LztvIg1PbNQs0pMjPjzoLvySurN43YSStYpNcJDBz0iNmF63\nU3MM3bsCgYEAgCHVkC3wkVe0Wef0SFZcUCvfdV/Cck5D/Bk/p0lN59Bq3FEqBZAv\nCrsszZ2AZR6ZR6+Gw3qXzT6vq2irO0j4bM7F51PKXG4jns+lUT/upd6frly9T4gc\nnnEpNPIPqYGE5492prho9XFaiQjo13K+/4lmHGSbo+Y0gm7+i/705akCgYEAgsdX\nwVoKqdag2aOzxegpr6Tzz2wWSn5HaqIB19BUyXuUUXevu94VTahYb60w+lrNa1Y+\nlHUXVyxNz5yHlooAwJqPFkjEj/Bd9a9gBOrWR3PyF2neTP5Fz9oYl39aMupwaeeN\n22MCHw/DbcYL/Xw0BfdAvFIruOtfRG2jc/kkD1sCgYAfL3b5AgovYyDwB85gwwGN\nJ8334RaNJVoyANrac3i1AqNt0Nxnpqe281GAbkXRE7sW0aMQwNsxQoZBfxORk2PZ\nokYrSw8oKLWytkSh3xsMydobSBqnbD+KuV7d6/1CK8OL4j2zHRYjxmLaNTpaixhS\nQn8Et43nV0yD92tcO8BH6A==\n-----END PRIVATE KEY-----\n",
+      "client_email":
+          "awfar-offers-dev@com-awfaroffers-app-dev.iam.gserviceaccount.com",
+      "client_id": "113540760608114737309",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url":
+          "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url":
+          "https://www.googleapis.com/robot/v1/metadata/x509/awfar-offers-dev%40com-awfaroffers-app-dev.iam.gserviceaccount.com",
+      "universe_domain": "googleapis.com"
+    };
+
+    List<String> scopes = [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/firebase.database",
+      "https://www.googleapis.com/auth/firebase.messaging"
+    ];
+
+    try {
+      http.Client client = await auth.clientViaServiceAccount(
+          auth.ServiceAccountCredentials.fromJson(serviceAccountJson), scopes);
+
+      auth.AccessCredentials credentials =
+          await auth.obtainAccessCredentialsViaServiceAccount(
+              auth.ServiceAccountCredentials.fromJson(serviceAccountJson),
+              scopes,
+              client);
+
+      client.close();
+      print(
+          "Access Token:=================== ${credentials.accessToken.data}"); // Print Access Token
+      return credentials.accessToken.data;
+    } catch (e) {
+      print("Error getting access token: $e");
+      return null;
+    }
+  }
+}

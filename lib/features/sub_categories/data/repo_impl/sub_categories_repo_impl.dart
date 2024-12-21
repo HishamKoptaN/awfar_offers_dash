@@ -48,36 +48,16 @@ class SubCategoriesRepoImpl implements SubCategoriesRepo {
 
   @override
   Future<ApiResult<SubCategory>> edit({
-    required SubCategory subCategory,
-  }) async {
-    try {
-      final response = await subCategoriesApi.edit(
-        subCategory: subCategory,
-      );
-      return ApiResult.success(
-        data: response,
-      );
-    } catch (error) {
-      return ApiResult.failure(
-        apiErrorModel: ApiErrorHandler.handle(
-          error: error,
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<ApiResult<SubCategory>> editImage({
     required int id,
     required FormData formData,
   }) async {
     try {
-      final subCategory = await subCategoriesApi.editImage(
+      final response = await subCategoriesApi.edit(
         id: id,
         formData: formData,
       );
       return ApiResult.success(
-        data: subCategory,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(

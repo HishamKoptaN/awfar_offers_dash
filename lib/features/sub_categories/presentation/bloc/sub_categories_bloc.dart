@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/sub_categories_response_model.dart';
+import '../../../../core/singletons/sub_categories_singletone.dart';
 import '../../domain/use_cases/add_sub_category_use_case.dart';
 import '../../domain/use_cases/delete_sub_category_use_case.dart';
-import '../../domain/use_cases/edit_sub_category_image_use_case.dart';
 import '../../domain/use_cases/edit_sub_category_use_case.dart';
 import '../../domain/use_cases/get_sub_categories_use_case.dart';
 import 'sub_categories_event.dart';
@@ -13,13 +12,11 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
   final AddSubCategoryUseCase addSubCategoryUseCase;
   final EditSubCategoryUseCase editUseCase;
   final DeleteSubCategoryUseCase deleteUseCase;
-  final EditSubCategoryImageUseCase editImageUseCase;
 
   SubCategoriesBloc(
     this.getSubSubCategoriesUseCase,
     this.addSubCategoryUseCase,
     this.editUseCase,
-    this.editImageUseCase,
     this.deleteUseCase,
   ) : super(
           const SubCategoriesState.initial(),
@@ -28,11 +25,15 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
       (event, emit) async {
         await event.when(
           get: () async {
+            emit(
+              const SubCategoriesState.loading(),
+            );
             final result = await getSubSubCategoriesUseCase.get();
             await result.when(
               success: (subCategories) async {
-                await SubCategoriesResponseModel().load(
-                  subCategories: subCategories,
+                SubCategoriesSingleton.instance.subCategories = subCategories;
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -40,6 +41,9 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
                   SubCategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
             );
@@ -55,11 +59,14 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
               success: (
                 subCategory,
               ) async {
-                SubCategoriesResponseModel().add(
+                SubCategoriesSingleton.instance.add(
                   subCategory: subCategory,
                 );
                 emit(
                   const SubCategoriesState.success(),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -68,46 +75,20 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
                     apiErrorModel: apiErrorModel,
                   ),
                 );
-              },
-            );
-          },
-          edit: (subCategory) async {
-            emit(
-              const SubCategoriesState.loading(),
-            );
-            final result = await editUseCase.edit(
-              subCategory: subCategory,
-            );
-            await result.when(
-              success: (
-                offer,
-              ) async {
-                SubCategoriesResponseModel().replace(
-                  subCategory: subCategory,
-                );
                 emit(
-                  const SubCategoriesState.success(),
-                );
-              },
-              failure: (
-                apiErrorModel,
-              ) async {
-                emit(
-                  SubCategoriesState.failure(
-                    apiErrorModel: apiErrorModel,
-                  ),
+                  const SubCategoriesState.loaded(),
                 );
               },
             );
           },
-          editImage: (
+          edit: (
             id,
             formData,
           ) async {
             emit(
               const SubCategoriesState.loading(),
             );
-            final result = await editImageUseCase.edit(
+            final result = await editUseCase.edit(
               id: id,
               formData: formData,
             );
@@ -115,11 +96,14 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
               success: (
                 subCategory,
               ) async {
-                SubCategoriesResponseModel().replace(
+                SubCategoriesSingleton.instance.replace(
                   subCategory: subCategory,
                 );
                 emit(
                   const SubCategoriesState.success(),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
               failure: (
@@ -129,6 +113,9 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
                   SubCategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
             );
@@ -144,11 +131,14 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
             );
             await result.when(
               success: (_) async {
-                SubCategoriesResponseModel().delete(
+                SubCategoriesSingleton.instance.delete(
                   id: id,
                 );
                 emit(
                   const SubCategoriesState.success(),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -156,6 +146,9 @@ class SubCategoriesBloc extends Bloc<SubCategoriesEvent, SubCategoriesState> {
                   SubCategoriesState.failure(
                     apiErrorModel: apiErrorModel,
                   ),
+                );
+                emit(
+                  const SubCategoriesState.loaded(),
                 );
               },
             );

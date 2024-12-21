@@ -9,12 +9,10 @@ abstract class SubCategoriesRepo {
   });
 
   Future<ApiResult<SubCategory>> edit({
-    required SubCategory subCategory,
-  });
-  Future<ApiResult<SubCategory>> editImage({
     required int id,
     required FormData formData,
   });
+
   Future<ApiResult<void>> delete({
     required int id,
   });

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/countries_response_model.dart';
+import '../../../../core/singletons/countries_singleton.dart';
 import '../../domain/use_cases/add_country_use_case.dart';
 import '../../domain/use_cases/delete_country_use_case.dart';
 import '../../domain/use_cases/edit_country_use_case.dart';
@@ -31,13 +31,9 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
             final result = await getCountrieUseCase.get();
             await result.when(
               success: (response) async {
-                await CountriesResponseModel().load(
-                  countries: response!,
-                );
+                CountriesSingleton.instance.countries = response!;
                 emit(
-                  CountriesState.countriesLoaded(
-                    countriesResponseModel: response,
-                  ),
+                  const CountriesState.loaded(),
                 );
               },
               failure: (apiErrorModel) async {
@@ -60,7 +56,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
               success: (
                 country,
               ) async {
-                CountriesResponseModel().add(
+                CountriesSingleton.instance.add(
                   country: country,
                 );
                 emit(
@@ -89,7 +85,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
               success: (
                 country,
               ) async {
-                CountriesResponseModel().replace(
+                CountriesSingleton.instance.replace(
                   country: country,
                 );
 
@@ -119,7 +115,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
               success: (
                 response,
               ) async {
-                CountriesResponseModel().delete(
+                CountriesSingleton.instance.delete(
                   id: id,
                 );
                 emit(

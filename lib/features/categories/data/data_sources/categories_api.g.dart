@@ -60,13 +60,11 @@ class _CategoriesApi implements CategoriesApi {
 
   @override
   Future<Category> addCategory(
-      {required AddCategoryRequestBodyModel
-          addCategoryRequestBodyModel}) async {
+      {required AddCategoryReqBodyModel addCategoryReqBodyModel}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(addCategoryRequestBodyModel.toJson());
+    final _data = addCategoryReqBodyModel;
     final _options = _setStreamType<Category>(Options(
       method: 'POST',
       headers: _headers,
@@ -101,7 +99,7 @@ class _CategoriesApi implements CategoriesApi {
     final _headers = <String, dynamic>{};
     final _data = category;
     final _options = _setStreamType<Category>(Options(
-      method: 'PUT',
+      method: 'PATCH',
       headers: _headers,
       extra: _extra,
     )

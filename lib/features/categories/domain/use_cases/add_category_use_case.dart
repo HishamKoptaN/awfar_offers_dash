@@ -1,6 +1,6 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/add_category_request_body_model.dart';
-import '../../data/models/categories_response_model.dart';
+import '../../data/models/add_category_req_body_model.dart';
+import '../../data/models/category.dart';
 import '../repo/categories_repo.dart';
 
 class AddCategoryUseCase {
@@ -9,10 +9,10 @@ class AddCategoryUseCase {
     this.categoriesRepo,
   );
   Future<ApiResult<Category>> add({
-    required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
+    required AddCategoryReqBodyModel addCategoryReqBodyModel,
   }) async {
     return await categoriesRepo.add(
-      addCategoryRequestBodyModel: addCategoryRequestBodyModel,
+      addCategoryReqBodyModel: addCategoryReqBodyModel,
     );
   }
 }

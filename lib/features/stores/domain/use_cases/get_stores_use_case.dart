@@ -1,5 +1,5 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/stores_response_model.dart';
+import '../../data/models/store.dart';
 import '../repo/stores_repo.dart';
 
 class GetStoresUseCase {

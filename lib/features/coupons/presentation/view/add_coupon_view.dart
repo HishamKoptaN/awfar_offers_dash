@@ -3,16 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
-import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_dropdown_button.dart';
-import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_dropdown_button.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../../core/widgets/snack_bar.dart';
+import '../../../../core/singletons/stores_singleton.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../countries/data/models/countries_response_model.dart';
-import '../../../stores/data/models/stores_response_model.dart';
+import '../../../stores/data/models/store.dart';
 import '../../data/models/add_coupon_request_model.dart';
 import '../bloc/coupons_bloc.dart';
 import '../bloc/coupons_event.dart';
@@ -76,7 +75,7 @@ class _AddCouponViewState extends State<AddCouponView> {
                   CustomDropdownContainer<Store>(
                     height: 75.h,
                     width: 450.w,
-                    items: StoresResponseModel().stores!,
+                    items: StoresSingleton.instance.stores,
                     selectedItem: selectedStore,
                     onChanged: (value) {
                       setState(
@@ -86,7 +85,7 @@ class _AddCouponViewState extends State<AddCouponView> {
                         },
                       );
                     },
-                    itemLabel: (item) => item.name,
+                    itemLabel: (item) => item.name ?? '',
                     fontSize: 20.sp,
                     hint: 'أختر المتجر صاحب الكوبون',
                   ),
@@ -123,7 +122,7 @@ class _AddCouponViewState extends State<AddCouponView> {
                   Gap(
                     10.h,
                   ),
-                  CustomTextButton(
+                  CustomTextButtonWidget(
                     widget: state.maybeWhen(
                       loading: () {
                         return CustomCircularProgress();

@@ -24,19 +24,12 @@ abstract class SubCategoriesApi {
     @Body() required FormData formData,
   });
 
-  //! Edit offer
-  @PUT(
-    ApiConstants.subCategories,
+  //! Edit SubCategory
+  @POST(
+    "${ApiConstants.subCategories}/{id}",
   )
   Future<SubCategory> edit({
-    @Body() required SubCategory subCategory,
-  });
-  //! Edit Image
-  @PUT(
-    '${ApiConstants.subCategories}/{id}',
-  )
-  Future<SubCategory> editImage({
-    required int id,
+    @Path("id") required int id,
     @Body() required FormData formData,
   });
   //! DELETE SubCategory

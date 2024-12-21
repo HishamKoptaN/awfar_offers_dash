@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/governorates_response_model.dart';
+import '../../../../core/singletons/governoarates_singleton.dart';
 import '../../domain/use_cases/add_governorate_use_case.dart';
 import '../../domain/use_cases/delete_governorate_use_case.dart';
 import '../../domain/use_cases/edit_governorate_use_case.dart';
@@ -30,7 +30,10 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
             final result = await getGovernatesUseCase.get();
             await result.when(
               success: (response) async {
-                GovernoratesResponseModel().load(response!);
+                GovernoratesSingleton.instance.governorates = response!;
+                emit(
+                  const GovernoratesState.loaded(),
+                );
               },
               failure: (apiErrorModel) async {
                 emit(
@@ -41,7 +44,9 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
               },
             );
           },
-          add: (addGovernorateRequestModel) async {
+          add: (
+            addGovernorateRequestModel,
+          ) async {
             emit(
               const GovernoratesState.loading(),
             );
@@ -50,7 +55,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
             );
             await result.when(
               success: (governorate) async {
-                GovernoratesResponseModel().add(
+                GovernoratesSingleton.instance.add(
                   governorate: governorate,
                 );
                 emit(
@@ -66,7 +71,9 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
               },
             );
           },
-          edit: (editGovernorateRequestModel) async {
+          edit: (
+            editGovernorateRequestModel,
+          ) async {
             emit(
               const GovernoratesState.loading(),
             );
@@ -77,7 +84,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
               success: (
                 governorate,
               ) async {
-                GovernoratesResponseModel().replace(
+                GovernoratesSingleton.instance.replace(
                   governorate: governorate,
                 );
                 emit(
@@ -88,7 +95,9 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
                 apiErrorModel,
               ) async {
                 emit(
-                  GovernoratesState.failure(apiErrorModel: apiErrorModel),
+                  GovernoratesState.failure(
+                    apiErrorModel: apiErrorModel,
+                  ),
                 );
               },
             );
@@ -102,7 +111,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
             );
             await result.when(
               success: (response) async {
-                GovernoratesResponseModel().delete(
+                GovernoratesSingleton.instance.delete(
                   id: id,
                 );
                 emit(

@@ -1,11 +1,9 @@
-import 'package:awfar_offers_dash/features/coupons/data/models/update_coupon_request_model.dart';
-
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/coupons_repo.dart';
 import '../data_sources/coupons_api.dart';
 import '../models/add_coupon_request_model.dart';
-import '../models/coupons_response_model.dart';
+import '../models/coupon.dart';
 
 class CouponsRepoImpl implements CouponsRepo {
   final CouponsApi couponsApi;
@@ -15,7 +13,7 @@ class CouponsRepoImpl implements CouponsRepo {
   @override
   Future<ApiResult<List<Coupon>>> getCoupons() async {
     try {
-      final response = await couponsApi.getCoupons();
+      final response = await couponsApi.get();
       return ApiResult.success(
         data: response,
       );
@@ -33,7 +31,7 @@ class CouponsRepoImpl implements CouponsRepo {
     required AddCouponRequestModel addCouponRequestModel,
   }) async {
     try {
-      final response = await couponsApi.addCoupon(
+      final response = await couponsApi.add(
         addCouponRequestModel: addCouponRequestModel,
       );
       return ApiResult.success(
@@ -53,7 +51,7 @@ class CouponsRepoImpl implements CouponsRepo {
     required Coupon coupon,
   }) async {
     try {
-      final response = await couponsApi.editCoupon(
+      final response = await couponsApi.edit(
         coupon: coupon,
       );
       return ApiResult.success(
@@ -73,7 +71,7 @@ class CouponsRepoImpl implements CouponsRepo {
     required int id,
   }) async {
     try {
-      await couponsApi.deleteCoupon(
+      await couponsApi.delete(
         id: id,
       );
       return const ApiResult.success(

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../data/models/add_coupon_request_model.dart';
-import '../../data/models/coupons_response_model.dart';
+import '../../data/models/coupon.dart';
 part 'coupons_event.freezed.dart';
 
 @freezed

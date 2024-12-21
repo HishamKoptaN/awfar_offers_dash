@@ -1,15 +1,24 @@
 class ApiConstants {
   static const String apiBaseUrl = "https://api.awfar-offers.com/dash/";
+  static const String apiAuthBaseUrl = "https://api.awfar-offers.com/auth/";
 
   static const String check = "check";
   static const String login = "login";
+  static const String signup = "signup";
   static const String countries = "countries";
   static const String governorates = "governorates";
   static const String stores = "stores";
   static const String categories = "categories";
   static const String subCategories = "sub-categories";
   static const String offers = "offers";
+  static const String offerGroups = "offer-groups";
+  static const String products = "products";
+  static const String markas = "markas";
   static const String coupons = "coupons";
+  static const String users = "users";
+  static const String roles = "roles";
+  static const String permissions = "permissions";
+  static const String notifications = "notifications";
 }
 
 class ApiErrors {

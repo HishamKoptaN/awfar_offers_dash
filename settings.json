@@ -1,0 +1,20 @@
+{
+    "editor.formatOnSave": false,
+    "editor.codeLens": false,
+    "editor.lightbulb.enabled": false,
+    "files.autoSave": "onFocusChange",
+    "files.watcherExclude": {
+      "**/node_modules/*": true,
+      "**/.git/*": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/build": true
+    },
+    "terminal.integrated.scrollback": 1000,
+      "editor.minimap.enabled": false, // تعطيل Minimap لتوفير الموارد
+      "workbench.tree.indent": 10, // تحسين الأداء في عرض الملفات
+      "search.followSymlinks": false
+    
+  }
+  

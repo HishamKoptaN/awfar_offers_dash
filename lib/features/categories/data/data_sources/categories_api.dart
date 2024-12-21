@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
-import '../models/add_category_request_body_model.dart';
-import '../models/categories_response_model.dart';
+import '../models/add_category_req_body_model.dart';
+import '../models/category.dart';
 part 'categories_api.g.dart';
 
 @RestApi(
@@ -19,19 +19,23 @@ abstract class CategoriesApi {
   )
   Future<List<Category>?> get();
   //! Add Category
-  @POST(ApiConstants.categories)
+  @POST(
+    ApiConstants.categories,
+  )
   Future<Category> addCategory({
-    @Body() required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
+    @Body() required AddCategoryReqBodyModel addCategoryReqBodyModel,
   });
   //! Edit Category
-  @PUT(
+  @PATCH(
     ApiConstants.categories,
   )
   Future<Category> edit({
     @Body() required Category category,
   });
   //! DELETE Category
-  @DELETE('${ApiConstants.categories}/{id}')
+  @DELETE(
+    '${ApiConstants.categories}/{id}',
+  )
   Future<void> delete({
     @Path('id') required int id,
   });

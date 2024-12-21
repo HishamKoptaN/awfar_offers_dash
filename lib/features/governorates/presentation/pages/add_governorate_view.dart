@@ -5,13 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/singletons/countries_singleton.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../../core/widgets/snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../countries/data/models/countries_response_model.dart';
+import '../../../countries/data/models/countries_res_model.dart';
 import '../../data/models/add_governorate_request_model.dart';
 import '../bloc/governorates_bloc.dart';
 import '../bloc/governorates_event.dart';
@@ -29,20 +30,14 @@ class AddGovernorateView extends StatefulWidget {
 Country? selectedCountry;
 AddGovernorateRequestModel addGovernorateRequestModel =
     AddGovernorateRequestModel();
-final countries = CountriesResponseModel().countries;
+final countries = CountriesSingleton.instance.countries;
 
 class _AddGovernorateViewState extends State<AddGovernorateView> {
   @override
   Widget build(context) {
     return MainLayout(
       showAppBar: true,
-      route: 'أضافة محافظة',
-      // onPressed: () {
-      //   customNavigation(
-      //     context: context,
-      //     path: '/',
-      //   );
-      // },
+      route: 'أضافة مدينة',
       body: BlocProvider(
         create: (_) => getIt<GovernoratesBloc>(),
         child: BlocConsumer<GovernoratesBloc, GovernoratesState>(
@@ -74,7 +69,7 @@ class _AddGovernorateViewState extends State<AddGovernorateView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomTextFormField(
-                      hintText: 'اسم المحافظه',
+                      hintText: 'اسم المدينة',
                       textInputType: TextInputType.text,
                       onChanged: (value) {
                         addGovernorateRequestModel.name = value;
@@ -130,7 +125,7 @@ class _AddGovernorateViewState extends State<AddGovernorateView> {
                     Gap(
                       10.h,
                     ),
-                    CustomTextButton(
+                    CustomTextButtonWidget(
                       widget: state.maybeWhen(
                         loading: () {
                           return CustomCircularProgress();

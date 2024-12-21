@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/coupons_response_model.dart';
+import '../../../../core/singletons/coupons_singleton.dart';
 import '../../domain/use_cases/add_coupon_use_case.dart';
 import '../../domain/use_cases/delete_coupon_use_case.dart';
 import '../../domain/use_cases/get_coupons_use_case.dart';
@@ -27,9 +27,7 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
             final result = await getCouponsUseCase.getCoupons();
             await result.when(
               success: (coupons) async {
-                await CouponsResponseModel().load(
-                  coupons: coupons,
-                );
+                CouponsSingleton.instance.coupons = coupons;
                 emit(
                   const CouponsState.success(),
                 );
@@ -68,7 +66,7 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
             );
             await result.when(
               success: (coupon) async {
-                await CouponsResponseModel().replace(
+                CouponsSingleton.instance.replace(
                   coupon: coupon,
                 );
                 emit(
@@ -90,9 +88,9 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
             );
             await result.when(
               success: (_) async {
-                CouponsResponseModel().coupons!.removeWhere(
-                      (coupon) => coupon.id == id,
-                    );
+                CouponsSingleton.instance.coupons.removeWhere(
+                  (coupon) => coupon.id == id,
+                );
                 emit(
                   const CouponsState.success(),
                 );

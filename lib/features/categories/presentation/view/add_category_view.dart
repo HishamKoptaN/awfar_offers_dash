@@ -3,14 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
-import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/custom_text_form_field.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
-import '../../../countries/data/models/countries_response_model.dart';
-import '../../data/models/add_category_request_body_model.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../countries/data/models/countries_res_model.dart';
+import '../../data/models/add_category_req_body_model.dart';
 import '../bloc/categories_bloc.dart';
 import '../bloc/categories_event.dart';
 import '../bloc/categories_state.dart';
@@ -25,8 +23,7 @@ class AddCategoryView extends StatefulWidget {
 }
 
 Country? selectedCountry;
-AddCategoryRequestBodyModel addCategoryRequestBodyModel =
-    AddCategoryRequestBodyModel();
+AddCategoryReqBodyModel addCategoryReqBodyModel = AddCategoryReqBodyModel();
 
 class _AddCategoryViewState extends State<AddCategoryView> {
   @override
@@ -34,85 +31,58 @@ class _AddCategoryViewState extends State<AddCategoryView> {
     return MainLayout(
       showAppBar: true,
       route: 'أضافة فئة',
-      // onPressed: () {
-      //   customNavigation(
-      //     context: context,
-      //     path: '/',
-      //   );
-      // },
-      body: BlocProvider(
-        create: (_) => getIt<CategoriesBloc>(),
-        child: BlocConsumer<CategoriesBloc, CategoriesState>(
-          listener: (context, state) async {
-            await state.whenOrNull(
-              success: () async {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  snackBar(
-                    status: true,
-                    message: 'نجاح',
+      body: BlocBuilder<CategoriesBloc, CategoriesState>(
+        builder: (context, state) {
+          return Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomTextFormField(
+                    hintText: 'اسم الفئة',
+                    textInputType: TextInputType.text,
+                    onChanged: (value) {
+                      addCategoryReqBodyModel =
+                          addCategoryReqBodyModel.copyWith(
+                        name: value,
+                      );
+                    },
                   ),
-                );
-              },
-              failure: (error) async {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  snackBar(
-                    status: false,
-                    message: error.error!,
+                  Gap(
+                    10.h,
                   ),
-                );
-              },
-            );
-          },
-          builder: (context, state) {
-            return Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CustomTextFormField(
-                      hintText: 'اسم الفئة',
-                      textInputType: TextInputType.text,
-                      onChanged: (value) {
-                        addCategoryRequestBodyModel.name = value;
+                  CustomTextButtonWidget(
+                    widget: state.maybeWhen(
+                      loading: () {
+                        return CustomCircularProgress();
+                      },
+                      orElse: () {
+                        return CustomText(
+                          text: 'أضافة',
+                          fontSize: 30.sp,
+                          maxLines: 1,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        );
                       },
                     ),
-                    Gap(
-                      10.h,
-                    ),
-                    CustomTextButton(
-                      widget: state.maybeWhen(
-                        loading: () {
-                          return CustomCircularProgress();
-                        },
-                        orElse: () {
-                          return CustomText(
-                            text: 'أضافة',
-                            fontSize: 30.sp,
-                            maxLines: 1,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                    onPressed: () async {
+                      context.read<CategoriesBloc>().add(
+                            CategoriesEvent.add(
+                              addCategoryReqBodyModel: addCategoryReqBodyModel,
+                            ),
                           );
-                        },
-                      ),
-                      onPressed: () async {
-                        context.read<CategoriesBloc>().add(
-                              CategoriesEvent.add(
-                                addCategoryRequestBodyModel:
-                                    addCategoryRequestBodyModel,
-                              ),
-                            );
-                      },
-                    ),
-                    Gap(
-                      50.h,
-                    ),
-                  ],
-                ),
+                    },
+                  ),
+                  Gap(
+                    50.h,
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

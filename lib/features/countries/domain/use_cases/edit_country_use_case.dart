@@ -1,5 +1,5 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/countries_response_model.dart';
+import '../../data/models/countries_res_model.dart';
 import '../../data/models/edit_country_request_body_model.dart';
 import '../repo/countreis_repo.dart';
 

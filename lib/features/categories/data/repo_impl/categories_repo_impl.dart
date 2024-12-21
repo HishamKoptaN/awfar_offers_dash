@@ -2,8 +2,8 @@ import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/categories_repo.dart';
 import '../data_sources/categories_api.dart';
-import '../models/add_category_request_body_model.dart';
-import '../models/categories_response_model.dart';
+import '../models/add_category_req_body_model.dart';
+import '../models/category.dart';
 
 class CategoriesRepoImpl implements CategoriesRepo {
   final CategoriesApi categoriesApi;
@@ -28,11 +28,11 @@ class CategoriesRepoImpl implements CategoriesRepo {
 
   @override
   Future<ApiResult<Category>> add({
-    required AddCategoryRequestBodyModel addCategoryRequestBodyModel,
+    required AddCategoryReqBodyModel addCategoryReqBodyModel,
   }) async {
     try {
       final response = await categoriesApi.addCategory(
-        addCategoryRequestBodyModel: addCategoryRequestBodyModel,
+        addCategoryReqBodyModel: addCategoryReqBodyModel,
       );
       return ApiResult.success(
         data: response,
@@ -67,15 +67,15 @@ class CategoriesRepoImpl implements CategoriesRepo {
   }
 
   @override
-  Future<ApiResult<void>> edit({
+  Future<ApiResult<Category>> edit({
     required Category category,
   }) async {
     try {
-      await categoriesApi.edit(
+      final response = await categoriesApi.edit(
         category: category,
       );
-      return const ApiResult.success(
-        data: null,
+      return ApiResult.success(
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(

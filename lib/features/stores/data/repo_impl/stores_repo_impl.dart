@@ -3,7 +3,7 @@ import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/stores_repo.dart';
 import '../data_sources/stores_api.dart';
-import '../models/stores_response_model.dart';
+import '../models/store.dart';
 
 class StoresRepoImpl implements StoresRepo {
   final StoresApi storesApi;
@@ -27,15 +27,37 @@ class StoresRepoImpl implements StoresRepo {
   }
 
   @override
-  Future<ApiResult<void>> addStore({
+  Future<ApiResult<Store>> add({
     required FormData formData,
   }) async {
     try {
-      await storesApi.add(
+      final response = await storesApi.add(
         formData: formData,
       );
-      return const ApiResult.success(
-        data: null,
+      return ApiResult.success(
+        data: response,
+      );
+    } catch (error) {
+      return ApiResult.failure(
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResult<Store>> edit({
+    required int id,
+    required FormData formData,
+  }) async {
+    try {
+      final response = await storesApi.edit(
+        id: id,
+        formData: formData,
+      );
+      return ApiResult.success(
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
@@ -53,48 +75,6 @@ class StoresRepoImpl implements StoresRepo {
     try {
       await storesApi.delete(
         id: id,
-      );
-      return const ApiResult.success(
-        data: null,
-      );
-    } catch (error) {
-      return ApiResult.failure(
-        apiErrorModel: ApiErrorHandler.handle(
-          error: error,
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<ApiResult<void>> edit({
-    required Store store,
-  }) async {
-    try {
-      await storesApi.edit(
-        store: store,
-      );
-      return const ApiResult.success(
-        data: null,
-      );
-    } catch (error) {
-      return ApiResult.failure(
-        apiErrorModel: ApiErrorHandler.handle(
-          error: error,
-        ),
-      );
-    }
-  }
-
-  @override
-  Future<ApiResult<void>> editImage({
-    required int id,
-    required FormData formData,
-  }) async {
-    try {
-      await storesApi.editImage(
-        id: id,
-        formData: formData,
       );
       return const ApiResult.success(
         data: null,

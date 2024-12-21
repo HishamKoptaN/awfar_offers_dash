@@ -20,27 +20,24 @@ mixin _$SubCategoriesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() get,
     required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
+    required TResult Function(int id, FormData formData) edit,
     required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
     TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
+    TResult? Function(int id, FormData formData)? edit,
     TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
     TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
+    TResult Function(int id, FormData formData)? edit,
     TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +47,6 @@ mixin _$SubCategoriesEvent {
     required TResult Function(_Add value) add,
     required TResult Function(_Edit value) edit,
     required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +55,6 @@ mixin _$SubCategoriesEvent {
     TResult? Function(_Add value)? add,
     TResult? Function(_Edit value)? edit,
     TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +63,6 @@ mixin _$SubCategoriesEvent {
     TResult Function(_Add value)? add,
     TResult Function(_Edit value)? edit,
     TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,9 +130,8 @@ class _$GetImpl implements _Get {
   TResult when<TResult extends Object?>({
     required TResult Function() get,
     required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
+    required TResult Function(int id, FormData formData) edit,
     required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
   }) {
     return get();
   }
@@ -148,9 +141,8 @@ class _$GetImpl implements _Get {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
     TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
+    TResult? Function(int id, FormData formData)? edit,
     TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
   }) {
     return get?.call();
   }
@@ -160,9 +152,8 @@ class _$GetImpl implements _Get {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
     TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
+    TResult Function(int id, FormData formData)? edit,
     TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -178,7 +169,6 @@ class _$GetImpl implements _Get {
     required TResult Function(_Add value) add,
     required TResult Function(_Edit value) edit,
     required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
   }) {
     return get(this);
   }
@@ -190,7 +180,6 @@ class _$GetImpl implements _Get {
     TResult? Function(_Add value)? add,
     TResult? Function(_Edit value)? edit,
     TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
   }) {
     return get?.call(this);
   }
@@ -202,7 +191,6 @@ class _$GetImpl implements _Get {
     TResult Function(_Add value)? add,
     TResult Function(_Edit value)? edit,
     TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -285,9 +273,8 @@ class _$AddImpl implements _Add {
   TResult when<TResult extends Object?>({
     required TResult Function() get,
     required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
+    required TResult Function(int id, FormData formData) edit,
     required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
   }) {
     return add(formData);
   }
@@ -297,9 +284,8 @@ class _$AddImpl implements _Add {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
     TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
+    TResult? Function(int id, FormData formData)? edit,
     TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
   }) {
     return add?.call(formData);
   }
@@ -309,9 +295,8 @@ class _$AddImpl implements _Add {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
     TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
+    TResult Function(int id, FormData formData)? edit,
     TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -327,7 +312,6 @@ class _$AddImpl implements _Add {
     required TResult Function(_Add value) add,
     required TResult Function(_Edit value) edit,
     required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
   }) {
     return add(this);
   }
@@ -339,7 +323,6 @@ class _$AddImpl implements _Add {
     TResult? Function(_Add value)? add,
     TResult? Function(_Edit value)? edit,
     TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
   }) {
     return add?.call(this);
   }
@@ -351,7 +334,6 @@ class _$AddImpl implements _Add {
     TResult Function(_Add value)? add,
     TResult Function(_Edit value)? edit,
     TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -379,9 +361,7 @@ abstract class _$$EditImplCopyWith<$Res> {
           _$EditImpl value, $Res Function(_$EditImpl) then) =
       __$$EditImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SubCategory subCategory});
-
-  $SubCategoryCopyWith<$Res> get subCategory;
+  $Res call({int id, FormData formData});
 }
 
 /// @nodoc
@@ -396,38 +376,35 @@ class __$$EditImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subCategory = null,
+    Object? id = null,
+    Object? formData = null,
   }) {
     return _then(_$EditImpl(
-      subCategory: null == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategory,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      formData: null == formData
+          ? _value.formData
+          : formData // ignore: cast_nullable_to_non_nullable
+              as FormData,
     ));
-  }
-
-  /// Create a copy of SubCategoriesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SubCategoryCopyWith<$Res> get subCategory {
-    return $SubCategoryCopyWith<$Res>(_value.subCategory, (value) {
-      return _then(_value.copyWith(subCategory: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$EditImpl implements _Edit {
-  const _$EditImpl({required this.subCategory});
+  const _$EditImpl({required this.id, required this.formData});
 
   @override
-  final SubCategory subCategory;
+  final int id;
+  @override
+  final FormData formData;
 
   @override
   String toString() {
-    return 'SubCategoriesEvent.edit(subCategory: $subCategory)';
+    return 'SubCategoriesEvent.edit(id: $id, formData: $formData)';
   }
 
   @override
@@ -435,12 +412,13 @@ class _$EditImpl implements _Edit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditImpl &&
-            (identical(other.subCategory, subCategory) ||
-                other.subCategory == subCategory));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.formData, formData) ||
+                other.formData == formData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, subCategory);
+  int get hashCode => Object.hash(runtimeType, id, formData);
 
   /// Create a copy of SubCategoriesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -455,11 +433,10 @@ class _$EditImpl implements _Edit {
   TResult when<TResult extends Object?>({
     required TResult Function() get,
     required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
+    required TResult Function(int id, FormData formData) edit,
     required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
   }) {
-    return edit(subCategory);
+    return edit(id, formData);
   }
 
   @override
@@ -467,11 +444,10 @@ class _$EditImpl implements _Edit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
     TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
+    TResult? Function(int id, FormData formData)? edit,
     TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
   }) {
-    return edit?.call(subCategory);
+    return edit?.call(id, formData);
   }
 
   @override
@@ -479,13 +455,12 @@ class _$EditImpl implements _Edit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
     TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
+    TResult Function(int id, FormData formData)? edit,
     TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
     if (edit != null) {
-      return edit(subCategory);
+      return edit(id, formData);
     }
     return orElse();
   }
@@ -497,7 +472,6 @@ class _$EditImpl implements _Edit {
     required TResult Function(_Add value) add,
     required TResult Function(_Edit value) edit,
     required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
   }) {
     return edit(this);
   }
@@ -509,7 +483,6 @@ class _$EditImpl implements _Edit {
     TResult? Function(_Add value)? add,
     TResult? Function(_Edit value)? edit,
     TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
   }) {
     return edit?.call(this);
   }
@@ -521,7 +494,6 @@ class _$EditImpl implements _Edit {
     TResult Function(_Add value)? add,
     TResult Function(_Edit value)? edit,
     TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
     if (edit != null) {
@@ -532,9 +504,11 @@ class _$EditImpl implements _Edit {
 }
 
 abstract class _Edit implements SubCategoriesEvent {
-  const factory _Edit({required final SubCategory subCategory}) = _$EditImpl;
+  const factory _Edit(
+      {required final int id, required final FormData formData}) = _$EditImpl;
 
-  SubCategory get subCategory;
+  int get id;
+  FormData get formData;
 
   /// Create a copy of SubCategoriesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -613,9 +587,8 @@ class _$DeleteImpl implements _Delete {
   TResult when<TResult extends Object?>({
     required TResult Function() get,
     required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
+    required TResult Function(int id, FormData formData) edit,
     required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
   }) {
     return delete(id);
   }
@@ -625,9 +598,8 @@ class _$DeleteImpl implements _Delete {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
     TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
+    TResult? Function(int id, FormData formData)? edit,
     TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
   }) {
     return delete?.call(id);
   }
@@ -637,9 +609,8 @@ class _$DeleteImpl implements _Delete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
     TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
+    TResult Function(int id, FormData formData)? edit,
     TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -655,7 +626,6 @@ class _$DeleteImpl implements _Delete {
     required TResult Function(_Add value) add,
     required TResult Function(_Edit value) edit,
     required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
   }) {
     return delete(this);
   }
@@ -667,7 +637,6 @@ class _$DeleteImpl implements _Delete {
     TResult? Function(_Add value)? add,
     TResult? Function(_Edit value)? edit,
     TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
   }) {
     return delete?.call(this);
   }
@@ -679,7 +648,6 @@ class _$DeleteImpl implements _Delete {
     TResult Function(_Add value)? add,
     TResult Function(_Edit value)? edit,
     TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -698,175 +666,5 @@ abstract class _Delete implements SubCategoriesEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteImplCopyWith<_$DeleteImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EditImageImplCopyWith<$Res> {
-  factory _$$EditImageImplCopyWith(
-          _$EditImageImpl value, $Res Function(_$EditImageImpl) then) =
-      __$$EditImageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id, FormData formData});
-}
-
-/// @nodoc
-class __$$EditImageImplCopyWithImpl<$Res>
-    extends _$SubCategoriesEventCopyWithImpl<$Res, _$EditImageImpl>
-    implements _$$EditImageImplCopyWith<$Res> {
-  __$$EditImageImplCopyWithImpl(
-      _$EditImageImpl _value, $Res Function(_$EditImageImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SubCategoriesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? formData = null,
-  }) {
-    return _then(_$EditImageImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      formData: null == formData
-          ? _value.formData
-          : formData // ignore: cast_nullable_to_non_nullable
-              as FormData,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$EditImageImpl implements _EditImage {
-  const _$EditImageImpl({required this.id, required this.formData});
-
-  @override
-  final int id;
-  @override
-  final FormData formData;
-
-  @override
-  String toString() {
-    return 'SubCategoriesEvent.editImage(id: $id, formData: $formData)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditImageImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.formData, formData) ||
-                other.formData == formData));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id, formData);
-
-  /// Create a copy of SubCategoriesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditImageImplCopyWith<_$EditImageImpl> get copyWith =>
-      __$$EditImageImplCopyWithImpl<_$EditImageImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() get,
-    required TResult Function(FormData formData) add,
-    required TResult Function(SubCategory subCategory) edit,
-    required TResult Function(int id) delete,
-    required TResult Function(int id, FormData formData) editImage,
-  }) {
-    return editImage(id, formData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? get,
-    TResult? Function(FormData formData)? add,
-    TResult? Function(SubCategory subCategory)? edit,
-    TResult? Function(int id)? delete,
-    TResult? Function(int id, FormData formData)? editImage,
-  }) {
-    return editImage?.call(id, formData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? get,
-    TResult Function(FormData formData)? add,
-    TResult Function(SubCategory subCategory)? edit,
-    TResult Function(int id)? delete,
-    TResult Function(int id, FormData formData)? editImage,
-    required TResult orElse(),
-  }) {
-    if (editImage != null) {
-      return editImage(id, formData);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Get value) get,
-    required TResult Function(_Add value) add,
-    required TResult Function(_Edit value) edit,
-    required TResult Function(_Delete value) delete,
-    required TResult Function(_EditImage value) editImage,
-  }) {
-    return editImage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Get value)? get,
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Edit value)? edit,
-    TResult? Function(_Delete value)? delete,
-    TResult? Function(_EditImage value)? editImage,
-  }) {
-    return editImage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Get value)? get,
-    TResult Function(_Add value)? add,
-    TResult Function(_Edit value)? edit,
-    TResult Function(_Delete value)? delete,
-    TResult Function(_EditImage value)? editImage,
-    required TResult orElse(),
-  }) {
-    if (editImage != null) {
-      return editImage(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EditImage implements SubCategoriesEvent {
-  const factory _EditImage(
-      {required final int id,
-      required final FormData formData}) = _$EditImageImpl;
-
-  int get id;
-  FormData get formData;
-
-  /// Create a copy of SubCategoriesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditImageImplCopyWith<_$EditImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

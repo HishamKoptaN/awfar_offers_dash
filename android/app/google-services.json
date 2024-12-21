@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1067135384858",
+    "project_id": "com-awfaroffers-app-dev",
+    "storage_bucket": "com-awfaroffers-app-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067135384858:android:2a21e013fc06ec416e40a3",
+        "android_client_info": {
+          "package_name": "com.awfaroffers.app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxn2y9018fOh8wVWJZc4zXEBEiFSWE_50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067135384858:android:0228fd6c7aa17f336e40a3",
+        "android_client_info": {
+          "package_name": "com.example.awfar_offers_dash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxn2y9018fOh8wVWJZc4zXEBEiFSWE_50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,7 +24,7 @@ class _CouponsApi implements CouponsApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Coupon>> getCoupons() async {
+  Future<List<Coupon>> get() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _CouponsApi implements CouponsApi {
   }
 
   @override
-  Future<Coupon> addCoupon(
+  Future<Coupon> add(
       {required AddCouponRequestModel addCouponRequestModel}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -94,7 +94,7 @@ class _CouponsApi implements CouponsApi {
   }
 
   @override
-  Future<Coupon> editCoupon({required Coupon coupon}) async {
+  Future<Coupon> edit({required Coupon coupon}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -127,7 +127,7 @@ class _CouponsApi implements CouponsApi {
   }
 
   @override
-  Future<void> deleteCoupon({required int id}) async {
+  Future<void> delete({required int id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

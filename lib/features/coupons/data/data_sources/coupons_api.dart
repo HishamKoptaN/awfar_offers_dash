@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
 import '../models/add_coupon_request_model.dart';
-import '../models/coupons_response_model.dart';
+import '../models/coupon.dart';
 part 'coupons_api.g.dart';
 
 @RestApi(
@@ -17,12 +17,12 @@ abstract class CouponsApi {
   @GET(
     ApiConstants.coupons,
   )
-  Future<List<Coupon>> getCoupons();
+  Future<List<Coupon>> get();
   //! Add coupon
   @POST(
     ApiConstants.coupons,
   )
-  Future<Coupon> addCoupon({
+  Future<Coupon> add({
     @Body() required AddCouponRequestModel addCouponRequestModel,
   });
 
@@ -30,14 +30,14 @@ abstract class CouponsApi {
   @PUT(
     ApiConstants.coupons,
   )
-  Future<Coupon> editCoupon({
+  Future<Coupon> edit({
     @Body() required Coupon coupon,
   });
   //! DELETE coupon
   @DELETE(
     '${ApiConstants.coupons}/{id}',
   )
-  Future<void> deleteCoupon({
+  Future<void> delete({
     @Path('id') required int id,
   });
 }

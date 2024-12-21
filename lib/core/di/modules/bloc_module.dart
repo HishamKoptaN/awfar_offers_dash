@@ -1,11 +1,18 @@
+import '../../../features/auth/login/present/bloc/login_bloc.dart';
 import '../../../features/categories/presentation/bloc/categories_bloc.dart';
 import '../../../features/countries/presentation/bloc/countries_bloc.dart';
+import '../../../features/external_notifications/present/bloc/external_notifications_bloc.dart';
 import '../../../features/governorates/presentation/bloc/governorates_bloc.dart';
-import '../../../features/main/presentation/bloc/main_bloc.dart';
-import '../../../features/offres/presentation/bloc/offers_bloc.dart';
-import '../../../features/stores/presentation/bloc/stores_bloc.dart';
+import '../../../features/main/present/bloc/main_bloc.dart';
+import '../../../features/notifications/present/bloc/notifications_bloc.dart';
+import '../../../features/offer_groups/presentation/bloc/offer_groups_bloc.dart';
+import '../../../features/offers/presentation/bloc/offers_bloc.dart';
+import '../../../features/products/presentation/bloc/products_bloc.dart';
+import '../../../features/stores/present/bloc/stores_bloc.dart';
 import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../../../features/coupons/presentation/bloc/coupons_bloc.dart';
+import '../../../features/sub_categories_items/presentation/bloc/markas_bloc.dart';
+import '../../../features/users/present/bloc/users_bloc.dart';
 import '../dependency_injection.dart';
 
 class BlocModule extends DIModule {
@@ -15,6 +22,12 @@ class BlocModule extends DIModule {
       //! Main
       ..registerLazySingleton<MainBloc>(
         () => MainBloc(
+          getIt(),
+        ),
+      )
+      //! Login
+      ..registerLazySingleton<LoginBloc>(
+        () => LoginBloc(
           getIt(),
         ),
       )
@@ -43,6 +56,14 @@ class BlocModule extends DIModule {
           getIt(),
           getIt(),
           getIt(),
+        ),
+      )
+      //! OfferGroups
+      ..registerLazySingleton<OfferGroupsBloc>(
+        () => OfferGroupsBloc(
+          getIt(),
+          getIt(),
+          getIt(),
           getIt(),
         ),
       )
@@ -62,7 +83,15 @@ class BlocModule extends DIModule {
           getIt(),
           getIt(),
           getIt(),
-          getIt(),
+        ),
+      )
+      //! SubCategoriesItems
+      ..registerLazySingleton<MarkasBloc>(
+        () => MarkasBloc(
+          getMarkasUseCase: getIt(),
+          addMarkaUseCase: getIt(),
+          editUseCase: getIt(),
+          deleteUseCase: getIt(),
         ),
       )
       //! Offers
@@ -75,6 +104,15 @@ class BlocModule extends DIModule {
           getIt(),
         ),
       )
+      //! Products
+      ..registerLazySingleton<ProductsBloc>(
+        () => ProductsBloc(
+          getProductsUseCase: getIt(),
+          addProductsUseCase: getIt(),
+          editUseCase: getIt(),
+          deleteUseCase: getIt(),
+        ),
+      )
       //! Coupons
       ..registerLazySingleton<CouponsBloc>(
         () => CouponsBloc(
@@ -82,6 +120,28 @@ class BlocModule extends DIModule {
           getIt(),
           getIt(),
           getIt(),
+        ),
+      )
+      //! Notifications
+      ..registerLazySingleton<NotificationsBloc>(
+        () => NotificationsBloc(
+          getNotificationsUseCase: getIt(),
+          editNotificationsUseCase: getIt(),
+          addNotificationUseCase: getIt(),
+          deleteNotificationUseCase: getIt(),
+        ),
+      )
+      ..registerLazySingleton<ExternalNotificationsBloc>(
+        () => ExternalNotificationsBloc(
+          addExternalNotificationUseCase: getIt(),
+        ),
+      ) //! Users
+      ..registerLazySingleton<UsersBloc>(
+        () => UsersBloc(
+          getUsersUseCase: getIt(),
+          editUsersUseCase: getIt(),
+          addUserUseCase: getIt(),
+          notifyUseCase: getIt(),
         ),
       );
   }

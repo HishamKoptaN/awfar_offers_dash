@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
+
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/stores_response_model.dart';
+import '../../data/models/store.dart';
 import '../repo/stores_repo.dart';
 
 class EditStoreUseCase {
@@ -7,11 +9,13 @@ class EditStoreUseCase {
   EditStoreUseCase(
     this.storesRepo,
   );
-  Future<ApiResult<void>> edit({
-    required Store store,
+  Future<ApiResult<Store>> edit({
+    required int id,
+    required FormData formData,
   }) async {
     return await storesRepo.edit(
-      store: store,
+      id: id,
+      formData: formData,
     );
   }
 }

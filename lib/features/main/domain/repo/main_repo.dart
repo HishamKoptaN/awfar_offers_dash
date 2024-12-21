@@ -1,6 +1,6 @@
 import '../../../../../core/networking/api_result.dart';
-import '../../data/models/check_response_model.dart';
+import '../../../../core/models/user.dart';
 
 abstract class MainRepo {
-  Future<ApiResult<CheckResponseModel>> check();
+  Future<ApiResult<User>> check();
 }

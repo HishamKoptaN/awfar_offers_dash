@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
 import '../../../../core/functions/navigation.dart';
-import '../../../../core/global/gobal_widgets/custom_button.dart';
-import '../../../../core/global/gobal_widgets/custom_circular_progress.dart';
-import '../../../../core/global/gobal_widgets/global_widgets.dart';
-import '../../../../core/global/gobal_widgets/snack_bar.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../core/widgets/global_widgets.dart';
+import '../../../../core/widgets/snack_bar.dart';
 import '../../data/models/add_country_request_body_model.dart';
 import '../bloc/countries_bloc.dart';
 import '../bloc/countries_event.dart';
@@ -110,7 +110,7 @@ class _AddCountryViewState extends State<AddCountryView> {
                         Gap(
                           10.h,
                         ),
-                        CustomTextButton(
+                        CustomTextButtonWidget(
                           widget: state.maybeWhen(
                             loading: () {
                               return CustomCircularProgress();
