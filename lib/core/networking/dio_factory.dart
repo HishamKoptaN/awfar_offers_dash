@@ -22,6 +22,17 @@ class DioFactory {
     }
   }
 
+  static void setTokenIntoHeader({
+    required String? token,
+  }) {
+    dio?.options.headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+    addDioInterceptor();
+  }
+
   static void addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(

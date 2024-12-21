@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/functions/navigation.dart';
-import '../../core/helpers/shared_pref_helper.dart';
 import '../../core/widgets/global_widgets.dart';
 import '../../core/utils/app_colors.dart';
-import '../auth/login/present/view/login_view.dart';
 import '../categories/presentation/view/categories_view.dart';
 import '../countries/presentation/view/countries_view.dart';
 import '../external_notifications/present/view/external_notifications_view.dart';

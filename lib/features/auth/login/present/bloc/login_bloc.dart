@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/helpers/shared_pref_helper.dart';
+import '../../../../../core/networking/dio_factory.dart';
 import '../../../../../core/singletons/user_singleton.dart';
 import '../../domain/use_cases/login_use_case.dart';
 import 'login_event.dart';
@@ -30,6 +31,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
                   value: response.token!,
                 );
                 UserSingleton.instance.user = response.user;
+                DioFactory.setTokenIntoHeader(
+                  token: response.token,
+                );
                 emit(
                   const LoginState.success(),
                 );

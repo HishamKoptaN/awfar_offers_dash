@@ -36,6 +36,9 @@ import '../../../features/products/domain/use_cases/add_product_use_case.dart';
 import '../../../features/products/domain/use_cases/delete_product_use_case.dart';
 import '../../../features/products/domain/use_cases/edit_product_use_case.dart';
 import '../../../features/products/domain/use_cases/get_products_use_case.dart';
+import '../../../features/roles/domain/use_cases/add_role_use_case.dart';
+import '../../../features/roles/domain/use_cases/edit_role_use_case.dart';
+import '../../../features/roles/domain/use_cases/get_roles_use_case.dart';
 import '../../../features/stores/domain/use_cases/add_store_use_case.dart';
 import '../../../features/stores/domain/use_cases/delete_store_use_case.dart';
 import '../../../features/stores/domain/use_cases/edit_store_use_case.dart';
@@ -331,6 +334,22 @@ class UseCaseModule extends DIModule {
       )
       ..registerLazySingleton(
         () => NotifyUseCase(
+          getIt(),
+        ),
+      )
+      //!  Roles
+      ..registerLazySingleton(
+        () => GetRolesUseCase(
+          rolesRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => EditRoleUseCase(
+          rolesRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => AddRoleUseCase(
           getIt(),
         ),
       );

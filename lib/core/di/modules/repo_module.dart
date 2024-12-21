@@ -18,6 +18,8 @@ import '../../../features/offers/data/repo_impl/offres_repo_impl.dart';
 import '../../../features/offers/domain/repo/offres_repo.dart';
 import '../../../features/products/data/repo_impl/products_repo_impl.dart';
 import '../../../features/products/domain/repo/products_repo.dart';
+import '../../../features/roles/data/repo/roles_repo.dart';
+import '../../../features/roles/domain/repo_impl/roles_repo_impl.dart';
 import '../../../features/stores/data/repo_impl/stores_repo_impl.dart';
 import '../../../features/stores/domain/repo/stores_repo.dart';
 import '../../../features/sub_categories/data/repo_impl/sub_categories_repo_impl.dart';
@@ -125,6 +127,12 @@ class RepositoryModule extends DIModule {
       //! Users
       ..registerLazySingleton<UsersRepo>(
         () => UsersRepoImpl(
+          getIt(),
+        ),
+      )
+      //! Roles
+      ..registerLazySingleton<RolesRepo>(
+        () => RolesRepoImpl(
           getIt(),
         ),
       );

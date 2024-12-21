@@ -20,7 +20,6 @@ class RolesView extends StatelessWidget {
   @override
   Widget build(context) {
     return AppLayout(
-      route: 'Roles',
       showAppBar: false,
       body: BlocProvider(
         create: (_) => RolesBloc(
@@ -43,21 +42,21 @@ class RolesView extends StatelessWidget {
                     customDataColumn(
                       label: 'الاذونات',
                     ),
-                    DataColumn(
-                      label: CustomTextButtonWidget(
-                        // width: 125.w,
-                        text: "أضافة دور",
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return CreateRoleView();
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                    // DataColumn(
+                    //   label: CustomTextButtonWidget(
+                    //     // width: 125.w,
+                    //     text: "أضافة دور",
+                    //     onPressed: () {
+                    //       Navigator.of(context).push(
+                    //         MaterialPageRoute(
+                    //           builder: (context) {
+                    //             return CreateRoleView();
+                    //           },
+                    //         ),
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
                   ],
                   items: RolesSingleton.instance.roles,
                   buildRow: (role) {
@@ -69,38 +68,38 @@ class RolesView extends StatelessWidget {
                               .map((permission) => permission.name)
                               .join(', '),
                         ),
-                        DataCell(
-                          Row(
-                            children: [
-                              CustomTextButtonWidget(
-                                // width: 125.w,
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => EditRoleView(
-                                        role: role,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                text: 'تعديل',
-                              ),
-                              // CustomButtonWidget(
-                              //   width: 125.w,
-                              //   onPressed: () {
-                              //     Navigator.of(context).push(
-                              //       MaterialPageRoute(
-                              //         builder: (context) => RoleDetailsView(
-                              //           role: role,
-                              //         ),
-                              //       ),
-                              //     );
-                              //   },
-                              //   text: 'عرض',
-                              // ),
-                            ],
-                          ),
-                        ),
+                        // DataCell(
+                        //   Row(
+                        //     children: [
+                        //       CustomTextButtonWidget(
+                        //         // width: 125.w,
+                        //         onPressed: () {
+                        //           Navigator.of(context).push(
+                        //             MaterialPageRoute(
+                        //               builder: (context) => EditRoleView(
+                        //                 role: role,
+                        //               ),
+                        //             ),
+                        //           );
+                        //         },
+                        //         text: 'تعديل',
+                        //       ),
+                        //       // CustomButtonWidget(
+                        //       //   width: 125.w,
+                        //       //   onPressed: () {
+                        //       //     Navigator.of(context).push(
+                        //       //       MaterialPageRoute(
+                        //       //         builder: (context) => RoleDetailsView(
+                        //       //           role: role,
+                        //       //         ),
+                        //       //       ),
+                        //       //     );
+                        //       //   },
+                        //       //   text: 'عرض',
+                        //       // ),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     );
                   },

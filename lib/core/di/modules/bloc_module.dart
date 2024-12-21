@@ -8,6 +8,7 @@ import '../../../features/notifications/present/bloc/notifications_bloc.dart';
 import '../../../features/offer_groups/presentation/bloc/offer_groups_bloc.dart';
 import '../../../features/offers/presentation/bloc/offers_bloc.dart';
 import '../../../features/products/presentation/bloc/products_bloc.dart';
+import '../../../features/roles/present/bloc/roles_bloc.dart';
 import '../../../features/stores/present/bloc/stores_bloc.dart';
 import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../../../features/coupons/presentation/bloc/coupons_bloc.dart';
@@ -135,13 +136,22 @@ class BlocModule extends DIModule {
         () => ExternalNotificationsBloc(
           addExternalNotificationUseCase: getIt(),
         ),
-      ) //! Users
+      )
+      //! Users
       ..registerLazySingleton<UsersBloc>(
         () => UsersBloc(
           getUsersUseCase: getIt(),
           editUsersUseCase: getIt(),
           addUserUseCase: getIt(),
           notifyUseCase: getIt(),
+        ),
+      )
+      //! Roles
+      ..registerLazySingleton<RolesBloc>(
+        () => RolesBloc(
+          getRolesUseCase: getIt(),
+          editRolesUseCase: getIt(),
+          addRoleUseCase: getIt(),
         ),
       );
   }
