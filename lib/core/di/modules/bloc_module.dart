@@ -1,8 +1,8 @@
 import '../../../features/auth/login/present/bloc/login_bloc.dart';
 import '../../../features/categories/presentation/bloc/categories_bloc.dart';
+import '../../../features/cities/present/bloc/cities_bloc.dart';
 import '../../../features/countries/presentation/bloc/countries_bloc.dart';
 import '../../../features/external_notifications/present/bloc/external_notifications_bloc.dart';
-import '../../../features/governorates/presentation/bloc/governorates_bloc.dart';
 import '../../../features/main/present/bloc/main_bloc.dart';
 import '../../../features/notifications/present/bloc/notifications_bloc.dart';
 import '../../../features/offer_groups/presentation/bloc/offer_groups_bloc.dart';
@@ -41,9 +41,9 @@ class BlocModule extends DIModule {
           getIt(),
         ),
       )
-      //! Governorates
-      ..registerLazySingleton<GovernoratesBloc>(
-        () => GovernoratesBloc(
+      //! Cities
+      ..registerLazySingleton<CitiesBloc>(
+        () => CitiesBloc(
           getIt(),
           getIt(),
           getIt(),

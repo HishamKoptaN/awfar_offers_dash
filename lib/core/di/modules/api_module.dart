@@ -1,6 +1,6 @@
 import '../../../features/auth/login/data/data_sources/login_api.dart';
+import '../../../features/cities/data/data_sources/cities_api.dart';
 import '../../../features/external_notifications/data/data_sources/external_notifications_api.dart';
-import '../../../features/governorates/data/data_sources/governorates_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
 import '../../../features/notifications/data/data_sources/notifications_api.dart';
 import '../../../features/offer_groups/data/data_sources/offer_groups_api.dart';
@@ -44,9 +44,9 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
-      //! Governorates
-      ..registerLazySingleton<GovernoratesApi>(
-        () => GovernoratesApi(
+      //! Cities
+      ..registerLazySingleton<CitiesApi>(
+        () => CitiesApi(
           getIt(),
         ),
       )

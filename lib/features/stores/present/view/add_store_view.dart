@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 import 'package:awfar_offers_dash/core/widgets/pick_image_widget.dart';
-import 'package:awfar_offers_dash/features/governorates/presentation/pages/add_governorate_view.dart';
 import 'package:dio/dio.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
-import '../../../../core/singletons/governoarates_singleton.dart';
+import '../../../../core/singletons/cities_singleton.dart';
+import '../../../../core/singletons/countries_singleton.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
 import '../../../../core/widgets/custom_dropdown_button.dart';
@@ -16,8 +16,9 @@ import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/global_widgets.dart';
 import '../../../../core/widgets/snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../categories/presentation/view/add_category_view.dart';
+import '../../../cities/data/models/cities_res_model.dart';
 import '../../../countries/data/models/countries_res_model.dart';
-import '../../../governorates/data/models/governorates_response_model.dart';
 import '../bloc/stores_bloc.dart';
 import '../bloc/stores_event.dart';
 import '../bloc/stores_state.dart';
@@ -33,9 +34,11 @@ class AddStoreView extends StatefulWidget {
 class _AddStoreViewState extends State<AddStoreView> {
   String? name;
   String? place;
-  Governorate? selectedGovernorate;
+  City? selectedCity;
+  Country? selectedCountry;
   Uint8List? image;
-  final governorates = GovernoratesSingleton.instance.governorates;
+  final cities = CitiesSingleton.instance.cities;
+  final countries = CountriesSingleton.instance.countries;
   @override
   Widget build(context) {
     return MainLayout(
@@ -101,7 +104,7 @@ class _AddStoreViewState extends State<AddStoreView> {
                             setState(
                               () {
                                 selectedCountry = value;
-                                selectedGovernorate = null;
+                                selectedCity = null;
                               },
                             );
                           },
@@ -136,20 +139,20 @@ class _AddStoreViewState extends State<AddStoreView> {
                       Gap(
                         10.h,
                       ),
-                      CustomDropdownContainer<Governorate>(
+                      CustomDropdownContainer<City>(
                         height: 75.h,
                         width: 450.w,
-                        items: governorates!
+                        items: cities!
                             .where(
                               (governorate) =>
                                   governorate.countryId == selectedCountry?.id,
                             )
                             .toList(),
-                        selectedItem: selectedGovernorate,
+                        selectedItem: selectedCity,
                         onChanged: (value) {
                           setState(
                             () {
-                              selectedGovernorate = value;
+                              selectedCity = value;
                             },
                           );
                         },
@@ -190,7 +193,7 @@ class _AddStoreViewState extends State<AddStoreView> {
                           FormData formData = FormData.fromMap(
                             {
                               'name': name,
-                              'governorate_id': selectedGovernorate?.id,
+                              'city_id': selectedCity?.id,
                               'place': place,
                               'image': MultipartFile.fromBytes(
                                 image!,

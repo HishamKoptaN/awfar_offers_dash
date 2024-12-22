@@ -12,12 +12,12 @@ import 'core/services/local_notifications_services.dart';
 import 'core/services/push_notifications_services.dart';
 import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
+import 'features/cities/present/bloc/cities_bloc.dart';
+import 'features/cities/present/bloc/cities_event.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/countries/presentation/bloc/countries_event.dart';
 import 'features/coupons/presentation/bloc/coupons_bloc.dart';
 import 'features/coupons/presentation/bloc/coupons_event.dart';
-import 'features/governorates/presentation/bloc/governorates_bloc.dart';
-import 'features/governorates/presentation/bloc/governorates_event.dart';
 import 'features/main/present/bloc/main_bloc.dart';
 import 'features/main/present/bloc/main_event.dart';
 import 'features/notifications/present/bloc/notifications_event.dart';
@@ -61,7 +61,7 @@ Future<void> main() async {
           ),
         ),
         BlocProvider(
-          create: (context) => GovernoratesBloc(
+          create: (context) => CitiesBloc(
             getIt(),
             getIt(),
             getIt(),
@@ -158,8 +158,8 @@ class _MyAppState extends State<MyApp> {
         context.read<CountriesBloc>().add(
               const CountriesEvent.get(),
             );
-        context.read<GovernoratesBloc>().add(
-              const GovernoratesEvent.get(),
+        context.read<CitiesBloc>().add(
+              const CitiesEvent.get(),
             );
         context.read<StoresBloc>().add(
               const StoresEvent.get(),

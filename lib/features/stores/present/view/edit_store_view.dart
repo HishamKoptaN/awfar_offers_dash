@@ -8,16 +8,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/app_layout.dart';
+import '../../../../core/singletons/cities_singleton.dart';
 import '../../../../core/singletons/countries_singleton.dart';
-import '../../../../core/singletons/governoarates_singleton.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/global_widgets.dart';
 import '../../../../core/widgets/snack_bar.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../cities/data/models/cities_res_model.dart';
 import '../../../countries/data/models/countries_res_model.dart';
-import '../../../governorates/data/models/governorates_response_model.dart';
 import '../../data/models/store.dart';
 import '../bloc/stores_bloc.dart';
 import '../bloc/stores_event.dart';
@@ -36,16 +36,16 @@ class EditStoreView extends StatefulWidget {
 
 class _EditStoreViewState extends State<EditStoreView> {
   final countries = CountriesSingleton.instance.countries;
-  final governorates = GovernoratesSingleton.instance.governorates;
+  final cities = CitiesSingleton.instance.cities;
   Country? selectedCountry;
-  Governorate? selectedGovernorate;
+  City? selectedGovernorate;
   Uint8List? image;
   @override
   void initState() {
     super.initState();
-    selectedGovernorate = governorates.firstWhere(
+    selectedGovernorate = cities.firstWhere(
       (governorate) => governorate.id == widget.store.governorateId,
-      orElse: () => governorates.first,
+      orElse: () => cities.first,
     );
     selectedCountry = countries.firstWhere(
       (country) => country.id == widget.store.governorateId,
@@ -168,7 +168,7 @@ class _EditStoreViewState extends State<EditStoreView> {
                       color: AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: DropdownButton<Governorate>(
+                    child: DropdownButton<City>(
                       isExpanded: true,
                       value: selectedGovernorate,
                       onChanged: (value) {
@@ -178,9 +178,9 @@ class _EditStoreViewState extends State<EditStoreView> {
                           },
                         );
                       },
-                      items: governorates.map(
+                      items: cities.map(
                         (governorate) {
-                          return DropdownMenuItem<Governorate>(
+                          return DropdownMenuItem<City>(
                             value: governorate,
                             child: Center(
                                 child: CustomText(

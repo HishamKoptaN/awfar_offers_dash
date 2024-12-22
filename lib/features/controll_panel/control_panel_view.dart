@@ -4,9 +4,9 @@ import '../../core/functions/navigation.dart';
 import '../../core/widgets/global_widgets.dart';
 import '../../core/utils/app_colors.dart';
 import '../categories/presentation/view/categories_view.dart';
+import '../cities/present/view/cities_view.dart';
 import '../countries/presentation/view/countries_view.dart';
 import '../external_notifications/present/view/external_notifications_view.dart';
-import '../governorates/presentation/pages/governorates_view.dart';
 import '../notifications/present/view/notifications_view.dart';
 import '../roles/present/view/roles_view.dart';
 import '../stores/present/view/stores_view.dart';
@@ -26,7 +26,7 @@ class _ControlPanelViewState extends State<ControlPanelView> {
   List<Widget> pages = [
     const CategoriesView(),
     const StoresView(),
-    const GovernoratesView(),
+    const CitiesView(),
     const CountriesView(),
     const CouponsView(),
     const NotificationsView(),

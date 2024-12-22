@@ -22,10 +22,10 @@ class AddCategoryView extends StatefulWidget {
   State<AddCategoryView> createState() => _AddCategoryViewState();
 }
 
-Country? selectedCountry;
 AddCategoryReqBodyModel addCategoryReqBodyModel = AddCategoryReqBodyModel();
 
 class _AddCategoryViewState extends State<AddCategoryView> {
+  Country? selectedCountry;
   @override
   Widget build(context) {
     return MainLayout(

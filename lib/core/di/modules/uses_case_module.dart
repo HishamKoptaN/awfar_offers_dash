@@ -6,6 +6,10 @@ import '../../../features/categories/domain/use_cases/add_category_use_case.dart
 import '../../../features/categories/domain/use_cases/delete_category_use_case.dart';
 import '../../../features/categories/domain/use_cases/edit_category_use_case.dart';
 import '../../../features/categories/domain/use_cases/get_categories_use_case.dart';
+import '../../../features/cities/domain/use_cases/add_city_use_case.dart';
+import '../../../features/cities/domain/use_cases/delete_city_use_case.dart';
+import '../../../features/cities/domain/use_cases/edit_city_use_case.dart';
+import '../../../features/cities/domain/use_cases/get_cities_use_case.dart';
 import '../../../features/countries/domain/use_cases/add_country_use_case.dart';
 import '../../../features/countries/domain/use_cases/delete_country_use_case.dart';
 import '../../../features/countries/domain/use_cases/edit_country_use_case.dart';
@@ -14,10 +18,6 @@ import '../../../features/coupons/domain/use_cases/add_coupon_use_case.dart';
 import '../../../features/coupons/domain/use_cases/delete_coupon_use_case.dart';
 import '../../../features/coupons/domain/use_cases/update_coupon_use_case.dart';
 import '../../../features/external_notifications/domain/use_cases/add_external_notification_use_case.dart';
-import '../../../features/governorates/domain/use_cases/add_governorate_use_case.dart';
-import '../../../features/governorates/domain/use_cases/delete_governorate_use_case.dart';
-import '../../../features/governorates/domain/use_cases/edit_governorate_use_case.dart';
-import '../../../features/governorates/domain/use_cases/get_governorates_use_case.dart';
 import '../../../features/main/domain/usecases/check_use_case.dart';
 import '../../../features/notifications/domain/use_cases/add_notification_use_case.dart';
 import '../../../features/notifications/domain/use_cases/delete_notification_use_case.dart';
@@ -93,24 +93,24 @@ class UseCaseModule extends DIModule {
           getIt(),
         ),
       )
-      //!  Governorates
+      //!  Cities
       ..registerLazySingleton(
-        () => GetGovernoratesUseCase(
+        () => GetCitiesUseCase(
           getIt(),
         ),
       )
       ..registerLazySingleton(
-        () => AddGovernorateUseCase(
+        () => AddCityUseCase(
           getIt(),
         ),
       )
       ..registerLazySingleton(
-        () => DeleteGovernorateUseCase(
+        () => DeleteCityUseCase(
           getIt(),
         ),
       )
       ..registerLazySingleton(
-        () => EditGovernorateUseCase(
+        () => EditCityUseCase(
           getIt(),
         ),
       )

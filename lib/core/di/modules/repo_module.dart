@@ -2,12 +2,12 @@ import '../../../features/auth/login/data/repo_imp/login_repo_impl.dart';
 import '../../../features/auth/login/domain/repo/login_repo.dart';
 import '../../../features/categories/data/repo_impl/categories_repo_impl.dart';
 import '../../../features/categories/domain/repo/categories_repo.dart';
+import '../../../features/cities/data/repo_impl/cities_repo_impl.dart';
+import '../../../features/cities/domain/repo/cities_repo.dart';
 import '../../../features/countries/data/repo_impl/countreis_repo_impl.dart';
 import '../../../features/countries/domain/repo/countreis_repo.dart';
 import '../../../features/external_notifications/data/repo/external_notifications_repo.dart';
 import '../../../features/external_notifications/domain/repo_impl/external_notifications_repo_impl.dart';
-import '../../../features/governorates/data/repo_impl/governates_repo_impl.dart';
-import '../../../features/governorates/domain/repo/governorates_repo.dart';
 import '../../../features/main/data/repo_impl/main_repo_impl.dart';
 import '../../../features/main/domain/repo/main_repo.dart';
 import '../../../features/notifications/data/repo/notifications_repo.dart';
@@ -59,9 +59,9 @@ class RepositoryModule extends DIModule {
           getIt(),
         ),
       )
-      //! Governorates
-      ..registerLazySingleton<GovernoratesRepo>(
-        () => GovernoratesRepoImpl(
+      //! Cities
+      ..registerLazySingleton<CitiesRepo>(
+        () => CitiesRepoImpl(
           getIt(),
         ),
       )

@@ -7,6 +7,10 @@ import '../../features/categories/presentation/view/categories_view.dart';
 import '../../features/categories/presentation/view/category_details_view.dart';
 import '../../features/categories/presentation/view/edit_category_view.dart';
 import '../../features/categories/presentation/view/subCategory_details_view.dart';
+import '../../features/cities/data/models/cities_res_model.dart';
+import '../../features/cities/present/view/add_city_view.dart';
+import '../../features/cities/present/view/cities_view.dart';
+import '../../features/cities/present/view/edit_city_view.dart';
 import '../../features/controll_panel/control_panel_view.dart';
 import '../../features/countries/data/models/countries_res_model.dart';
 import '../../features/countries/presentation/view/add_country_view.dart';
@@ -16,10 +20,6 @@ import '../../features/coupons/data/models/coupon.dart';
 import '../../features/coupons/presentation/view/add_coupon_view.dart';
 import '../../features/coupons/presentation/view/coupons_view.dart';
 import '../../features/coupons/presentation/view/edit_coupon_view.dart';
-import '../../features/governorates/data/models/governorates_response_model.dart';
-import '../../features/governorates/presentation/pages/add_governorate_view.dart';
-import '../../features/governorates/presentation/pages/edit_governorate_view.dart';
-import '../../features/governorates/presentation/pages/governorates_view.dart';
 import '../../../../core/models/offer.dart';
 import '../../features/main/present/view/main_view.dart';
 import '../../features/offer_groups/data/models/offer_group.dart';
@@ -85,24 +85,24 @@ final GoRouter router = GoRouter(
         );
       },
     ),
-    //! Governorates
+    //! Cities
     GoRoute(
-      path: '/GovernoratesView',
+      path: '/CitiesView',
       builder: (context, state) {
-        return const GovernoratesView();
+        return const CitiesView();
       },
     ),
     GoRoute(
-      path: '/AddGovernorateView',
+      path: '/AddCityView',
       builder: (context, state) {
-        return const AddGovernorateView();
+        return const AddCityView();
       },
     ),
     GoRoute(
-      path: '/EditGovernorateView',
+      path: '/EditCityView',
       builder: (context, state) {
-        final governorate = state.extra as Governorate;
-        return EditGovernorateView(
+        final governorate = state.extra as City;
+        return EditCityView(
           governorate: governorate,
         );
       },

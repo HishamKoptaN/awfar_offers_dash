@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/singletons/governoarates_singleton.dart';
+import '../../../../core/singletons/cities_singleton.dart';
+import '../../../../core/singletons/countries_singleton.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/app_layout.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
@@ -13,13 +14,12 @@ import '../../../../core/widgets/custom_text_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/global_widgets.dart';
 import '../../../../core/widgets/toast_notifier.dart';
+import '../../../cities/data/models/cities_res_model.dart';
+import '../../../cities/present/bloc/cities_bloc.dart';
+import '../../../cities/present/bloc/cities_state.dart';
 import '../../../countries/data/models/countries_res_model.dart';
 import '../../../countries/presentation/bloc/countries_bloc.dart';
 import '../../../countries/presentation/bloc/countries_state.dart';
-import '../../../governorates/data/models/governorates_response_model.dart';
-import '../../../governorates/presentation/bloc/governorates_bloc.dart';
-import '../../../governorates/presentation/bloc/governorates_state.dart';
-import '../../../governorates/presentation/pages/add_governorate_view.dart';
 import '../../data/model/external_notification.dart';
 import '../bloc/external_notifications_bloc.dart';
 import '../bloc/external_notifications_event.dart';
@@ -38,7 +38,7 @@ class ExternalNotificationsView extends StatefulWidget {
 class _ExternalNotificationsViewState extends State<ExternalNotificationsView> {
   ExternalNotification externalNotification = const ExternalNotification();
   Country? selectedCountry;
-  Governorate? selectedGovernorate;
+  City? selectedCity;
   @override
   Widget build(
     context,
@@ -109,6 +109,8 @@ class _ExternalNotificationsViewState extends State<ExternalNotificationsView> {
                     ),
                     child: BlocBuilder<CountriesBloc, CountriesState>(
                       builder: (context, state) {
+                        final countries = CountriesSingleton.instance.countries;
+
                         return state.maybeWhen(
                           loaded: () {
                             return DropdownButton<Country>(
@@ -118,7 +120,7 @@ class _ExternalNotificationsViewState extends State<ExternalNotificationsView> {
                                 setState(
                                   () {
                                     selectedCountry = value;
-                                    selectedGovernorate = null;
+                                    selectedCity = null;
                                   },
                                 );
                               },
@@ -162,29 +164,28 @@ class _ExternalNotificationsViewState extends State<ExternalNotificationsView> {
                   Gap(
                     5.h,
                   ),
-                  BlocBuilder<GovernoratesBloc, GovernoratesState>(
+                  BlocBuilder<CitiesBloc, CitiesState>(
                     builder: (context, state) {
                       return state.maybeWhen(
                         loaded: () {
-                          final governorates =
-                              GovernoratesSingleton.instance.governorates;
-                          return CustomDropdownContainer<Governorate>(
+                          final cities = CitiesSingleton.instance.cities;
+                          return CustomDropdownContainer<City>(
                             height: 75.h,
                             width: 300.w,
-                            items: governorates
+                            items: cities
                                 .where(
                                   (governorate) =>
                                       governorate.countryId ==
                                       selectedCountry?.id,
                                 )
                                 .toList(),
-                            selectedItem: selectedGovernorate,
+                            selectedItem: selectedCity,
                             onChanged: (
                               value,
                             ) {
                               setState(
                                 () {
-                                  selectedGovernorate = value;
+                                  selectedCity = value;
                                 },
                               );
                               externalNotification =
