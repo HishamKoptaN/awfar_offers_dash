@@ -26,14 +26,14 @@ mixin _$Store {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
   String? get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "governorate_id")
-  int? get governorateId => throw _privateConstructorUsedError;
+  @JsonKey(name: "city_id")
+  int? get cityId => throw _privateConstructorUsedError;
   @JsonKey(name: "place")
   String? get place => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
-  String? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
-  String? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Store to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,10 +53,10 @@ abstract class $StoreCopyWith<$Res> {
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "city_id") int? cityId,
       @JsonKey(name: "place") String? place,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt});
+      @JsonKey(name: "created_at") DateTime? createdAt,
+      @JsonKey(name: "updated_at") DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
     Object? id = freezed,
     Object? name = freezed,
     Object? image = freezed,
-    Object? governorateId = freezed,
+    Object? cityId = freezed,
     Object? place = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -95,9 +95,9 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      governorateId: freezed == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
+      cityId: freezed == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int?,
       place: freezed == place
           ? _value.place
@@ -106,11 +106,11 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -126,10 +126,10 @@ abstract class _$$StoreImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "city_id") int? cityId,
       @JsonKey(name: "place") String? place,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt});
+      @JsonKey(name: "created_at") DateTime? createdAt,
+      @JsonKey(name: "updated_at") DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -148,7 +148,7 @@ class __$$StoreImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? image = freezed,
-    Object? governorateId = freezed,
+    Object? cityId = freezed,
     Object? place = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -166,9 +166,9 @@ class __$$StoreImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      governorateId: freezed == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
+      cityId: freezed == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int?,
       place: freezed == place
           ? _value.place
@@ -177,11 +177,11 @@ class __$$StoreImplCopyWithImpl<$Res>
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }
@@ -193,7 +193,7 @@ class _$StoreImpl implements _Store {
       {@JsonKey(name: "id") this.id,
       @JsonKey(name: "name") this.name,
       @JsonKey(name: "image") this.image,
-      @JsonKey(name: "governorate_id") this.governorateId,
+      @JsonKey(name: "city_id") this.cityId,
       @JsonKey(name: "place") this.place,
       @JsonKey(name: "created_at") this.createdAt,
       @JsonKey(name: "updated_at") this.updatedAt});
@@ -211,21 +211,21 @@ class _$StoreImpl implements _Store {
   @JsonKey(name: "image")
   final String? image;
   @override
-  @JsonKey(name: "governorate_id")
-  final int? governorateId;
+  @JsonKey(name: "city_id")
+  final int? cityId;
   @override
   @JsonKey(name: "place")
   final String? place;
   @override
   @JsonKey(name: "created_at")
-  final String? createdAt;
+  final DateTime? createdAt;
   @override
   @JsonKey(name: "updated_at")
-  final String? updatedAt;
+  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'Store(id: $id, name: $name, image: $image, governorateId: $governorateId, place: $place, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Store(id: $id, name: $name, image: $image, cityId: $cityId, place: $place, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -236,8 +236,7 @@ class _$StoreImpl implements _Store {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.governorateId, governorateId) ||
-                other.governorateId == governorateId) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.place, place) || other.place == place) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -248,7 +247,7 @@ class _$StoreImpl implements _Store {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, image, governorateId, place, createdAt, updatedAt);
+      runtimeType, id, name, image, cityId, place, createdAt, updatedAt);
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.
@@ -271,10 +270,10 @@ abstract class _Store implements Store {
       {@JsonKey(name: "id") final int? id,
       @JsonKey(name: "name") final String? name,
       @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "governorate_id") final int? governorateId,
+      @JsonKey(name: "city_id") final int? cityId,
       @JsonKey(name: "place") final String? place,
-      @JsonKey(name: "created_at") final String? createdAt,
-      @JsonKey(name: "updated_at") final String? updatedAt}) = _$StoreImpl;
+      @JsonKey(name: "created_at") final DateTime? createdAt,
+      @JsonKey(name: "updated_at") final DateTime? updatedAt}) = _$StoreImpl;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$StoreImpl.fromJson;
 
@@ -288,17 +287,17 @@ abstract class _Store implements Store {
   @JsonKey(name: "image")
   String? get image;
   @override
-  @JsonKey(name: "governorate_id")
-  int? get governorateId;
+  @JsonKey(name: "city_id")
+  int? get cityId;
   @override
   @JsonKey(name: "place")
   String? get place;
   @override
   @JsonKey(name: "created_at")
-  String? get createdAt;
+  DateTime? get createdAt;
   @override
   @JsonKey(name: "updated_at")
-  String? get updatedAt;
+  DateTime? get updatedAt;
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.

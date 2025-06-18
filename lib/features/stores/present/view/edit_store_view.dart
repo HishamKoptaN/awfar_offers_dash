@@ -44,11 +44,11 @@ class _EditStoreViewState extends State<EditStoreView> {
   void initState() {
     super.initState();
     selectedGovernorate = cities.firstWhere(
-      (governorate) => governorate.id == widget.store.governorateId,
+      (governorate) => governorate.id == widget.store.cityId,
       orElse: () => cities.first,
     );
     selectedCountry = countries.firstWhere(
-      (country) => country.id == widget.store.governorateId,
+      (country) => country.id == widget.store.cityId,
       orElse: () => countries.first,
     );
   }

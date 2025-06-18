@@ -10,10 +10,14 @@ _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       image: json['image'] as String?,
-      governorateId: (json['governorate_id'] as num?)?.toInt(),
+      cityId: (json['city_id'] as num?)?.toInt(),
       place: json['place'] as String?,
-      createdAt: json['created_at'] as String?,
-      updatedAt: json['updated_at'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>
@@ -21,8 +25,8 @@ Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'image': instance.image,
-      'governorate_id': instance.governorateId,
+      'city_id': instance.cityId,
       'place': instance.place,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };

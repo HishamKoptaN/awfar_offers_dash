@@ -14,7 +14,10 @@
     "terminal.integrated.scrollback": 1000,
       "editor.minimap.enabled": false, // تعطيل Minimap لتوفير الموارد
       "workbench.tree.indent": 10, // تحسين الأداء في عرض الملفات
-      "search.followSymlinks": false
+      "search.followSymlinks": false,
+        "dart.flutterTestAdditionalArgs": ["--track-widget-creation"],
+        "dart.testSdkHome": "C:\\flutter\\bin\\cache\\dart-sdk"
+      
     
   }
   

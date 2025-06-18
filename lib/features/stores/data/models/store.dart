@@ -19,10 +19,10 @@ class Store with _$Store {
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "image") String? image,
-    @JsonKey(name: "governorate_id") int? governorateId,
+    @JsonKey(name: "city_id") int? cityId,
     @JsonKey(name: "place") String? place,
-    @JsonKey(name: "created_at") String? createdAt,
-    @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "created_at") DateTime? createdAt,
+    @JsonKey(name: "updated_at") DateTime? updatedAt,
   }) = _Store;
 
   factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);

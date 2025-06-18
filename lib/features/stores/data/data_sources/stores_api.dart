@@ -12,7 +12,7 @@ abstract class StoresApi {
     Dio dio, {
     String baseUrl,
   }) = _StoresApi;
-  //! GET Coupons
+  //! GET Stores
   @GET(
     ApiConstants.stores,
   )
